@@ -1,0 +1,1700 @@
+/* ==========================================================
+   LCCAST
+   ELECTIONS PAGE
+==========================================================*/
+
+/* ==========================================================
+   ELECTION TABS
+========================================================== */
+
+.election-tabs {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 26px;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+
+.election-tab {
+
+    height: 48px;
+
+    padding: 0 22px;
+
+    border: none;
+
+    border-radius: 14px 14px 0 0;
+
+    background: transparent;
+
+    color: var(--subtext);
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+}
+
+
+.election-tab:hover {
+
+    color: var(--primary);
+
+    background: #F3F4FF;
+
+}
+
+
+.election-tab.active {
+
+    background: var(--primary);
+
+    color: #FFFFFF;
+
+}
+
+
+/* ==========================================================
+   ELECTION TAB SECTIONS
+========================================================== */
+
+.election-section {
+
+    display: none;
+
+}
+
+
+.election-section.active {
+
+    display: block;
+
+}
+
+/* =========================================================
+   ELECTION FORM
+========================================================= */
+
+.election-form {
+
+    padding: 24px 34px 28px;
+
+}
+
+
+.election-form .form-section {
+
+    gap: 16px;
+
+}
+
+/* =========================================================
+   ELECTION SELECT
+========================================================= */
+
+.election-form .form-group select {
+
+    width: 100%;
+
+    height: 42px;
+
+    padding: 0 12px;
+
+    border: 1px solid #333;
+
+    border-radius: 14px;
+
+    background: #FFFFFF;
+
+    color: var(--text);
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    outline: none;
+
+    cursor: pointer;
+
+}
+
+
+.election-form .form-group select:focus {
+
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 3px rgba(91, 92, 235, .1);
+
+}
+
+/* =========================================================
+   ELECTION INPUTS
+========================================================= */
+
+.election-form .form-group input {
+
+    width: 100%;
+
+    height: 42px;
+
+    padding: 0 12px;
+
+    border: 1px solid #333;
+
+    border-radius: 14px;
+
+    background: #FFFFFF;
+
+    color: var(--text);
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    outline: none;
+
+}
+
+
+.election-form .form-group input:focus {
+
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 3px rgba(91, 92, 235, .1);
+
+}
+
+/* ==========================================================
+FORM
+==========================================================*/
+
+.election-form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:30px;
+
+    padding: 24px 34px 28px;
+
+}
+
+/* ==========================================================
+   ELECTION LIST
+========================================================== */
+
+#existingElections .election-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 24px;
+}
+
+
+/* ==========================================================
+   ELECTION CARD
+========================================================== */
+
+#existingElections .election-item {
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: .25s ease;
+    box-shadow: none;
+}
+
+#existingElections .election-item:hover {
+    box-shadow: var(--shadow-sm);
+}
+
+/* ==========================================================
+   ELECTION CONTENT CONTAINER
+========================================================== */
+
+.election-content-container {
+
+    width: 100%;
+
+    background: #FFFFFF;
+
+    border: 1px solid var(--border);
+
+    border-radius: 16px;
+
+    box-shadow: 0 4px 14px rgba(15, 23, 42, .04);
+
+    overflow: hidden;
+
+}
+
+
+/* ==========================================================
+   ELECTION HEADER
+========================================================== */
+
+#existingElections .election-header {
+    width: 100%;
+    min-height: 92px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px 22px;
+
+    background: #FFFFFF;
+}
+
+/* ==========================================================
+   HEADER LEFT
+========================================================== */
+
+#existingElections .election-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 4px;
+
+    min-width: 0;
+}
+
+#existingElections .election-title h3 {
+    margin: 0;
+
+    font-size: 18px;
+    line-height: 1.25;
+    font-weight: 600;
+
+    color: var(--text);
+}
+
+#existingElections .election-title small {
+    margin: 0;
+
+    font-size: 13px;
+    line-height: 1.3;
+
+    color: var(--subtext);
+}
+
+/* ==========================================================
+   HEADER RIGHT
+========================================================== */
+
+#existingElections .election-controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    flex-shrink: 0;
+}
+
+/* ==========================================================
+   STATUS
+========================================================== */
+
+#existingElections .status {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 30px;
+
+    padding: 6px 14px;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 600;
+}
+
+#existingElections .status.active {
+    background: #DCFCE7;
+    color: #15803D;
+}
+
+#existingElections .status.ongoing {
+    background: #FEF3C7;
+    color: #B45309;
+}
+
+#existingElections .status.concluded {
+    background: #ECECEC;
+    color: #666666;
+}
+
+/* ==========================================================
+   ICON BUTTONS
+========================================================== */
+
+#existingElections .icon-btn {
+    width: 38px;
+    height: 38px;
+
+    padding: 0;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    background: #F5F7FB;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        transform .2s ease;
+}
+
+#existingElections .icon-btn i {
+    font-size: 16px;
+}
+
+#existingElections .icon-btn:hover {
+    color: var(--primary);
+
+    border-color: var(--primary);
+
+    background: #EEF2FF;
+}
+
+#existingElections .delete-election:hover {
+    color: #EF4444;
+
+    border-color: #EF4444;
+
+    background: #FEF2F2;
+}
+
+#existingElections .archive-election:hover {
+    color: #F59E0B;
+
+    border-color: #F59E0B;
+
+    background: #FFFBEB;
+}
+
+/* ==========================================================
+   EXPAND BUTTON
+========================================================== */
+
+#existingElections .expand-election {
+    transition: transform .25s ease;
+}
+
+#existingElections .expand-election i {
+    display: inline-block;
+    transition: transform 0.25s ease;
+}
+
+#existingElections .election-item.show .expand-election i {
+    transform: rotate(180deg);
+}
+
+/* ==========================================================
+   ELECTION DETAILS
+========================================================== */
+
+#existingElections .election-details {
+    display: none;
+
+    padding: 22px;
+
+    border-top: 1px solid var(--border);
+
+    background: #FCFCFD;
+}
+
+#existingElections .election-item.show .election-details {
+    display: block;
+}
+
+
+/* ==========================================================
+   INFO GRID
+========================================================== */
+
+#existingElections .info-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+
+    margin-bottom: 18px;
+}
+
+
+/* ==========================================================
+   INFO CARD
+========================================================== */
+
+#existingElections .info-card {
+    background: #FFFFFF;
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    padding: 18px;
+}
+
+#existingElections .info-card label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 600;
+
+    color: var(--subtext);
+}
+
+#existingElections .info-card span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: var(--text);
+}
+
+/* ==========================================================
+   CHIPS
+========================================================== */
+
+#existingElections .chip-container {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 10px;
+}
+
+/* ==========================================================
+   EDIT PANEL
+========================================================== */
+
+#existingElections .edit-panel {
+    display: none;
+}
+
+#existingElections .election-item.editing .election-details {
+    display: none;
+}
+
+#existingElections .election-item.editing .edit-panel {
+    display: block;
+
+    padding: 22px;
+
+    border-top: 1px solid var(--border);
+
+    background: #FCFCFD;
+}
+
+/* ==========================================================
+   EDIT FORM — MATCH CREATE ELECTION
+========================================================== */
+
+#existingElections .edit-panel .election-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 24px 34px 28px;
+}
+
+#existingElections .edit-panel .form-section {
+    gap: 16px;
+}
+
+#existingElections .edit-panel .form-group {
+    margin-bottom: 0;
+}
+
+#existingElections .edit-panel .form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    color: var(--text);
+}
+
+#existingElections .edit-panel .form-group input,
+#existingElections .edit-panel .form-group select {
+    width: 100%;
+    height: 42px;
+
+    padding: 0 12px;
+
+    border: 1px solid #333;
+    border-radius: 14px;
+
+    background: #FFFFFF;
+
+    color: var(--text);
+
+    font-family: inherit;
+    font-size: 14px;
+
+    outline: none;
+}
+
+#existingElections .edit-panel .form-group input:focus,
+#existingElections .edit-panel .form-group select:focus {
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 3px rgba(91, 92, 235, .1);
+}
+
+
+
+
+/* ==========================================================
+   EDIT PARTYLIST / DEPARTMENT
+========================================================== */
+
+#existingElections .edit-panel .section-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 10px;
+}
+
+#existingElections .edit-panel .section-header h3 {
+    margin: 0;
+}
+
+#existingElections .edit-panel .secondary-btn {
+    width: auto;
+    height: 42px;
+
+    padding: 0 16px;
+
+    border-radius: 12px;
+}
+
+
+/* ==========================================================
+   EDIT BUTTONS — MATCH CREATE
+========================================================== */
+
+#existingElections .edit-panel .form-buttons {
+    display: flex;
+
+    justify-content: flex-end;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 0;
+}
+
+#existingElections .edit-panel .form-buttons button {
+    min-width: unset;
+    height: auto;
+
+    border-radius: 12px;
+}
+
+#existingElections .edit-panel .form-section:has(.edit-election-start) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 16px;
+}
+
+#existingElections .edit-panel .form-section:has(.edit-election-start) h3 {
+    grid-column: 1 / -1;
+}
+
+/* ==========================================================
+BUTTONS
+==========================================================*/
+
+.card-actions{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:12px;
+
+    margin-top:24px;
+
+}
+
+/* ==========================================================
+   EDITING STATE
+========================================================== */
+
+#existingElections .election-item.editing {
+    border-color: var(--primary);
+}
+
+#existingElections .election-item.editing .election-header {
+    border-bottom: 1px solid var(--border);
+}
+
+/* ==========================================================
+   EXISTING ELECTIONS TOOLBAR
+========================================================== */
+
+.existing-elections-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.election-search {
+    position: relative;
+    flex: 1;
+    max-width: 520px;
+}
+
+.election-search > i {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.election-search input {
+
+    width: 100%;
+
+    height: 42px;
+
+    padding: 0 42px 0 42px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    background: #FFFFFF;
+
+    color: var(--text);
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    outline: none;
+
+    box-sizing: border-box;
+
+}
+
+
+.election-search input:focus {
+
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 3px rgba(91, 92, 235, .10);
+
+}
+
+.clear-search {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.election-filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.election-filter select {
+
+    height: 42px;
+
+    min-width: 170px;
+
+    padding: 0 34px 0 12px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    background: #FFFFFF;
+
+    color: var(--text);
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    outline: none;
+
+    cursor: pointer;
+
+}
+
+
+.election-filter select:focus {
+
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 3px rgba(91, 92, 235, .10);
+
+}
+
+.send-election-email {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    white-space: nowrap;
+}
+
+.secondary-email-btn {
+    height: 42px;
+
+    padding: 0 16px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    background: #FFFFFF;
+
+    color: var(--text);
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+.secondary-email-btn:hover{
+    color: var(--primary);
+
+    border-color: var(--primary);
+
+    background: #EEF2FF;
+}
+
+/* ==========================================================
+   ELECTION EMAIL MODAL
+========================================================== */
+
+.email-election-modal {
+    width: min(680px, calc(100% - 32px));
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, .16);
+}
+
+
+/* ==========================================================
+   MODAL HEADER
+========================================================== */
+
+.email-election-modal .modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 22px 24px;
+    border-bottom: 1px solid var(--border);
+    background: #FFFFFF;
+}
+
+.email-election-modal .modal-header > div {
+    min-width: 0;
+}
+
+.email-election-modal .modal-header h2 {
+    margin: 0;
+    color: var(--text);
+    font-size: 20px;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+.email-election-modal .modal-header p {
+    margin: 6px 0 0;
+    color: var(--subtext);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* ==========================================================
+   CLOSE BUTTON
+========================================================== */
+
+.email-election-modal .close-modal {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #F8FAFC;
+    color: #64748B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.email-election-modal .close-modal:hover {
+    background: #F1F5F9;
+    border-color: #CBD5E1;
+    color: var(--text);
+}
+
+
+/* ==========================================================
+   MODAL CONTENT
+========================================================== */
+
+.email-election-content {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    background: #FCFCFD;
+}
+
+
+/* ==========================================================
+   ELECTION SUMMARY
+========================================================== */
+
+.email-election-info {
+    margin: 0 0 24px;
+    padding: 18px;
+    border: 1px solid #E2E5F5;
+    border-radius: 14px;
+    background: #F7F8FF;
+}
+
+.email-election-info h3 {
+    margin: 0 0 6px;
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 700;
+}
+
+.email-election-info p {
+    margin: 0;
+    color: var(--subtext);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* ==========================================================
+   FORM GROUP
+========================================================== */
+
+.email-election-content .form-group {
+    margin-bottom: 22px;
+}
+
+.email-election-content .form-group > label {
+    display: block;
+    margin-bottom: 9px;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* ==========================================================
+   RECIPIENT
+========================================================== */
+
+.email-recipient-option {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 68px;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: #FFFFFF;
+    transition: .2s ease;
+}
+
+.email-recipient-option:hover {
+    border-color: #C7CAFA;
+    background: #FAFAFF;
+}
+
+.email-recipient-option > i {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #EEF0FF;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+}
+
+.email-recipient-option div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.email-recipient-option strong {
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.email-recipient-option span {
+    color: var(--subtext);
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+
+/* ==========================================================
+   SENDING OPTION
+========================================================== */
+
+.email-send-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.email-option {
+    position: relative;
+    min-height: 84px;
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    padding: 15px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: #FFFFFF;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.email-option:hover {
+    border-color: #C7CAFA;
+    background: #FAFAFF;
+}
+
+.email-option:has(input:checked) {
+    border-color: var(--primary);
+    background: #F5F6FF;
+    box-shadow: 0 0 0 2px rgba(91, 92, 235, .08);
+}
+
+.email-option input {
+    width: 16px;
+    height: 16px;
+    margin: 3px 0 0;
+    flex-shrink: 0;
+    accent-color: var(--primary);
+}
+
+.email-option > span {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+}
+
+.email-option strong {
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.email-option small {
+    color: var(--subtext);
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+
+/* ==========================================================
+   SCHEDULE DATE FIELD
+========================================================== */
+
+#scheduledEmailGroup {
+    margin-top: -4px;
+    padding: 16px;
+    border: 1px solid #E2E5F5;
+    border-radius: 14px;
+    background: #F7F8FF;
+}
+
+#scheduledEmailGroup[hidden] {
+    display: none;
+}
+
+#scheduledEmailGroup label {
+    margin-bottom: 8px;
+}
+
+#scheduledEmailDate {
+    width: 100%;
+    height: 44px;
+    padding: 0 12px;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    background: #FFFFFF;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+#scheduledEmailDate:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(91, 92, 235, .10);
+}
+
+
+/* ==========================================================
+   SCHEDULED EMAIL BANNER
+========================================================== */
+
+.scheduled-email-banner {
+    margin: 0 24px 0;
+    padding: 16px;
+    border: 1px solid #D9DDFB;
+    border-radius: 14px;
+    background: #F5F6FF;
+}
+
+.scheduled-email-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.scheduled-email-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #E8E9FF;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scheduled-email-icon i {
+    font-size: 18px;
+}
+
+.scheduled-email-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.scheduled-email-heading strong {
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.scheduled-email-heading span {
+    color: var(--subtext);
+    font-size: 12px;
+}
+
+.scheduled-email-details {
+    margin-top: 14px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #FFFFFF;
+}
+
+.scheduled-email-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.scheduled-email-detail span {
+    color: var(--subtext);
+    font-size: 12px;
+}
+
+.scheduled-email-detail strong {
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.cancel-scheduled-email-btn {
+    width: 100%;
+    height: 42px;
+    margin-top: 12px;
+    border: 1px solid #F1B8B8;
+    border-radius: 10px;
+    background: #FFF5F5;
+    color: #DC2626;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.cancel-scheduled-email-btn:hover {
+    background: #FDECEC;
+    border-color: #DC2626;
+}
+
+
+/* ==========================================================
+   EMAIL INCLUDES
+========================================================== */
+
+.email-includes {
+    margin-top: 26px;
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: #FFFFFF;
+}
+
+.email-includes h3 {
+    margin: 0 0 14px;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.email-includes ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 18px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.email-includes li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    color: var(--subtext);
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.email-includes li i {
+    flex-shrink: 0;
+    color: #16A34A;
+    font-size: 14px;
+}
+
+
+/* ==========================================================
+   MODAL FOOTER
+========================================================== */
+
+.email-election-modal .modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 16px 24px;
+    border-top: 1px solid var(--border);
+    background: #FFFFFF;
+    flex-shrink: 0;
+}
+
+.email-election-modal .modal-footer .cancel-btn,
+.email-election-modal .modal-footer .save-btn {
+    min-width: 120px;
+    height: 42px;
+    border-radius: 11px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.email-election-modal .modal-footer .cancel-btn {
+    border: 1px solid var(--border);
+    background: #F8FAFC;
+    color: var(--text);
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.email-election-modal .modal-footer .cancel-btn:hover {
+    background: #F1F5F9;
+}
+
+.email-election-modal .modal-footer .save-btn {
+    border: none;
+    background: var(--primary);
+    color: #FFFFFF;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.email-election-modal .modal-footer .save-btn:hover {
+    background: var(--primary-hover);
+}
+
+/* ==========================================================
+   EMAIL SEND PROGRESS TOAST
+========================================================== */
+
+.email-progress-stack {
+    position: fixed;
+    right: 28px;
+    bottom: 112px; /* sits above the success toast */
+    width: 360px;
+    max-width: calc(100vw - 40px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 10500;
+    pointer-events: none;
+}
+
+.email-progress-card {
+    pointer-events: auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    padding: 14px 16px;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, .16);
+    animation: emailProgressIn .25s ease;
+}
+
+@keyframes emailProgressIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.email-progress-icon {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #EEF0FF;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+}
+
+.email-progress-body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.email-progress-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.email-progress-heading {
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.email-progress-percent {
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.email-progress-title {
+    color: var(--subtext);
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.email-progress-track {
+    height: 8px;
+    border-radius: 999px;
+    background: #E8ECF5;
+    overflow: hidden;
+}
+
+.email-progress-bar {
+    height: 100%;
+    width: 0;
+    border-radius: inherit;
+    background: var(--primary);
+    transition: width .4s ease, background .2s ease;
+}
+
+.email-progress-count {
+    color: var(--subtext);
+    font-size: 11px;
+}
+
+.email-progress-close {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: #94A3B8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.email-progress-close[hidden] { display: none; }
+.email-progress-close:hover { background: #F1F3F8; color: var(--text); }
+
+/* success */
+.email-progress-card.is-success .email-progress-icon { background: #EAF8EF; color: #16A34A; }
+.email-progress-card.is-success .email-progress-bar,
+.email-progress-card.is-success .email-progress-percent { background: #16A34A; color: #16A34A; }
+.email-progress-card.is-success .email-progress-bar { color: inherit; }
+
+/* error */
+.email-progress-card.is-error .email-progress-icon { background: #FDECEC; color: #DC2626; }
+.email-progress-card.is-error .email-progress-bar { background: #DC2626; }
+.email-progress-card.is-error .email-progress-percent { color: #DC2626; }
+
+@media (max-width: 600px) {
+    .email-progress-stack {
+        right: 12px;
+        bottom: 88px;
+        width: calc(100vw - 24px);
+        max-width: none;
+    }
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width: 600px) {
+
+    .email-election-modal {
+        width: calc(100% - 20px);
+        max-height: 94vh;
+        border-radius: 16px;
+    }
+
+    .email-election-modal .modal-header {
+        padding: 18px;
+    }
+
+    .email-election-content {
+        padding: 18px;
+    }
+
+    .email-send-options {
+        grid-template-columns: 1fr;
+    }
+
+    .email-includes ul {
+        grid-template-columns: 1fr;
+    }
+
+    .email-election-modal .modal-footer {
+        padding: 14px 18px;
+        flex-shrink: 0;
+    }
+
+    .email-election-modal .modal-footer button {
+            flex: 0 0 auto;
+            width: 100%;
+            height: 44px;
+        }
+
+    .scheduled-email-banner {
+        margin: 0 18px;
+    }
+}
+
+/* ==========================================================
+   CARD BUTTON COLORS
+========================================================== */
+
+.save-btn {
+    background: var(--primary);
+    color: #FFFFFF;
+}
+
+.discard-btn {
+    background: #F3F4F8;
+}
+
+.edit-btn {
+    background: #EEF2FF;
+    color: var(--primary);
+}
+
+.archive-btn {
+    background: #FDECEC;
+    color: #DC2626;
+}
+
+.save-btn,
+.discard-btn,
+.edit-btn,
+.archive-btn {
+    border: none;
+    border-radius: 12px;
+
+    padding: 12px 18px;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    font-weight: 600;
+
+    transition: .2s;
+}
+
+.save-btn:hover {
+    background: var(--primary-hover);
+}
+
+.edit-btn:hover {
+    background: #DDE5FF;
+}
+
+.archive-btn:hover {
+    background: #FBD5D5;
+}
+
+.discard-btn:hover {
+    background: #E7EAF2;
+}
+
+/* ==========================================================
+   ELECTION FORM VALIDATION
+========================================================== */
+
+.election-form .form-group.has-error input,
+.election-form .form-group.has-error select {
+    border-color: #DC2626;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, .08);
+}
+
+.election-form .form-group.has-error input:focus,
+.election-form .form-group.has-error select:focus {
+    border-color: #DC2626;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, .10);
+}
+
+/* .election-form .field-error {
+    display: block;
+
+    margin-top: 6px;
+
+    color: #DC2626;
+
+    font-size: 12px;
+    line-height: 1.4;
+    font-weight: 500;
+} */
+
+
+/* ==========================================================
+   PARTYLIST / DEPARTMENT VALIDATION
+========================================================== */
+
+.election-form .selection-group.has-error
+.selected-container {
+    border-color: #DC2626;
+}
+
+.election-form .selection-error {
+    display: block;
+
+    margin-top: 7px;
+
+    color: #DC2626;
+
+    font-size: 12px;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+/* ==========================================================
+   DISABLED ELECTION SELECTION SECTION
+========================================================== */
+
+.selection-group.selection-disabled {
+    opacity: 0.5;
+}
+
+.selection-group.selection-disabled .secondary-btn {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.selection-group.selection-disabled .selected-container {
+    background: #f3f4f6;
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width: 900px) {
+
+    #existingElections .election-header {
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    #existingElections .election-controls {
+        flex-wrap: wrap;
+    }
+
+    #existingElections .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    #existingElections .election-header {
+        flex-direction: column;
+    }
+
+    #existingElections .election-controls {
+        width: 100%;
+
+        justify-content: flex-start;
+    }
+
+    #existingElections .edit-panel .form-buttons {
+        flex-direction: column;
+    }
+
+    #existingElections .edit-panel .form-buttons button {
+        width: 100%;
+    }
+
+    #existingElections .election-title h3 {
+        font-size: 15.5px;
+    }
+
+    .email-election-modal .modal-header h2 {
+        font-size: 17px;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    #existingElections .election-title h3 {
+        font-size: 14.5px;
+    }
+
+    #existingElections .election-title small {
+        font-size: 12px;
+    }
+}

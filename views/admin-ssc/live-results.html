@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <title>LCC Cast | Live Results</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/lcccast_logo.png" />
+    <link rel="apple-touch-icon" href="/images/lcccast_logo.png" />
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+    <!-- Base Design System -->
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/admin/layout.css" />
+    <link rel="stylesheet" href="/css/components.css" />
+    <link rel="stylesheet" href="/css/forms.css" />
+    <link rel="stylesheet" href="/css/modal.css" />
+    <link rel="stylesheet" href="/css/navigation.css" />
+    <link rel="stylesheet" href="/css/skeleton-loading.css" />
+
+    <!-- Live Results -->
+    <link rel="stylesheet" href="/css/pages/live-results.css" />
+</head>
+
+<body data-admin-campus-id="{{campusId}}" data-admin-campus-name="{{campus}}">
+    <!-- ===========================
+SIDEBAR
+============================ -->
+
+    <button type="button" class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open navigation"
+        aria-expanded="false">
+        <i class="bi bi-list"></i>
+    </button>
+
+    <!-- ===========================
+MOBILE NAVIGATION OVERLAY
+============================ -->
+
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-top">
+            <div class="logo">
+                <img src="/images/lcccast_logo.png" alt="LCC Cast" />
+
+                <h2>LCC Cast</h2>
+            </div>
+
+            <hr />
+
+            <nav>
+                <a href="/admin-ssc/dashboard">
+                    <i class="bi bi-house-door"></i>
+
+                    Dashboard
+                </a>
+
+                <a href="/admin-ssc/elections">
+                    <i class="bi bi-calendar-event"></i>
+
+                    Elections
+                </a>
+
+                <!-- LIVE RESULTS -->
+
+                <a href="/admin-ssc/live-results" class="active">
+                    <i class="bi bi-broadcast-pin"></i>
+
+                    Live Results
+                </a>
+
+                <a href="/admin-ssc/partylists">
+                    <i class="bi bi-people"></i>
+
+                    Partylists
+                </a>
+
+
+                <a href="/admin-ssc/voters">
+                    <i class="bi bi-person-vcard"></i>
+
+                    Voters
+                </a>
+
+                <a href="/admin-ssc/analytics">
+                    <i class="bi bi-bar-chart"></i>
+
+                    Analytics
+                </a>
+
+                <a href="/admin-ssc/history">
+                    <i class="bi bi-clock-history"></i>
+
+                    History
+                </a>
+            </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+            <hr />
+
+            <a href="/admin-ssc/settings">
+                <i class="bi bi-gear"></i>
+
+                Settings
+            </a>
+
+            <a href="#" class="logout-trigger">
+                <i class="bi bi-box-arrow-right"></i>
+
+                Logout
+            </a>
+        </div>
+    </aside>
+
+    <!-- =========================================================
+     MAIN CONTENT
+========================================================== -->
+
+    <main class="main-content">
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+            <div>
+                <h1>Live Results</h1>
+
+                <p>Real-time voting results for the current election</p>
+            </div>
+
+            <div class="profile">
+
+                <div class="avatar">
+                    {{html_avatar}}
+                </div>
+
+                <div class="profile-info">
+
+                    <span>{{displayName}}</span>
+
+                    <small>{{programCampus}}</small>
+
+                </div>
+
+            </div>
+        </header>
+
+        <!-- =====================================================
+           LIVE RESULT NAVIGATION
+      ====================================================== -->
+
+        <!-- =====================================================
+           SSC VOTING
+      ====================================================== -->
+
+        <section id="sscLiveSection" class="live-section active">
+            <div class="live-section-header">
+                <div>
+                    <div class="live-title-row">
+                        <span class="live-status-dot"></span>
+                        <span class="live-status-text"> LIVE </span>
+                    </div>
+
+                    <h2>Supreme Student Council</h2>
+                    <p>Live voting results for your campus</p>
+                </div>
+
+                <div class="live-meta">
+                    <div class="live-vote-count">
+                        <span>Votes Cast</span>
+                        <strong id="sscLiveVotes"> 0 </strong>
+                    </div>
+
+                    <div class="live-updated">
+                        <i class="bi bi-arrow-repeat"></i>
+                        <span id="lastUpdatedSSC"> Updating... </span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="sscCampusResultsContainer" class="campus-results-container"></div>
+        </section>
+
+    </main>
+
+    <!-- =========================================================
+ LOGOUT MODAL
+========================================================= -->
+
+    <div class="modal-overlay" id="logoutModal">
+        <div class="delete-modal logout-modal">
+            <div class="delete-modal-content">
+                <div class="delete-modal-icon">
+                    <i class="bi bi-box-arrow-right"></i>
+                </div>
+
+                <h2>Logout?</h2>
+
+                <p>Are you sure you want to logout from LCC Cast?</p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="logout-cancel-btn" id="cancelLogout">
+                    Cancel
+                </button>
+
+                <button type="button" class="logout-confirm-btn" id="confirmLogout">
+                    <i class="bi bi-box-arrow-right"></i>
+
+                    Logout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+ GLOBAL ACTION LOADING MODAL
+========================================================= -->
+
+    <div class="modal-overlay loading-modal-overlay" id="actionLoadingModal">
+        <div class="action-loading-modal">
+            <div class="action-loading-spinner">
+                <span></span>
+            </div>
+
+            <div class="action-loading-content">
+                <h2 id="actionLoadingTitle">Processing...</h2>
+
+                <p id="actionLoadingMessage">
+                    Please wait while we process your request.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- =========================================================
+     LIVE RESULTS JS
+========================================================== -->
+    <script src="/js/superadmin/soft-cache.js"></script>
+    <script src="/js/navigation.js"></script>
+
+    <script src="/js/logout.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+    <script src="/js/admin-ssc/live-results.js"></script>
+</body>
+
+</html>

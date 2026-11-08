@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <title>LCC Cast | Live Results</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/lcccast_logo.png" />
+    <link rel="apple-touch-icon" href="/images/lcccast_logo.png" />
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+    <!-- Base Design System -->
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
+    <link rel="stylesheet" href="/css/components.css" />
+    <link rel="stylesheet" href="/css/forms.css" />
+    <link rel="stylesheet" href="/css/modal.css" />
+    <link rel="stylesheet" href="/css/navigation.css" />
+    <link rel="stylesheet" href="/css/skeleton-loading.css" />
+
+    <!-- Live Results -->
+    <link rel="stylesheet" href="/css/pages/live-results.css" />
+  </head>
+
+  <body>
+    <!-- SIDEBAR -->
+
+    <button type="button" class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open navigation" aria-expanded="false">
+      <i class="bi bi-list"></i>
+    </button>
+
+    <!-- MOBILE NAVIGATION OVERLAY -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-top">
+        <div class="logo">
+          <img src="/images/lcccast_logo.png" alt="LCC Cast" />
+          <h2>LCC Cast</h2>
+        </div>
+
+        <hr />
+
+        <nav>
+          <a href="/superadmin/dashboard"><i class="bi bi-house-door"></i> Dashboard</a>
+          <a href="/superadmin/elections"><i class="bi bi-calendar-event"></i> Elections</a>
+
+          <!-- LIVE RESULTS -->
+          <a href="/superadmin/live-results" class="active"><i class="bi bi-broadcast-pin"></i> Live Results</a>
+
+          <a href="/superadmin/partylists"><i class="bi bi-people"></i> Partylists</a>
+          <a href="/superadmin/departments"><i class="bi bi-building"></i> Departments</a>
+          <a href="/superadmin/voters"><i class="bi bi-person-vcard"></i> Voters</a>
+          <a href="/superadmin/analytics"><i class="bi bi-bar-chart"></i> Analytics</a>
+          <a href="/superadmin/history"><i class="bi bi-clock-history"></i> History</a>
+        </nav>
+      </div>
+
+      <div class="sidebar-bottom">
+        <hr />
+        <a href="/superadmin/settings"><i class="bi bi-gear"></i> Settings</a>
+        <a href="#" class="logout-trigger"><i class="bi bi-box-arrow-right"></i> Logout</a>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+      <!-- TOPBAR -->
+
+      <header class="topbar">
+        <div>
+          <h1>Live Results</h1>
+          <p>Real-time voting results for the current election</p>
+        </div>
+
+        <div class="profile">
+          <div class="avatar">{{html_avatar}}</div>
+          <span>{{displayName}}</span>
+        </div>
+      </header>
+
+      <!-- LIVE RESULT NAVIGATION -->
+
+      <div class="live-results-tabs">
+        <button type="button" class="live-results-tab active" data-section="ssc">
+          <i class="bi bi-bank"></i> SSC Voting
+        </button>
+
+        <button type="button" class="live-results-tab" data-section="department">
+          <i class="bi bi-building"></i> Department Voting
+        </button>
+      </div>
+
+      <!-- SSC VOTING -->
+
+      <section id="sscLiveSection" class="live-section active">
+        <div class="live-section-header">
+          <div>
+            <div class="live-title-row">
+              <span class="live-status-dot"></span>
+              <span class="live-status-text"> LIVE </span>
+            </div>
+
+            <h2>Supreme Student Council</h2>
+
+            <p>Live voting results by campus</p>
+          </div>
+
+          <div class="live-meta">
+            <div class="live-vote-count">
+              <span>Votes Cast</span>
+              <strong id="sscLiveVotes"> 0 </strong>
+            </div>
+
+            <div class="live-updated">
+              <i class="bi bi-arrow-repeat"></i>
+              <span id="lastUpdatedSSC"> Updating... </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SSC CAMPUS FILTER -->
+
+        <div class="campus-filter-card">
+          <div class="campus-filter-title">
+            <div class="filter-icon"><i class="bi bi-funnel"></i></div>
+
+            <div>
+              <strong>Campus</strong>
+              <span> Select a campus to view live results </span>
+            </div>
+          </div>
+
+          <div class="campus-filter-controls">
+            <label for="sscCampusFilter"> Show </label>
+
+            <select id="sscCampusFilter">
+              <option value="ALL">All Campuses</option>
+              <option value="kaypian">Kaypian</option>
+              <option value="muzon">Muzon</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- SSC CAMPUS RESULTS -->
+
+        <div id="sscCampusResultsContainer" class="campus-results-container"></div>
+      </section>
+
+      <!-- DEPARTMENT VOTING -->
+
+      <section id="departmentLiveSection" class="live-section">
+        <div class="live-section-header">
+          <div>
+            <div class="live-title-row">
+              <span class="live-status-dot"></span>
+              <span class="live-status-text"> LIVE </span>
+            </div>
+
+            <h2>Department Voting</h2>
+
+            <p>Live voting results by department</p>
+          </div>
+
+          <div class="live-meta">
+            <div class="live-vote-count">
+              <span>Votes Cast</span>
+              <strong id="departmentLiveVotes"> 0 </strong>
+            </div>
+
+            <div class="live-updated">
+              <i class="bi bi-arrow-repeat"></i>
+              <span id="lastUpdatedDepartment"> Updating... </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DEPARTMENT CAMPUS FILTER -->
+
+        <div class="campus-filter-card department-campus-filter">
+          <div class="campus-filter-title">
+            <div class="filter-icon"><i class="bi bi-funnel"></i></div>
+
+            <div>
+              <strong>Campus</strong>
+              <span> Select a campus to view department results </span>
+            </div>
+          </div>
+
+          <div class="campus-filter-controls">
+            <label for="departmentCampusFilter"> Show </label>
+
+            <select id="departmentCampusFilter">
+              <option value="ALL">All Campuses</option>
+              <option value="kaypian">Kaypian</option>
+              <option value="muzon">Muzon</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- DEPARTMENT FILTER -->
+
+        <div class="department-filter-card">
+          <div class="department-filter-title">
+            <div class="filter-icon"><i class="bi bi-funnel"></i></div>
+
+            <div>
+              <strong>Department</strong>
+              <span> Select a department to view live results </span>
+            </div>
+          </div>
+
+          <div class="department-filter-controls">
+            <label for="liveDepartmentFilter"> Show </label>
+
+            <select id="liveDepartmentFilter">
+              <option value="ALL">All Departments</option>
+              <option value="BSA">BSA — Accountancy</option>
+              <option value="BSBA">BSBA — Business Administration</option>
+              <option value="BAEL">BAEL — Communication Arts</option>
+              <option value="BSCRIM">BSCRIM — Criminology</option>
+              <option value="BSCE">BSCE — Engineering</option>
+              <option value="BSHM">BSHM — Hospitality Management</option>
+              <option value="BSIS">BSIS — Information Systems</option>
+              <option value="BSPSY">BSPSY — Psychology</option>
+              <option value="EDUC">EDUC — Teacher Education</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- DEPARTMENT RESULTS -->
+
+        <div id="departmentLiveContainer" class="department-live-container"></div>
+      </section>
+    </main>
+
+    <!-- LOGOUT MODAL -->
+
+    <div class="modal-overlay" id="logoutModal">
+      <div class="delete-modal logout-modal">
+        <div class="delete-modal-content">
+          <div class="delete-modal-icon"><i class="bi bi-box-arrow-right"></i></div>
+
+          <h2>Logout?</h2>
+
+          <p>Are you sure you want to logout from LCC Cast?</p>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="logout-cancel-btn" id="cancelLogout">Cancel</button>
+
+          <button type="button" class="logout-confirm-btn" id="confirmLogout">
+            <i class="bi bi-box-arrow-right"></i> Logout
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- GLOBAL ACTION LOADING MODAL -->
+
+    <div class="modal-overlay loading-modal-overlay" id="actionLoadingModal">
+      <div class="action-loading-modal">
+        <div class="action-loading-spinner"><span></span></div>
+
+        <div class="action-loading-content">
+          <h2 id="actionLoadingTitle">Processing...</h2>
+          <p id="actionLoadingMessage">Please wait while we process your request.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIVE RESULTS JS -->
+    <script src="/js/superadmin/soft-cache.js"></script>
+    <script src="/js/navigation.js"></script>
+
+    <script src="/js/logout.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+    <script src="/js/superadmin/live-results.js"></script>
+  </body>
+</html>

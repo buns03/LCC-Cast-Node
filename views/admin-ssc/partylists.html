@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>LCC Cast | Partylists</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/lcccast_logo.png" />
+    <link rel="apple-touch-icon" href="/images/lcccast_logo.png" />
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/admin/layout.css" />
+    <link rel="stylesheet" href="/css/components.css" />
+    <link rel="stylesheet" href="/css/forms.css" />
+    <link rel="stylesheet" href="/css/modal.css" />
+    <link rel="stylesheet" href="/css/navigation.css" />
+    <link rel="stylesheet" href="/css/pages/partylists.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+</head>
+
+<body data-admin-campus-id="{{campusId}}">
+    <!-- ===========================
+SIDEBAR
+============================ -->
+
+    <button type="button" class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open navigation"
+        aria-expanded="false">
+        <i class="bi bi-list"></i>
+    </button>
+
+    <!-- ===========================
+MOBILE NAVIGATION OVERLAY
+============================ -->
+
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-top">
+            <div class="logo">
+                <img src="/images/lcccast_logo.png" alt="LCC Cast" />
+
+                <h2>LCC Cast</h2>
+            </div>
+
+            <hr />
+
+            <nav>
+                <a href="/admin-ssc/dashboard">
+                    <i class="bi bi-house-door"></i>
+
+                    Dashboard
+                </a>
+
+                <a href="/admin-ssc/elections">
+                    <i class="bi bi-calendar-event"></i>
+
+                    Elections
+                </a>
+
+                <a href="/admin-ssc/live-results">
+                    <i class="bi bi-broadcast-pin"></i>
+
+                    Live Results
+                </a>
+
+                <a href="/admin-ssc/partylists" class="active">
+                    <i class="bi bi-people"></i>
+
+                    Partylists
+                </a>
+
+                <a href="/admin-ssc/voters">
+                    <i class="bi bi-person-vcard"></i>
+
+                    Voters
+                </a>
+
+                <a href="/admin-ssc/analytics">
+                    <i class="bi bi-bar-chart"></i>
+
+                    Analytics
+                </a>
+
+                <a href="/admin-ssc/history">
+                    <i class="bi bi-clock-history"></i>
+
+                    History
+                </a>
+            </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+            <hr />
+
+            <a href="/admin-ssc/settings">
+                <i class="bi bi-gear"></i>
+
+                Settings
+            </a>
+
+            <a href="#" class="logout-trigger">
+                <i class="bi bi-box-arrow-right"></i>
+
+                Logout
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div>
+                <h1>Partylists</h1>
+                <p>Manage partylist organizations and their members.</p>
+            </div>
+            <div class="profile">
+
+                <div class="avatar">
+                    {{html_avatar}}
+                </div>
+
+                <div class="profile-info">
+
+                    <span>{{displayName}}</span>
+
+                    <small>{{programCampus}}</small>
+
+                </div>
+
+            </div>
+        </header>
+
+        <!-- =========================================================
+      DEPARTMENTs NAVIGATION
+      ========================================================= -->
+
+        <div class="partylists-tabs">
+            <button type="button" class="partylists-tab active" data-section="create">
+                <i class="bi bi-plus-circle"></i>
+                Create New Partylist
+            </button>
+
+            <button type="button" class="partylists-tab" data-section="existing">
+                <i class="bi bi-card-checklist"></i>
+                Existing Partylists
+            </button>
+        </div>
+
+        <section class="partylists-section active" id="createPartylists">
+            <div class="partylists-content-container">
+                <form class="partylists-form" id="createPartylistsForm" novalidate>
+                    <div class="form-section">
+                        <div class="form-group" novalidate>
+                            <label for="partylistsName"> Partylist Name </label>
+
+                            <input id="partylistsName" name="partylistsName" type="text" placeholder="OMSIM partylists"
+                                required />
+
+                            <small class="inline-error" id="partylistsNameError"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="partylistsDescription"> Description </label>
+
+                            <input id="partylistsDescription" name="description" type="text"
+                                placeholder="To achieve goals (optional)" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="partylistsSchoolYear"> School Year </label>
+
+                            <input id="partylistsSchoolYear" name="schoolyear" type="text" placeholder="2026 - 2027" />
+
+                            <small class="inline-error" id="partylistsSchoolYearError"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Campus</label>
+                            <input type="text" value="{{campus}}" disabled>
+                            <input type="hidden" id="partylistsCampus" value="{{campusId}}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="partylistsPoster"> Partylists Poster </label>
+
+                            <div class="partylists-file-upload" data-error-target="partylistsPosterError">
+                                <input type="file" id="partylistsPoster" class="partylists-poster-input"
+                                    accept="image/*,.pdf,application/pdf" hidden />
+
+                                <button type="button" class="partylists-file-btn">
+                                    <i class="bi bi-file-earmark-image"></i>
+                                    <span>Upload Poster</span>
+                                </button>
+
+                                <div class="partylists-file-preview"></div>
+                            </div>
+                        </div>
+
+                        <!-- partylists LOGO -->
+
+                        <div class="form-group">
+                            <label for="partylistsLogo">
+                                Partylists Logo
+                                <span class="optional-label"> (Optional) </span>
+                            </label>
+
+                            <div class="partylists-file-upload">
+                                <input type="file" id="partylistsLogo" class="partylists-logo-input" accept="image/*"
+                                    hidden />
+
+                                <button type="button" class="partylists-file-btn">
+                                    <i class="bi bi-image"></i>
+                                    <span>Upload Logo</span>
+                                </button>
+
+                                <div class="partylists-file-preview"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section members-section" novalidate>
+                        <div class="partylists-divider"></div>
+
+                        <h3>Members</h3>
+
+                        <div class="members-list" id="createMembersList"></div>
+
+                        <button type="button" class="add-member-btn" id="addMemberBtn">
+                            <i class="bi bi-plus-lg"></i>
+                            Add More Member
+                        </button>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="button" class="discard-btn" id="discardPartylists">
+                            <i class="bi bi-arrow-counterclockwise"></i>
+                            Discard
+                        </button>
+
+                        <button type="submit" class="save-btn">
+                            <i class="bi bi-check-circle"></i>
+                            Save
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section class="partylists-section" id="existingPartylists">
+            <div class="partylists-content-container">
+
+                <div class="partylists-list">
+                    <div class="empty-state">Loading partylists…</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+   DELETE partylists MODAL
+========================================================= -->
+
+        <div class="modal-overlay" id="deletePartylistsModal">
+            <div class="delete-modal" role="dialog" aria-modal="true">
+                <div class="delete-modal-content">
+                    <div class="delete-modal-icon">
+                        <i class="bi bi-trash3"></i>
+                    </div>
+
+                    <h2>Delete partylist?</h2>
+
+                    <p>
+                        Are you sure you want to delete
+                        <strong id="deletePartylistsName"> this partylist </strong>? This
+                        action cannot be undone.
+                    </p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="delete-cancel-btn" data-modal-close="deletePartylistsModal">
+                        Cancel
+                    </button>
+
+                    <button type="button" class="delete-confirm-btn" id="confirmDeleteBtn">
+                        <i class="bi bi-trash3"></i>
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- =========================================================
+   ARCHIVE Partylists MODAL
+      ========================================================= -->
+
+        <div class="modal-overlay" id="archivePartylistsModal">
+            <div class="delete-modal" role="dialog" aria-modal="true">
+                <div class="delete-modal-content">
+                    <div class="delete-modal-icon archive-icon">
+                        <i class="bi bi-archive"></i>
+                    </div>
+
+                    <h2>Archive partylist?</h2>
+
+                    <p>
+                        Are you sure you want to archive
+                        <strong id="archivePartylistsName"> this partylist </strong>? The
+                        partylist will no longer be active.
+                    </p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="delete-cancel-btn" data-modal-close="archivePartylistsModal">
+                        Cancel
+                    </button>
+
+                    <button type="button" class="delete-confirm-btn archive-confirm-btn" id="confirmArchiveBtn">
+                        <i class="bi bi-archive"></i>
+
+                        Archive
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- =========================================================
+   SAVE CHANGES MODAL
+========================================================= -->
+
+        <div class="modal-overlay" id="savePartylistsModal">
+            <div class="delete-modal" role="dialog" aria-modal="true">
+                <div class="delete-modal-content">
+                    <div class="delete-modal-icon save-icon">
+                        <i class="bi bi-check-circle"></i>
+                    </div>
+
+                    <h2>Save Changes?</h2>
+
+                    <p>
+                        Are you sure you want to save the changes made to this partylist?
+                    </p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="delete-cancel-btn" data-modal-close="savePartylistsModal">
+                        Cancel
+                    </button>
+
+                    <button type="button" class="delete-confirm-btn save-confirm-btn" id="confirmSavePartylistsBtn">
+                        <i class="bi bi-check-circle"></i>
+
+                        Save Changes
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- =========================================================
+      DISCARD partylists MODAL
+      ========================================================= -->
+
+        <div class="modal-overlay" id="discardPartylistsModal">
+            <div class="delete-modal discard-modal" role="dialog" aria-modal="true">
+                <div class="delete-modal-content">
+                    <div class="delete-modal-icon discard-icon">
+                        <i class="bi bi-arrow-counterclockwise"></i>
+                    </div>
+
+                    <h2>Discard partylist?</h2>
+
+                    <p>
+                        Are you sure you want to discard everything you entered? Your
+                        unsaved changes will be lost.
+                    </p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="delete-cancel-btn" data-modal-close="discardPartylistsModal">
+                        Cancel
+                    </button>
+
+                    <button type="button" class="delete-confirm-btn discard-confirm-btn" id="confirmDiscardBtn">
+                        <i class="bi bi-trash3"></i>
+                        Discard
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- =========================================================
+   LOGOUT MODAL
+========================================================= -->
+
+        <div class="modal-overlay" id="logoutModal">
+            <div class="delete-modal logout-modal">
+                <div class="delete-modal-content">
+                    <div class="delete-modal-icon">
+                        <i class="bi bi-box-arrow-right"></i>
+                    </div>
+
+                    <h2>Logout?</h2>
+
+                    <p>Are you sure you want to logout from LCC Cast?</p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="logout-cancel-btn" id="cancelLogout">
+                        Cancel
+                    </button>
+
+                    <button type="button" class="logout-confirm-btn" id="confirmLogout">
+                        <i class="bi bi-box-arrow-right"></i>
+
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- =========================================================
+   GLOBAL ACTION LOADING MODAL
+========================================================= -->
+
+        <div class="modal-overlay loading-modal-overlay" id="actionLoadingModal">
+            <div class="action-loading-modal">
+                <div class="action-loading-spinner">
+                    <span></span>
+                </div>
+
+                <div class="action-loading-content">
+                    <h2 id="actionLoadingTitle">Processing...</h2>
+
+                    <p id="actionLoadingMessage">
+                        Please wait while we process your request.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="success-toast" id="successToast" aria-live="polite">
+            <div class="success-toast-icon">
+                <i class="bi bi-check-lg"></i>
+            </div>
+
+            <div class="success-toast-content">
+                <strong id="successToastTitle">Success</strong>
+                <span id="successToastMessage">Changes saved successfully.</span>
+            </div>
+
+            <button type="button" class="success-toast-close" id="successToastClose" aria-label="Close toast">
+                <i class="bi bi-x"></i>
+            </button>
+        </div>
+    </main>
+    <script src="/js/superadmin/soft-cache.js"></script>
+    <script src="/js/navigation.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+    <script src="/js/logout.js"></script>
+
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+            "https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js";
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7/bundles/stomp.umd.min.js"></script>
+
+    <script src="/js/admin-ssc/partylists/partylists-utils.js"></script>
+    <script src="/js/admin-ssc/partylists/partylists-campus.js"></script>
+    <script src="/js/admin-ssc/partylists/partylists-members.js"></script>
+    <script src="/js/admin-ssc/partylists/partylists-files.js"></script>
+    <script src="/js/admin-ssc/partylists/partylists-validation.js"></script>
+    <script src="/js/admin-ssc/partylists/partylists-modals.js"></script>
+    <script src="/js/admin-ssc/partylists/partylists.js"></script>
+</body>
+
+</html>

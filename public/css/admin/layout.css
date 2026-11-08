@@ -1,0 +1,442 @@
+/* =========================================================
+   LCCAST
+   SHARED LAYOUT
+=========================================================*/
+
+/* =========================================================
+BODY
+=========================================================*/
+
+body{
+
+    display:flex;
+
+    height:100vh;
+
+    overflow:hidden;
+
+}
+
+/* =========================================================
+SIDEBAR
+=========================================================*/
+
+.sidebar{
+
+    width:300px;
+
+    flex-shrink:0;
+
+    height:calc(100vh - 40px);
+
+    margin:20px;
+
+    background:#FFFFFF;
+
+    border:1px solid var(--border);
+
+    border-radius:28px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+}
+
+/* =========================================================
+SIDEBAR TOP
+=========================================================*/
+
+.sidebar-top{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+}
+
+/* =========================================================
+LOGO
+=========================================================*/
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    padding:24px;
+
+}
+
+.logo img{
+
+    width:52px;
+
+    height:52px;
+
+    object-fit:contain;
+
+}
+
+.logo h2{
+
+    font-size:30px;
+
+    font-weight:700;
+
+}
+
+/* =========================================================
+DIVIDER
+=========================================================*/
+
+.sidebar hr{
+
+    border:none;
+
+    border-top:1px solid var(--border);
+
+    margin:0 20px 18px;
+
+}
+
+/* =========================================================
+NAVIGATION
+=========================================================*/
+
+.sidebar nav{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+    padding:0 18px;
+
+}
+
+.sidebar nav a{
+
+    height:54px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    padding:0 18px;
+
+    border-radius:16px;
+
+    text-decoration:none;
+
+    color:var(--text);
+
+    font-size:16px;
+
+    font-weight:500;
+
+    transition:.25s;
+
+}
+
+.sidebar nav a i{
+
+    font-size:21px;
+
+    width:24px;
+
+    text-align:center;
+
+}
+
+.sidebar nav a:hover{
+
+    background:#F3F4FF;
+
+    color:var(--primary);
+
+}
+
+.sidebar nav a.active{
+
+    background:var(--primary);
+
+    color:#FFFFFF;
+
+}
+
+/* =========================================================
+BOTTOM
+=========================================================*/
+
+.sidebar-bottom{
+
+    padding:0 18px 18px;
+
+}
+
+.sidebar-bottom a{
+
+    height:52px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    padding:0 18px;
+
+    border-radius:16px;
+
+    text-decoration:none;
+
+    color:var(--text);
+
+    transition:.25s;
+
+}
+
+.sidebar-bottom a i{
+
+    font-size:20px;
+
+}
+
+.sidebar-bottom a:hover{
+
+    background:#F3F4FF;
+
+    color:var(--primary);
+
+}
+
+/* =========================================================
+MAIN CONTENT
+=========================================================*/
+
+.main-content{
+
+    flex:1;
+
+    height:100vh;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+    padding:26px 34px 40px;
+
+}
+
+/* =========================================================
+TOPBAR
+=========================================================*/
+
+.topbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:28px;
+
+}
+
+.topbar h1{
+
+    font-size:34px;
+
+    font-weight:700;
+
+}
+
+.topbar p{
+
+    margin-top:4px;
+
+    color:var(--subtext);
+
+    font-size:15px;
+
+}
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+.profile {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    background: #FFFFFF;
+
+    padding: 10px 16px;
+
+    border-radius: 18px;
+
+    border: 1px solid var(--border);
+
+}
+
+
+/* =========================================================
+   AVATAR
+========================================================= */
+
+.avatar {
+
+    width: 44px;
+
+    height: 44px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #5B5CEB,
+        #7D7EFF
+    );
+
+}
+
+
+/* =========================================================
+   PROFILE INFO
+========================================================= */
+
+.profile-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+
+}
+
+
+/* NAME */
+
+.profile-info span {
+
+    color: var(--text);
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    line-height: 1.3;
+
+}
+
+
+/* PROGRAM + CAMPUS */
+
+.profile-info small {
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    font-weight: 400;
+
+    line-height: 1.3;
+
+}
+
+/* =========================================================
+SCROLLBAR
+=========================================================*/
+
+.main-content::-webkit-scrollbar{
+
+    width:9px;
+
+}
+
+.main-content::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+.main-content::-webkit-scrollbar-thumb{
+
+    background:#D4D9E8;
+
+    border-radius:30px;
+
+}
+
+.main-content::-webkit-scrollbar-thumb:hover{
+
+    background:#BFC7DD;
+
+}
+
+/* =========================================================
+RESPONSIVE
+=========================================================*/
+
+@media (max-width:1024px){
+
+    .sidebar{
+
+        width:260px;
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    body{
+
+        overflow:auto;
+
+        display:block;
+
+    }
+
+    .sidebar{
+
+        display:none;
+
+    }
+
+    .main-content{
+
+        width:100%;
+
+        height:auto;
+
+        overflow:visible;
+
+        padding:20px;
+
+    }
+
+}

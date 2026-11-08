@@ -1,0 +1,2396 @@
+/* =========================================================
+   LCCAST - SETTINGS PAGE
+========================================================= */
+
+
+/* =========================================================
+   SIDEBAR ACTIVE SETTINGS
+========================================================= */
+
+/*
+    base.css/layout.css already styles:
+    .sidebar nav a.active
+
+    But Settings is inside .sidebar-bottom,
+    so we need its own active state.
+*/
+
+.sidebar-bottom a.active {
+
+    background:var(--primary);
+
+    color:#FFFFFF;
+
+}
+
+
+.sidebar-bottom a.active:hover {
+
+    background:var(--primary-hover);
+
+    color:#FFFFFF;
+
+}
+
+
+
+/* =========================================================
+   SETTINGS TABS
+   Matches the Analytics Tabs design
+========================================================= */
+
+.settings-tabs {
+
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:26px;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+
+.settings-tab {
+
+    height:48px;
+
+    padding:0 22px;
+
+    border:none;
+
+    border-radius:14px 14px 0 0;
+
+    background:transparent;
+
+    color:var(--subtext);
+
+    font-family:inherit;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:9px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+
+.settings-tab i {
+
+    font-size:15px;
+
+}
+
+
+.settings-tab:hover {
+
+    color:var(--primary);
+
+    background:#F3F4FF;
+
+}
+
+
+.settings-tab.active {
+
+    background:var(--primary);
+
+    color:#FFFFFF;
+
+}
+
+
+
+/* =========================================================
+   SETTINGS PANEL
+========================================================= */
+
+.settings-panel {
+
+    display:none;
+
+    width:100%;
+
+}
+
+
+.settings-panel.active {
+
+    display:block;
+
+}
+
+
+
+/* =========================================================
+   SETTINGS ACCORDION
+========================================================= */
+
+.settings-accordion {
+
+    width:100%;
+
+    margin-bottom:22px;
+
+    background:#FFFFFF;
+
+    border:1px solid #1F1F1F;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+}
+
+
+
+/* =========================================================
+   ACCORDION HEADER
+========================================================= */
+
+.settings-accordion-header {
+
+    position:relative;
+
+    z-index:2;
+
+    width:100%;
+
+    height:70px;
+
+    padding:0 25px;
+
+    border:none;
+
+    background:#FFFFFF;
+
+    color:var(--text);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    font-family:inherit;
+
+    font-size:15px;
+
+    font-weight:500;
+
+    cursor:pointer;
+
+    transition:.25s ease;
+
+}
+
+
+.settings-accordion.active
+.settings-accordion-header {
+
+    background:var(--primary);
+
+    color:#FFFFFF;
+
+}
+
+
+
+/* =========================================================
+   ACCORDION TITLE
+========================================================= */
+
+.settings-accordion-title {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    min-width:0;
+
+}
+
+
+.settings-accordion-title i {
+
+    width:20px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:17px;
+
+}
+
+
+.settings-accordion-title span {
+
+    white-space:nowrap;
+
+}
+
+
+
+/* =========================================================
+   ACCORDION ARROW
+========================================================= */
+
+.accordion-arrow {
+
+    flex-shrink:0;
+
+    font-size:13px;
+
+    transition:transform .25s ease;
+
+}
+
+
+.settings-accordion.active
+.accordion-arrow {
+
+    transform:rotate(180deg);
+
+}
+
+
+
+/* =========================================================
+   ACCORDION CONTENT
+
+   THIS IS THE IMPORTANT FIX.
+
+   Do NOT use grid-template-rows here.
+
+   The content is physically clipped to zero height
+   while the accordion is closed.
+========================================================= */
+
+.settings-accordion-content {
+
+    display:block;
+
+    width:100%;
+
+    height:0;
+
+    max-height:0;
+
+    overflow:hidden;
+
+    visibility:hidden;
+
+    opacity:0;
+
+    transition:
+
+        max-height .35s ease,
+        opacity .2s ease,
+        visibility 0s linear .35s;
+
+}
+
+
+.settings-accordion.active
+.settings-accordion-content {
+
+    height:auto;
+
+    max-height:5000px;
+
+    visibility:visible;
+
+    opacity:1;
+
+    transition:
+
+        max-height .35s ease,
+        opacity .2s ease,
+        visibility 0s linear 0s;
+
+}
+
+
+
+/* =========================================================
+   ADMIN FORM
+========================================================= */
+
+.admin-form {
+
+    width:100%;
+
+    padding:28px 38px 30px;
+
+}
+
+
+.admin-form .form-grid {
+
+    margin-bottom:20px;
+
+}
+
+
+.admin-form .form-grid:last-of-type {
+
+    margin-bottom:0;
+
+}
+
+
+.admin-name-grid {
+
+    grid-template-columns:
+        repeat(3,minmax(0,1fr));
+
+}
+
+
+
+/* =========================================================
+   PASSWORD
+========================================================= */
+
+.password-field {
+
+    position:relative;
+
+    width:100%;
+
+}
+
+
+.password-field input {
+
+    padding-right:50px !important;
+
+}
+
+
+.password-toggle {
+
+    position:absolute;
+
+    top:50%;
+
+    right:10px;
+
+    width:34px;
+
+    height:34px;
+
+    transform:translateY(-50%);
+
+    border:none;
+
+    border-radius:9px;
+
+    background:transparent;
+
+    color:#94A3B8;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    cursor:pointer;
+
+    transition:.2s ease;
+
+}
+
+
+.password-toggle:hover {
+
+    background:#F1F3F8;
+
+    color:var(--primary);
+
+}
+
+
+.password-toggle i {
+
+    font-size:16px;
+
+}
+
+/* =========================================================
+   FORM VALIDATION ERRORS
+========================================================= */
+
+.field-error {
+
+    display:none;
+
+    margin-top:6px;
+
+    color:#EF4444;
+
+    font-size:12px;
+
+    font-weight:500;
+
+    line-height:1.4;
+
+}
+
+
+.form-group.has-error .field-error {
+
+    display:block;
+
+}
+
+
+.form-group.has-error input,
+.form-group.has-error select {
+
+    border-color:#EF4444 !important;
+
+    box-shadow:
+        0 0 0 3px rgba(239,68,68,.10);
+
+}
+
+
+.form-group.has-error input:focus,
+.form-group.has-error select:focus {
+
+    border-color:#EF4444 !important;
+
+    box-shadow:
+        0 0 0 3px rgba(239,68,68,.10);
+
+}
+
+
+.password-mismatch-message {
+
+    display:none;
+
+}
+
+.form-group.password-same .required-message {
+    display: none;
+}
+
+
+.form-group.password-mismatch
+.password-mismatch-message
+.form-group.password-same 
+.password-same-message {
+
+    display:inline;
+
+}
+
+
+.form-group.password-mismatch
+.required-message
+.password-same-message {
+
+    display:none;
+
+}
+
+
+/* =========================================================
+   ADMIN BUTTONS
+========================================================= */
+
+.admin-buttons {
+
+    display:grid;
+
+    grid-template-columns:
+        minmax(0,1fr)
+        minmax(0,1fr);
+
+    gap:18px;
+
+    width:100%;
+
+    margin-top:28px;
+
+}
+
+
+.admin-buttons button {
+
+    width:100%;
+
+    min-width:0;
+
+    height:50px;
+
+    padding:0 24px;
+
+    border:none;
+
+    border-radius:14px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:9px;
+
+    font-family:inherit;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    white-space:nowrap;
+
+    cursor:pointer;
+
+}
+
+
+.admin-buttons button i {
+
+    flex-shrink:0;
+
+    font-size:16px;
+
+}
+
+
+
+/* =========================================================
+   DISCARD
+========================================================= */
+
+.discard-btn {
+
+    background:#FF454A;
+
+    color:#FFFFFF;
+
+    border:none;
+
+    cursor:pointer;
+
+    transition:.2s ease;
+
+}
+
+
+.discard-btn:hover {
+
+    background:#E9363B;
+
+}
+
+
+
+/* =========================================================
+   SAVE
+========================================================= */
+
+.save-btn {
+
+    background:var(--primary);
+
+    color:#FFFFFF;
+
+    border:none;
+
+    cursor:pointer;
+
+    transition:.2s ease;
+
+}
+
+
+.save-btn:hover {
+
+    background:var(--primary-hover);
+
+}
+
+
+
+/* =========================================================
+   EXISTING ADMINS
+========================================================= */
+
+.existing-admins {
+
+    width:100%;
+
+    padding:24px 38px 30px;
+
+}
+
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.admin-search {
+
+    position:relative;
+
+    width:100%;
+
+    margin-bottom:18px;
+
+}
+
+
+.admin-search i {
+
+    position:absolute;
+
+    top:50%;
+
+    left:17px;
+
+    transform:translateY(-50%);
+
+    color:#94A3B8;
+
+    pointer-events:none;
+
+    z-index:1;
+
+}
+
+
+.admin-search input {
+
+    width:100%;
+
+    height:48px;
+
+    padding:0 18px 0 46px;
+
+    border:1px solid #1F1F1F;
+
+    border-radius:14px;
+
+    background:#FFFFFF;
+
+    color:var(--text);
+
+    font-family:inherit;
+
+    font-size:14px;
+
+    outline:none;
+
+    transition:.2s ease;
+
+}
+
+
+.admin-search input:focus {
+
+    border-color:var(--primary);
+
+    box-shadow:
+        0 0 0 4px rgba(91,92,235,.12);
+
+}
+
+/* =========================================================
+   ADMIN SEARCH + FILTER BAR
+========================================================= */
+
+.admin-search-filter-bar {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    width:100%;
+
+    margin-bottom:18px;
+
+}
+
+
+.admin-search-filter-bar .admin-search {
+
+    flex:1;
+
+    min-width:0;
+
+    margin-bottom:0;
+
+}
+
+
+/* =========================================================
+   ADMIN FILTER WRAPPER
+========================================================= */
+
+.admin-filter-wrapper {
+
+    position:relative;
+
+    flex-shrink:0;
+
+}
+
+
+/* =========================================================
+   ADMIN FILTER BUTTON
+========================================================= */
+
+.admin-filter-button {
+
+    height:48px;
+
+    min-width:120px;
+
+    padding:0 14px;
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    background:#FFFFFF;
+
+    color:var(--text);
+
+    font-family:inherit;
+
+    font-size:14px;
+
+    font-weight:500;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    cursor:pointer;
+
+    transition:.2s ease;
+
+}
+
+
+.admin-filter-button:hover {
+
+    border-color:var(--primary);
+
+    background:#F3F4FF;
+
+    color:var(--primary);
+
+}
+
+
+.admin-filter-button.active {
+
+    border-color:var(--primary);
+
+    background:#F3F4FF;
+
+    color:var(--primary);
+
+}
+
+
+.admin-filter-button i {
+
+    font-size:14px;
+
+}
+
+
+/* =========================================================
+   FILTER COUNT
+========================================================= */
+
+.admin-filter-count {
+
+    min-width:18px;
+
+    height:18px;
+
+    padding:0 5px;
+
+    border-radius:999px;
+
+    background:var(--primary);
+
+    color:#FFFFFF;
+
+    font-size:10px;
+
+    font-weight:600;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+
+.admin-filter-count:empty {
+
+    display:none;
+
+}
+
+
+/* =========================================================
+   FILTER DROPDOWN
+========================================================= */
+
+.admin-filter-dropdown {
+
+    position:absolute;
+
+    top:calc(100% + 10px);
+
+    right:0;
+
+    z-index:1000;
+
+    width:340px;
+
+    background:#FFFFFF;
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    box-shadow:
+        0 12px 30px rgba(15,23,42,.12);
+
+    overflow:hidden;
+
+    display:none;
+
+}
+
+
+.admin-filter-dropdown.active {
+
+    display:block;
+
+}
+
+/* =========================================================
+   PREVENT FILTER DROPDOWN FROM BEING CLIPPED
+========================================================= */
+
+.settings-accordion.filter-open,
+.settings-accordion.filter-open .settings-accordion-content {
+
+    overflow: visible;
+
+}
+
+
+/* =========================================================
+   FILTER HEADER
+========================================================= */
+
+.admin-filter-dropdown-header {
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:17px 18px;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+
+.admin-filter-dropdown-header strong {
+
+    display:block;
+
+    color:var(--text);
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+
+.admin-filter-dropdown-header span {
+
+    display:block;
+
+    margin-top:3px;
+
+    color:var(--muted);
+
+    font-size:11px;
+
+}
+
+
+.admin-filter-close {
+
+    width:30px;
+
+    height:30px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:transparent;
+
+    color:var(--muted);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    cursor:pointer;
+
+    transition:.2s ease;
+
+}
+
+
+.admin-filter-close:hover {
+
+    background:#F3F4FF;
+
+    color:var(--primary);
+
+}
+
+
+/* =========================================================
+   FILTER BODY
+========================================================= */
+
+.admin-filter-dropdown-body {
+
+    padding:18px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+}
+
+
+.admin-filter-field {
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:7px;
+
+}
+
+
+.admin-filter-field label {
+
+    color:var(--text);
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+
+/* =========================================================
+   FILTER SELECT
+   SAME DESIGN AS YOUR REFERENCE
+========================================================= */
+
+.admin-filter-select {
+
+    height:42px;
+
+    min-width:170px;
+
+    width:100%;
+
+    padding:0 34px 0 12px;
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    background:#FFFFFF;
+
+    color:var(--text);
+
+    font-family:inherit;
+
+    font-size:14px;
+
+    outline:none;
+
+    cursor:pointer;
+
+}
+
+
+.admin-filter-select:focus {
+
+    border-color:var(--primary);
+
+    box-shadow:
+        0 0 0 3px rgba(91,92,235,.10);
+
+}
+
+
+/* =========================================================
+   FILTER FOOTER
+========================================================= */
+
+.admin-filter-dropdown-footer {
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:flex-end;
+
+    gap:10px;
+
+    padding:14px 18px;
+
+    border-top:1px solid var(--border);
+
+}
+
+
+.admin-filter-clear,
+.admin-filter-apply {
+
+    height:38px;
+
+    padding:0 15px;
+
+    border-radius:10px;
+
+    font-family:inherit;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.2s ease;
+
+}
+
+
+.admin-filter-clear {
+
+    border:1px solid var(--border);
+
+    background:#FFFFFF;
+
+    color:var(--text);
+
+}
+
+
+.admin-filter-clear:hover {
+
+    border-color:var(--primary);
+
+    color:var(--primary);
+
+    background:#F3F4FF;
+
+}
+
+
+.admin-filter-apply {
+
+    border:1px solid var(--primary);
+
+    background:var(--primary);
+
+    color:#FFFFFF;
+
+}
+
+
+.admin-filter-apply:hover {
+
+    background:var(--primary-hover);
+
+}
+
+
+
+/* =========================================================
+   ADMIN LIST
+========================================================= */
+
+.admin-list {
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+
+
+/* =========================================================
+   ADMIN ITEM
+========================================================= */
+
+.admin-item {
+
+    width:100%;
+
+    background:#FFFFFF;
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+}
+
+
+
+/* =========================================================
+   ADMIN ITEM HEADER
+========================================================= */
+
+.admin-item-header {
+
+    min-height:68px;
+
+    padding:10px 14px 10px 18px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:18px;
+
+}
+
+
+
+/* =========================================================
+   ADMIN SUMMARY
+========================================================= */
+
+.admin-summary {
+
+    min-width:0;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:13px;
+
+}
+
+
+.admin-avatar {
+
+    width:42px;
+
+    height:42px;
+
+    flex-shrink:0;
+
+    border-radius:50%;
+
+    background:#EEF0FF;
+
+    color:var(--primary);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+
+.admin-summary h3 {
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:var(--text);
+
+}
+
+
+.admin-summary span {
+
+    display:block;
+
+    margin-top:2px;
+
+    color:var(--muted);
+
+    font-size:12px;
+
+}
+
+/* =========================================================
+   ADMIN CAMPUS / DEPARTMENT
+========================================================= */
+
+.admin-summary .admin-campus,
+.admin-summary .admin-department {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:5px;
+
+    margin-top:3px;
+
+    font-size:11px;
+
+}
+
+
+.admin-summary .admin-campus {
+
+    color:var(--primary);
+
+    font-weight:600;
+
+}
+
+
+.admin-summary .admin-department {
+
+    color:var(--muted);
+
+}
+
+
+.admin-summary .admin-campus i,
+.admin-summary .admin-department i {
+
+    font-size:11px;
+
+    flex-shrink:0;
+
+}
+
+
+
+/* =========================================================
+   ADMIN CONTROLS
+========================================================= */
+
+.admin-controls {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    flex-shrink:0;
+
+}
+
+
+.admin-icon {
+
+    width:38px;
+
+    height:38px;
+
+    border:1px solid var(--border);
+
+    border-radius:11px;
+
+    background:#FFFFFF;
+
+    color:var(--text);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    cursor:pointer;
+
+    transition:.2s ease;
+
+}
+
+
+.admin-icon:hover {
+
+    border-color:var(--primary);
+
+    background:#F3F4FF;
+
+    color:var(--primary);
+
+}
+
+
+.admin-icon.delete-admin:hover {
+
+    border-color:#EF4444;
+
+    background:#FFF1F1;
+
+    color:#EF4444;
+
+}
+
+.admin-icon.archive-admin:hover {
+
+    border-color:#D97706;
+
+    background:#FFF7E6;
+
+    color:#D97706;
+
+}
+
+
+
+/* =========================================================
+   ADMIN DETAILS
+
+   Same hard clipping principle as the main accordion.
+========================================================= */
+
+.admin-details {
+
+    width:100%;
+
+    height:0;
+
+    max-height:0;
+
+    overflow:hidden;
+
+    visibility:hidden;
+
+    opacity:0;
+
+    transition:
+
+        max-height .3s ease,
+        opacity .2s ease,
+        visibility 0s linear .3s;
+
+}
+
+
+.admin-item.expanded .admin-details {
+
+    height:auto;
+
+    max-height:2500px;
+
+    visibility:visible;
+
+    opacity:1;
+
+    transition:
+
+        max-height .3s ease,
+        opacity .2s ease,
+        visibility 0s linear 0s;
+
+}
+
+/* =========================================================
+   ADMIN VIEW DETAILS
+========================================================= */
+
+
+.admin-view-details {
+    
+    display: none;
+
+    padding: 0 70px 16px;
+    
+}
+
+
+.admin-view-row {
+    min-height: 22px;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+
+}
+
+
+.admin-view-row span:first-child {
+     width: 130px;
+
+    color: var(--text);
+
+}
+
+
+.admin-view-row span:last-child {
+    color: var(--text);
+}
+
+
+/* .admin-view-row span {
+    width: 110px;
+    color: var(--text);
+}
+
+
+.admin-view-row strong {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1f2937;
+} */
+
+/* =========================================================
+   ADMIN PAGINATION
+========================================================= */
+
+.admin-pagination {
+    height: 70px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 16px;
+
+    color: var(--text);
+
+    font-size: 14px;
+}
+
+
+.admin-pagination span {
+    font-size: 14px;
+    color: #6b7280;
+    min-width: 90px;
+    text-align: center;
+}
+
+
+.pagination-btn {
+     width: 32px;
+
+    height: 32px;
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--text);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    cursor: pointer;
+
+    font-size: 21px;
+
+    transition: .2s;
+}
+
+
+.pagination-btn:hover:not(:disabled) {
+    color: var(--primary);
+
+    transform: scale(1.08);
+}
+
+
+.pagination-btn:disabled {
+    color: #C7CBD5;
+
+    cursor: default;
+}
+
+#paginationText {
+
+    min-width: 70px;
+
+    text-align: center;
+
+}
+
+
+
+/* =========================================================
+   EDIT FORM
+========================================================= */
+
+.edit-admin-form {
+
+    width:100%;
+
+    padding:24px 22px 22px;
+
+    border-top:1px solid var(--border);
+
+}
+
+
+.edit-admin-form .form-grid {
+
+    margin-bottom:18px;
+
+}
+
+
+
+/* =========================================================
+   ADMIN META
+========================================================= */
+
+.admin-meta {
+
+    display:flex;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:24px;
+
+    padding:15px 0;
+
+    border-top:1px solid var(--border);
+
+    border-bottom:1px solid var(--border);
+
+    color:var(--subtext);
+
+    font-size:13px;
+
+}
+
+
+.admin-meta strong {
+
+    color:var(--text);
+
+}
+
+
+
+/* =========================================================
+   EDIT ACTIONS
+========================================================= */
+
+.edit-actions {
+
+    display:grid;
+
+    grid-template-columns:
+        minmax(0,1fr)
+        minmax(0,1fr);
+
+    gap:18px;
+
+    margin-top:20px;
+
+}
+
+
+.edit-actions button {
+
+    width:100%;
+
+    height:46px;
+
+    border-radius:14px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+
+
+/* =========================================================
+   SETTINGS CARD
+========================================================= */
+
+.settings-card {
+
+    width:100%;
+
+    background:#FFFFFF;
+
+    border:1px solid #1F1F1F;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+}
+
+
+.settings-card-header {
+
+    padding:24px 30px;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+
+.settings-card-header h2 {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    font-size:21px;
+
+    font-weight:600;
+
+}
+
+
+.settings-card-header h2 i {
+
+    font-size:18px;
+
+}
+
+
+.settings-card-header p {
+
+    margin-top:4px;
+
+    font-size:13px;
+
+}
+
+
+
+/* =========================================================
+   SYSTEM / SECURITY FORMS
+========================================================= */
+
+.system-form,
+.security-form {
+
+    width:100%;
+
+    padding:28px 30px 30px;
+
+}
+
+
+.system-form .form-group,
+.security-form .form-group {
+
+    margin-bottom:20px;
+
+}
+
+
+
+/* =========================================================
+   FORM ACTIONS
+========================================================= */
+
+.settings-form-actions {
+
+    display:grid;
+
+    grid-template-columns:
+        minmax(0,1fr)
+        minmax(0,1fr);
+
+    gap:18px;
+
+    margin-top:28px;
+
+}
+
+
+.settings-form-actions button {
+
+    width:100%;
+
+    height:48px;
+
+    border-radius:14px;
+
+    font-weight:600;
+
+}
+
+/* =========================================================
+   SYSTEM LOGO
+========================================================= */
+
+.system-logo-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 18px;
+    width: 100%;
+}
+
+.system-logo-preview {
+    width: 200px;
+    height: 200px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #F8F9FC;
+    flex-shrink: 0;
+}
+
+.system-logo-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 15px;
+}
+
+#changeLogoBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    height: 40px;
+    padding: 0 16px;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    background: #F8F9FC;
+    color: var(--text);
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#changeLogoBtn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: #F3F4FF;
+}
+
+/* =========================================================
+   SETTINGS OPTIONS
+========================================================= */
+
+.system-options,
+.security-options {
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    margin-top:10px;
+
+}
+
+
+.setting-toggle {
+
+    min-height:68px;
+
+    padding:15px 18px;
+
+    border:1px solid var(--border);
+
+    border-radius:15px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    cursor:pointer;
+
+}
+
+
+.setting-toggle > span:first-child {
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:3px;
+
+}
+
+
+.setting-toggle strong {
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+
+.setting-toggle small {
+
+    font-size:12px;
+
+}
+
+
+
+/* =========================================================
+   TOGGLE SWITCH
+========================================================= */
+
+.setting-toggle input {
+
+    display:none;
+
+}
+
+
+.toggle-slider {
+
+    width:48px;
+
+    height:26px;
+
+    flex-shrink:0;
+
+    border-radius:30px;
+
+    background:#D8DCE6;
+
+    position:relative;
+
+    transition:.2s ease;
+
+}
+
+
+.toggle-slider::after {
+
+    content:"";
+
+    position:absolute;
+
+    width:20px;
+
+    height:20px;
+
+    top:3px;
+
+    left:3px;
+
+    border-radius:50%;
+
+    background:#FFFFFF;
+
+    transition:.2s ease;
+
+    box-shadow:0 1px 3px rgba(0,0,0,.15);
+
+}
+
+
+.setting-toggle input:checked + .toggle-slider {
+
+    background:var(--primary);
+
+}
+
+
+.setting-toggle input:checked + .toggle-slider::after {
+
+    transform:translateX(22px);
+
+}
+
+/* =========================================================
+   PROFILE PICTURE (inside Security form)
+========================================================= */
+
+.profile-picture-section {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 26px;
+    padding-bottom: 26px;
+    border-bottom: 1px solid var(--border);
+}
+
+.profile-picture-preview {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #F0F3FF;
+}
+
+.profile-picture-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.profile-picture-info {
+    min-width: 0;
+    flex: 1;
+}
+
+.profile-picture-info h3 {
+    margin: 0 0 4px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.profile-picture-info p {
+    margin: 0 0 14px;
+    font-size: 13px;
+    color: var(--subtext);
+}
+
+/* =========================================================
+   EMAIL CHANGE (inside Security form)
+========================================================= */
+
+.field-with-action {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.field-with-action input {
+    flex: 1;
+    min-width: 0;
+}
+
+.field-with-action .change-toggle-btn {
+    flex-shrink: 0;
+    height: 48px;
+    padding: 0 18px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #FFFFFF;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.field-with-action .change-toggle-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: #F3F4FF;
+}
+
+.change-fields[hidden] {
+    display: none;
+}
+
+/* =========================================================
+   SYSTEM SETTINGS (campuses / programs)
+========================================================= */
+
+.config-body { width: 100%; padding: 24px 38px 30px; }
+
+.config-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.config-hint { margin: 0; font-size: 13px; color: var(--subtext); }
+
+.config-add-btn {
+    height: 42px;
+    padding: 0 18px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.config-list { display: flex; flex-direction: column; gap: 12px; }
+
+.config-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 18px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: #FFFFFF;
+}
+
+.config-row-main { min-width: 0; }
+.config-row-main h3 { margin: 0; font-size: 15px; font-weight: 600; color: var(--text); }
+.config-row-main span { display: block; margin-top: 2px; font-size: 12px; color: var(--muted); }
+
+.config-badge {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: #EEF0FF;
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.config-row-actions { display: flex; gap: 7px; flex-shrink: 0; }
+.config-empty { padding: 18px; text-align: center; font-size: 13px; color: var(--muted); }
+
+.config-modal { width: calc(100% - 32px); max-width: 480px; }
+.config-modal-fields { width: 100%; margin-top: 16px; text-align: left; }
+.config-modal-fields .form-group { margin-bottom: 14px; }
+
+.config-checklist {
+    margin-top: 14px;
+    max-height: 260px;
+    overflow: auto;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.config-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.config-check:last-child { border-bottom: none; }
+.config-checklist.disabled { opacity: .5; pointer-events: none; }
+.config-field-hint { display: block; margin-top: 6px; font-size: 12px; color: var(--muted); }
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width:900px) {
+
+    .admin-name-grid {
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+
+@media (max-width:768px) {
+
+   
+
+
+    .admin-form,
+    .existing-admins {
+
+        padding-left:22px;
+
+        padding-right:22px;
+
+    }
+
+}
+
+
+@media (max-width:600px) {
+
+    .config-body { padding-left: 18px; padding-right: 18px; }
+    .config-toolbar { flex-direction: column; align-items: stretch; }
+    .config-row { flex-wrap: wrap; }
+
+    .profile-picture-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .settings-tabs {
+
+        width:100%;
+
+        overflow-x:auto;
+
+    }
+
+
+    .settings-tab {
+
+        flex-shrink:0;
+
+        padding:0 16px;
+
+        font-size:13px;
+
+    }
+
+
+    .settings-tab span {
+
+        display:none;
+
+    }
+
+
+    .admin-buttons,
+    .edit-actions,
+    .settings-form-actions {
+
+        grid-template-columns:1fr;
+
+        gap:12px;
+
+    }
+
+
+    .admin-item-header {
+
+        align-items:flex-start;
+
+    }
+
+
+    .admin-controls {
+
+        gap:4px;
+
+    }
+
+
+    .admin-icon {
+
+        width:34px;
+
+        height:34px;
+
+    }
+
+
+    .admin-meta {
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:8px;
+
+    }
+
+    .admin-view-details {
+            padding: 0 18px 16px;
+        }
+
+        .admin-view-row {
+            flex-wrap: wrap;
+            row-gap: 4px;
+            min-height: auto;
+            padding: 6px 0;
+        }
+
+        .admin-view-row span:first-child {
+            width: 100%;
+            font-weight: 600;
+            color: var(--subtext);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: .02em;
+        }
+
+        .admin-view-row span:last-child {
+            width: 100%;
+            word-break: break-word;
+        }
+
+}
+
+/* =========================================================
+   ADMIN FILTER RESPONSIVE
+========================================================= */
+
+@media (max-width:700px) {
+
+    .admin-search-filter-bar {
+
+        align-items:stretch;
+
+    }
+
+
+    .admin-filter-button {
+
+        min-width:48px;
+
+        width:48px;
+
+        padding:0;
+
+    }
+
+
+    .admin-filter-button span:not(.admin-filter-count) {
+
+        display:none;
+
+    }
+
+
+    .admin-filter-dropdown {
+
+        right:0;
+
+        width:min(340px, calc(100vw - 40px));
+
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .settings-card-header h2 {
+        font-size: 17px;
+    }
+
+    .settings-card-header p {
+        font-size: 12px;
+    }
+
+    .filters-panel-header strong,
+    .admin-filter-dropdown-header strong {
+        font-size: 13.5px;
+    }
+
+    .admin-item-header {
+            flex-wrap: wrap;
+            row-gap: 12px;
+            align-items: flex-start;
+        }
+
+        .admin-summary {
+            flex: 1 1 100%;
+            width: 100%;
+        }
+
+        .admin-summary h3,
+        .admin-summary span {
+            white-space: normal;
+            word-break: break-word;
+        }
+
+        .admin-controls {
+                width: 100%;
+                justify-content: center;
+                margin-left: 0;
+            }
+
+        .admin-icon {
+            flex-shrink: 0;
+        }
+}

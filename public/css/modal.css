@@ -1,0 +1,2015 @@
+/* =========================================================
+   LCCAST
+   SHARED MODALS
+=========================================================*/
+
+/* =========================================================
+OVERLAY
+=========================================================*/
+
+.modal-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  background: rgba(15, 23, 42, 0.45);
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transition: 0.25s ease;
+
+  z-index: 9999;
+}
+
+.modal-overlay.show {
+  opacity: 1;
+
+  visibility: visible;
+}
+
+/* =========================================================
+MODAL
+=========================================================*/
+
+.selection-modal {
+  width: 650px;
+
+  max-width: 92vw;
+
+  max-height: 85vh;
+
+  background: #ffffff;
+
+  border-radius: 24px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  overflow: hidden;
+
+  transform: translateY(25px);
+
+  transition: 0.25s ease;
+
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+}
+
+.modal-overlay.show .selection-modal {
+  transform: translateY(0);
+}
+
+/* =========================================================
+HEADER
+=========================================================*/
+
+.modal-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 24px 28px;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-header h2 {
+  font-size: 22px;
+
+  font-weight: 600;
+}
+
+.modal-header p {
+  margin-top: 4px;
+
+  color: var(--subtext);
+
+  font-size: 14px;
+}
+
+/* =========================================================
+CLOSE
+=========================================================*/
+
+.close-modal {
+  width: 42px;
+
+  height: 42px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #f4f6fa;
+
+  cursor: pointer;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  transition: 0.2s;
+}
+
+.close-modal:hover {
+  background: #e7ebf3;
+}
+
+/* =========================================================
+SEARCH
+=========================================================*/
+
+.modal-search {
+  position: relative;
+
+  padding: 24px 28px 12px;
+}
+
+.modal-search i {
+  position: absolute;
+
+  left: 44px;
+
+  top: 40px;
+
+  color: #94a3b8;
+}
+
+.modal-search input {
+  width: 100%;
+
+  height: 50px;
+
+  padding-left: 46px;
+}
+
+/* =========================================================
+SECTION
+=========================================================*/
+
+.modal-section {
+  padding: 12px 28px;
+}
+
+.modal-section h3 {
+  margin-bottom: 12px;
+
+  font-size: 16px;
+
+  font-weight: 600;
+}
+
+/* =========================================================
+LIST
+=========================================================*/
+
+.modal-list {
+  border: 1px solid var(--border);
+
+  border-radius: 16px;
+
+  max-height: 250px;
+
+  overflow-y: auto;
+}
+
+/* =========================================================
+ITEM
+=========================================================*/
+
+.modal-item {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 16px 18px;
+
+  border-bottom: 1px solid var(--border);
+
+  transition: 0.2s;
+}
+
+.modal-item:last-child {
+  border-bottom: none;
+}
+
+.modal-item:hover {
+  background: #f8fafd;
+}
+
+.modal-item span {
+  font-weight: 500;
+}
+
+/* =========================================================
+ADD
+=========================================================*/
+
+.add-item {
+  width: 36px;
+
+  height: 36px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #eef2ff;
+
+  color: var(--primary);
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.add-item:hover {
+  background: var(--primary);
+
+  color: #ffffff;
+}
+
+/* =========================================================
+SELECTED
+=========================================================*/
+
+.selected-chip-container {
+  min-height: 72px;
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  padding: 16px;
+
+  border: 2px dashed var(--border);
+
+  border-radius: 16px;
+
+  background: #fafbfd;
+}
+
+/* =========================================================
+FOOTER
+=========================================================*/
+
+.modal-footer {
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 14px;
+
+  padding: 22px 28px;
+
+  border-top: 1px solid var(--border);
+}
+
+/* =========================================================
+SCROLLBAR
+=========================================================*/
+
+.modal-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-list::-webkit-scrollbar-thumb {
+  background: #cdd6e5;
+
+  border-radius: 20px;
+}
+
+.modal-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* =========================================================
+ANIMATION
+=========================================================*/
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   SELECTION MODAL BUTTONS
+========================================================= */
+
+.modal-footer .cancel-btn {
+  min-width: 140px;
+  height: 46px;
+
+  padding: 0 18px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: #f3f4f8;
+  color: var(--text);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.modal-footer .cancel-btn:hover {
+  background: #e7eaf2;
+}
+
+/* =========================================================
+   DELETE MODAL
+========================================================= */
+
+.delete-modal {
+  width: 460px;
+  max-width: 92vw;
+
+  background: #ffffff;
+
+  border-radius: 22px;
+
+  overflow: hidden;
+
+  transform: translateY(25px);
+
+  transition: 0.25s ease;
+
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+}
+
+.modal-overlay.show .delete-modal {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   DELETE MODAL CONTENT
+========================================================= */
+
+.delete-modal-content {
+  padding: 30px 30px 24px;
+
+  text-align: center;
+}
+
+.delete-modal-icon {
+  width: 58px;
+  height: 58px;
+
+  margin: 0 auto 18px;
+
+  border-radius: 50%;
+
+  background: #fdecec;
+  color: #dc2626;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-modal-icon i {
+  font-size: 25px;
+}
+
+.delete-modal-content h2 {
+  margin: 0;
+
+  font-size: 21px;
+  font-weight: 600;
+
+  color: var(--text);
+}
+
+.delete-modal-content p {
+  margin: 8px auto 0;
+
+  max-width: 350px;
+
+  font-size: 14px;
+  line-height: 1.6;
+
+  color: var(--subtext);
+}
+
+/* =========================================================
+   DELETE MODAL FOOTER
+========================================================= */
+
+.delete-modal .modal-footer {
+  justify-content: center;
+
+  padding: 20px 30px 28px;
+
+  border-top: none;
+
+  gap: 14px;
+}
+
+/* =========================================================
+   DELETE MODAL BUTTONS
+========================================================= */
+
+.delete-cancel-btn,
+.delete-confirm-btn {
+  width: 140px;
+  height: 46px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.delete-cancel-btn {
+  background: #f3f4f8;
+  color: var(--text);
+}
+
+.delete-cancel-btn:hover {
+  background: #e7eaf2;
+}
+
+.delete-confirm-btn {
+  background: #dc2626;
+  color: #ffffff;
+}
+
+.delete-confirm-btn:hover {
+  background: #b91c1c;
+}
+
+/* =========================================================
+   ARCHIVE MODAL
+========================================================= */
+
+.archive-modal {
+  width: 460px;
+
+  max-width: 92vw;
+
+  background: #ffffff;
+
+  border-radius: 22px;
+
+  overflow: hidden;
+
+  transform: translateY(25px);
+
+  transition: 0.25s ease;
+
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+}
+
+.modal-overlay.show .archive-modal {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   ARCHIVE MODAL CONTENT
+========================================================= */
+
+.archive-modal-content {
+  padding: 30px 30px 24px;
+
+  text-align: center;
+}
+
+.archive-modal-icon {
+  width: 58px;
+
+  height: 58px;
+
+  margin: 0 auto 18px;
+
+  border-radius: 50%;
+
+  background: #fff7e6;
+
+  color: #d97706;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.archive-modal-icon i {
+  font-size: 25px;
+}
+
+.archive-modal-content h2 {
+  margin: 0;
+
+  font-size: 21px;
+
+  font-weight: 600;
+
+  color: var(--text);
+}
+
+.archive-modal-content p {
+  margin: 8px auto 0;
+
+  max-width: 350px;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+
+  color: var(--subtext);
+}
+
+/* =========================================================
+   ARCHIVE MODAL FOOTER
+========================================================= */
+
+.archive-modal .modal-footer {
+  justify-content: center;
+
+  padding: 20px 30px 28px;
+
+  border-top: none;
+
+  gap: 14px;
+}
+
+/* =========================================================
+   ARCHIVE MODAL BUTTONS
+========================================================= */
+
+.archive-cancel-btn,
+.archive-confirm-btn {
+  width: 140px;
+
+  height: 46px;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 12px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.archive-cancel-btn {
+  background: #f3f4f8;
+
+  color: var(--text);
+}
+
+.archive-cancel-btn:hover {
+  background: #e7eaf2;
+}
+
+.archive-confirm-btn {
+  background: #d97706;
+
+  color: #ffffff;
+}
+
+.archive-confirm-btn:hover {
+  background: #b45309;
+}
+
+/* =========================================================
+   ARCHIVE MODAL RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+  .archive-modal .modal-footer {
+    flex-direction: column;
+  }
+
+  .archive-cancel-btn,
+  .archive-confirm-btn {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   SAVE CONFIRMATION MODAL
+========================================================= */
+
+.save-modal {
+  width: 460px;
+
+  max-width: 92vw;
+
+  background: #ffffff;
+
+  border-radius: 22px;
+
+  overflow: hidden;
+
+  transform: translateY(25px);
+
+  transition: 0.25s ease;
+
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+}
+
+.modal-overlay.show .save-modal {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   SAVE MODAL CONTENT
+========================================================= */
+
+.save-modal-content {
+  padding: 30px 30px 24px;
+
+  text-align: center;
+}
+
+.save-modal-icon {
+  width: 58px;
+
+  height: 58px;
+
+  margin: 0 auto 18px;
+
+  border-radius: 50%;
+
+  background: #eaf8ef;
+
+  color: #16a34a;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.save-modal-icon i {
+  font-size: 25px;
+}
+
+.save-modal-content h2 {
+  margin: 0;
+
+  font-size: 21px;
+
+  font-weight: 600;
+
+  color: var(--text);
+}
+
+.save-modal-content p {
+  margin: 8px auto 0;
+
+  max-width: 350px;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+
+  color: var(--subtext);
+}
+
+/* =========================================================
+   SAVE MODAL FOOTER
+========================================================= */
+
+.save-modal .modal-footer {
+  justify-content: center;
+
+  padding: 20px 30px 28px;
+
+  border-top: none;
+
+  gap: 14px;
+}
+
+/* =========================================================
+   SAVE MODAL BUTTONS
+========================================================= */
+
+.save-cancel-btn,
+.save-confirm-btn {
+  width: 140px;
+
+  height: 46px;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 12px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.save-cancel-btn {
+  background: #f3f4f8;
+
+  color: var(--text);
+}
+
+.save-cancel-btn:hover {
+  background: #e7eaf2;
+}
+
+.save-confirm-btn {
+  background: var(--primary);
+
+  color: #ffffff;
+}
+
+.save-confirm-btn:hover {
+  background: var(--primary-hover);
+}
+
+/* =========================================================
+   SAVE MODAL RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+  .save-modal .modal-footer {
+    flex-direction: column;
+  }
+
+  .save-cancel-btn,
+  .save-confirm-btn {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   VOTERS STATUS MODAL
+========================================================= */
+
+.voters-status-modal {
+  width: 460px;
+
+  max-width: 92vw;
+}
+
+/* =========================================================
+   STATUS CONTENT
+========================================================= */
+
+.voters-status-content {
+  padding: 30px 30px 10px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+
+.voters-status-icon {
+  width: 64px;
+
+  height: 64px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #eaf8ef;
+
+  color: #16a34a;
+}
+
+.voters-status-icon i {
+  font-size: 30px;
+}
+
+/* =========================================================
+   SUCCESS
+========================================================= */
+
+.voters-status-modal.success .voters-status-icon {
+  background: #eaf8ef;
+
+  color: #16a34a;
+}
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.voters-status-modal.error .voters-status-icon {
+  background: #fdecec;
+
+  color: #dc2626;
+}
+
+/* =========================================================
+   STATUS FOOTER
+========================================================= */
+
+.voters-status-modal .modal-footer {
+  justify-content: center;
+
+  border-top: none;
+
+  padding-top: 18px;
+}
+
+.voters-status-modal .cancel-btn {
+  width: 140px;
+}
+
+/* =========================================================
+   DELETE MODAL RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+  .delete-modal .modal-footer {
+    flex-direction: column;
+  }
+
+  .delete-cancel-btn,
+  .delete-confirm-btn {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   LOGOUT MODAL
+========================================================= */
+
+.logout-modal {
+  width: 460px;
+
+  max-width: 92vw;
+
+  background: #ffffff;
+
+  border-radius: 22px;
+
+  overflow: hidden;
+
+  transform: translateY(25px);
+
+  transition: 0.25s ease;
+
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+}
+
+.modal-overlay.show .logout-modal {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   LOGOUT MODAL ICON
+========================================================= */
+
+.logout-modal-icon {
+  width: 58px;
+
+  height: 58px;
+
+  margin: 30px auto 18px;
+
+  border-radius: 50%;
+
+  background: #fff1f1;
+
+  color: #e53935;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.logout-modal-icon i {
+  font-size: 25px;
+}
+
+/* =========================================================
+   LOGOUT MODAL CONTENT
+========================================================= */
+
+.logout-modal-content {
+  padding: 0 30px 24px;
+
+  text-align: center;
+}
+
+.logout-modal-content h2 {
+  margin: 0;
+
+  font-size: 21px;
+
+  font-weight: 600;
+
+  color: var(--text);
+}
+
+.logout-modal-content p {
+  margin: 8px auto 0;
+
+  max-width: 350px;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+
+  color: var(--subtext);
+}
+
+/* =========================================================
+   LOGOUT MODAL BUTTONS
+========================================================= */
+
+.logout-modal .modal-footer {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 20px 28px 28px;
+
+  border-top: none;
+}
+
+.logout-cancel-btn,
+.logout-confirm-btn {
+  width: 140px;
+
+  height: 46px;
+
+  padding: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  border: none;
+
+  border-radius: 13px;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.logout-cancel-btn {
+  background: #eef0f5;
+
+  color: var(--text);
+}
+
+.logout-cancel-btn:hover {
+  background: #e2e5ec;
+}
+
+.logout-confirm-btn {
+  background: #e53935;
+
+  color: #ffffff;
+}
+
+.logout-confirm-btn:hover {
+  background: #cf3030;
+}
+
+/* =========================================================
+   SUCCESS TOAST
+========================================================= */
+
+.success-toast {
+  position: fixed;
+
+  right: 28px;
+
+  bottom: 28px;
+
+  width: 360px;
+
+  max-width: calc(100vw - 40px);
+
+  min-height: 72px;
+
+  padding: 14px 16px;
+
+  background: #ffffff;
+
+  border: 1px solid var(--border);
+
+  border-radius: 16px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.16);
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transform: translateY(20px);
+
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease,
+    transform 0.25s ease;
+
+  z-index: 10000;
+}
+
+.success-toast.show {
+  opacity: 1;
+
+  visibility: visible;
+
+  transform: translateY(0);
+}
+
+/* =========================================================
+   TOAST ICON
+========================================================= */
+
+.success-toast-icon {
+  width: 42px;
+
+  height: 42px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #eaf8ef;
+
+  color: #16a34a;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.success-toast-icon i {
+  font-size: 20px;
+
+  font-weight: 600;
+}
+
+.success-toast.error .success-toast-icon {
+    background: #fdecec;
+    color: #dc2626;
+}
+
+/* =========================================================
+   TOAST CONTENT
+========================================================= */
+
+.success-toast-content {
+  min-width: 0;
+
+  flex: 1;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.success-toast-content strong {
+  color: var(--text);
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+.success-toast-content span {
+  color: var(--subtext);
+
+  font-size: 12px;
+
+  line-height: 1.4;
+}
+
+/* =========================================================
+   TOAST CLOSE
+========================================================= */
+
+.success-toast-close {
+  width: 30px;
+
+  height: 30px;
+
+  flex-shrink: 0;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: #94a3b8;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.success-toast-close:hover {
+  background: #f1f3f8;
+
+  color: var(--text);
+}
+
+.success-toast-close i {
+  font-size: 18px;
+}
+
+/* =========================================================
+   GLOBAL ACTION LOADING MODAL
+========================================================= */
+
+.loading-modal-overlay {
+  z-index: 11000;
+}
+
+/* =========================================================
+   LOADING MODAL
+========================================================= */
+
+.action-loading-modal {
+  width: 420px;
+
+  max-width: 92vw;
+
+  background: #ffffff;
+
+  border-radius: 22px;
+
+  padding: 34px 30px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+
+  transform: translateY(25px);
+
+  transition: 0.25s ease;
+}
+
+.modal-overlay.show .action-loading-modal {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   SPINNER
+========================================================= */
+
+.action-loading-spinner {
+  width: 58px;
+
+  height: 58px;
+
+  margin-bottom: 20px;
+
+  border-radius: 50%;
+
+  border: 5px solid #e8ecf5;
+
+  border-top-color: var(--primary);
+
+  animation: actionLoadingSpin 0.8s linear infinite;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.action-loading-spinner span {
+  display: block;
+}
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.action-loading-content h2 {
+  margin: 0;
+
+  color: var(--text);
+
+  font-size: 20px;
+
+  font-weight: 600;
+}
+
+.action-loading-content p {
+  margin: 8px auto 0;
+
+  max-width: 320px;
+
+  color: var(--subtext);
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+/* =========================================================
+   PREVENT PAGE INTERACTION WHILE LOADING
+========================================================= */
+
+body.modal-loading {
+  overflow: hidden;
+}
+
+
+
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes actionLoadingSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   LOADING MODAL RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+  .action-loading-modal {
+    width: 90%;
+
+    padding: 30px 24px;
+  }
+}
+
+/* =========================================================
+   SUCCESS TOAST RESPONSIVE
+========================================================= */
+
+@media (max-width: 600px) {
+  .success-toast {
+    right: 20px;
+
+    bottom: 20px;
+
+    width: calc(100vw - 40px);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+=========================================================*/
+
+/* =========================================================
+   LARGE LAPTOP / SMALL DESKTOP
+=========================================================*/
+
+@media (max-width:1200px){
+
+    .selection-modal{
+        width:620px;
+    }
+
+    .delete-modal,
+    .archive-modal,
+    .save-modal,
+    .logout-modal{
+        width:440px;
+    }
+
+    .action-loading-modal{
+        width:400px;
+    }
+
+}
+
+
+/* =========================================================
+   LAPTOP / TABLET
+=========================================================*/
+
+@media (max-width:991px){
+
+    .selection-modal{
+        width:600px;
+        max-width:94vw;
+        border-radius:20px;
+    }
+
+    .modal-header{
+        padding:20px 24px;
+    }
+
+    .modal-header h2{
+        font-size:20px;
+    }
+
+    .modal-header p{
+        font-size:13px;
+    }
+
+    .modal-search{
+        padding:20px 24px 10px;
+    }
+
+    .modal-search i{
+        left:40px;
+        top:36px;
+    }
+
+    .modal-section{
+        padding:10px 24px;
+    }
+
+    .modal-list{
+        max-height:230px;
+    }
+
+    .modal-item{
+        padding:14px 16px;
+    }
+
+    .modal-footer{
+        padding:18px 24px;
+    }
+
+    .delete-modal,
+    .archive-modal,
+    .save-modal,
+    .logout-modal{
+        width:430px;
+        max-width:94vw;
+    }
+
+    .delete-modal-content,
+    .archive-modal-content,
+    .save-modal-content{
+        padding:26px 26px 22px;
+    }
+
+    .logout-modal-content{
+        padding:0 26px 22px;
+    }
+
+    .delete-modal .modal-footer,
+    .archive-modal .modal-footer,
+    .save-modal .modal-footer,
+    .logout-modal .modal-footer{
+        padding:18px 26px 24px;
+    }
+
+    .action-loading-modal{
+        width:390px;
+        max-width:94vw;
+        padding:30px 26px;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+=========================================================*/
+
+@media (max-width:767px){
+
+    .modal-overlay{
+        padding:14px;
+    }
+
+    .selection-modal{
+        width:100%;
+        max-width:100%;
+        max-height:92vh;
+        border-radius:18px;
+    }
+
+    .modal-header{
+        padding:18px 20px;
+    }
+
+    .modal-header h2{
+        font-size:19px;
+    }
+
+    .modal-header p{
+        font-size:12px;
+    }
+
+    .close-modal{
+        width:38px;
+        height:38px;
+        flex-shrink:0;
+    }
+
+    .modal-search{
+        padding:18px 20px 10px;
+    }
+
+    .modal-search i{
+        left:36px;
+        top:34px;
+    }
+
+    .modal-search input{
+        height:46px;
+        padding-left:42px;
+        font-size:13px;
+    }
+
+    .modal-section{
+        padding:10px 20px;
+    }
+
+    .modal-section h3{
+        font-size:15px;
+    }
+
+    .modal-list{
+        max-height:210px;
+        border-radius:14px;
+    }
+
+    .modal-item{
+        padding:13px 14px;
+        gap:10px;
+    }
+
+    .modal-item span{
+        font-size:13px;
+    }
+
+    .add-item{
+        width:34px;
+        height:34px;
+        flex-shrink:0;
+    }
+
+    .selected-chip-container{
+        min-height:58px;
+        padding:12px;
+        gap:8px;
+        border-radius:14px;
+    }
+
+    .modal-footer{
+        flex-direction:column;
+        padding:16px 20px 20px;
+        gap:10px;
+    }
+
+    .modal-footer button{
+        width:100%;
+    }
+
+    .modal-footer .cancel-btn{
+        width:100%;
+        min-width:0;
+        height:44px;
+    }
+
+    /* SMALL MODALS */
+
+    .delete-modal,
+    .archive-modal,
+    .save-modal,
+    .logout-modal{
+        width:100%;
+        max-width:100%;
+        border-radius:18px;
+    }
+
+    .delete-modal-content,
+    .archive-modal-content,
+    .save-modal-content{
+        padding:26px 20px 20px;
+    }
+
+    .delete-modal-content h2,
+    .archive-modal-content h2,
+    .save-modal-content h2,
+    .logout-modal-content h2{
+        font-size:19px;
+    }
+
+    .delete-modal-content p,
+    .archive-modal-content p,
+    .save-modal-content p,
+    .logout-modal-content p{
+        font-size:13px;
+    }
+
+    .delete-modal .modal-footer,
+    .archive-modal .modal-footer,
+    .save-modal .modal-footer,
+    .logout-modal .modal-footer{
+        flex-direction:column;
+        padding:16px 20px 22px;
+        gap:10px;
+    }
+
+    .delete-cancel-btn,
+    .delete-confirm-btn,
+    .archive-cancel-btn,
+    .archive-confirm-btn,
+    .save-cancel-btn,
+    .save-confirm-btn,
+    .logout-cancel-btn,
+    .logout-confirm-btn{
+        width:100%;
+        height:44px;
+        font-size:13px;
+    }
+
+    .delete-modal-icon,
+    .archive-modal-icon,
+    .save-modal-icon,
+    .logout-modal-icon{
+        width:54px;
+        height:54px;
+        margin-bottom:16px;
+    }
+
+    .delete-modal-icon i,
+    .archive-modal-icon i,
+    .save-modal-icon i,
+    .logout-modal-icon i{
+        font-size:23px;
+    }
+
+    .logout-modal-icon{
+        margin-top:26px;
+    }
+
+    /* STATUS MODAL */
+
+    .voters-status-modal{
+        width:100%;
+        max-width:100%;
+    }
+
+    .voters-status-content{
+        padding:24px 20px 8px;
+    }
+
+    .voters-status-icon{
+        width:58px;
+        height:58px;
+    }
+
+    .voters-status-icon i{
+        font-size:27px;
+    }
+
+    .voters-status-modal .modal-footer{
+        padding:16px 20px 20px;
+    }
+
+    /* LOADING */
+
+    .action-loading-modal{
+        width:100%;
+        max-width:100%;
+        padding:28px 20px;
+        border-radius:18px;
+    }
+
+    .action-loading-spinner{
+        width:54px;
+        height:54px;
+        margin-bottom:18px;
+    }
+
+    .action-loading-content h2{
+        font-size:19px;
+    }
+
+    .action-loading-content p{
+        font-size:13px;
+    }
+
+}
+
+
+/* =========================================================
+   PHONE
+=========================================================*/
+
+@media (max-width:575px){
+
+    .modal-overlay{
+        padding:10px;
+    }
+
+    .selection-modal{
+        max-height:94vh;
+        border-radius:16px;
+    }
+
+    .modal-header{
+        padding:16px;
+    }
+
+    .modal-header h2{
+        font-size:17px;
+    }
+
+    .modal-header p{
+        font-size:11px;
+    }
+
+    .close-modal{
+        width:36px;
+        height:36px;
+    }
+
+    .modal-search{
+        padding:16px 16px 8px;
+    }
+
+    .modal-search i{
+        left:31px;
+        top:31px;
+        font-size:14px;
+    }
+
+    .modal-search input{
+        height:44px;
+        padding-left:38px;
+        font-size:12px;
+    }
+
+    .modal-section{
+        padding:8px 16px;
+    }
+
+    .modal-section h3{
+        font-size:14px;
+        margin-bottom:9px;
+    }
+
+    .modal-list{
+        max-height:190px;
+    }
+
+    .modal-item{
+        padding:12px;
+    }
+
+    .modal-item span{
+        font-size:12px;
+    }
+
+    .add-item{
+        width:32px;
+        height:32px;
+    }
+
+    .selected-chip-container{
+        min-height:52px;
+        padding:10px;
+        gap:6px;
+    }
+
+    .modal-footer{
+        padding:14px 16px 16px;
+    }
+
+    .delete-modal-content,
+    .archive-modal-content,
+    .save-modal-content{
+        padding:22px 16px 18px;
+    }
+
+    .delete-modal-content h2,
+    .archive-modal-content h2,
+    .save-modal-content h2,
+    .logout-modal-content h2{
+        font-size:18px;
+    }
+
+    .delete-modal-content p,
+    .archive-modal-content p,
+    .save-modal-content p,
+    .logout-modal-content p{
+        font-size:12px;
+    }
+
+    .delete-modal-icon,
+    .archive-modal-icon,
+    .save-modal-icon,
+    .logout-modal-icon{
+        width:50px;
+        height:50px;
+    }
+
+    .delete-modal-icon i,
+    .archive-modal-icon i,
+    .save-modal-icon i,
+    .logout-modal-icon i{
+        font-size:21px;
+    }
+
+    .delete-modal .modal-footer,
+    .archive-modal .modal-footer,
+    .save-modal .modal-footer,
+    .logout-modal .modal-footer{
+        padding:14px 16px 18px;
+    }
+
+    .voters-status-content{
+        padding:20px 16px 6px;
+    }
+
+    .voters-status-icon{
+        width:54px;
+        height:54px;
+    }
+
+    .voters-status-icon i{
+        font-size:25px;
+    }
+
+    .action-loading-modal{
+        padding:24px 16px;
+    }
+
+    .action-loading-spinner{
+        width:50px;
+        height:50px;
+    }
+
+    .action-loading-content h2{
+        font-size:18px;
+    }
+
+    .action-loading-content p{
+        font-size:12px;
+    }
+
+    .success-toast{
+        right:12px;
+        bottom:12px;
+        width:calc(100vw - 24px);
+        max-width:none;
+        min-height:64px;
+        padding:12px;
+        border-radius:14px;
+    }
+
+    .success-toast-icon{
+        width:38px;
+        height:38px;
+    }
+
+    .success-toast-content strong{
+        font-size:13px;
+    }
+
+    .success-toast-content span{
+        font-size:11px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONE
+=========================================================*/
+
+@media (max-width:400px){
+
+    .modal-overlay{
+        padding:8px;
+    }
+
+    .selection-modal{
+        max-height:95vh;
+        border-radius:14px;
+    }
+
+    .modal-header{
+        padding:14px;
+    }
+
+    .modal-header h2{
+        font-size:16px;
+    }
+
+    .modal-search{
+        padding:14px 14px 6px;
+    }
+
+    .modal-section{
+        padding:7px 14px;
+    }
+
+    .modal-list{
+        max-height:170px;
+    }
+
+    .modal-item{
+        padding:10px;
+    }
+
+    .modal-item span{
+        font-size:11px;
+    }
+
+    .add-item{
+        width:30px;
+        height:30px;
+    }
+
+    .selected-chip-container{
+        min-height:48px;
+        padding:8px;
+    }
+
+    .modal-footer{
+        padding:12px 14px 14px;
+    }
+
+    .delete-modal-content,
+    .archive-modal-content,
+    .save-modal-content{
+        padding:20px 14px 16px;
+    }
+
+    .delete-modal-content h2,
+    .archive-modal-content h2,
+    .save-modal-content h2,
+    .logout-modal-content h2{
+        font-size:17px;
+    }
+
+    .delete-modal-content p,
+    .archive-modal-content p,
+    .save-modal-content p,
+    .logout-modal-content p{
+        font-size:11px;
+    }
+
+    .delete-cancel-btn,
+    .delete-confirm-btn,
+    .archive-cancel-btn,
+    .archive-confirm-btn,
+    .save-cancel-btn,
+    .save-confirm-btn,
+    .logout-cancel-btn,
+    .logout-confirm-btn{
+        height:42px;
+        font-size:12px;
+    }
+
+    .success-toast{
+        right:8px;
+        bottom:8px;
+        width:calc(100vw - 16px);
+    }
+
+}

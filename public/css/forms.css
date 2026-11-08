@@ -1,0 +1,713 @@
+/* =========================================================
+   LCCAST
+   SHARED FORMS
+=========================================================*/
+
+/* =========================================================
+FORM LAYOUT
+=========================================================*/
+
+form{
+
+    width:100%;
+
+}
+
+.form-section{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    margin-bottom:28px;
+
+}
+
+.form-section:last-child{
+
+    margin-bottom:0;
+
+}
+
+.form-section h2,
+.form-section h3{
+
+    font-size:20px;
+
+    font-weight:600;
+
+    color:var(--text);
+
+}
+
+.section-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:16px;
+
+}
+
+/* =========================================================
+FORM GROUP
+=========================================================*/
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+.form-group label{
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:#475569;
+
+}
+
+/* =========================================================
+INPUTS
+=========================================================*/
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+
+    width:100%;
+
+    padding:14px 16px;
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    background:#FFFFFF;
+
+    font-size:15px;
+
+    font-family:inherit;
+
+    transition:.25s;
+
+}
+
+.form-group input{
+
+    height:52px;
+
+}
+
+.form-group select{
+
+    height:52px;
+
+    cursor:pointer;
+
+}
+
+.form-group textarea{
+
+    resize:vertical;
+
+    min-height:120px;
+
+}
+
+/* =========================================================
+FOCUS
+=========================================================*/
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+
+    outline:none;
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(91,92,235,.12);
+
+}
+
+/* =========================================================
+PLACEHOLDER
+=========================================================*/
+
+::placeholder{
+
+    color:#A0AEC0;
+
+}
+
+/* =========================================================
+CHECKBOX / RADIO
+=========================================================*/
+
+.checkbox-group,
+.radio-group{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:18px;
+
+}
+
+.checkbox-group label,
+.radio-group label{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    cursor:pointer;
+
+}
+
+.checkbox-group input,
+.radio-group input{
+
+    width:18px;
+
+    height:18px;
+
+}
+
+/* =========================================================
+GRID
+=========================================================*/
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+.form-grid-3{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:20px;
+
+}
+
+/* =========================================================
+DATE GRID
+=========================================================*/
+
+.date-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+/* =========================================================
+SELECTED CONTAINER
+=========================================================*/
+
+.selected-container{
+
+    min-height:60px;
+
+    border:2px dashed #D9DFEA;
+
+    border-radius:16px;
+
+    padding:14px;
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    align-items:center;
+
+    gap:10px;
+
+    background:#FAFBFD;
+
+}
+
+.selected-container .placeholder{
+
+    color:#94A3B8;
+
+}
+
+/* =========================================================
+BUTTON ROW
+=========================================================*/
+
+.form-buttons{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:16px;
+
+    margin-top:20px;
+
+}
+
+/* =========================================================
+HELP TEXT
+=========================================================*/
+
+.form-help{
+
+    font-size:13px;
+
+    color:#94A3B8;
+
+}
+
+/* =========================================================
+ERROR
+=========================================================*/
+
+.input-error{
+
+    border-color:#EF4444 !important;
+
+}
+
+.error-text{
+
+    color:#EF4444;
+
+    font-size:13px;
+
+}
+
+/* =========================================================
+SUCCESS
+=========================================================*/
+
+.input-success{
+
+    border-color:#22C55E !important;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+=========================================================*/
+
+
+/* =========================================================
+   LAPTOP
+   992px and below
+=========================================================*/
+
+@media (max-width:991px){
+
+    .form-section{
+
+        gap:16px;
+
+        margin-bottom:24px;
+
+    }
+
+    .form-grid,
+    .form-grid-3,
+    .date-grid{
+
+        gap:16px;
+
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea{
+
+        padding:13px 15px;
+
+        font-size:14px;
+
+        border-radius:12px;
+
+    }
+
+    .form-group input,
+    .form-group select{
+
+        height:48px;
+
+    }
+
+    .form-group textarea{
+
+        min-height:110px;
+
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+   768px and below
+=========================================================*/
+
+@media (max-width:767px){
+
+    .form-section{
+
+        gap:14px;
+
+        margin-bottom:22px;
+
+    }
+
+    .form-section h2,
+    .form-section h3{
+
+        font-size:18px;
+
+    }
+
+    .section-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:10px;
+
+    }
+
+    .form-grid,
+    .form-grid-3,
+    .date-grid{
+
+        grid-template-columns:1fr;
+
+        gap:14px;
+
+    }
+
+    .form-group{
+
+        gap:6px;
+
+    }
+
+    .form-group label{
+
+        font-size:13px;
+
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea{
+
+        padding:12px 14px;
+
+        font-size:13px;
+
+        border-radius:11px;
+
+    }
+
+    .form-group input,
+    .form-group select{
+
+        height:46px;
+
+    }
+
+    .form-group textarea{
+
+        min-height:100px;
+
+    }
+
+    .checkbox-group,
+    .radio-group{
+
+        gap:12px;
+
+    }
+
+    .checkbox-group label,
+    .radio-group label{
+
+        gap:7px;
+
+        font-size:13px;
+
+    }
+
+    .checkbox-group input,
+    .radio-group input{
+
+        width:17px;
+
+        height:17px;
+
+    }
+
+    .selected-container{
+
+        min-height:54px;
+
+        padding:12px;
+
+        border-radius:14px;
+
+        gap:8px;
+
+    }
+
+    .form-buttons{
+
+        flex-direction:column;
+
+        gap:10px;
+
+        margin-top:16px;
+
+    }
+
+    .form-buttons button{
+
+        width:100%;
+
+    }
+
+    .form-help{
+
+        font-size:12px;
+
+    }
+
+    .error-text{
+
+        font-size:12px;
+
+    }
+
+}
+
+
+/* =========================================================
+   PHONE
+   576px and below
+=========================================================*/
+
+@media (max-width:575px){
+
+    .form-section{
+
+        gap:12px;
+
+        margin-bottom:20px;
+
+    }
+
+    .form-section h2,
+    .form-section h3{
+
+        font-size:17px;
+
+    }
+
+    .section-header{
+
+        gap:8px;
+
+    }
+
+    .form-grid,
+    .form-grid-3,
+    .date-grid{
+
+        gap:12px;
+
+    }
+
+    .form-group{
+
+        gap:6px;
+
+    }
+
+    .form-group label{
+
+        font-size:12px;
+
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea{
+
+        padding:11px 12px;
+
+        font-size:12px;
+
+        border-radius:10px;
+
+    }
+
+    .form-group input,
+    .form-group select{
+
+        height:44px;
+
+    }
+
+    .form-group textarea{
+
+        min-height:90px;
+
+    }
+
+    .checkbox-group,
+    .radio-group{
+
+        flex-direction:column;
+
+        gap:10px;
+
+    }
+
+    .checkbox-group label,
+    .radio-group label{
+
+        font-size:12px;
+
+    }
+
+    .checkbox-group input,
+    .radio-group input{
+
+        width:16px;
+
+        height:16px;
+
+    }
+
+    .selected-container{
+
+        min-height:50px;
+
+        padding:10px;
+
+        border-radius:12px;
+
+        gap:7px;
+
+    }
+
+    .form-buttons{
+
+        gap:8px;
+
+        margin-top:14px;
+
+    }
+
+    .form-help{
+
+        font-size:11px;
+
+    }
+
+    .error-text{
+
+        font-size:11px;
+
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONE
+   400px and below
+=========================================================*/
+
+@media (max-width:400px){
+
+    .form-section h2,
+    .form-section h3{
+
+        font-size:16px;
+
+    }
+
+    .form-group label{
+
+        font-size:11px;
+
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea{
+
+        padding:10px 11px;
+
+        font-size:11px;
+
+    }
+
+    .form-group input,
+    .form-group select{
+
+        height:42px;
+
+    }
+
+    .form-group textarea{
+
+        min-height:85px;
+
+    }
+
+    .selected-container{
+
+        padding:9px;
+
+        min-height:46px;
+
+    }
+
+    .form-buttons button{
+
+        min-height:40px;
+
+    }
+
+}
+

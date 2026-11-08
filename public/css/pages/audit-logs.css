@@ -1,0 +1,847 @@
+/* =========================================================
+   LCCAST - AUDIT LOGS PAGE
+========================================================= */
+
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
+
+.audit-card {
+
+    width:100%;
+
+    background:#FFFFFF;
+
+    border:1px solid #1F1F1F;
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+}
+
+
+/* =========================================================
+   CARD HEADER
+========================================================= */
+
+.audit-card-header {
+
+    min-height:70px;
+
+    padding:0 28px;
+
+    background:var(--primary);
+
+    color:#FFFFFF;
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+
+.audit-title {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+
+.audit-title i:first-child {
+
+    font-size:22px;
+
+}
+
+
+.audit-title-arrow {
+
+    font-size:14px;
+
+    margin-left:4px;
+
+}
+
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.audit-toolbar {
+
+    padding:22px 28px 12px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.audit-search-wrapper {
+
+    position:relative;
+
+    flex:1;
+
+    max-width:520px;
+
+}
+
+
+.audit-search-wrapper > i {
+
+    position:absolute;
+
+    left:17px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#8E8E8E;
+
+    pointer-events:none;
+
+}
+
+
+.audit-search-wrapper input {
+
+    width:100%;
+
+    height:46px;
+
+    padding:0 18px 0 44px;
+
+    border:1px solid #1F1F1F;
+
+    border-radius:14px;
+
+    background:#FFFFFF;
+
+    font-family:inherit;
+
+    font-size:14px;
+
+    outline:none;
+
+}
+
+
+.audit-search-wrapper input:focus {
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 3px rgba(91,92,235,.10);
+
+}
+
+
+/* =========================================================
+   AUTOCOMPLETE
+========================================================= */
+
+.autocomplete-list {
+
+    position:absolute;
+
+    left:0;
+
+    right:0;
+
+    top:52px;
+
+    background:#FFFFFF;
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    box-shadow:0 10px 25px rgba(15,23,42,.10);
+
+    overflow:hidden;
+
+    z-index:100;
+
+    display:none;
+
+}
+
+
+.autocomplete-list.show {
+
+    display:block;
+
+}
+
+
+.autocomplete-item {
+
+    padding:12px 16px;
+
+    cursor:pointer;
+
+    border-bottom:1px solid #F0F1F5;
+
+    transition:.15s;
+
+}
+
+
+.autocomplete-item:last-child {
+
+    border-bottom:none;
+
+}
+
+
+.autocomplete-item:hover {
+
+    background:#F5F6FF;
+
+}
+
+
+.autocomplete-item strong {
+
+    display:block;
+
+    color:var(--text);
+
+    font-size:14px;
+
+}
+
+
+.autocomplete-item span {
+
+    display:block;
+
+    margin-top:2px;
+
+    color:var(--subtext);
+
+    font-size:12px;
+
+}
+
+
+/* =========================================================
+   FILTERS
+========================================================= */
+
+.audit-filters {
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:flex-end;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+}
+
+
+.filter-wrapper select {
+
+    height:42px;
+
+    min-width:115px;
+
+    padding:0 30px 0 10px;
+
+    border:none;
+
+    border-bottom:1px solid #B8B8B8;
+
+    background:#FFFFFF;
+
+    color:#888888;
+
+    font-family:inherit;
+
+    font-size:14px;
+
+    cursor:pointer;
+
+    outline:none;
+
+}
+
+
+.filter-wrapper select:focus {
+
+    border-bottom-color:var(--primary);
+
+    color:var(--text);
+
+}
+
+
+/* =========================================================
+   EXPORT
+========================================================= */
+
+.audit-export-btn {
+
+    height:42px;
+
+    padding:0 20px;
+
+    border:1px solid #1F1F1F;
+
+    border-radius:22px;
+
+    background:#E8E8FF;
+
+    color:var(--text);
+
+    font-family:inherit;
+
+    font-size:14px;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    transition:.2s;
+
+}
+
+
+.audit-export-btn:hover {
+
+    background:#DCDCFB;
+
+    color:var(--primary);
+
+}
+
+
+.audit-export-btn:disabled {
+
+    opacity:.6;
+
+    cursor:not-allowed;
+
+}
+
+
+/* =========================================================
+   FILTER SUMMARY
+========================================================= */
+
+.audit-filter-summary {
+
+    padding:4px 28px 16px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    color:var(--subtext);
+
+    font-size:13px;
+
+}
+
+
+.clear-filters-btn {
+
+    border:none;
+
+    background:none;
+
+    color:var(--primary);
+
+    font-family:inherit;
+
+    font-size:13px;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+}
+
+
+.clear-filters-btn:hover {
+
+    text-decoration:underline;
+
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.audit-table-wrapper {
+
+    width:100%;
+
+    overflow-x:auto;
+
+    padding:0 28px;
+
+}
+
+
+.audit-table {
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    table-layout:fixed;
+
+}
+
+
+.audit-table thead {
+
+    background:#FFFFFF;
+
+}
+
+
+.audit-table th {
+
+    padding:14px 12px;
+
+    border-bottom:1px solid #1F1F1F;
+
+    color:var(--text);
+
+    font-size:15px;
+
+    font-weight:700;
+
+    text-align:left;
+
+}
+
+
+.audit-table th:nth-child(1) {
+
+    width:58%;
+
+}
+
+
+.audit-table th:nth-child(2) {
+
+    width:22%;
+
+}
+
+
+.audit-table th:nth-child(3) {
+
+    width:20%;
+
+}
+
+
+.audit-table td {
+
+    padding:11px 12px;
+
+    border-bottom:none;
+
+    color:var(--text);
+
+    font-size:14px;
+
+    vertical-align:middle;
+
+}
+
+
+.audit-table tbody tr {
+
+    transition:.15s;
+
+}
+
+
+.audit-table tbody tr:hover {
+
+    background:#FAFBFF;
+
+}
+
+
+/* =========================================================
+   STUDENT DETAILS
+========================================================= */
+
+.student-main {
+
+    font-size:14px;
+
+    font-weight:500;
+
+}
+
+
+.student-sub {
+
+    margin-top:2px;
+
+    color:var(--subtext);
+
+    font-size:12px;
+
+}
+
+
+/* =========================================================
+   VOTE TYPE
+========================================================= */
+
+.vote-type {
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+
+.vote-type-dot {
+
+    width:9px;
+
+    height:9px;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+}
+
+
+.vote-type.department .vote-type-dot {
+
+    background:#F59E0B;
+
+}
+
+
+.vote-type.ssc .vote-type-dot {
+
+    background:#5B5CEB;
+
+}
+
+
+/* =========================================================
+   TIME
+========================================================= */
+
+.vote-time {
+
+    white-space:nowrap;
+
+    color:var(--text);
+
+    font-size:13px;
+
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.audit-empty {
+
+    padding:60px 20px;
+
+    text-align:center;
+
+}
+
+
+.audit-empty i {
+
+    display:block;
+
+    margin-bottom:14px;
+
+    color:#B8C0D0;
+
+    font-size:42px;
+
+}
+
+
+.audit-empty h3 {
+
+    margin-bottom:6px;
+
+    font-size:18px;
+
+}
+
+
+.audit-empty p {
+
+    font-size:13px;
+
+}
+
+
+/* =========================================================
+   PAGINATION
+========================================================= */
+
+.audit-pagination {
+
+    min-height:76px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:16px;
+
+    font-size:15px;
+
+}
+
+
+.pagination-arrow {
+
+    width:38px;
+
+    height:38px;
+
+    border:none;
+
+    background:transparent;
+
+    color:var(--text);
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:20px;
+
+    transition:.2s;
+
+}
+
+
+.pagination-arrow:hover:not(:disabled) {
+
+    color:var(--primary);
+
+    transform:scale(1.08);
+
+}
+
+
+.pagination-arrow:disabled {
+
+    opacity:.25;
+
+    cursor:not-allowed;
+
+}
+
+
+#pageIndicator {
+
+    min-width:80px;
+
+    text-align:center;
+
+}
+
+
+/* =========================================================
+   HIDDEN
+========================================================= */
+
+.audit-empty.hidden {
+
+    display:none;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1100px) {
+
+    .audit-toolbar {
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+    }
+
+
+    .audit-search-wrapper {
+
+        max-width:none;
+
+    }
+
+
+    .audit-filters {
+
+        justify-content:flex-start;
+
+    }
+
+}
+
+
+@media(max-width:800px) {
+
+    .audit-card-header {
+
+        padding:0 20px;
+
+    }
+
+
+    .audit-toolbar {
+
+        padding:18px 20px 10px;
+
+    }
+
+
+    .audit-filter-summary {
+
+        padding-left:20px;
+
+        padding-right:20px;
+
+    }
+
+
+    .audit-table-wrapper {
+
+        padding:0 20px;
+
+    }
+
+
+    .audit-table {
+
+        min-width:700px;
+
+    }
+
+    .audit-title {
+        font-size: 17px;
+        gap: 8px;
+    }
+
+    .audit-title i:first-child {
+        font-size: 18px;
+    }
+
+}
+
+
+@media(max-width:600px) {
+
+    .audit-filters {
+
+        display:grid;
+
+        grid-template-columns:1fr 1fr;
+
+    }
+
+
+    .filter-wrapper select {
+
+        width:100%;
+
+    }
+
+
+    .audit-export-btn {
+
+        width:100%;
+
+    }
+
+
+    .audit-filter-summary {
+
+        align-items:flex-start;
+
+        flex-direction:column;
+
+        gap:8px;
+
+    }
+
+    .audit-title {
+        font-size: 15px;
+    }
+
+    .audit-card-header {
+        min-height: 56px;
+    }
+
+}

@@ -1,0 +1,134 @@
+// =====================================================================
+// In public/js/login.js:
+//   1) DELETE these functions (if you pasted the earlier patch, delete those too):
+//        initializeLogin, hideServerError, showServerError, showConcurrentWarning
+//   2) PASTE everything below in their place. Nothing else changes.
+//
+// Wrong School ID / password now shows INLINE, under the password field,
+// with BOTH inputs outlined in red (same style as "Password is required.").
+// =====================================================================
+
+function initializeLogin() {
+  const loginForm = document.getElementById("loginForm");
+  const schoolIdInput = document.getElementById("schoolId");
+  const passwordInput = document.getElementById("password");
+  const schoolIdError = document.getElementById("schoolIdError");
+  const passwordError = document.getElementById("passwordError");
+
+  if (!loginForm) return;
+
+  // true while the red "invalid credentials" state is showing
+  let credentialError = false;
+
+  function clearCredentialError() {
+    if (!credentialError) return;
+    clearFieldError(schoolIdInput, schoolIdError);
+    clearFieldError(passwordInput, passwordError);
+    credentialError = false;
+  }
+
+  schoolIdInput.addEventListener("input", () => {
+    clearFieldError(schoolIdInput, schoolIdError);
+    clearCredentialError();
+    hideServerError();
+  });
+
+  passwordInput.addEventListener("input", () => {
+    clearFieldError(passwordInput, passwordError);
+    clearCredentialError();
+    hideServerError();
+  });
+
+  loginForm.addEventListener("submit", async (event) => {
+    // We send the login with fetch now (no Thymeleaf to re-render the page).
+    event.preventDefault();
+
+    const schoolId = schoolIdInput.value.trim();
+    const password = passwordInput.value;
+    let isValid = true;
+
+    credentialError = false;
+    clearFieldError(schoolIdInput, schoolIdError);
+    clearFieldError(passwordInput, passwordError);
+    hideServerError();
+
+    if (!schoolId) {
+      showFieldError(schoolIdInput, schoolIdError, "School ID is required.");
+      isValid = false;
+    }
+    if (!password) {
+      showFieldError(passwordInput, passwordError, "Password is required.");
+      isValid = false;
+    }
+    if (!isValid) return;
+
+    showActionLoading("Logging In", "Verifying your School ID and password...");
+
+    try {
+      const response = await fetch("/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ schoolId, password }),
+      });
+      const result = await parseJsonResponse(response);
+
+      if (response.ok && result.success) {
+        // keep the loading modal visible while the browser navigates
+        window.location.href = result.redirectUrl || "/login";
+        return;
+      }
+
+      hideActionLoading();
+
+      if (result.code === "CONCURRENT_LOGIN") {
+        showConcurrentWarning(result.message);
+      } else if (result.code === "INVALID_CREDENTIALS" || response.status === 401) {
+        // inline field errors: red border on both inputs, message under the password field
+        credentialError = true;
+        showFieldError(schoolIdInput, null, "");
+        showFieldError(
+          passwordInput,
+          passwordError,
+          result.message || "Invalid School ID or password.",
+        );
+      } else {
+        showServerError(result.message || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      hideActionLoading();
+      showServerError("Unable to log in right now. Please try again.");
+    }
+  });
+}
+
+/* =========================================================
+   SERVER ERROR / CONCURRENT LOGIN MESSAGES
+========================================================= */
+
+function hideServerError() {
+  const serverError = document.getElementById("loginServerError");
+  if (serverError) {
+    serverError.textContent = "";
+  }
+  const warning = document.getElementById("concurrentLoginWarning");
+  if (warning) {
+    warning.style.display = "none";
+  }
+}
+
+function showServerError(message) {
+  hideServerError();
+  const serverError = document.getElementById("loginServerError");
+  if (serverError) {
+    serverError.style.display = "";
+    serverError.textContent = message;
+  }
+}
+
+function showConcurrentWarning(message) {
+  hideServerError();
+  const warning = document.getElementById("concurrentLoginWarning");
+  const text = document.getElementById("concurrentLoginWarningText");
+  if (text) text.textContent = message;
+  if (warning) warning.style.display = "";
+}

@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-store, no-cache, must-revalidate, max-age=0"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>LCC Cast | Departments</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/lcccast_logo.png" />
+    <link rel="apple-touch-icon" href="/images/lcccast_logo.png" />
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/admin/layout.css" />
+    <link rel="stylesheet" href="/css/components.css" />
+    <link rel="stylesheet" href="/css/forms.css" />
+    <link rel="stylesheet" href="/css/modal.css" />
+    <link rel="stylesheet" href="/css/navigation.css" />
+    <link rel="stylesheet" href="/css/pages/doc-preview-ratio.css" />
+    <link rel="stylesheet" href="/css/pages/departments.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- ===========================
+SIDEBAR
+============================ -->
+
+    <button
+      type="button"
+      class="mobile-nav-toggle"
+      id="mobileNavToggle"
+      aria-label="Open navigation"
+      aria-expanded="false"
+    >
+      <i class="bi bi-list"></i>
+    </button>
+
+    <!-- ===========================
+    MOBILE NAVIGATION OVERLAY
+    ============================ -->
+
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-top">
+        <div class="logo">
+          <img src="/images/lcccast_logo.png" alt="LCC Cast" />
+
+          <h2 >LCC Cast</h2>
+        </div>
+
+        <hr />
+
+        <nav>
+          <a href="/admin-dept/dashboard">
+            <i class="bi bi-house-door"></i>
+
+            Dashboard
+          </a>
+
+          <a href="/admin-dept/elections">
+            <i class="bi bi-calendar-event"></i>
+
+            Elections
+          </a>
+
+          <a href="/admin-dept/live-results">
+            <i class="bi bi-broadcast-pin"></i>
+
+            Live Results
+          </a>
+
+          <a href="/admin-dept/departments" class="active">
+            <i class="bi bi-building"></i>
+
+            Departments
+          </a>
+
+          <a href="/admin-dept/voters">
+            <i class="bi bi-person-vcard"></i>
+
+            Voters
+          </a>
+
+          <a href="/admin-dept/analytics">
+            <i class="bi bi-bar-chart"></i>
+
+            Analytics
+          </a>
+
+          <a href="/admin-dept/history">
+            <i class="bi bi-clock-history"></i>
+
+            History
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-bottom">
+        <hr />
+
+        <a href="/admin-dept/settings">
+          <i class="bi bi-gear"></i>
+
+          Settings
+        </a>
+
+        <a href="#" class="logout-trigger">
+          <i class="bi bi-box-arrow-right"></i>
+
+          Logout
+        </a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <h1>Departments</h1>
+          <p>Manage department organizations and their members.</p>
+        </div>
+        <div class="profile">
+          <div class="avatar">
+            {{html_avatar}}
+            </div>
+
+          <div class="profile-info">
+            <span>{{displayName}}</span>
+
+            <small>{{programCampus}}</small>
+          </div>
+        </div>
+      </header>
+
+      <!-- =========================================================
+        DEPARTMENTs NAVIGATION
+        ========================================================= -->
+
+      <div class="departments-tabs">
+        <button
+          type="button"
+          class="departments-tab active"
+          data-section="create"
+        >
+          <i class="bi bi-plus-circle"></i>
+          Create New Department Officers
+        </button>
+
+        <button type="button" class="departments-tab" data-section="existing">
+          <i class="bi bi-card-checklist"></i>
+          Existing Department Officers
+        </button>
+      </div>
+
+      <section class="departments-section active" id="createDepartments">
+        <div class="departments-content-container">
+          <form class="departments-form" id="createDepartmentsForm" novalidate>
+            <div class="form-section">
+              <!-- DEPARTMENT NAME (fixed to your assigned department — set automatically) -->
+              <div class="form-group">
+                <label for="departmentsName"> Department Name </label>
+
+                <input type="text" id="departmentsName" value="{{programCourse}}" disabled />
+              </div>
+
+              <div class="form-group">
+                <label for="departmentsTitle">Department Title</label>
+
+                <input
+                        type="text"
+                        id="departmentsTitle"
+                        name="departmentsTitle"
+                        placeholder="Select a department name first"
+                        autocomplete="off"
+                        required
+                >
+
+                <small class="inline-error departments-title-error"></small>
+              </div>
+
+              <div class="form-group">
+                <label for="departmentsDescription"> Description </label>
+
+                <input
+                  id="departmentsDescription"
+                  name="description"
+                  type="text"
+                  placeholder="To achieve goals (optional)"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="departmentsSchoolYear"> School Year </label>
+
+                <input
+                  id="departmentsSchoolYear"
+                  name="schoolyear"
+                  type="text"
+                  placeholder="2026 - 2027"
+                />
+
+                <small
+                  class="inline-error"
+                  id="departmentsSchoolYearError"
+                ></small>
+              </div>
+
+              <div class="form-group">
+                <label>Voting Type</label>
+
+                <select id="departmentsVotingType">
+                  <option value="">Select Voting Type</option>
+                  <option value="PARTYLIST">Partylist</option>
+                  <option value="REPRESENTATIVE">Representative</option>
+                </select>
+
+                <small class="inline-error departments-voting-type-error"></small>
+              </div>
+
+              <!-- CAMPUS (fixed to your registered campus — set automatically) -->
+              <div class="form-group">
+                <label for="departmentsCampus"> Campus </label>
+
+                <input type="text" id="departmentsCampus" value="{{campus}}" disabled />
+              </div>
+
+              <div class="form-group">
+                <label for="departmentsPoster"> Departments Poster </label>
+
+                <div
+                  class="departments-file-upload"
+                  data-error-target="departmentsPosterError"
+                >
+                  <input
+                    type="file"
+                    id="departmentsPoster"
+                    class="departments-poster-input"
+                    accept="image/*,.pdf,application/pdf"
+                    hidden
+                  />
+
+                  <button type="button" class="departments-file-btn">
+                    <i class="bi bi-file-earmark-image"></i>
+                    <span>Upload Poster</span>
+                  </button>
+
+                  <div class="departments-file-preview"></div>
+                </div>
+              </div>
+
+              <!-- departments LOGO -->
+
+              <div class="form-group">
+                <label for="departmentsLogo">
+                  Departments Logo
+                  <span class="optional-label"> (Optional) </span>
+                </label>
+
+                <div class="departments-file-upload">
+                  <input
+                    type="file"
+                    id="departmentsLogo"
+                    class="departments-logo-input"
+                    accept="image/*"
+                    hidden
+                  />
+
+                  <button type="button" class="departments-file-btn">
+                    <i class="bi bi-image"></i>
+                    <span>Upload Logo</span>
+                  </button>
+
+                  <div class="departments-file-preview"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-section positions-section voting-type-fields" style="display: none;" novalidate>
+              <div class="departments-divider"></div>
+              <h3>Positions</h3>
+              <div class="positions-list" id="createPositionsList"></div>
+              <div class="add-position-row">
+                <input type="text" id="newPositionInput" placeholder="Add position">
+                <button type="button" id="addPositionBtn"><i class="bi bi-plus-lg"></i> Add Position</button>
+              </div>
+              <small class="inline-error" id="positionsError"></small>
+            </div>
+
+            <div class="form-section members-section voting-type-fields" style="display: none;" id="createMembersSection" novalidate>
+              <div class="departments-divider"></div>
+
+              <h3>Members</h3>
+
+              <div class="members-list" id="createMembersList"></div>
+
+              <button type="button" class="add-member-btn" id="addMemberBtn">
+                <i class="bi bi-plus-lg"></i>
+                Add More Member
+              </button>
+            </div>
+
+            <div class="form-buttons">
+              <button type="button" class="discard-btn" id="discardDepartments">
+                <i class="bi bi-arrow-counterclockwise"></i>
+                Discard
+              </button>
+
+              <button type="submit" class="save-btn">
+                <i class="bi bi-check-circle"></i>
+                Save
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="departments-section" id="existingDepartments">
+        <div class="departments-content-container">
+
+          <div class="departments-list">
+            <div class="empty-state">Loading departments…</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+     DELETE departments MODAL
+========================================================= -->
+
+      <div class="modal-overlay" id="deleteDepartmentsModal">
+        <div class="delete-modal" role="dialog" aria-modal="true">
+          <div class="delete-modal-content">
+            <div class="delete-modal-icon">
+              <i class="bi bi-trash3"></i>
+            </div>
+
+            <h2>Delete department?</h2>
+
+            <p>
+              Are you sure you want to delete
+              <strong id="deleteDepartmentsName"> this department </strong>?
+              This action cannot be undone.
+            </p>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="delete-cancel-btn"
+              data-modal-close="deleteDepartmentsModal"
+            >
+              Cancel
+            </button>
+
+            <button
+              type="button"
+              class="delete-confirm-btn"
+              id="confirmDeleteBtn"
+            >
+              <i class="bi bi-trash3"></i>
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- =========================================================
+     ARCHIVE Departments MODAL
+        ========================================================= -->
+
+      <div class="modal-overlay" id="archiveDepartmentsModal">
+        <div class="delete-modal" role="dialog" aria-modal="true">
+          <div class="delete-modal-content">
+            <div class="delete-modal-icon archive-icon">
+              <i class="bi bi-archive"></i>
+            </div>
+
+            <h2>Archive department?</h2>
+
+            <p>
+              Are you sure you want to archive
+              <strong id="archiveDepartmentsName"> this department </strong>?
+              The department will no longer be active.
+            </p>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="delete-cancel-btn"
+              data-modal-close="archiveDepartmentsModal"
+            >
+              Cancel
+            </button>
+
+            <button
+              type="button"
+              class="delete-confirm-btn archive-confirm-btn"
+              id="confirmArchiveBtn"
+            >
+              <i class="bi bi-archive"></i>
+
+              Archive
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- =========================================================
+     SAVE CHANGES MODAL
+========================================================= -->
+
+      <div class="modal-overlay" id="saveDepartmentsModal">
+        <div class="delete-modal" role="dialog" aria-modal="true">
+          <div class="delete-modal-content">
+            <div class="delete-modal-icon save-icon">
+              <i class="bi bi-check-circle"></i>
+            </div>
+
+            <h2>Save Changes?</h2>
+
+            <p>
+              Are you sure you want to save the changes made to this department?
+            </p>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="delete-cancel-btn"
+              data-modal-close="saveDepartmentsModal"
+            >
+              Cancel
+            </button>
+
+            <button
+              type="button"
+              class="delete-confirm-btn save-confirm-btn"
+              id="confirmSaveDepartmentsBtn"
+            >
+              <i class="bi bi-check-circle"></i>
+
+              Save Changes
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- =========================================================
+        DISCARD departments MODAL
+        ========================================================= -->
+
+      <div class="modal-overlay" id="discardDepartmentsModal">
+        <div class="delete-modal discard-modal" role="dialog" aria-modal="true">
+          <div class="delete-modal-content">
+            <div class="delete-modal-icon discard-icon">
+              <i class="bi bi-arrow-counterclockwise"></i>
+            </div>
+
+            <h2>Discard department?</h2>
+
+            <p>
+              Are you sure you want to discard everything you entered? Your
+              unsaved changes will be lost.
+            </p>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="delete-cancel-btn"
+              data-modal-close="discardDepartmentsModal"
+            >
+              Cancel
+            </button>
+
+            <button
+              type="button"
+              class="delete-confirm-btn discard-confirm-btn"
+              id="confirmDiscardBtn"
+            >
+              <i class="bi bi-trash3"></i>
+              Discard
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- =========================================================
+     LOGOUT MODAL
+========================================================= -->
+
+      <div class="modal-overlay" id="logoutModal">
+        <div class="delete-modal logout-modal">
+          <div class="delete-modal-content">
+            <div class="delete-modal-icon">
+              <i class="bi bi-box-arrow-right"></i>
+            </div>
+
+            <h2>Logout?</h2>
+
+            <p>Are you sure you want to logout from LCC Cast?</p>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="logout-cancel-btn" id="cancelLogout">
+              Cancel
+            </button>
+
+            <button type="button" class="logout-confirm-btn" id="confirmLogout">
+              <i class="bi bi-box-arrow-right"></i>
+
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- =========================================================
+     GLOBAL ACTION LOADING MODAL
+========================================================= -->
+
+      <div class="modal-overlay loading-modal-overlay" id="actionLoadingModal">
+        <div class="action-loading-modal">
+          <div class="action-loading-spinner">
+            <span></span>
+          </div>
+
+          <div class="action-loading-content">
+            <h2 id="actionLoadingTitle">Processing...</h2>
+
+            <p id="actionLoadingMessage">
+              Please wait while we process your request.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="success-toast" id="successToast" aria-live="polite">
+        <div class="success-toast-icon">
+          <i class="bi bi-check-lg"></i>
+        </div>
+
+        <div class="success-toast-content">
+          <strong id="successToastTitle">Success</strong>
+          <span id="successToastMessage">Changes saved successfully.</span>
+        </div>
+
+        <button
+          type="button"
+          class="success-toast-close"
+          id="successToastClose"
+          aria-label="Close toast"
+        >
+          <i class="bi bi-x"></i>
+        </button>
+      </div>
+    </main>
+
+    <script src="/js/superadmin/soft-cache.js"></script>
+
+    <script src="/js/navigation.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+    <script src="/js/logout.js"></script>
+    <script src="/js/doc-preview-ratio.js"></script>
+
+    <script>
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        "https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js";
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7/bundles/stomp.umd.min.js"></script>
+
+    <script src="/js/admin-dept/departments/departments-utils.js"></script>
+    <script src="/js/admin-dept/departments/departments-campus.js"></script>
+    <script src="/js/admin-dept/departments/departments-members.js"></script>
+    <script src="/js/admin-dept/departments/departments-files.js"></script>
+    <script src="/js/admin-dept/departments/departments-validation.js"></script>
+    <script src="/js/admin-dept/departments/departments-modals.js"></script>
+    <script src="/js/admin-dept/departments/departments.js"></script>
+  </body>
+</html>

@@ -1,0 +1,750 @@
+/* =========================================================
+   LCCAST
+   DASHBOARD PAGE
+=========================================================*/
+
+/* =========================================================
+   TOPBAR CAMPUS SELECTOR
+========================================================= */
+
+.topbar-left {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+
+}
+
+.campus-selector {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+.campus-selector label {
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    color: var(--subtext);
+
+}
+
+.campus-selector select {
+
+    min-width: 170px;
+
+    padding: 10px 36px 10px 14px;
+
+    background: var(--card);
+
+    color: var(--text);
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    outline: none;
+
+    transition: var(--transition);
+
+}
+
+.campus-selector select:hover {
+
+    border-color: var(--primary);
+
+}
+
+.campus-selector select:focus {
+
+    border-color: var(--primary);
+
+    box-shadow: 0 0 0 3px rgba(91, 92, 235, .10);
+
+}
+
+.campus-selector .campus-display {
+
+    min-width: 170px;
+
+    padding: 10px 14px;
+
+    background: var(--card);
+
+    color: var(--text);
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+/* =========================================================
+   CAMPUS DASHBOARD
+========================================================= */
+
+.campus-dashboard {
+
+    margin-top: 24px;
+
+}
+
+.campus-header {
+
+    margin-bottom: 20px;
+
+}
+
+.campus-header h2 {
+
+    font-size: 24px;
+
+    color: var(--text);
+
+    margin-bottom: 4px;
+
+}
+
+.campus-header p {
+
+    color: var(--subtext);
+
+    font-size: 14px;
+
+}
+
+.campus-content {
+
+    width: 100%;
+
+}
+
+.hidden {
+
+    display: none !important;
+
+}
+
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
+
+.section-title {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end;
+
+    margin-bottom: 14px;
+
+}
+
+.section-title h3 {
+
+    font-size: 18px;
+
+    color: var(--text);
+
+}
+
+.section-title span {
+
+    font-size: 13px;
+
+    color: var(--subtext);
+
+}
+
+
+/* =========================================================
+   ELECTION TABS
+========================================================= */
+
+.election-tabs {
+
+    display: flex;
+
+    gap: 8px;
+
+    margin-bottom: 20px;
+
+    padding-bottom: 10px;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+.election-tab {
+
+    padding: 9px 16px;
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--subtext);
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: var(--transition);
+
+}
+
+.election-tab:hover {
+
+    background: #F1F3FF;
+
+    color: var(--primary);
+
+}
+
+.election-tab.active {
+
+    background: var(--primary);
+
+    color: #FFFFFF;
+
+}
+
+/* =========================================================
+WELCOME CARD
+=========================================================*/
+
+.welcome-card {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 24px 30px;
+
+    margin-bottom: 24px;
+
+    background: linear-gradient(135deg, var(--primary), #7274FF);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-md);
+
+}
+
+.welcome-card p {
+
+    color: rgba(255, 255, 255, .85);
+
+    margin-bottom: 6px;
+
+}
+
+.welcome-card h2 {
+
+    color: #FFFFFF;
+
+    font-size: 32px;
+
+}
+
+.date {
+
+    text-align: right;
+
+}
+
+.date span {
+
+    font-size: 14px;
+
+    color: rgba(255, 255, 255, .85);
+
+}
+
+.date h4 {
+
+    margin-top: 6px;
+
+    color: #FFFFFF;
+
+    font-size: 20px;
+
+}
+
+/* =========================================================
+STATISTICS
+=========================================================*/
+
+.stats-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 24px;
+
+}
+
+/* =========================================================
+STAT CARD
+=========================================================*/
+
+.stat-card {
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    padding: 18px;
+
+    transition: var(--transition);
+
+    box-shadow: var(--shadow-sm);
+
+    position: relative;
+
+    overflow: visible;
+
+}
+
+.stat-card:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow: var(--shadow-md);
+
+}
+
+.card-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 14px;
+
+    position: relative;
+
+}
+
+.card-top>span:first-child {
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: var(--subtext);
+
+}
+
+/* =========================================================
+   INFO TOOLTIP
+========================================================= */
+
+.info-tooltip {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 18px;
+
+    height: 18px;
+
+    flex-shrink: 0;
+
+    cursor: help;
+
+}
+
+.info-tooltip i {
+
+    font-size: 18px;
+
+    color: #B8C0CF;
+
+    transition: var(--transition);
+
+}
+
+.info-tooltip:hover i {
+
+    color: var(--primary);
+
+}
+
+
+/* =========================================================
+   TOOLTIP CONTENT
+========================================================= */
+
+.tooltip-text {
+
+    position: absolute;
+
+    bottom: calc(100% + 10px);
+
+    left: auto;
+
+    right: 0;
+
+    width: 250px;
+
+    box-sizing: border-box;
+
+    padding: 12px 14px;
+
+    background: #FFFFFF;
+
+    color: var(--text);
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    box-shadow: var(--shadow-md);
+
+    font-size: 12px;
+
+    line-height: 1.5;
+
+    font-weight: 400;
+
+    text-align: left;
+
+    white-space: normal;
+
+    word-wrap: break-word;
+
+    overflow-wrap: break-word;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform: translateY(5px);
+
+    transition:
+
+        opacity .2s ease,
+
+        visibility .2s ease,
+
+        transform .2s ease;
+
+    z-index: 99999;
+
+}
+
+
+/* =========================================================
+   SHOW TOOLTIP
+========================================================= */
+
+.info-tooltip:hover .tooltip-text {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+
+}
+
+.number {
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+    color: var(--text);
+
+}
+
+/* =========================================================
+   GRAPH TOOLTIP
+========================================================= */
+
+.graph-card .info-tooltip .tooltip-text {
+
+    right: 0;
+
+    left: auto;
+
+    width: 280px;
+
+}
+
+.graph-card .info-tooltip .tooltip-text::after {
+
+    right: 3px;
+
+}
+
+/* =========================================================
+   RIGHTMOST STAT CARD TOOLTIPS
+========================================================= */
+
+.stats-grid .stat-card:nth-child(3) .tooltip-text {
+
+    right: 0;
+
+    left: auto;
+
+    transform: translateY(5px);
+
+}
+
+.stats-grid .stat-card:nth-child(3) .info-tooltip:hover .tooltip-text {
+
+    transform: translateY(0);
+
+}
+
+.stats-grid .stat-card:nth-child(3) .tooltip-text::after {
+
+    right: 3px;
+
+}
+
+/* =========================================================
+GRAPH CARD
+=========================================================*/
+
+.graph-card {
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    padding: 20px;
+
+    box-shadow: var(--shadow-sm);
+
+    height: 460px;
+
+    position: relative;
+
+    overflow: visible;
+
+}
+
+/* =========================================================
+CHART CONTAINER
+=========================================================*/
+
+.chart-container {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 370px;
+
+    margin-top: 20px;
+
+}
+
+.chart-container canvas {
+
+    width: 100% !important;
+
+    height: 100% !important;
+
+}
+
+
+/* =========================================================
+RESPONSIVE
+=========================================================*/
+
+@media (max-width:1200px) {
+
+    .stats-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+@media (max-width:768px) {
+
+    .topbar-left {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 14px;
+
+    }
+
+    .campus-selector {
+
+        width: 100%;
+
+    }
+
+    .campus-selector select {
+
+        width: 100%;
+
+    }
+
+    .campus-selector .campus-display {
+
+            width: 100%;
+
+        }
+
+    .section-title {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 4px;
+
+    }
+
+    .welcome-card {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 20px;
+
+    }
+
+    .date {
+
+        text-align: left;
+
+    }
+
+    .stats-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .graph-card {
+
+        height: 380px;
+
+    }
+
+    .chart-container {
+
+        height: 280px;
+
+    }
+
+    .course-graph-card {
+
+        height: 440px;
+
+    }
+
+    .course-chart-container {
+
+        height: 340px;
+
+    }
+
+    .welcome-card h2 {
+        font-size: 22px;
+    }
+
+    .welcome-card p {
+        font-size: 13px;
+    }
+
+    .date h4 {
+        font-size: 16px;
+    }
+
+    .date span {
+        font-size: 12px;
+    }
+
+    .campus-header h2 {
+        font-size: 19px;
+    }
+
+    .campus-header p {
+        font-size: 12.5px;
+    }
+
+    .section-title h3 {
+        font-size: 15px;
+    }
+
+}
+
+@media (max-width:480px) {
+
+    .welcome-card {
+        padding: 18px 20px;
+    }
+
+    .welcome-card h2 {
+        font-size: 19px;
+    }
+
+    .campus-header h2 {
+        font-size: 17px;
+    }
+
+    .number {
+        font-size: 24px;
+    }
+}

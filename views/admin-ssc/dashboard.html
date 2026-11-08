@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <title>LCC Cast | Dashboard</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/lcccast_logo.png" />
+    <link rel="apple-touch-icon" href="/images/lcccast_logo.png" />
+
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/admin/layout.css" />
+    <link rel="stylesheet" href="/css/components.css" />
+    <link rel="stylesheet" href="/css/forms.css" />
+    <link rel="stylesheet" href="/css/modal.css" />
+    <link rel="stylesheet" href="/css/navigation.css" />
+    <link rel="stylesheet" href="/css/pages/dashboard.css" />
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+</head>
+
+<body data-admin-campus-id="{{campusId}}">
+    <!-- ===========================
+SIDEBAR
+============================ -->
+
+    <button type="button" class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open navigation"
+        aria-expanded="false">
+        <i class="bi bi-list"></i>
+    </button>
+
+    <!-- ===========================
+MOBILE NAVIGATION OVERLAY
+============================ -->
+
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-top">
+            <div class="logo">
+                <img src="/images/lcccast_logo.png" alt="LCC Cast" />
+
+                <h2>LCC Cast</h2>
+            </div>
+
+            <hr />
+
+            <nav>
+                <a href="/admin-ssc/dashboard" class="active">
+                    <i class="bi bi-house-door"></i>
+
+                    Dashboard
+                </a>
+
+                <a href="/admin-ssc/elections">
+                    <i class="bi bi-calendar-event"></i>
+
+                    Elections
+                </a>
+
+                <a href="/admin-ssc/live-results">
+                    <i class="bi bi-broadcast-pin"></i>
+
+                    Live Results
+                </a>
+
+                <a href="/admin-ssc/partylists">
+                    <i class="bi bi-people"></i>
+
+                    Partylists
+                </a>
+
+                <a href="/admin-ssc/voters">
+                    <i class="bi bi-person-vcard"></i>
+
+                    Voters
+                </a>
+
+                <a href="/admin-ssc/analytics">
+                    <i class="bi bi-bar-chart"></i>
+
+                    Analytics
+                </a>
+
+                <a href="/admin-ssc/history">
+                    <i class="bi bi-clock-history"></i>
+
+                    History
+                </a>
+            </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+            <hr />
+
+            <a href="/admin-ssc/settings">
+                <i class="bi bi-gear"></i>
+
+                Settings
+            </a>
+
+            <a href="#" class="logout-trigger">
+                <i class="bi bi-box-arrow-right"></i>
+
+                Logout
+            </a>
+        </div>
+    </aside>
+
+    <!-- ===========================
+MAIN
+============================ -->
+
+    <main class="main-content">
+        <!-- TOP -->
+
+        <header class="topbar">
+            <div class="topbar-left">
+                <div>
+                    <h1>Overview</h1>
+
+                    <p>See Progress</p>
+                </div>
+
+                <!-- ===========================
+                 CAMPUS (FIXED TO ACCOUNT)
+            ============================ -->
+                <div class="campus-selector">
+                    <label>Campus</label>
+
+                    <span class="campus-display">{{campus}}</span>
+                </div>
+            </div>
+
+            <div class="profile">
+
+                <div class="avatar">
+                    {{html_avatar}}
+                </div>
+
+                <div class="profile-info">
+
+                    <span>{{displayName}}</span>
+
+                    <small>{{programCampus}}</small>
+
+                </div>
+
+            </div>
+        </header>
+
+        <!-- WELCOME -->
+
+        <section class="welcome-card">
+            <div>
+                <p id="greetingText">Good Day,</p>
+
+                <h2>{{displayName}}</h2>
+            </div>
+
+            <div class="date">
+                <span>Day</span>
+
+                <h4 id="todayDate">mm/dd/yyyy</h4>
+            </div>
+        </section>
+
+        <!-- STATS -->
+
+        <section class="stats-grid">
+            <!-- CARD -->
+
+            <div class="stat-card">
+                <div class="card-top">
+                    <span>Total Voters</span>
+
+                    <span class="info-tooltip">
+                        <i class="bi bi-question-circle"></i>
+
+                        <span class="tooltip-text">
+                            Shows the total number of registered voters in your campus.
+                        </span>
+                    </span>
+                </div>
+
+                <div class="number" id="totalVoters">[0]</div>
+            </div>
+
+            <!-- CARD -->
+
+            <div class="stat-card">
+                <div class="card-top">
+                    <span>Total Voted</span>
+
+                    <span class="info-tooltip">
+                        <i class="bi bi-question-circle"></i>
+
+                        <span class="tooltip-text">
+                            Shows the number of voters in your campus who have already
+                            cast their vote.
+                        </span>
+                    </span>
+                </div>
+
+                <div class="number" id="totalVoted">[0]</div>
+            </div>
+
+            <!-- CARD -->
+
+            <div class="stat-card">
+                <div class="card-top">
+                    <span>Live Turnout (%)</span>
+
+                    <span class="info-tooltip">
+                        <i class="bi bi-question-circle"></i>
+
+                        <span class="tooltip-text">
+                            Shows the current percentage of registered voters in your
+                            campus who have voted.
+                        </span>
+                    </span>
+                </div>
+
+                <div class="number" id="turnout">[0%]</div>
+            </div>
+
+            <!-- CARD -->
+
+            <div class="stat-card">
+                <div class="card-top">
+                    <span>Active Elections</span>
+
+                    <span class="info-tooltip">
+                        <i class="bi bi-question-circle"></i>
+
+                        <span class="tooltip-text">
+                            Shows the number of elections in your campus that are
+                            currently active and accepting votes.
+                        </span>
+                    </span>
+                </div>
+
+                <div class="number" id="activeElection">[0]</div>
+            </div>
+
+            <!-- CARD -->
+
+            <div class="stat-card">
+                <div class="card-top">
+                    <span>Total Candidates</span>
+
+                    <span class="info-tooltip">
+                        <i class="bi bi-question-circle"></i>
+
+                        <span class="tooltip-text">
+                            Shows the total number of candidates participating in your
+                            campus elections.
+                        </span>
+                    </span>
+                </div>
+
+                <div class="number" id="totalCandidates">[0]</div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+       CAMPUS DASHBOARD (SINGLE CAMPUS ONLY)
+    ========================================================= -->
+
+        <section class="campus-dashboard" id="campusDashboard">
+            <!-- CAMPUS HEADER -->
+
+            <div class="campus-header">
+                <div>
+                    <h2 id="campusTitle">{{campus}}</h2>
+
+                    <p id="campusDescription">
+                        Overview of voting activity for your campus.
+                    </p>
+                </div>
+            </div>
+
+            <div id="singleCampusContent" class="campus-content">
+
+                <!-- SSC -->
+
+                <div id="sscContent" class="election-content">
+
+                    <div class="section-title">
+                        <h3>SSC Election</h3>
+
+                        <span>Campus-wide student council election</span>
+                    </div>
+
+                    <div class="graph-card">
+
+                        <div class="card-top">
+
+                            <span>SSC Voting Activity</span>
+
+                            <span class="info-tooltip">
+                                <i class="bi bi-question-circle"></i>
+
+                                <span class="tooltip-text">
+                                    Shows voting activity for your campus's SSC election.
+                                </span>
+                            </span>
+
+                        </div>
+
+                        <div class="chart-container">
+                            <canvas id="sscGraph"></canvas>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =========================================================
+       LOGOUT MODAL
+    ========================================================= -->
+
+        <div class="modal-overlay" id="logoutModal">
+            <div class="delete-modal logout-modal">
+                <div class="delete-modal-content">
+                    <div class="delete-modal-icon">
+                        <i class="bi bi-box-arrow-right"></i>
+                    </div>
+
+                    <h2>Logout?</h2>
+
+                    <p>Are you sure you want to logout from LCC Cast?</p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="logout-cancel-btn" id="cancelLogout">
+                        Cancel
+                    </button>
+
+                    <button type="button" class="logout-confirm-btn" id="confirmLogout">
+                        <i class="bi bi-box-arrow-right"></i>
+
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- =========================================================
+       GLOBAL ACTION LOADING MODAL
+    ========================================================= -->
+
+        <div class="modal-overlay loading-modal-overlay" id="actionLoadingModal">
+            <div class="action-loading-modal">
+                <div class="action-loading-spinner">
+                    <span></span>
+                </div>
+
+                <div class="action-loading-content">
+                    <h2 id="actionLoadingTitle">Processing...</h2>
+
+                    <p id="actionLoadingMessage">
+                        Please wait while we process your request.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7/bundles/stomp.umd.min.js"></script>
+    <script src="/js/superadmin/soft-cache.js"></script>
+    <script src="/js/navigation.js"></script>
+
+    <script src="/js/admin-ssc/dashboard.js"></script>
+    <script src="/js/logout.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <title>LCC Cast | Voters</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/lcccast_logo.png" />
+    <link rel="apple-touch-icon" href="/images/lcccast_logo.png" />
+
+    <!-- SHARED CSS -->
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/admin/layout.css" />
+    <link rel="stylesheet" href="/css/components.css" />
+    <link rel="stylesheet" href="/css/forms.css" />
+    <link rel="stylesheet" href="/css/modal.css" />
+    <link rel="stylesheet" href="/css/navigation.css" />
+    <link rel="stylesheet" href="/css/skeleton-loading.css" />
+    <!-- PAGE CSS -->
+    <link rel="stylesheet" href="/css/pages/voters.css" />
+
+    <!-- BOOTSTRAP ICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+</head>
+
+<body data-admin-campus-id="{{campusId}}" data-admin-campus-name="{{campus}}">
+    <!-- ===========================
+SIDEBAR
+============================ -->
+
+    <button type="button" class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open navigation"
+        aria-expanded="false">
+        <i class="bi bi-list"></i>
+    </button>
+
+    <!-- ===========================
+MOBILE NAVIGATION OVERLAY
+============================ -->
+
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-top">
+            <div class="logo">
+                <img src="/images/lcccast_logo.png" alt="LCC Cast" />
+
+                <h2>LCC Cast</h2>
+            </div>
+
+            <hr />
+
+            <nav>
+                <a href="/admin-ssc/dashboard">
+                    <i class="bi bi-house-door"></i>
+
+                    Dashboard
+                </a>
+
+                <a href="/admin-ssc/elections">
+                    <i class="bi bi-calendar-event"></i>
+
+                    Elections
+                </a>
+
+                <a href="/admin-ssc/live-results">
+                    <i class="bi bi-broadcast-pin"></i>
+
+                    Live Results
+                </a>
+
+                <a href="/admin-ssc/partylists">
+                    <i class="bi bi-people"></i>
+
+                    Partylists
+                </a>
+
+                <a href="/admin-ssc/voters" class="active">
+                    <i class="bi bi-person-vcard"></i>
+
+                    Voters
+                </a>
+
+                <a href="/admin-ssc/analytics">
+                    <i class="bi bi-bar-chart"></i>
+
+                    Analytics
+                </a>
+
+                <a href="/admin-ssc/history">
+                    <i class="bi bi-clock-history"></i>
+
+                    History
+                </a>
+            </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+            <hr />
+
+            <a href="/admin-ssc/settings">
+                <i class="bi bi-gear"></i>
+
+                Settings
+            </a>
+
+            <a href="#" class="logout-trigger">
+                <i class="bi bi-box-arrow-right"></i>
+
+                Logout
+            </a>
+        </div>
+    </aside>
+
+    <!-- =========================================================
+ MAIN CONTENT
+========================================================= -->
+
+    <main class="main-content">
+        <!-- =====================================================
+       TOPBAR
+      ====================================================== -->
+
+        <header class="topbar">
+            <div>
+                <h1>Voters</h1>
+
+                <p>Manage registered voters and their voting status.</p>
+            </div>
+
+            <div class="profile">
+
+                <div class="avatar">
+                    {{html_avatar}}
+                </div>
+
+                <div class="profile-info">
+
+                    <span>{{displayName}}</span>
+
+                    <small>{{programCampus}}</small>
+
+                </div>
+
+            </div>
+        </header>
+
+        <!-- =====================================================
+       VOTERS TAB
+      ====================================================== -->
+
+        <div class="voters-tabs">
+            <button type="button" class="voters-tab active" data-section="voters">
+                <i class="bi bi-person-vcard"></i>
+
+                Voters Data
+            </button>
+        </div>
+
+        <!-- =====================================================
+       SEARCH + SORT
+      ====================================================== -->
+
+        <section class="voters-toolbar">
+            <div class="voter-search">
+                <i class="bi bi-search"></i>
+
+                <input type="search" id="voterSearch" placeholder="Search" autocomplete="off"
+                    aria-label="Search voters" />
+
+                <div class="autocomplete-list" id="autocompleteList"></div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+       VOTERS CARD
+      ====================================================== -->
+
+        <!-- =====================================================
+   VOTERS CARD SKELETON
+===================================================== -->
+
+        <div id="votersSkeleton" class="voters-content-skeleton" aria-hidden="true">
+
+            <div class="skeleton-voters-list">
+
+                <div class="skeleton-voter-card">
+                    <div class="skeleton skeleton-voter-id"></div>
+                    <div class="skeleton skeleton-voter-name"></div>
+
+                    <div class="skeleton-voter-statuses">
+                        <div class="skeleton skeleton-voter-status"></div>
+                        <div class="skeleton skeleton-voter-status"></div>
+                    </div>
+
+                    <div class="skeleton-voter-actions">
+                        <div class="skeleton skeleton-voter-button"></div>
+                        <div class="skeleton skeleton-voter-button"></div>
+                        <div class="skeleton skeleton-voter-button"></div>
+                    </div>
+                </div>
+
+                <div class="skeleton-voter-card">
+                    <div class="skeleton skeleton-voter-id"></div>
+                    <div class="skeleton skeleton-voter-name"></div>
+
+                    <div class="skeleton-voter-statuses">
+                        <div class="skeleton skeleton-voter-status"></div>
+                        <div class="skeleton skeleton-voter-status"></div>
+                    </div>
+
+                    <div class="skeleton-voter-actions">
+                        <div class="skeleton skeleton-voter-button"></div>
+                        <div class="skeleton skeleton-voter-button"></div>
+                        <div class="skeleton skeleton-voter-button"></div>
+                    </div>
+                </div>
+
+                <div class="skeleton-voter-card">
+                    <div class="skeleton skeleton-voter-id"></div>
+                    <div class="skeleton skeleton-voter-name"></div>
+
+                    <div class="skeleton-voter-statuses">
+                        <div class="skeleton skeleton-voter-status"></div>
+                        <div class="skeleton skeleton-voter-status"></div>
+                    </div>
+
+                    <div class="skeleton-voter-actions">
+                        <div class="skeleton skeleton-voter-button"></div>
+                        <div class="skeleton skeleton-voter-button"></div>
+                        <div class="skeleton skeleton-voter-button"></div>
+                    </div>
+                </div>
+
+                <div class="skeleton-voter-card">
+                    <div class="skeleton skeleton-voter-id"></div>
+                    <div class="skeleton skeleton-voter-name"></div>
+
+                    <div class="skeleton-voter-statuses">
+                        <div class="skeleton skeleton-voter-status"></div>
+                        <div class="skeleton skeleton-voter-status"></div>
+                    </div>
+
+                    <div class="skeleton-voter-actions">
+                        <div class="skeleton skeleton-voter-button"></div>
+                        <div class="skeleton skeleton-voter-button"></div>
+                        <div class="skeleton skeleton-voter-button"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+         ACTUAL VOTERS CARD
+    ===================================================== -->
+
+        <section class="voters-card" id="votersContent">
+            <!-- =====================================================
+             FILTER BAR
+            ====================================================== -->
+
+            <div class="voters-filter-bar">
+                <!-- IMPORT -->
+
+                <button type="button" class="import-btn" id="importVoters">
+                    <i class="bi bi-upload"></i>
+
+                    Import
+                </button>
+
+                <input type="file" id="voterFileInput" accept=".csv,.xlsx,.xls" hidden />
+
+                <!-- EXPORT -->
+
+                <button type="button" class="export-btn" id="exportVoters">
+                    <i class="bi bi-download"></i>
+
+                    Export
+                </button>
+
+                <!-- DELETE ALL -->
+
+                <button type="button" class="delete-all-btn" id="deleteAllVoters">
+                    <i class="bi bi-trash3"></i>
+
+                    Delete All
+                </button>
+
+                <!-- ARCHIVE ALL -->
+
+                <button type="button" class="archive-all-btn" id="archiveAllVoters">
+                    <i class="bi bi-archive"></i>
+
+                    Archive All
+                </button>
+
+                <!-- FILTERS -->
+
+                <div class="filter-panel-wrapper">
+                    <button type="button" class="filters-main-btn" id="filtersMainButton">
+                        <i class="bi bi-funnel"></i>
+
+                        <span id="filtersMainLabel"> Filter </span>
+
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+
+                    <div class="filters-panel" id="filtersPanel">
+                        <div class="filters-panel-header">
+                            <div>
+                                <strong>Filters</strong>
+
+                                <span id="filtersSelectedCount"> 0 selected </span>
+                            </div>
+
+                            <button type="button" class="filters-clear-btn" id="filtersClearBtn">
+                                Clear
+                            </button>
+                        </div>
+
+                        <!-- VOTE STATUS -->
+
+                        <!-- SSC VOTE STATUS -->
+
+                        <div class="multi-filter-group">
+                            <label>SSC Vote Status</label>
+
+                            <div class="multi-filter-options">
+                                <label class="filter-check">
+                                    <input type="checkbox" value="Voted" data-filter-type="sscStatus" />
+
+                                    <span>Voted</span>
+                                </label>
+
+                                <label class="filter-check">
+                                    <input type="checkbox" value="Not Voted" data-filter-type="sscStatus" />
+
+                                    <span>Not Voted</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- DEPARTMENT VOTE STATUS -->
+
+                        <!-- YEAR -->
+
+                        <!-- SCHOOL YEAR -->
+                        <div class="multi-filter-group">
+                            <label>School Year</label>
+                            <div class="multi-filter-options" id="multiSchoolYearOptions"></div>
+                        </div>
+
+                        <div class="multi-filter-group">
+                            <label>Year Level</label>
+
+                            <div class="multi-filter-options">
+                                <label class="filter-check">
+                                    <input type="checkbox" value="1st Year" data-filter-type="year" />
+
+                                    <span>1st Year</span>
+                                </label>
+
+                                <label class="filter-check">
+                                    <input type="checkbox" value="2nd Year" data-filter-type="year" />
+
+                                    <span>2nd Year</span>
+                                </label>
+
+                                <label class="filter-check">
+                                    <input type="checkbox" value="3rd Year" data-filter-type="year" />
+
+                                    <span>3rd Year</span>
+                                </label>
+
+                                <label class="filter-check">
+                                    <input type="checkbox" value="4th Year" data-filter-type="year" />
+
+                                    <span>4th Year</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- COURSE -->
+
+                        <div class="multi-filter-group">
+                            <label>Course</label>
+
+                            <div class="multi-filter-options" id="multiProgramOptions"></div>
+                        </div>
+
+                        <!-- SECTION -->
+
+                        <div class="multi-filter-group">
+                            <label>Section</label>
+
+                            <div class="multi-filter-options" id="multiSectionOptions"></div>
+                        </div>
+
+
+                        <!-- NAME SORT -->
+
+                        <div class="multi-filter-group">
+                            <label>Name</label>
+
+                            <div class="multi-filter-options">
+                                <label class="filter-check">
+                                    <input type="radio" name="nameSort" value="default" data-filter-type="nameSort"
+                                        checked />
+                                    <span>Default</span>
+                                </label>
+
+                                <label class="filter-check">
+                                    <input type="radio" name="nameSort" value="A-Z" data-filter-type="nameSort" />
+
+                                    <span>A-Z</span>
+                                </label>
+
+                                <label class="filter-check">
+                                    <input type="radio" name="nameSort" value="Z-A" data-filter-type="nameSort" />
+
+                                    <span>Z-A</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- TIME SORT -->
+
+                        <div class="multi-filter-group">
+                            <label>Voting Time</label>
+
+                            <div class="multi-filter-options">
+                                <label class="filter-check">
+                                    <input type="radio" name="timeSort" value="default" data-filter-type="nameSort"
+                                        checked />
+                                    <span>Default</span>
+                                </label>
+
+                                <label class="filter-check">
+                                    <input type="radio" name="timeSort" value="Newest" data-filter-type="timeSort" />
+
+                                    <span>Newest First</span>
+                                </label>
+
+                                <label class="filter-check">
+                                    <input type="radio" name="timeSort" value="Oldest" data-filter-type="timeSort" />
+
+                                    <span>Oldest First</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- APPLY -->
+
+                        <div class="filters-panel-footer">
+                            <button type="button" class="filters-apply-btn" id="filtersApplyBtn">
+                                Apply Filters
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VOTER LIST -->
+
+            <div class="voter-list" id="voterList"></div>
+
+            <!-- EMPTY STATE -->
+
+            <div class="voters-empty" id="votersEmpty">
+                <i class="bi bi-person-x"></i>
+
+                <h3>No voters found</h3>
+
+                <p>Try adjusting your search or filters.</p>
+            </div>
+
+            <!-- PAGINATION -->
+
+            <div class="voters-pagination">
+                <button type="button" class="pagination-arrow" id="previousPage" title="Previous page">
+                    <i class="bi bi-arrow-left"></i>
+                </button>
+
+                <span id="paginationText"> Page 1 / 1 </span>
+
+                <button type="button" class="pagination-arrow" id="nextPage" title="Next page">
+                    <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- =========================================================
+   EDIT VOTER MODAL
+========================================================= -->
+
+        <div class="modal-overlay" id="editVoterModal">
+            <div class="selection-modal edit-voter-modal" role="dialog" aria-modal="true"
+                aria-labelledby="editVoterTitle">
+                <!-- HEADER -->
+
+                <div class="modal-header">
+                    <div>
+                        <h2 id="editVoterTitle">Edit Voter</h2>
+
+                        <p>Update the student's information below.</p>
+                    </div>
+
+                    <button type="button" class="close-modal" id="closeEditVoterModal" aria-label="Close">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </div>
+
+                <!-- FORM -->
+
+                <div class="edit-voter-form">
+                    <!-- STUDENT ID -->
+
+                    <div class="form-group">
+                        <label for="editVoterId"> Student ID </label>
+
+                        <input type="text" id="editVoterId" autocomplete="off" />
+
+                        <span class="inline-error" id="editVoterIdError"> </span>
+                    </div>
+
+                    <!-- FULL NAME -->
+
+                    <div class="form-group">
+                        <label for="editVoterName"> Full Name </label>
+
+                        <input type="text" id="editVoterName" autocomplete="off" />
+
+                        <span class="inline-error" id="editVoterNameError"> </span>
+                    </div>
+
+                    <!-- COURSE -->
+
+                    <div class="form-group">
+                        <label for="editVoterProgram"> Course </label>
+
+                        <input type="text" id="editVoterProgram" autocomplete="off" />
+
+                        <span class="inline-error" id="editVoterProgramError"> </span>
+                    </div>
+
+                    <!-- YEAR -->
+
+                    <div class="form-group">
+                        <label for="editVoterYear"> Year Level </label>
+
+                        <select id="editVoterYear">
+                            <option value="">Select Year Level</option>
+
+                            <option value="1st Year">1st Year</option>
+
+                            <option value="2nd Year">2nd Year</option>
+
+                            <option value="3rd Year">3rd Year</option>
+
+                            <option value="4th Year">4th Year</option>
+                        </select>
+
+                        <span class="inline-error" id="editVoterYearError"> </span>
+                    </div>
+
+                    <!-- SCHOOL YEAR -->
+                    <div class="form-group">
+                        <label for="editVoterSchoolYear"> School Year </label>
+                        <input type="text" id="editVoterSchoolYear" placeholder="2026-2027" maxlength="9"
+                            autocomplete="off" />
+                        <span class="inline-error" id="editVoterSchoolYearError"> </span>
+                    </div>
+
+                    <!-- SEMESTER -->
+                    <div class="form-group">
+                        <label for="editVoterSemester"> Semester </label>
+                        <select id="editVoterSemester">
+                            <option value="">Not set</option>
+                            <option value="1">1st Semester</option>
+                            <option value="2">2nd Semester</option>
+                            <option value="3">Midyear</option>
+                        </select>
+                        <span class="inline-error" id="editVoterSemesterError"> </span>
+                    </div>
+
+                    <!-- SECTION -->
+
+                    <div class="form-group">
+                        <label for="editVoterSection"> Section </label>
+
+                        <input type="text" id="editVoterSection" autocomplete="off" />
+
+                        <span class="inline-error" id="editVoterSectionError"> </span>
+                    </div>
+
+                    <!-- CAMPUS -->
+
+                    <div class="form-group">
+                        <label>Campus</label>
+                        <input type="text" value="{{campus}}" disabled>
+                    </div>
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+                        <label for="editVoterEmail"> Email </label>
+
+                        <input type="email" id="editVoterEmail" autocomplete="off" />
+
+                        <span class="inline-error" id="editVoterEmailError"> </span>
+                    </div>
+                </div>
+
+                <!-- FOOTER -->
+
+                <div class="modal-footer">
+                    <button type="button" class="cancel-btn" id="cancelEditVoter">
+                        Cancel
+                    </button>
+
+                    <button type="button" class="save-btn" id="saveEditVoter">
+                        <i class="bi bi-check-lg"></i>
+
+                        Save Changes
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- =========================================================
+      VOTERS STATUS MODAL
+      ========================================================= -->
+
+        <div class="modal-overlay" id="votersStatusModal">
+            <div class="selection-modal voters-status-modal" role="dialog" aria-modal="true"
+                aria-labelledby="votersStatusTitle">
+                <!-- HEADER -->
+
+                <div class="modal-header">
+                    <div>
+                        <h2 id="votersStatusTitle">Import Successful</h2>
+
+                        <p id="votersStatusMessage">
+                            The voter data was imported successfully.
+                        </p>
+                    </div>
+
+                    <button type="button" class="close-modal" id="closeVotersStatusModal" aria-label="Close">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </div>
+
+                <!-- CONTENT -->
+
+                <div class="voters-status-content">
+                    <div class="voters-status-icon" id="votersStatusIcon">
+                        <i class="bi bi-check-lg"></i>
+                    </div>
+                </div>
+
+                <!-- FOOTER -->
+
+                <div class="modal-footer">
+                    <button type="button" class="cancel-btn" id="votersStatusOk">
+                        OK
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- =========================================================
+   DELETE VOTER MODAL
+      ========================================================= -->
+
+        <div class="modal-overlay" id="deleteVoterModal">
+            <div class="delete-modal" role="dialog" aria-modal="true" aria-labelledby="deleteVoterTitle">
+                <div class="delete-modal-content">
+                    <div class="delete-modal-icon">
+                        <i class="bi bi-trash3"></i>
+                    </div>
+
+                    <h2 id="deleteVoterTitle">Delete Voter?</h2>
+
+                    <p id="deleteVoterMessage">
+                        Are you sure you want to permanently delete this voter? This
+                        action cannot be undone.
+                    </p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="delete-cancel-btn" id="deleteVoterCancel">
+                        Cancel
+                    </button>
+
+                    <button type="button" class="delete-confirm-btn" id="deleteVoterConfirm">
+                        <i class="bi bi-trash3"></i>
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- =========================================================
+   ARCHIVE VOTER MODAL
+      ========================================================= -->
+
+        <div class="modal-overlay" id="archiveVoterModal">
+            <div class="archive-modal" role="dialog" aria-modal="true" aria-labelledby="archiveVoterTitle">
+                <div class="archive-modal-content">
+                    <div class="archive-modal-icon">
+                        <i class="bi bi-archive"></i>
+                    </div>
+
+                    <h2 id="archiveVoterTitle">Archive Voter?</h2>
+
+                    <p id="archiveVoterMessage">
+                        Are you sure you want to archive this voter?
+                    </p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="archive-cancel-btn" id="archiveVoterCancel">
+                        Cancel
+                    </button>
+
+                    <button type="button" class="archive-confirm-btn" id="archiveVoterConfirm">
+                        <i class="bi bi-archive"></i>
+                        Archive
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- =========================================================
+ LOGOUT MODAL
+========================================================= -->
+
+    <div class="modal-overlay" id="logoutModal">
+        <div class="delete-modal logout-modal">
+            <div class="delete-modal-content">
+                <div class="delete-modal-icon">
+                    <i class="bi bi-box-arrow-right"></i>
+                </div>
+
+                <h2>Logout?</h2>
+
+                <p>Are you sure you want to logout from LCC Cast?</p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="logout-cancel-btn" id="cancelLogout">
+                    Cancel
+                </button>
+
+                <button type="button" class="logout-confirm-btn" id="confirmLogout">
+                    <i class="bi bi-box-arrow-right"></i>
+
+                    Logout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+ GLOBAL ACTION LOADING MODAL
+========================================================= -->
+
+    <div class="modal-overlay loading-modal-overlay" id="actionLoadingModal">
+        <div class="action-loading-modal">
+            <div class="action-loading-spinner">
+                <span></span>
+            </div>
+
+            <div class="action-loading-content">
+                <h2 id="actionLoadingTitle">Processing...</h2>
+
+                <p id="actionLoadingMessage">
+                    Please wait while we process your request.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+ SUCCESS TOAST
+========================================================= -->
+
+    <div class="success-toast" id="successToast">
+        <div class="success-toast-icon">
+            <i class="bi bi-check-lg"></i>
+        </div>
+
+        <div class="success-toast-content">
+            <strong id="successToastTitle"> Success </strong>
+
+            <span id="successToastMessage"> Action completed successfully. </span>
+        </div>
+
+        <button type="button" class="success-toast-close" id="successToastClose" aria-label="Close notification">
+            <i class="bi bi-x-lg"></i>
+        </button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7/bundles/stomp.umd.min.js"></script>
+    <script src="/js/superadmin/soft-cache.js"></script>
+    <script src="/js/navigation.js"></script>
+    <script src="/js/logout.js"></script>
+
+    <script src="/js/admin-ssc/voters.js"></script>
+</body>
+
+</html>

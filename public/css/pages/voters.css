@@ -1,0 +1,1613 @@
+/* =========================================================
+   LCCAST - VOTERS PAGE
+========================================================= */
+
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.voters-toolbar {
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 8px;
+
+    margin-bottom: 28px;
+
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.voter-search {
+
+    position: relative;
+
+    width: 100%;
+
+    min-width: 0;
+
+    height: 48px;
+
+}
+
+.voter-search > i {
+
+    position: absolute;
+
+    left: 18px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #94A3B8;
+
+    font-size: 17px;
+
+    pointer-events: none;
+
+}
+
+.voter-search input {
+
+    width: 100%;
+
+    height: 48px;
+
+    box-sizing: border-box;
+
+    padding: 0 18px 0 44px;
+
+    border: 1px solid #1F1F1F;
+
+    border-radius: 15px;
+
+    background: #FFFFFF;
+
+    color: var(--text);
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: .2s;
+
+}
+
+.voter-search input:focus {
+
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(91, 92, 235, .10);
+
+}
+
+
+/* =========================================================
+   AUTOCOMPLETE
+========================================================= */
+
+.autocomplete-list {
+
+    position: absolute;
+
+    left: 0;
+
+    right: 0;
+
+    top: calc(100% + 6px);
+
+    background: #FFFFFF;
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    box-shadow: var(--shadow-md);
+
+    z-index: 100;
+
+    display: none;
+
+}
+
+.autocomplete-list.show {
+
+    display: block;
+
+}
+
+.autocomplete-item {
+
+    width: 100%;
+
+    border: none;
+
+    background: #FFFFFF;
+
+    padding: 12px 16px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 2px;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    transition: .15s;
+
+}
+
+.autocomplete-item:hover {
+
+    background: #F5F6FF;
+
+}
+
+.autocomplete-item strong {
+
+    color: var(--text);
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+}
+
+.autocomplete-item span {
+
+    color: var(--subtext);
+
+    font-size: 12px;
+
+}
+
+/* =========================================================
+   VOTERS TABS
+========================================================= */
+
+.voters-tabs {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 26px;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+
+.voters-tab {
+
+    height: 48px;
+
+    padding: 0 22px;
+
+    border: none;
+
+    border-radius: 14px 14px 0 0;
+
+    background: transparent;
+
+    color: var(--subtext);
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+}
+
+
+.voters-tab:hover {
+
+    color: var(--primary);
+
+    background: #F3F4FF;
+
+}
+
+
+.voters-tab.active {
+
+    background: var(--primary);
+
+    color: #FFFFFF;
+
+}
+
+
+.voters-tab i {
+
+    font-size: 16px;
+
+}
+
+/* =========================================================
+   VOTERS CARD
+========================================================= */
+
+.voters-card {
+
+    background: #FFFFFF;
+
+    border: 1px solid #1F1F1F;
+
+    border-radius: 28px;
+
+    overflow: visible;
+
+}
+
+
+/* =========================================================
+   FILTER BAR
+========================================================= */
+
+.voters-filter-bar {
+
+    min-height: 52px;
+
+    padding: 10px 40px 6px;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+
+}
+
+/* =========================================================
+   FILTER BUTTON
+========================================================= */
+
+.filter-panel-wrapper {
+    position: relative;
+    display: inline-flex;
+}
+
+.filters-main-btn {
+    height: 42px;
+    padding: 0 14px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background: #FFFFFF;
+    color: var(--text);
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    white-space: nowrap;
+
+    outline: none;
+
+    transition: .2s;
+}
+
+.filters-main-btn:hover {
+    background: #F8F9FC;
+    border-color: #BFC5D2;
+}
+
+.filters-main-btn:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(91, 92, 235, .10);
+}
+
+.filters-main-btn.active,
+.filters-main-btn.has-filters {
+    background: #F8F9FC;
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.filters-main-btn i:first-child {
+    font-size: 15px;
+}
+
+.filters-main-btn i:last-child {
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   FILTER DROPDOWN
+========================================================= */
+
+.filters-panel {
+    position: absolute;
+
+    top: calc(100% + 8px);
+    right: 0;
+
+    width: 340px;
+    max-width: calc(100vw - 32px);
+
+    max-height: min(600px, calc(100vh - 40px));
+
+    overflow-y: auto;
+
+    background: #FFFFFF;
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    padding: 18px;
+
+    box-shadow: 0 12px 35px rgba(15, 23, 42, .14);
+
+    z-index: 1000;
+
+    display: none;
+
+    box-sizing: border-box;
+}
+
+.filters-panel.show {
+    display: block;
+}
+
+
+/* =========================================================
+   FILTER HEADER
+========================================================= */
+
+.filters-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-bottom: 14px;
+    margin-bottom: 4px;
+
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.filters-panel-header > div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.filters-panel-header strong {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.filters-panel-header span {
+    font-size: 12px;
+    color: #929292;
+}
+
+
+/* =========================================================
+   CLEAR BUTTON
+========================================================= */
+
+.filters-clear-btn {
+    border: none;
+    background: transparent;
+
+    color: #DC2626;
+
+    font-family: inherit;
+    font-size: 13px;
+
+    cursor: pointer;
+
+    padding: 4px 0;
+}
+
+.filters-clear-btn:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   FILTER GROUP
+========================================================= */
+
+.multi-filter-group {
+    padding: 14px 0;
+
+    border-bottom: 1px solid #F0F1F4;
+}
+
+.multi-filter-group > label {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: var(--text);
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   FILTER OPTIONS
+========================================================= */
+
+.multi-filter-options {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 7px;
+}
+
+.filter-check {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 7px 10px;
+
+    border: 1px solid #E1E4EA;
+    border-radius: 9px;
+
+    background: #FFFFFF;
+    color: #555555;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition: .15s;
+}
+
+.filter-check:hover {
+    background: #F5F6FF;
+
+    border-color: var(--primary);
+
+    color: var(--primary);
+}
+
+.filter-check input {
+    margin: 0;
+
+    accent-color: var(--primary);
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   FILTER FOOTER
+========================================================= */
+
+.filters-panel-footer {
+    padding-top: 15px;
+}
+
+.filters-apply-btn {
+    width: 100%;
+    height: 40px;
+
+    border: none;
+    border-radius: 11px;
+
+    background: var(--primary);
+    color: #FFFFFF;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.filters-apply-btn:hover {
+    opacity: .9;
+}
+
+
+/* =========================================================
+   MOBILE FILTER
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .filter-panel-wrapper {
+        width: 100%;
+    }
+
+    .filters-main-btn {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .filters-panel {
+        left: 0;
+        right: auto;
+
+        width: 100%;
+        max-width: 100%;
+
+        max-height: 70vh;
+
+        box-sizing: border-box;
+    }
+
+}
+
+/* =========================================================
+   IMPORT
+========================================================= */
+
+.import-btn {
+
+    height: 38px;
+
+    padding: 0 15px;
+
+    border: 1px solid #D9DDE7;
+
+    border-radius: 10px;
+
+    background: #FFFFFF;
+
+    color: var(--text);
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    transition: .2s;
+
+}
+
+.import-btn:hover {
+
+    background: #F8F9FC;
+
+    border-color: #BFC5D2;
+
+}
+
+
+/* =========================================================
+   EXPORT
+========================================================= */
+
+.export-btn {
+
+    height: 38px;
+
+    padding: 0 15px;
+
+    border: 1px solid #D9DDE7;
+
+    border-radius: 10px;
+
+    background: #FFFFFF;
+
+    color: var(--text);
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    transition: .2s;
+
+}
+
+.export-btn:hover {
+
+    background: #F8F9FC;
+
+    border-color: #BFC5D2;
+
+}
+
+/* =========================================================
+   DELETE ALL
+========================================================= */
+
+.delete-all-btn {
+
+    height: 38px;
+
+    padding: 0 15px;
+
+    border: 1px solid #F0C7C7;
+
+    border-radius: 10px;
+
+    background: #FFFFFF;
+
+    color: #DC2626;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    transition: .2s;
+
+}
+
+.delete-all-btn:hover {
+
+    background: #FEF2F2;
+
+    border-color: #DC2626;
+
+}
+
+
+/* =========================================================
+   ARCHIVE ALL
+========================================================= */
+
+.archive-all-btn {
+
+    height: 38px;
+
+    padding: 0 15px;
+
+    border: 1px solid #D97706;
+
+    border-radius: 10px;
+
+    background: #FFFFFF;
+
+    color: #D97706;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    transition: .2s;
+
+}
+
+.archive-all-btn:hover {
+
+    color: #F59E0B;
+
+    border-color: #F59E0B;
+
+    background: #FFFBEB;
+
+}
+
+
+/* =========================================================
+   VOTER LIST
+========================================================= */
+
+.voter-list {
+
+    padding: 0 24px 24px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+
+}
+
+
+/* =========================================================
+   VOTER ITEM
+========================================================= */
+
+.voter-item {
+
+    width: 100%;
+
+    border: 1px solid #1F1F1F;
+
+    border-radius: 15px;
+
+    background: #FFFFFF;
+
+    overflow: hidden;
+
+    transition: .2s;
+
+}
+
+.voter-item:hover {
+
+    border-color: #6B6B6B;
+
+}
+
+
+/* =========================================================
+   VOTER SUMMARY
+========================================================= */
+
+.voter-summary {
+
+    min-height: 46px;
+
+    padding: 0 16px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 16px;
+
+}
+
+.voter-summary-status {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 14px;
+}
+
+.voter-summary-main {
+
+    min-width: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+.voter-summary-main i {
+
+    font-size: 16px;
+
+    color: var(--text);
+
+}
+
+.voter-name {
+
+    color: var(--text);
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+}
+
+
+
+.voter-item.expanded
+.voter-summary-arrow {
+
+    transform: rotate(180deg);
+
+}
+
+/* =========================================================
+   VOTER SUMMARY INFO
+========================================================= */
+
+.voter-summary-info {
+
+    min-width: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+}
+
+.voter-id {
+
+    color: var(--text);
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    white-space: nowrap;
+
+}
+
+.voter-divider {
+
+    color: #A0A0A0;
+
+    font-size: 14px;
+
+}
+
+.voter-name {
+
+    color: var(--text);
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+}
+
+/* =========================================================
+   VOTER ACTIONS
+========================================================= */
+
+.voter-summary-actions {
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+}
+
+
+.voter-action-btn {
+
+    width: 32px;
+
+    height: 32px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    border: 1px solid var(--border);
+
+    background: transparent;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    transition: .2s;
+
+    gap: 8px;
+    flex-shrink: 0
+}
+
+.voter-action-btn.edit:hover {
+    color: var(--primary);
+
+    border-color: var(--primary);
+
+    background: #EEF2FF;
+}
+
+.voter-action-btn.expand:hover {
+    color: var(--primary);
+
+    border-color: var(--primary);
+
+    background: #EEF2FF;
+}
+
+
+.voter-action-btn.archive:hover {
+
+    color: #F59E0B;
+
+    border-color: #F59E0B;
+
+    background: #FFFBEB;
+
+}
+
+
+
+.voter-action-btn.delete:hover {
+
+    color: #EF4444;
+
+    border-color: #EF4444;
+
+    background: #FEF2F2;
+
+}
+
+
+/* .voter-summary-arrow {
+
+    flex-shrink: 0;
+
+    font-size: 15px;
+
+    transition: transform .2s;
+
+    cursor: pointer;
+
+    border: 1px solid var(--border);
+
+} */
+
+.edit-voter-modal {
+    width: min(560px, calc(100vw - 32px));
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+}
+
+.edit-voter-form {
+    display: grid;
+    gap: 18px;
+    padding: 24px 28px;
+}
+
+.edit-voter-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.edit-voter-form .form-group label {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.edit-voter-form input,
+.edit-voter-form select {
+    width: 100%;
+}
+
+.edit-voter-form input.error,
+.edit-voter-form select.error {
+    border-color: #DC2626;
+}
+
+.inline-error {
+    min-height: 17px;
+    color: #DC2626;
+    font-size: 12px;
+}
+
+/* =========================================================
+   EDIT VOTER MODAL BUTTONS
+========================================================= */
+
+.edit-voter-modal .modal-footer {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 18px 28px;
+
+    border-top: 1px solid #E5E7EB;
+
+}
+
+
+/* =========================================================
+   CANCEL
+========================================================= */
+
+.edit-voter-modal .cancel-btn {
+
+    height: 40px;
+
+    padding: 0 18px;
+
+    border: 1px solid #D9DDE7;
+
+    border-radius: 10px;
+
+    background: #FFFFFF;
+
+    color: #475569;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition: .2s;
+
+}
+
+.edit-voter-modal .cancel-btn:hover {
+
+    background: #F8F9FC;
+
+    border-color: #BFC5D2;
+
+    color: var(--text);
+
+}
+
+
+/* =========================================================
+   SAVE CHANGES
+========================================================= */
+
+.edit-voter-modal .save-btn {
+
+    height: 40px;
+
+    padding: 0 18px;
+
+    border: 1px solid var(--primary);
+
+    border-radius: 10px;
+
+    background: var(--primary);
+
+    color: #FFFFFF;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    transition: .2s;
+
+}
+
+.edit-voter-modal .save-btn:hover {
+
+    opacity: .9;
+
+    transform: translateY(-1px);
+
+}
+
+.edit-voter-modal .save-btn:active {
+
+    transform: translateY(0);
+
+}
+
+.edit-voter-modal .save-btn i {
+
+    font-size: 15px;
+
+}
+
+
+/* =========================================================
+   VOTER DETAILS
+========================================================= */
+
+.voter-details {
+
+    display: none;
+
+    padding: 0 16px 16px;
+
+}
+
+.voter-item.expanded .voter-details {
+
+    display: block;
+
+}
+
+.voter-details-inner {
+
+    border-top: 1px solid #1F1F1F;
+
+    padding-top: 10px;
+
+}
+
+.voter-detail-row {
+
+    min-height: 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    font-size: 13px;
+
+}
+
+.voter-detail-row span:first-child {
+
+    width: 110px;
+
+    color: var(--text);
+
+}
+
+.voter-detail-row span:last-child {
+
+    color: var(--text);
+
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.voter-status {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    font-size: 13px;
+
+}
+
+.voter-status::before {
+
+    content: "";
+
+    width: 7px;
+
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #94A3B8;
+
+}
+
+.voter-status.voted {
+
+    color: #159947;
+
+}
+
+.voter-status.voted::before {
+
+    background: #22C55E;
+
+}
+
+.voter-status.not-voted {
+
+    color: #C88A00;
+
+}
+
+.voter-status.not-voted::before {
+
+    background: #F59E0B;
+
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.voters-empty {
+
+    display: none;
+
+    padding: 60px 30px;
+
+    text-align: center;
+
+}
+
+.voters-empty.show {
+
+    display: block;
+
+}
+
+.voters-empty i {
+
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: #C4CCDB;
+
+    font-size: 42px;
+
+}
+
+.voters-empty h3 {
+
+    margin-bottom: 6px;
+
+    font-size: 18px;
+
+}
+
+.voters-empty p {
+
+    font-size: 14px;
+
+}
+
+
+/* =========================================================
+   PAGINATION
+========================================================= */
+
+.voters-pagination {
+
+    height: 70px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 16px;
+
+    color: var(--text);
+
+    font-size: 14px;
+
+}
+
+.pagination-arrow {
+
+    width: 32px;
+
+    height: 32px;
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--text);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    cursor: pointer;
+
+    font-size: 21px;
+
+    transition: .2s;
+
+}
+
+.pagination-arrow:hover:not(:disabled) {
+
+    color: var(--primary);
+
+    transform: scale(1.08);
+
+}
+
+.pagination-arrow:disabled {
+
+    color: #C7CBD5;
+
+    cursor: default;
+
+}
+
+#paginationText {
+
+    min-width: 70px;
+
+    text-align: center;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1000px) {
+
+    .voters-filter-bar {
+
+        gap: 16px;
+
+        padding-left: 24px;
+
+        padding-right: 24px;
+
+    }
+
+}
+
+@media(max-width:800px) {
+
+     .voters-toolbar {
+
+        grid-template-columns: 1fr;
+
+        width: 100%;
+
+    }
+
+    .voter-search {
+
+        width: 100%;
+
+        min-width: 0;
+
+    }
+
+    .voter-search input {
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+    }
+
+    .voter-sort-btn {
+
+        width: 48px;
+
+    }
+
+    .voters-filter-bar {
+
+        justify-content: flex-start;
+
+        flex-wrap: wrap;
+
+    }
+
+    .voters-card-header {
+
+        padding: 0 24px;
+
+    }
+
+}
+
+@media(max-width:600px) {
+
+    .voters-toolbar {
+
+        grid-template-columns: 1fr;
+
+        width: 100%;
+
+    }
+
+    .voter-search {
+
+        width: 100%;
+
+        min-width: 0;
+
+    }
+
+    .voter-search input {
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+    }
+
+    .icon-sort-btn {
+
+        display: none;
+
+    }
+
+    .voters-filter-bar {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+    }
+
+    .filter-button {
+
+        width: 100%;
+
+        justify-content: space-between;
+
+    }
+
+    .filter-dropdown {
+
+        left: 0;
+
+        right: auto;
+
+        width: 100%;
+
+    }
+
+    .export-btn {
+
+        width: 100%;
+
+    }
+
+    .voter-list {
+
+        padding: 0 16px 20px;
+
+    }
+
+    .voters-card-header {
+
+        padding: 0 20px;
+
+    }
+
+    .voters-card-header h2 {
+
+        font-size: 20px;
+
+    }
+
+    .voter-summary {
+            flex-wrap: wrap;
+            row-gap: 10px;
+            min-height: auto;
+            padding: 12px 16px;
+        }
+
+        .voter-summary-main {
+            flex: 1 1 100%;
+            width: 100%;
+        }
+
+        .voter-summary-status {
+            margin-left: 0;
+            flex: 1 1 auto;
+        }
+
+       .voter-summary-actions {
+               width: 100%;
+               justify-content: center;
+               margin-left: 0;
+           }
+
+        .voter-action-btn {
+            flex-shrink: 0;
+        }
+
+}

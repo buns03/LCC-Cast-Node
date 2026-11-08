@@ -1,0 +1,1438 @@
+/* ==========================================================
+   LCCAST — VOTE SUMMARIES
+========================================================== */
+
+
+/* ==========================================================
+   PAGE CONTENT
+========================================================== */
+
+.voter-page-content {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* =========================================================
+   INSTRUCTIONS
+========================================================= */
+
+.election-instructions {
+    padding: 22px 24px;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+}
+
+.election-instructions h3 {
+    margin: 0 0 7px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.election-instructions p {
+    margin: 0;
+    max-width: 900px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--subtext);
+}
+
+
+/* ==========================================================
+   PAGE HEADER
+========================================================== */
+
+.voter-page-content .page-header {
+    margin-bottom: 28px;
+}
+
+.voter-page-content .page-header h2 {
+    margin: 0 0 6px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.voter-page-content .page-header p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* ==========================================================
+   SUMMARY TABS
+========================================================== */
+
+.vote-summary-tabs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    width: 100%;
+    margin-bottom: 24px;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.vote-summary-tab {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    min-height: 46px;
+    padding: 0 20px;
+
+    border: none;
+    background: transparent;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease;
+}
+
+.vote-summary-tab::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: -1px;
+
+    height: 2px;
+
+    background: transparent;
+
+    transition: background 0.2s ease;
+}
+
+.vote-summary-tab:hover {
+    background: #f7f8ff;
+}
+
+.vote-summary-tab.active {
+    color: #435cff;
+}
+
+.vote-summary-tab.active::after {
+    background: #435cff;
+}
+
+.vote-summary-tab i {
+    font-size: 16px;
+}
+
+
+/* ==========================================================
+   SUMMARY SECTIONS
+========================================================== */
+
+.vote-summary-section {
+    display: none;
+    width: 100%;
+}
+
+.vote-summary-section.active {
+    display: block;
+}
+
+
+/* ==========================================================
+   SUMMARY CARD
+========================================================== */
+
+.vote-record-card {
+    width: 100%;
+    margin-bottom: 24px;
+
+    box-sizing: border-box;
+
+    background: #ffffff;
+
+    border: 1px solid #e7e9f0;
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 2px 8px rgba(15, 23, 42, 0.03);
+
+    transition:
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.vote-record-card:hover {
+    box-shadow:
+        0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+
+/* ==========================================================
+   SUMMARY CARD HEADER
+========================================================== */
+
+.vote-record-card .summary-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+
+    padding: 24px 26px;
+
+    border-bottom: 1px solid #eef0f4;
+}
+
+.vote-summary-title {
+    min-width: 0;
+}
+
+.vote-summary-title h3 {
+    margin: 0 0 6px;
+
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.4;
+
+    overflow-wrap: anywhere;
+}
+
+.vote-summary-title p {
+    margin: 0;
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* ==========================================================
+   HEADER ACTIONS
+========================================================== */
+
+.vote-summary-header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+
+    flex-shrink: 0;
+}
+
+.summary-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 32px;
+    padding: 0 12px;
+
+    border-radius: 999px;
+
+    background: #edf8f1;
+    color: #23844b;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================================
+   EXPORT BUTTON
+========================================================== */
+
+.export-summary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    min-height: 36px;
+    padding: 0 13px;
+
+    border: 1px solid #dfe3eb;
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #3f4654;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.export-summary-btn:hover {
+    background: #f5f6ff;
+    border-color: #435cff;
+    color: #435cff;
+}
+
+.export-summary-btn i {
+    font-size: 14px;
+}
+
+
+/* ==========================================================
+   SUMMARY DETAILS
+========================================================== */
+
+.vote-record-card .summary-details {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 1px;
+
+    margin: 0;
+
+    background: #eef0f4;
+
+    border-bottom: 1px solid #eef0f4;
+}
+
+.vote-record-card .summary-detail {
+    min-width: 0;
+
+    padding: 18px 22px;
+
+    background: #ffffff;
+}
+
+.vote-record-card .summary-detail span {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.vote-record-card .summary-detail strong {
+    display: block;
+
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* ==========================================================
+   CANDIDATES SECTION
+========================================================== */
+
+.voted-candidates-section {
+    padding: 26px;
+}
+
+.voted-candidates-header {
+    margin-bottom: 20px;
+}
+
+.voted-candidates-header h4 {
+    margin: 0 0 5px;
+
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.voted-candidates-header p {
+    margin: 0;
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* ==========================================================
+   CANDIDATE LIST
+========================================================== */
+
+.voted-candidates-list {
+    width: 100%;
+}
+
+
+/* ==========================================================
+   POSITION
+========================================================== */
+
+.voted-candidate-position {
+    width: 100%;
+}
+
+.voted-candidate-position + .voted-candidate-position {
+    margin-top: 20px;
+    padding-top: 20px;
+
+    border-top: 1px solid #e9ebf0;
+}
+
+.candidate-position-header {
+    margin-bottom: 10px;
+}
+
+.candidate-position-header span {
+    display: block;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    line-height: 1.4;
+}
+
+
+/* ==========================================================
+   CANDIDATE CARD
+========================================================== */
+
+.voted-candidate-card {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    min-height: 92px;
+
+    padding: 12px 14px;
+
+    box-sizing: border-box;
+
+    background: #fafbff;
+
+    border: 1px solid #e8eaf0;
+    border-radius: 10px;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.voted-candidate-card:hover {
+    background: #f7f8ff;
+    border-color: #dce0ef;
+}
+
+
+/* ==========================================================
+   CANDIDATE IMAGE
+========================================================== */
+
+.voted-candidate-image {
+    width: 68px;
+    height: 68px;
+
+    flex: 0 0 68px;
+
+    margin-right: 16px;
+
+    overflow: hidden;
+
+    border-radius: 9px;
+
+    background: #eef0f5;
+}
+
+.voted-candidate-image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* ==========================================================
+   CANDIDATE INFORMATION
+========================================================== */
+
+.voted-candidate-info {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+.voted-candidate-name {
+    display: block;
+
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.4;
+
+    overflow-wrap: anywhere;
+}
+
+.voted-candidate-partylist {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    font-size: 12px;
+    line-height: 1.4;
+
+    overflow-wrap: anywhere;
+}
+
+.voted-candidate-partylist i {
+    flex-shrink: 0;
+
+    font-size: 13px;
+}
+
+
+/* ==========================================================
+   EMPTY CANDIDATES
+========================================================== */
+
+.summary-empty-candidates {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 140px;
+    padding: 24px;
+
+    border: 1px dashed #dfe2e9;
+    border-radius: 10px;
+
+    text-align: center;
+}
+
+.summary-empty-candidates i {
+    margin-bottom: 10px;
+
+    font-size: 28px;
+}
+
+.summary-empty-candidates p {
+    margin: 0;
+
+    font-size: 13px;
+}
+
+
+/* ==========================================================
+   EMPTY SUMMARY STATE
+========================================================== */
+
+.summary-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 240px;
+
+    padding: 40px;
+
+    text-align: center;
+}
+
+.summary-empty-state > i {
+    margin-bottom: 12px;
+
+    font-size: 36px;
+}
+
+.summary-empty-state h3 {
+    margin: 0 0 6px;
+
+    font-size: 17px;
+}
+
+.summary-empty-state p {
+    max-width: 400px;
+
+    margin: 0;
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.vote-summary-reference {
+    display: inline-block;
+
+    margin-top: 5px;
+
+    color: #6063FE;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+}
+
+
+/* ==========================================================
+   PDF EXPORT — CLEAN / SLEEK / CREATIVE
+========================================================== */
+
+.vote-summary-pdf {
+    width: 794px;
+    box-sizing: border-box;
+
+    padding: 46px 48px;
+
+    background: #FFFFFF;
+    color: #172033;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+/* ==========================================================
+   LCCAST — VOTE SUMMARY PDF
+   CLEAN / MODERN / SLEEK
+========================================================== */
+
+
+/* ==========================================================
+   PAGE
+========================================================== */
+
+.vote-summary-pdf {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+
+    padding: 36px 42px;
+
+    box-sizing: border-box;
+
+    color: #172033;
+    background: #FFFFFF;
+
+    font-family: "Poppins", Arial, sans-serif;
+}
+
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.pdf-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+
+    border-bottom: 1px solid #E5E9F2;
+}
+
+
+/* SYSTEM BRAND */
+
+.pdf-system-brand {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+}
+
+.pdf-system-logo {
+    width: 36px;
+    height: 36px;
+
+    flex-shrink: 0;
+
+    object-fit: contain;
+}
+
+.pdf-system-name {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+.pdf-system-name h1 {
+    margin: 0;
+
+    color: #20283A;
+
+    font-size: 21px;
+    font-weight: 750;
+
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+.pdf-system-name span {
+    color: #8A92A5;
+
+    font-size: 8px;
+    font-weight: 600;
+
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+
+/* HEADER LABEL */
+
+.pdf-header h2 {
+    margin: 0;
+
+    color: #6063FE;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+}
+
+
+/* ==========================================================
+   ELECTION INFORMATION
+========================================================== */
+
+.pdf-election-info {
+    margin-bottom: 32px;
+
+    padding: 0 0 25px;
+
+    border-bottom: 1px solid #E5E9F2;
+
+    background: transparent;
+}
+
+.pdf-election-info h3 {
+    margin: 0 0 19px;
+
+    color: #172033;
+
+    font-size: 20px;
+    font-weight: 750;
+
+    letter-spacing: -0.4px;
+    line-height: 1.35;
+}
+
+
+/* INFORMATION ROW */
+
+.pdf-info-row {
+    display: flex;
+    align-items: center;
+
+    min-height: 23px;
+
+    margin-bottom: 5px;
+
+    font-size: 10px;
+}
+
+.pdf-info-row:last-child {
+    margin-bottom: 0;
+}
+
+.pdf-info-row strong {
+    width: 100px;
+
+    flex-shrink: 0;
+
+    color: #9299AA;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+}
+
+.pdf-info-row span {
+    color: #3B4457;
+
+    font-size: 10px;
+    font-weight: 600;
+}
+
+
+/* ==========================================================
+   CANDIDATES SECTION
+========================================================== */
+
+.pdf-candidates h3 {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    margin: 0 0 14px;
+
+    color: #20283A;
+
+    font-size: 13px;
+    font-weight: 750;
+
+    letter-spacing: -0.1px;
+}
+
+.pdf-candidates h3::before {
+    content: "";
+
+    width: 3px;
+    height: 15px;
+
+    flex-shrink: 0;
+
+    border-radius: 4px;
+
+    background: #6063FE;
+}
+
+
+/* ==========================================================
+   CANDIDATE ITEM
+========================================================== */
+
+.pdf-candidate {
+    position: relative;
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    padding: 12px 14px 12px 17px;
+
+    border: 1px solid #E7EAF1;
+    border-radius: 8px;
+
+    background: #FFFFFF;
+
+    box-sizing: border-box;
+}
+
+.pdf-candidate:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================================
+   POSITION
+========================================================== */
+
+.pdf-position {
+    margin-bottom: 7px;
+
+    color: #858DA0;
+
+    font-size: 7px;
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+
+/* ==========================================================
+   CANDIDATE CONTENT
+========================================================== */
+
+.pdf-candidate-content {
+    display: flex;
+    align-items: center;
+
+    min-width: 0;
+}
+
+
+/* ==========================================================
+   CANDIDATE IMAGE
+========================================================== */
+
+.pdf-candidate-image {
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    margin-right: 13px;
+
+    overflow: hidden;
+
+    border-radius: 7px;
+
+    background: #F2F4F8;
+}
+
+.pdf-candidate-image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* ==========================================================
+   CANDIDATE DETAILS
+========================================================== */
+
+.pdf-candidate-details {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+
+    min-width: 0;
+}
+
+.pdf-candidate-details strong {
+    color: #20283A;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    line-height: 1.35;
+}
+
+.pdf-candidate-details span {
+    color: #8A92A5;
+
+    font-size: 9px;
+    font-weight: 500;
+
+    line-height: 1.4;
+}
+
+.pdf-candidate-details span::before {
+    content: "•";
+
+    margin-right: 5px;
+
+    color: #6063FE;
+}
+
+
+/* ==========================================================
+   SUBTLE LEFT ACCENT
+========================================================== */
+
+.pdf-candidate::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 10px;
+    bottom: 10px;
+
+    width: 2px;
+
+    border-radius: 0 3px 3px 0;
+
+    background: #6063FE;
+}
+
+
+/* ==========================================================
+   PRINT
+========================================================== */
+
+@media print {
+
+    .vote-summary-pdf {
+        width: 100%;
+        max-width: none;
+
+        padding: 30px 36px;
+
+        background: #FFFFFF;
+    }
+
+    .pdf-header {
+        break-inside: avoid;
+    }
+
+    .pdf-election-info {
+        break-inside: avoid;
+    }
+
+    .pdf-candidates h3 {
+        break-after: avoid;
+    }
+
+    .pdf-candidate {
+        break-inside: avoid;
+    }
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width: 768px) {
+
+    .vote-summary-pdf {
+        padding: 24px;
+    }
+
+    .pdf-header {
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .pdf-system-name h1 {
+        font-size: 18px;
+    }
+
+    .pdf-election-info h3 {
+        font-size: 18px;
+    }
+
+    .pdf-info-row {
+        align-items: flex-start;
+        flex-direction: column;
+
+        gap: 2px;
+
+        margin-bottom: 9px;
+    }
+
+    .pdf-info-row strong {
+        width: auto;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .vote-summary-pdf {
+        padding: 20px 16px;
+    }
+
+    .pdf-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .pdf-header h2 {
+        display: none;
+    }
+
+    .pdf-candidate {
+        padding: 11px 12px 11px 15px;
+    }
+
+    .pdf-candidate-image {
+        width: 44px;
+        height: 44px;
+
+        margin-right: 11px;
+    }
+
+    .pdf-candidate-details strong {
+        font-size: 11px;
+    }
+
+    .pdf-candidate-details span {
+        font-size: 8px;
+    }
+}
+
+
+
+/* ==========================================================
+   LARGE TABLET / SMALL DESKTOP
+========================================================== */
+
+@media (max-width: 1100px) {
+
+    .vote-record-card .summary-details {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 768px) {
+
+    .voter-page-content .page-header {
+        margin-bottom: 22px;
+    }
+
+    .voter-page-content .page-header h2 {
+        font-size: 20px;
+    }
+
+    .voter-page-content .page-header p {
+        font-size: 12.5px;
+    }
+
+    .vote-summary-title h3 {
+        font-size: 15px;
+    }
+
+    .vote-summary-title p {
+        font-size: 12px;
+    }
+
+    .vote-summary-tabs {
+        margin-bottom: 20px;
+    }
+
+    .vote-summary-tab {
+        flex: 1;
+
+        padding: 0 14px;
+
+        font-size: 13px;
+    }
+
+
+    /* HEADER */
+
+    .vote-record-card .summary-card-header {
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 16px;
+
+        padding: 20px;
+    }
+
+    .vote-summary-header-actions {
+        justify-content: space-between;
+    }
+
+
+    /* DETAILS */
+
+    .vote-record-card .summary-details {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .vote-record-card .summary-detail {
+        padding: 16px;
+    }
+
+
+    /* CANDIDATES */
+
+    .voted-candidates-section {
+        padding: 20px;
+    }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 576px) {
+
+    .voter-page-content .page-header h2 {
+        font-size: 20px;
+    }
+
+    .voter-page-content .page-header p {
+        font-size: 12.5px;
+    }
+
+    .vote-summary-title h3 {
+        font-size: 15px;
+    }
+
+    .vote-summary-title p {
+        font-size: 12px;
+    }
+
+    .voter-page-content .page-header p {
+        font-size: 13px;
+    }
+
+
+    /* TABS */
+
+    .vote-summary-tabs {
+        gap: 4px;
+    }
+
+    .vote-summary-tab {
+        min-height: 42px;
+
+        padding: 0 8px;
+
+        gap: 5px;
+
+        font-size: 12px;
+    }
+
+    .vote-summary-tab i {
+        font-size: 14px;
+    }
+
+
+    /* CARD */
+
+    .vote-record-card {
+        border-radius: 11px;
+    }
+
+    .vote-record-card .summary-card-header {
+        padding: 17px;
+    }
+
+    .vote-summary-title h3 {
+        font-size: 14px;
+    }
+
+    .voted-candidates-header h4 {
+        font-size: 13.5px;
+    }
+
+    .vote-summary-title p {
+        font-size: 12px;
+    }
+
+
+    /* HEADER ACTIONS */
+
+    .vote-summary-header-actions {
+        display: grid;
+
+        grid-template-columns:
+            auto minmax(0, 1fr);
+
+        gap: 8px;
+    }
+
+    .summary-status {
+        min-height: 34px;
+
+        padding: 0 10px;
+
+        font-size: 11px;
+    }
+
+    .export-summary-btn {
+        width: 100%;
+        min-height: 34px;
+
+        padding: 0 10px;
+
+        font-size: 12px;
+    }
+
+
+    /* DETAILS */
+
+    .vote-record-card .summary-details {
+        grid-template-columns: 1fr;
+    }
+
+    .vote-record-card .summary-detail {
+        padding: 13px 17px;
+    }
+
+    .vote-record-card .summary-detail span {
+        margin-bottom: 4px;
+
+        font-size: 10px;
+    }
+
+    .vote-record-card .summary-detail strong {
+        font-size: 12px;
+    }
+
+
+    /* CANDIDATES */
+
+    .voted-candidates-section {
+        padding: 17px;
+    }
+
+    .voted-candidates-header {
+        margin-bottom: 16px;
+    }
+
+    .voted-candidates-header h4 {
+        font-size: 15px;
+    }
+
+    .voted-candidates-header p {
+        font-size: 12px;
+    }
+
+
+    /* CANDIDATE */
+
+    .voted-candidate-position + .voted-candidate-position {
+        margin-top: 16px;
+        padding-top: 16px;
+    }
+
+    .candidate-position-header {
+        margin-bottom: 8px;
+    }
+
+    .candidate-position-header span {
+        font-size: 12px;
+    }
+
+    .voted-candidate-card {
+        min-height: 76px;
+
+        padding: 10px;
+    }
+
+    .voted-candidate-image {
+        width: 54px;
+        height: 54px;
+
+        flex-basis: 54px;
+
+        margin-right: 12px;
+
+        border-radius: 7px;
+    }
+
+    .voted-candidate-name {
+        font-size: 13px;
+    }
+
+    .voted-candidate-partylist {
+        font-size: 11px;
+    }
+
+
+    /* EMPTY */
+
+    .summary-empty-state {
+        min-height: 200px;
+
+        padding: 28px 18px;
+    }
+
+}
+
+
+/* ==========================================================
+   VERY SMALL MOBILE
+========================================================== */
+
+@media (max-width: 380px) {
+
+    .vote-summary-title h3 {
+        font-size: 14px;
+    }
+
+    .voted-candidates-header h4 {
+        font-size: 13.5px;
+    }
+
+    .vote-summary-tab {
+        padding: 0 5px;
+
+        font-size: 11px;
+    }
+
+    .vote-summary-tab i {
+        display: none;
+    }
+
+
+    .vote-summary-header-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-status {
+        width: 100%;
+    }
+
+
+    .voted-candidate-image {
+        width: 48px;
+        height: 48px;
+
+        flex-basis: 48px;
+
+        margin-right: 10px;
+    }
+
+    .voted-candidate-name {
+        font-size: 12px;
+    }
+
+    .voted-candidate-partylist {
+        font-size: 10px;
+    }
+
+}
+
+
+/* ==========================================================
+   ACCESSIBILITY
+========================================================== */
+
+.vote-summary-tab:focus-visible,
+.export-summary-btn:focus-visible {
+    outline: 2px solid #435cff;
+    outline-offset: 2px;
+}
+
+
+/* ==========================================================
+   REDUCED MOTION
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .vote-summary-tab,
+    .vote-summary-tab::after,
+    .vote-record-card,
+    .export-summary-btn,
+    .voted-candidate-card {
+        transition: none;
+    }
+
+}
+

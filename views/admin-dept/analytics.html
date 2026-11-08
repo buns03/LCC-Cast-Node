@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+            http-equiv="Cache-Control"
+            content="no-store, no-cache, must-revalidate, max-age=0"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <title>LCC Cast | Analytics</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/lcccast_logo.png" />
+    <link rel="apple-touch-icon" href="/images/lcccast_logo.png" />
+
+    <!-- Bootstrap Icons -->
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <!-- Base Design System -->
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/admin/layout.css" />
+    <link rel="stylesheet" href="/css/components.css" />
+    <link rel="stylesheet" href="/css/forms.css" />
+    <link rel="stylesheet" href="/css/modal.css" />
+    <link rel="stylesheet" href="/css/navigation.css" />
+    <link rel="stylesheet" href="/css/skeleton-loading.css" />
+    <!-- Analytics Page -->
+    <link rel="stylesheet" href="/css/pages/analytics.css" />
+</head>
+
+<body>
+<!-- ===========================
+SIDEBAR
+============================ -->
+
+<button
+        type="button"
+        class="mobile-nav-toggle"
+        id="mobileNavToggle"
+        aria-label="Open navigation"
+        aria-expanded="false"
+>
+    <i class="bi bi-list"></i>
+</button>
+
+<!-- ===========================
+MOBILE NAVIGATION OVERLAY
+============================ -->
+
+<div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+        <div class="logo">
+            <img src="/images/lcccast_logo.png" alt="LCC Cast" />
+
+            <h2 >LCC Cast</h2>
+        </div>
+
+        <hr />
+
+        <nav>
+            <a href="/admin-dept/dashboard">
+                <i class="bi bi-house-door"></i>
+
+                Dashboard
+            </a>
+
+            <a href="/admin-dept/elections">
+                <i class="bi bi-calendar-event"></i>
+
+                Elections
+            </a>
+
+            <!-- LIVE RESULTS -->
+
+            <a href="/admin-dept/live-results">
+                <i class="bi bi-broadcast-pin"></i>
+
+                Live Results
+            </a>
+
+            <a href="/admin-dept/departments">
+                <i class="bi bi-building"></i>
+
+                Departments
+            </a>
+            
+            <a href="/admin-dept/voters">
+                <i class="bi bi-person-vcard"></i>
+
+                Voters
+            </a>
+
+            <a href="/admin-dept/analytics" class="active">
+                <i class="bi bi-bar-chart"></i>
+
+                Analytics
+            </a>
+
+            <a href="/admin-dept/history">
+                <i class="bi bi-clock-history"></i>
+
+                History
+            </a>
+        </nav>
+    </div>
+
+    <div class="sidebar-bottom">
+        <hr />
+
+        <a href="/admin-dept/settings">
+            <i class="bi bi-gear"></i>
+
+            Settings
+        </a>
+
+        <a href="#" class="logout-trigger">
+            <i class="bi bi-box-arrow-right"></i>
+
+            Logout
+        </a>
+    </div>
+</aside>
+
+<!-- =========================================================
+ MAIN CONTENT
+========================================================= -->
+
+<main class="main-content">
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+        <div>
+            <h1>Analytics</h1>
+
+            <p>Election statistics and voting results</p>
+        </div>
+
+        <div class="profile">
+            <div class="avatar">
+                {{html_avatar}}
+            </div>
+
+            <div class="profile-info">
+                <span>{{displayName}}</span>
+
+                <small>{{programCampus}}</small>
+            </div>
+        </div>
+    </header>
+
+    <!-- =====================================================
+       DEPARTMENT ANALYTICS
+  ====================================================== -->
+
+    <section id="departmentAnalytics" class="analytics-section active">
+        <div class="analytics-section-header">
+            <div>
+                <h2>Department Analytics</h2>
+                <p>Results for your department's current election</p>
+            </div>
+
+            <button type="button" class="export-all-btn" id="exportDepartment">
+                <i class="bi bi-download"></i>
+                Download Graphs
+            </button>
+        </div>
+
+        <div id="departmentCampusAnalytics"></div>
+    </section>
+</main>
+
+<!-- =========================================================
+ LOGOUT MODAL
+========================================================= -->
+
+<div class="modal-overlay" id="logoutModal">
+    <div class="delete-modal logout-modal">
+        <div class="delete-modal-content">
+            <div class="delete-modal-icon">
+                <i class="bi bi-box-arrow-right"></i>
+            </div>
+
+            <h2>Logout?</h2>
+
+            <p>Are you sure you want to logout from LCC Cast?</p>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="logout-cancel-btn" id="cancelLogout">
+                Cancel
+            </button>
+
+            <button type="button" class="logout-confirm-btn" id="confirmLogout">
+                <i class="bi bi-box-arrow-right"></i>
+
+                Logout
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- =========================================================
+ GLOBAL ACTION LOADING MODAL
+========================================================= -->
+
+<div class="modal-overlay loading-modal-overlay" id="actionLoadingModal">
+    <div class="action-loading-modal">
+        <div class="action-loading-spinner">
+            <span></span>
+        </div>
+
+        <div class="action-loading-content">
+            <h2 id="actionLoadingTitle">Processing...</h2>
+
+            <p id="actionLoadingMessage">
+                Please wait while we process your request.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- =========================================================
+ SUCCESS TOAST
+========================================================= -->
+
+<div class="success-toast" id="successToast">
+    <div class="success-toast-icon">
+        <i class="bi bi-check-lg"></i>
+    </div>
+
+    <div class="success-toast-content">
+        <strong id="successToastTitle"> Success </strong>
+
+        <span id="successToastMessage"> Action completed successfully. </span>
+    </div>
+
+    <button
+            type="button"
+            class="success-toast-close"
+            id="successToastClose"
+            aria-label="Close notification"
+    >
+        <i class="bi bi-x"></i>
+    </button>
+</div>
+
+<!-- =========================================================
+ CHART.JS
+========================================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="/js/superadmin/soft-cache.js"></script>
+<script src="/js/navigation.js"></script>
+
+<!-- Analytics JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.6.1/dist/sockjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+<script src="/js/pdf-brand.js"></script>
+<script src="/js/admin-dept/analytics.js"></script>
+<script src="/js/logout.js"></script>
+</body>
+</html>

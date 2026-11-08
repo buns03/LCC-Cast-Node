@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LCC Cast Election Results</title>
+</head>
+<body style="margin:0; padding:0; background:#f4f5fb; font-family:Arial, Helvetica, sans-serif;">
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f5fb; padding:32px 0;">
+    <tr>
+        <td align="center">
+
+            <table role="presentation" width="600" cellpadding="0" cellspacing="0"
+                   style="width:600px; max-width:92vw; background:#ffffff; border-radius:20px; overflow:hidden; border:1px solid #e5e7eb;">
+
+                <!-- HEADER: two logos + title -->
+                <tr>
+                    <td style="background:#435CFF; padding:22px 30px;">
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td align="center" style="vertical-align:middle;">
+                                    <div style="font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#ffffff;">
+                                        Official Election Results
+                                    </div>
+                                    <div style="font-size:13px; color:#dfe3ff; margin-top:2px;"
+                                         th:text="${headerSubtitle}">
+                                        [PROGRAM] - [CAMPUS] - [ELECTION TYPE]
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- LOGIN CTA -->
+                <tr>
+                    <td style="padding:24px 30px 0;">
+                        <table role="presentation" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td style="border-radius:10px; background:#435CFF;">
+                                    <a th:href="${loginUrl}"
+                                       style="display:inline-block; padding:12px 20px; font-size:13px; font-weight:600;
+                              color:#ffffff; text-decoration:none; border-radius:10px;">
+                                        Login to LCC Cast to View Full Results
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- ELECTION INFO CARD -->
+                <tr>
+                    <td style="padding:24px 30px 0;">
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+                               style="border:1px solid #e5e7eb; border-radius:16px;">
+                            <tr>
+                                <td style="padding:22px 24px;">
+
+                                    <div style="font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase;
+                                color:#435CFF; margin-bottom:8px;"
+                                         th:text="${categoryLabel}">Student Supreme Council Election</div>
+
+                                    <div style="font-size:20px; font-weight:700; color:#0f172a; margin-bottom:6px;"
+                                         th:text="${electionTitle}">SSC Election 2026-2027</div>
+
+                                    <div style="font-size:13px; color:#6b7280;">
+                                        <span th:text="${campus}">Kaypian Campus</span> &middot;
+                                        School Year <span th:text="${schoolYear}">2026-2027</span>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- WINNERS -->
+                <!-- WINNERS -->
+                <tr th:if="${winners != null and !winners.isEmpty()}">
+                    <td style="padding:24px 30px 0;">
+                        <div style="font-size:14px; font-weight:700; color:#0f172a; margin-bottom:10px;">
+                            &#127942; Winners
+                        </div>
+
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+                               th:each="winner : ${winners}"
+                               style="border:1px solid #e5e7eb; border-radius:12px; margin-bottom:10px;">
+                            <tr>
+                                <td style="padding:14px 16px;">
+                                    <table role="presentation" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td th:if="${winner.photo != null}" style="width:48px; padding-right:12px; vertical-align:top;">
+                                                <img th:src="${winner.photo}" width="44" height="44"
+                                                     style="width:44px; height:44px; border-radius:10px; object-fit:cover; display:block;" />
+                                            </td>
+                                            <td style="vertical-align:top;">
+                                                <div style="font-size:10px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; color:#9ca3af; margin-bottom:2px;"
+                                                     th:text="${winner.position}">Position</div>
+                                                <div style="font-size:14px; font-weight:700; color:#0f172a;" th:text="${winner.name}">
+                                                    Candidate Name
+                                                </div>
+                                                <div style="font-size:12px; color:#6b7280; margin-top:1px;" th:text="${winner.group}">
+                                                    Partylist / Department
+                                                </div>
+                                                <div style="font-size:11px; color:#435CFF; font-weight:600; margin-top:3px;"
+                                                     th:text="${winner.votes} + ' votes'">
+                                                    120 votes
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+    <tr th:if="${drawPositions != null and !drawPositions.isEmpty()}">
+        <td style="padding:8px 30px 0;">
+            <div style="padding:14px 16px; border:1px dashed #F59E0B; background:#FFFBEB; border-radius:12px; font-size:13px; color:#92400E;">
+                <strong>No official winner yet</strong> for
+                <span th:text="${#strings.listJoin(drawPositions, ', ')}">President</span>.
+                These positions ended in a draw. A tie-break election will be scheduled and the result announced afterwards.
+            </div>
+        </td>
+    </tr>
+
+                <!-- FOOTER -->
+                <tr>
+                    <td style="padding:28px 30px 30px;">
+                        <table role="presentation" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td style="border-radius:10px; background:#435CFF;">
+                                    <a th:href="${loginUrl}"
+                                       style="display:inline-block; padding:12px 22px; font-size:13px; font-weight:600;
+                              color:#ffffff; text-decoration:none; border-radius:10px;">
+                                        View Full Results
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                        <p style="font-size:11px; color:#9ca3af; margin:20px 0 0;">
+                            This is an automated notification from LCC Cast. You are receiving this because
+                            you were an eligible voter for this election.
+                        </p>
+                    </td>
+                </tr>
+
+            </table>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

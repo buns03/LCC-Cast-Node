@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <title>LCC Cast | Personal Information</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/lcccast_logo.png" />
+    <link rel="apple-touch-icon" href="/images/lcccast_logo.png" />
+
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/voter/layout.css" />
+    <link rel="stylesheet" href="/css/components.css" />
+    <link rel="stylesheet" href="/css/forms.css" />
+    <link rel="stylesheet" href="/css/modal.css" />
+    <link rel="stylesheet" href="/css/navigation.css" />
+    <link rel="stylesheet" href="/css/candidate/candidate-portal.css" />
+    <link rel="stylesheet" href="/css/doc-image-ratio.css" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+</head>
+
+<body>
+<button type="button" class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open navigation" aria-expanded="false">
+    <i class="bi bi-list"></i>
+</button>
+
+<div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+        <div class="logo">
+            <img src="/images/lcccast_logo.png" alt="LCC Cast" />
+            <h2>LCC Cast</h2>
+        </div>
+
+        <hr />
+
+        <nav>
+            <a href="/candidate/personal-information" class="active">
+                <i class="bi bi-person-vcard"></i>
+                <span>Personal Information</span>
+            </a>
+
+            <a href="/candidate/partylist-information">
+                <i class="bi bi-people"></i>
+                <span>Partylist Information</span>
+            </a>
+            <hr />
+
+            <a href="/voter/ssc-election">
+                <i class="bi bi-calendar-event"></i>
+                <span>SSC Election</span>
+            </a>
+
+            <a href="/voter/department-election">
+                <i class="bi bi-building"></i>
+                <span>Department Election</span>
+            </a>
+
+            <a href="/voter/vote-summaries">
+                <i class="bi bi-bar-chart"></i>
+                <span>Vote Summaries</span>
+            </a>
+        </nav>
+    </div>
+
+    <div class="sidebar-bottom">
+        <hr />
+
+        <a href="/candidate/settings">
+            <i class="bi bi-gear"></i>
+            <span>Settings</span>
+        </a>
+
+        <a href="#" class="logout-trigger">
+            <i class="bi bi-box-arrow-right"></i>
+            <span>Logout</span>
+        </a>
+    </div>
+</aside>
+
+<main class="main-content">
+    <header class="topbar">
+        <div>
+            <h1>Personal Information</h1>
+            <p>Manage the photo, background, and campaign image shown to voters for each of your candidacies.</p>
+        </div>
+
+        <div class="profile">
+            <div class="avatar">
+                {{html_avatar}}
+            </div>
+
+            <div class="profile-info">
+                <span>{{displayName}}</span>
+                <small>Candidate</small>
+            </div>
+        </div>
+    </header>
+
+    <section class="candidate-portal-content">
+
+        <!-- =========================================================
+             CANDIDATE TYPE TABS (SSC / DEPARTMENT)
+        ========================================================== -->
+
+        <div class="candidate-type-tabs">
+            <button type="button" class="candidate-type-tab active" data-type="ssc">
+                <i class="bi bi-calendar-event"></i>
+                SSC
+            </button>
+
+            <button type="button" class="candidate-type-tab" data-type="department">
+                <i class="bi bi-building"></i>
+                Department
+            </button>
+        </div>
+
+        <!-- =========================================================
+             SSC PERSONAL INFO
+        ========================================================== -->
+
+        <section class="candidate-type-section active" data-type-section="ssc">
+            <div id="sscPersonalContent">
+                <!-- filled by JS: skeleton first, then real content -->
+            </div>
+        </section>
+
+        <!-- =========================================================
+             DEPARTMENT PERSONAL INFO
+        ========================================================== -->
+
+        <section class="candidate-type-section" data-type-section="department">
+            <div id="departmentPersonalContent">
+                <!-- filled by JS: skeleton first, then real content -->
+            </div>
+        </section>
+
+    </section>
+</main>
+
+<div class="modal-overlay" id="logoutModal">
+    <div class="delete-modal logout-modal">
+        <div class="delete-modal-content">
+            <div class="delete-modal-icon"><i class="bi bi-box-arrow-right"></i></div>
+            <h2>Logout?</h2>
+            <p>Are you sure you want to logout from LCC Cast?</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="logout-cancel-btn" id="cancelLogout">Cancel</button>
+            <button type="button" class="logout-confirm-btn" id="confirmLogout">
+                <i class="bi bi-box-arrow-right"></i> Logout
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay loading-modal-overlay" id="actionLoadingModal">
+    <div class="action-loading-modal">
+        <div class="action-loading-spinner"><span></span></div>
+        <div class="action-loading-content">
+            <h2 id="actionLoadingTitle">Processing...</h2>
+            <p id="actionLoadingMessage">Please wait while we process your request.</p>
+        </div>
+    </div>
+</div>
+
+<div class="success-toast" id="successToast" aria-live="polite">
+    <div class="success-toast-icon"><i class="bi bi-check-lg"></i></div>
+    <div class="success-toast-content">
+        <strong id="successToastTitle">Success</strong>
+        <span id="successToastMessage">Updated successfully.</span>
+    </div>
+    <button type="button" class="success-toast-close" id="successToastClose" aria-label="Close notification">
+        <i class="bi bi-x-lg"></i>
+    </button>
+</div>
+<script src="/js/superadmin/soft-cache.js"></script>
+<script src="/js/navigation.js"></script>
+<script src="/js/logout.js"></script>
+<script src="/js/doc-image-ratio.js"></script>
+<script src="/js/candidate/personal-information.js"></script>
+</body>
+</html>

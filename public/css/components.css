@@ -1,0 +1,1137 @@
+/* =========================================================
+   LCCAST
+   SHARED COMPONENTS
+=========================================================*/
+
+/* =========================================================
+CARDS
+=========================================================*/
+
+.card{
+
+    background:#FFFFFF;
+
+    border:1px solid var(--border);
+
+    border-radius:24px;
+
+    padding:24px;
+
+    transition:.25s ease;
+
+}
+
+.card:hover{
+
+    box-shadow:0 10px 28px rgba(0,0,0,.05);
+
+}
+
+/* =========================================================
+SECTION HEADER
+=========================================================*/
+
+.section-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:18px;
+
+}
+
+.section-header h2,
+.section-header h3{
+
+    font-weight:600;
+
+}
+
+.section-header p{
+
+    color:var(--subtext);
+
+    font-size:14px;
+
+}
+
+/* =========================================================
+BUTTONS
+=========================================================*/
+
+button{
+
+    font-family:inherit;
+
+}
+
+.primary-btn{
+
+    height:48px;
+
+    padding:0 22px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:var(--primary);
+
+    color:#FFFFFF;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.2s;
+
+}
+
+.primary-btn:hover{
+
+    background:var(--primary-hover);
+
+}
+
+.secondary-btn{
+
+    height:48px;
+
+    padding:0 22px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#EEF2FF;
+
+    color:var(--primary);
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.2s;
+
+}
+
+.secondary-btn:hover{
+
+    background:#DDE4FF;
+
+}
+
+.outline-btn{
+
+    height:48px;
+
+    padding:0 22px;
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    background:#FFFFFF;
+
+    color:var(--text);
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    transition:.2s;
+
+}
+
+.outline-btn:hover{
+
+    border-color:var(--primary);
+
+    color:var(--primary);
+
+}
+
+.danger-btn{
+
+    height:48px;
+
+    padding:0 22px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#EF4444;
+
+    color:#FFFFFF;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    transition:.2s;
+
+}
+
+.danger-btn:hover{
+
+    background:#DC2626;
+
+}
+
+/* =========================================================
+SMALL BUTTONS
+=========================================================*/
+
+.icon-btn{
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#F4F5FA;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.icon-btn:hover{
+
+    background:#E8EBF8;
+
+}
+
+/* =========================================================
+CHIPS
+=========================================================*/
+
+.chip{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:8px 14px;
+
+    border-radius:30px;
+
+    background:#EEF2FF;
+
+    color:var(--primary);
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+.chip i{
+
+    cursor:pointer;
+
+    font-size:13px;
+
+}
+
+/* =========================================================
+STATUS BADGES
+=========================================================*/
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:6px 14px;
+
+    border-radius:999px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+}
+
+.badge.active{
+
+    background:#E7F9EC;
+
+    color:#159947;
+
+}
+
+.badge.upcoming{
+
+    background:#FFF5D9;
+
+    color:#C88A00;
+
+}
+
+.badge.finished{
+
+    background:#ECECEC;
+
+    color:#666666;
+
+}
+
+.badge.draft{
+
+    background:#E8F0FF;
+
+    color:#3366CC;
+
+}
+
+.election-phase-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: var(--badge-bg, #eef2ff);
+  color: var(--badge-color, #4338ca);
+}
+
+/* =========================================================
+EMPTY STATE
+=========================================================*/
+
+.empty-state{
+
+    border:2px dashed var(--border);
+
+    border-radius:22px;
+
+    padding:60px 30px;
+
+    text-align:center;
+
+    background:#FFFFFF;
+
+}
+
+.empty-state i{
+
+    font-size:50px;
+
+    color:#C4CCDB;
+
+    margin-bottom:18px;
+
+    display:block;
+
+}
+
+.empty-state h3{
+
+    margin-bottom:8px;
+
+}
+
+.empty-state p{
+
+    color:var(--subtext);
+
+}
+
+/* =========================================================
+DIVIDER
+=========================================================*/
+
+.divider{
+
+    width:100%;
+
+    height:1px;
+
+    background:var(--border);
+
+    margin:24px 0;
+
+}
+
+/* =========================================================
+ACCORDION
+=========================================================*/
+
+.accordion{
+
+    background:#FFFFFF;
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    margin-bottom:24px;
+
+    transition:.25s;
+
+}
+
+.accordion-header{
+
+    width:100%;
+
+    height:70px;
+
+    border:none;
+
+    background:#FFFFFF;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 26px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.accordion.active .accordion-header{
+
+    background:var(--primary);
+
+    color:#FFFFFF;
+
+}
+
+.accordion-content{
+
+    max-height:0;
+
+    overflow:hidden;
+
+    transition:max-height .35s ease;
+
+}
+
+/* =========================================================
+TABLE
+=========================================================*/
+
+.table-card{
+
+    background:#FFFFFF;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    border:1px solid var(--border);
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+thead{
+
+    background:#F7F8FC;
+
+}
+
+th{
+
+    padding:18px;
+
+    text-align:left;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+td{
+
+    padding:18px;
+
+    border-top:1px solid var(--border);
+
+    font-size:15px;
+
+}
+
+tbody tr{
+
+    transition:.2s;
+
+}
+
+tbody tr:hover{
+
+    background:#FAFBFF;
+
+}
+
+/* JOB PROGRESS TOAST */
+.job-progress-stack {
+  position: fixed; right: 28px; bottom: 112px;
+  width: 360px; max-width: calc(100vw - 40px);
+  display: flex; flex-direction: column; gap: 10px;
+  z-index: 10500; pointer-events: none;
+}
+.job-progress-card {
+  pointer-events: auto; display: flex; align-items: flex-start; gap: 13px;
+  padding: 14px 16px; background: #fff; border: 1px solid var(--border);
+  border-radius: 16px; box-shadow: 0 18px 45px rgba(15, 23, 42, .16);
+}
+.job-progress-icon {
+  width: 42px; height: 42px; flex-shrink: 0; border-radius: 50%;
+  background: #EEF0FF; color: var(--primary);
+  display: flex; align-items: center; justify-content: center; font-size: 19px;
+}
+.job-progress-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.job-progress-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.job-progress-heading { color: var(--text); font-size: 14px; font-weight: 600; }
+.job-progress-percent { color: var(--primary); font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.job-progress-title { color: var(--subtext); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.job-progress-track { height: 8px; border-radius: 999px; background: #E8ECF5; overflow: hidden; }
+.job-progress-bar { height: 100%; width: 0; border-radius: inherit; background: var(--primary); transition: width .4s ease, background .2s ease; }
+.job-progress-count { color: var(--subtext); font-size: 11px; }
+.job-progress-download {
+  align-self: flex-start; margin-top: 2px; padding: 7px 12px; border-radius: 9px;
+  background: var(--primary); color: #fff; font-size: 12px; font-weight: 600;
+  text-decoration: none; cursor: pointer;
+}
+.job-progress-download[hidden] { display: none; }
+.job-progress-close {
+  width: 28px; height: 28px; flex-shrink: 0; border: none; border-radius: 8px;
+  background: transparent; color: #94A3B8; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.job-progress-close[hidden] { display: none; }
+.job-progress-close:hover { background: #F1F3F8; color: var(--text); }
+
+.job-progress-card.is-success .job-progress-icon { background: #EAF8EF; color: #16A34A; }
+.job-progress-card.is-success .job-progress-bar { background: #16A34A; }
+.job-progress-card.is-success .job-progress-percent { color: #16A34A; }
+.job-progress-card.is-error .job-progress-icon { background: #FDECEC; color: #DC2626; }
+.job-progress-card.is-error .job-progress-bar { background: #DC2626; }
+.job-progress-card.is-error .job-progress-percent { color: #DC2626; }
+
+@media (max-width: 600px) {
+  .job-progress-stack { right: 12px; bottom: 88px; width: calc(100vw - 24px); max-width: none; }
+}
+
+/* =========================================================
+   RESPONSIVE COMPONENTS
+=========================================================*/
+
+
+/* =========================================================
+   LAPTOP / SMALL DESKTOP
+   992px and below
+=========================================================*/
+
+@media (max-width:991px){
+
+    .card{
+
+        padding:20px;
+
+        border-radius:20px;
+
+    }
+
+    .section-header{
+
+        margin-bottom:16px;
+
+    }
+
+    .section-header p{
+
+        font-size:13px;
+
+    }
+
+    .primary-btn,
+    .secondary-btn,
+    .outline-btn,
+    .danger-btn{
+
+        height:44px;
+
+        padding:0 18px;
+
+        font-size:14px;
+
+        border-radius:12px;
+
+    }
+
+    .icon-btn{
+
+        width:40px;
+
+        height:40px;
+
+    }
+
+    .chip{
+
+        padding:7px 12px;
+
+        font-size:13px;
+
+    }
+
+    .empty-state{
+
+        padding:50px 24px;
+
+        border-radius:20px;
+
+    }
+
+    .empty-state i{
+
+        font-size:44px;
+
+    }
+
+    .accordion{
+
+        border-radius:20px;
+
+    }
+
+    .accordion-header{
+
+        height:64px;
+
+        padding:0 22px;
+
+    }
+
+    .table-card{
+
+        border-radius:20px;
+
+        overflow-x:auto;
+
+    }
+
+    table{
+
+        min-width:700px;
+
+    }
+
+    th{
+
+        padding:15px;
+
+        font-size:13px;
+
+    }
+
+    td{
+
+        padding:15px;
+
+        font-size:14px;
+
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+   768px and below
+=========================================================*/
+
+@media (max-width:767px){
+
+    .card{
+
+        padding:18px;
+
+        border-radius:18px;
+
+    }
+
+    .section-header{
+
+        flex-wrap:wrap;
+
+        gap:12px;
+
+        align-items:flex-start;
+
+    }
+
+    .section-header p{
+
+        width:100%;
+
+        font-size:13px;
+
+    }
+
+    .primary-btn,
+    .secondary-btn,
+    .outline-btn,
+    .danger-btn{
+
+        height:42px;
+
+        padding:0 16px;
+
+        font-size:13px;
+
+        border-radius:11px;
+
+    }
+
+    .icon-btn{
+
+        width:38px;
+
+        height:38px;
+
+        border-radius:10px;
+
+    }
+
+    .chip{
+
+        padding:6px 11px;
+
+        font-size:12px;
+
+    }
+
+    .badge{
+
+        padding:5px 11px;
+
+        font-size:11px;
+
+    }
+
+    .election-phase-badge{
+
+        padding:4px 9px;
+
+        font-size:11px;
+
+    }
+
+    .empty-state{
+
+        padding:45px 20px;
+
+        border-radius:18px;
+
+    }
+
+    .empty-state i{
+
+        font-size:40px;
+
+        margin-bottom:14px;
+
+    }
+
+    .divider{
+
+        margin:18px 0;
+
+    }
+
+    .accordion{
+
+        border-radius:18px;
+
+        margin-bottom:18px;
+
+    }
+
+    .accordion-header{
+
+        height:60px;
+
+        padding:0 18px;
+
+    }
+
+    .table-card{
+
+        border-radius:18px;
+
+        overflow-x:auto;
+
+        -webkit-overflow-scrolling:touch;
+
+    }
+
+    table{
+
+        min-width:650px;
+
+    }
+
+    th{
+
+        padding:13px;
+
+        font-size:12px;
+
+    }
+
+    td{
+
+        padding:13px;
+
+        font-size:13px;
+
+    }
+
+}
+
+
+/* =========================================================
+   PHONE
+   576px and below
+=========================================================*/
+
+@media (max-width:575px){
+
+    .card{
+
+        padding:16px;
+
+        border-radius:16px;
+
+    }
+
+    .section-header{
+
+        display:flex;
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+        gap:10px;
+
+        margin-bottom:14px;
+
+    }
+
+    .section-header h2,
+    .section-header h3{
+
+        font-size:18px;
+
+    }
+
+    .section-header p{
+
+        font-size:12px;
+
+    }
+
+    .primary-btn,
+    .secondary-btn,
+    .outline-btn,
+    .danger-btn{
+
+        min-height:42px;
+
+        height:auto;
+
+        padding:10px 14px;
+
+        font-size:13px;
+
+        border-radius:10px;
+
+    }
+
+    .icon-btn{
+
+        width:36px;
+
+        height:36px;
+
+        border-radius:9px;
+
+    }
+
+    .chip{
+
+        padding:6px 10px;
+
+        font-size:11px;
+
+        gap:6px;
+
+    }
+
+    .chip i{
+
+        font-size:11px;
+
+    }
+
+    .badge{
+
+        padding:5px 10px;
+
+        font-size:10px;
+
+    }
+
+    .election-phase-badge{
+
+        padding:4px 8px;
+
+        font-size:10px;
+
+    }
+
+    .empty-state{
+
+        padding:40px 16px;
+
+        border-radius:16px;
+
+    }
+
+    .empty-state i{
+
+        font-size:36px;
+
+        margin-bottom:12px;
+
+    }
+
+    .empty-state h3{
+
+        font-size:17px;
+
+    }
+
+    .empty-state p{
+
+        font-size:12px;
+
+    }
+
+    .divider{
+
+        margin:16px 0;
+
+    }
+
+    .accordion{
+
+        border-radius:16px;
+
+        margin-bottom:16px;
+
+    }
+
+    .accordion-header{
+
+        min-height:56px;
+
+        height:auto;
+
+        padding:14px 16px;
+
+        text-align:left;
+
+    }
+
+    .table-card{
+
+        border-radius:16px;
+
+        overflow-x:auto;
+
+    }
+
+    table{
+
+        min-width:600px;
+
+    }
+
+    th{
+
+        padding:12px;
+
+        font-size:11px;
+
+        white-space:nowrap;
+
+    }
+
+    td{
+
+        padding:12px;
+
+        font-size:12px;
+
+        white-space:nowrap;
+
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONE
+   400px and below
+=========================================================*/
+
+@media (max-width:400px){
+
+    .card{
+
+        padding:14px;
+
+        border-radius:14px;
+
+    }
+
+    .section-header h2,
+    .section-header h3{
+
+        font-size:17px;
+
+    }
+
+    .section-header p{
+
+        font-size:11px;
+
+    }
+
+    .primary-btn,
+    .secondary-btn,
+    .outline-btn,
+    .danger-btn{
+
+        width:100%;
+
+        min-height:40px;
+
+        padding:9px 12px;
+
+        font-size:12px;
+
+    }
+
+    .icon-btn{
+
+        width:34px;
+
+        height:34px;
+
+    }
+
+    .empty-state{
+
+        padding:35px 14px;
+
+    }
+
+    .empty-state i{
+
+        font-size:32px;
+
+    }
+
+    .empty-state h3{
+
+        font-size:16px;
+
+    }
+
+    .empty-state p{
+
+        font-size:11px;
+
+    }
+
+    .accordion-header{
+
+        padding:12px 14px;
+
+    }
+
+}

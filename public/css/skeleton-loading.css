@@ -1,0 +1,787 @@
+/* =========================================================
+   SSC ELECTION — SKELETON LOADING
+========================================================= */
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #e8ebf3;
+  border-radius: 8px;
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.55),
+    transparent
+  );
+  animation: skeleton-shimmer 1.4s infinite;
+}
+
+@keyframes skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* HISTORY TABLE SKELETON */
+.history-skeleton-line {
+    height: 14px;
+    width: 70%;
+}
+
+.history-skeleton-avatar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.history-skeleton-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* HISTORY CARD SKELETON (archives / trash) */
+.history-skeleton-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+}
+
+.history-skeleton-card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 13px;
+    flex-shrink: 0;
+}
+
+.history-skeleton-card-content {
+    flex: 1;
+}
+
+.history-skeleton-card-title {
+    width: 45%;
+    height: 16px;
+    margin-bottom: 10px;
+}
+
+.history-skeleton-card-meta {
+    width: 65%;
+    height: 12px;
+}
+
+
+/* =========================================================
+   ELECTION SKELETON
+========================================================= */
+
+.election-skeleton {
+  width: 100%;
+}
+
+.skeleton-info-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  margin-bottom: 28px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid #e8eaf0;
+}
+
+.skeleton-info-icon {
+  width: 58px;
+  height: 58px;
+  flex: 0 0 58px;
+  border-radius: 14px;
+}
+
+.skeleton-info-content {
+  flex: 1;
+}
+
+.skeleton-title {
+  width: 45%;
+  height: 22px;
+  margin-bottom: 12px;
+}
+
+.skeleton-subtitle {
+  width: 25%;
+  height: 14px;
+  margin-bottom: 14px;
+}
+
+.skeleton-badge {
+  width: 80px;
+  height: 25px;
+  border-radius: 20px;
+}
+
+.skeleton-schedule {
+  display: flex;
+  gap: 28px;
+  margin-top: 18px;
+}
+
+.skeleton-schedule-item {
+  width: 190px;
+  height: 14px;
+}
+
+
+.skeleton-instructions {
+  padding: 22px 24px;
+  margin-bottom: 28px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid #e8eaf0;
+}
+
+.skeleton-instruction-title {
+  width: 180px;
+  height: 20px;
+  margin-bottom: 14px;
+}
+
+.skeleton-instruction-line {
+  width: 85%;
+  height: 13px;
+  margin-bottom: 9px;
+}
+
+.skeleton-instruction-line.short {
+  width: 60%;
+}
+
+
+.skeleton-position {
+  margin-bottom: 30px;
+}
+
+.skeleton-position-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.skeleton-position-title {
+  width: 180px;
+  height: 22px;
+}
+
+.skeleton-position-rule {
+  width: 130px;
+  height: 14px;
+}
+
+
+.skeleton-candidate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.skeleton-candidate-card {
+  overflow: hidden;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid #e8eaf0;
+}
+
+.skeleton-candidate-image {
+  width: 100%;
+  height: 230px;
+  border-radius: 0;
+}
+
+.skeleton-candidate-info {
+  padding: 16px;
+}
+
+.skeleton-candidate-name {
+  width: 75%;
+  height: 17px;
+  margin-bottom: 10px;
+}
+
+.skeleton-candidate-party {
+  width: 50%;
+  height: 13px;
+}
+
+.skeleton-candidate-actions {
+  display: flex;
+  gap: 10px;
+  padding: 0 16px 16px;
+}
+
+.skeleton-candidate-button {
+  width: 100%;
+  height: 38px;
+  border-radius: 8px;
+}
+
+
+.skeleton-action {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.skeleton-review-button {
+  width: 150px;
+  height: 42px;
+  border-radius: 8px;
+}
+
+
+/* =========================================================
+   IMAGE LOADING
+========================================================= */
+
+.candidate-image-wrapper {
+  position: relative;
+}
+
+.candidate-image-wrapper.image-loading {
+  background: #e8ebf3;
+}
+
+.candidate-image-wrapper.image-loading .candidate-image {
+  opacity: 0;
+}
+
+.candidate-image-wrapper.image-loading::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.55),
+    transparent
+  );
+  animation: skeleton-shimmer 1.4s infinite;
+}
+
+.candidate-image {
+  transition: opacity 0.2s ease;
+}
+
+ /* =========================================================
+    CAMPAIGN MODAL — SKELETON
+ ========================================================= */
+
+.campaign-loading-content {
+  width: 100%;
+}
+
+.campaign-skeleton-name {
+  width: 55%;
+  height: 24px;
+  margin-bottom: 10px;
+}
+
+.campaign-skeleton-partylist {
+  width: 30%;
+  height: 15px;
+  margin-bottom: 22px;
+}
+
+.campaign-skeleton-image {
+  width: 100%;
+  height: 420px;
+  border-radius: 12px;
+}
+
+
+/* =========================================================
+   CAMPAIGN IMAGE LOADING
+========================================================= */
+
+.campaign-image-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 420px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #e8ebf3;
+}
+
+.campaign-image-wrapper.image-loading::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.55),
+    transparent
+  );
+
+  animation: skeleton-shimmer 1.4s infinite;
+}
+
+.campaign-image-wrapper.image-loading .campaign-image {
+  opacity: 0;
+}
+
+.campaign-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+/* =========================================================
+   VOTE SUMMARIES — SKELETON LOADING
+========================================================= */
+
+.vote-summary-skeleton {
+  width: 100%;
+}
+
+.vote-summary-skeleton-card {
+  padding: 24px;
+  margin-bottom: 20px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid #e8eaf0;
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #e8ebf3;
+  border-radius: 8px;
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.55),
+    transparent
+  );
+  animation: skeleton-shimmer 1.4s infinite;
+}
+
+@keyframes skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* HEADER */
+
+.skeleton-summary-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.skeleton-summary-title {
+  flex: 1;
+}
+
+.skeleton-summary-title-main {
+  width: 45%;
+  height: 22px;
+  margin-bottom: 10px;
+}
+
+.skeleton-summary-reference {
+  width: 180px;
+  height: 13px;
+  margin-bottom: 10px;
+}
+
+.skeleton-summary-date {
+  width: 220px;
+  height: 13px;
+}
+
+.skeleton-summary-actions {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.skeleton-summary-status {
+  width: 60px;
+  height: 28px;
+  border-radius: 20px;
+}
+
+.skeleton-summary-button {
+  width: 100px;
+  height: 38px;
+}
+
+/* DETAILS */
+
+.skeleton-summary-details {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px 0;
+  margin-bottom: 24px;
+  border-top: 1px solid #e8eaf0;
+  border-bottom: 1px solid #e8eaf0;
+}
+
+.skeleton-summary-detail-label {
+  width: 70px;
+  height: 12px;
+  margin-bottom: 9px;
+}
+
+.skeleton-summary-detail-value {
+  width: 120px;
+  height: 16px;
+}
+
+/* CANDIDATES */
+
+.skeleton-candidates-title {
+  width: 170px;
+  height: 18px;
+  margin-bottom: 9px;
+}
+
+.skeleton-candidates-description {
+  width: 280px;
+  height: 13px;
+  margin-bottom: 20px;
+}
+
+.skeleton-candidate-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #e8eaf0;
+  border-radius: 10px;
+}
+
+.skeleton-candidate-position {
+  width: 100px;
+  height: 13px;
+}
+
+.skeleton-candidate-image {
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+  border-radius: 50%;
+}
+
+.skeleton-candidate-info {
+  flex: 1;
+}
+
+.skeleton-candidate-name {
+  width: 160px;
+  height: 16px;
+  margin-bottom: 8px;
+}
+
+.skeleton-candidate-party {
+  width: 120px;
+  height: 13px;
+}
+
+/* ==========================================================
+   VOTE SUMMARY — IMAGE LOADING
+========================================================== */
+
+.voted-candidate-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.voted-candidate-image.image-loading {
+  background: #e8ebf3;
+}
+
+.voted-candidate-image.image-loading img {
+  opacity: 0;
+}
+
+.voted-candidate-image.image-loading::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.55),
+    transparent
+  );
+
+  animation: skeleton-shimmer 1.4s infinite;
+}
+
+.voted-candidate-image img {
+  transition: opacity 0.2s ease;
+}
+
+/* =========================================================
+   ANALYTICS — CONTENT SKELETON
+========================================================= */
+
+.analytics-content-skeleton {
+  width: 100%;
+  padding: 24px 0;
+}
+
+.analytics-skeleton-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.analytics-skeleton-summary-card {
+  height: 105px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid #e8eaf0;
+}
+
+.analytics-skeleton-card {
+  padding: 24px;
+  margin-bottom: 24px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid #e8eaf0;
+}
+
+.analytics-skeleton-title {
+  width: 220px;
+  height: 22px;
+  margin-bottom: 12px;
+}
+
+.analytics-skeleton-subtitle {
+  width: 360px;
+  height: 14px;
+  margin-bottom: 24px;
+}
+
+.analytics-skeleton-chart {
+  width: 100%;
+  height: 320px;
+  border-radius: 10px;
+}
+
+/* =========================================================
+   LIVE RESULTS — SKELETON LOADING
+========================================================= */
+
+.live-skeleton-card .skeleton,
+.live-skeleton-card.skeleton {
+    position: relative;
+    overflow: hidden;
+    background: #E8EBF3;
+    border-radius: 8px;
+}
+
+.live-skeleton-card .skeleton::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, .55),
+        transparent
+    );
+    animation: liveSkeletonShimmer 1.4s infinite;
+}
+
+@keyframes liveSkeletonShimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.live-skeleton-card {
+    pointer-events: none;
+}
+
+.live-skeleton-line {
+    height: 12px;
+    border-radius: 6px;
+}
+
+.live-skeleton-column {
+    min-width: 0;
+    padding: 10px;
+    border: 1px solid #E9EBF2;
+    border-radius: 12px;
+    background: #FAFBFD;
+}
+
+.live-skeleton-heading {
+    width: 60%;
+    height: 12px;
+    margin-bottom: 12px;
+}
+
+.live-skeleton-candidate {
+    display: flex;
+    gap: 8px;
+    padding: 8px 0;
+}
+
+.live-skeleton-candidate + .live-skeleton-candidate {
+    border-top: 1px solid #E8EAF0;
+}
+
+.live-skeleton-avatar {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+}
+
+.live-skeleton-candidate-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.live-skeleton-candidate-info .live-skeleton-line {
+    margin-bottom: 6px;
+}
+
+.live-skeleton-bar {
+    height: 6px;
+    border-radius: 999px;
+    margin-top: 6px;
+}
+
+/* =========================================================
+   VOTERS PAGE — CONTENT SKELETON
+========================================================= */
+
+.voters-content-skeleton {
+  width: 100%;
+}
+
+
+.skeleton-voters-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skeleton-voter-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-height: 76px;
+  padding: 18px 20px;
+  background: #fff;
+  border: 1px solid #e8eaf0;
+  border-radius: 12px;
+}
+
+.skeleton-voter-id {
+  width: 90px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.skeleton-voter-name {
+  width: 220px;
+  height: 16px;
+}
+
+.skeleton-voter-statuses {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.skeleton-voter-status {
+  width: 80px;
+  height: 26px;
+  border-radius: 20px;
+}
+
+.skeleton-voter-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.skeleton-voter-button {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .skeleton-voters-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .skeleton-voters-search {
+    width: 100%;
+    flex: none;
+  }
+
+  .skeleton-voter-card {
+    flex-wrap: wrap;
+  }
+
+  .skeleton-voter-statuses {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .analytics-skeleton-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .skeleton-summary-header {
+    flex-direction: column;
+  }
+
+  .skeleton-summary-actions {
+    align-items: flex-start;
+  }
+
+  .skeleton-summary-details {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

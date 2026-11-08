@@ -1,0 +1,998 @@
+/* ==========================================================
+   LCCast Admin System
+   Global Design System
+========================================================== */
+
+/* ==========================================================
+   GOOGLE FONT
+========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+
+/* ==========================================================
+   VARIABLES
+========================================================== */
+
+:root{
+
+    /* Brand */
+
+    --primary:#6063FE;
+    --primary-hover:#5154F5;
+
+    /* Status */
+
+    --success:#2FBF71;
+    --danger:#EF5350;
+    --warning:#F4C542;
+
+    /* Colors */
+
+    --background:#EAF0F9;
+
+    --card:#FFFFFF;
+
+    --text:#202124;
+
+    --muted:#777777;
+
+    --border:#D6DDEA;
+
+    --sidebar-width:300px;
+
+    --radius:20px;
+
+    --shadow:
+        0px 4px 12px rgba(0,0,0,.04);
+
+}
+
+
+/* ==========================================================
+   RESET
+========================================================== */
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:var(--background);
+
+    color:var(--text);
+
+    min-height:100vh;
+
+}
+
+img{
+
+    max-width:100%;
+
+    display:block;
+
+}
+
+button,
+input,
+select,
+textarea{
+
+    font-family:inherit;
+
+}
+
+button{
+
+    cursor:pointer;
+
+}
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+ul{
+
+    list-style:none;
+
+}
+
+
+/* ==========================================================
+   TYPOGRAPHY
+========================================================== */
+
+h1{
+
+    font-size:52px;
+
+    font-weight:700;
+
+}
+
+h2{
+
+    font-size:34px;
+
+    font-weight:600;
+
+}
+
+h3{
+
+    font-size:24px;
+
+    font-weight:600;
+
+}
+
+h4{
+
+    font-size:20px;
+
+    font-weight:600;
+
+}
+
+p{
+
+    color:var(--muted);
+
+    line-height:1.5;
+
+}
+
+
+/* ==========================================================
+   SCROLLBAR
+========================================================== */
+
+::-webkit-scrollbar{
+
+    width:9px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#DFE6F2;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#B9C6DB;
+
+    border-radius:30px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#A3B3CF;
+
+}
+
+
+/* ==========================================================
+   CONTAINERS
+========================================================== */
+
+.container{
+
+    width:100%;
+
+    padding:24px;
+
+}
+
+.card{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+}
+
+
+/* ==========================================================
+   BUTTONS
+========================================================== */
+
+.btn{
+
+    border:none;
+
+    border-radius:16px;
+
+    padding:13px 28px;
+
+    font-size:16px;
+
+    font-weight:500;
+
+    transition:.25s;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.btn-primary{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+.btn-primary:hover{
+
+    background:var(--primary-hover);
+
+}
+
+.btn-danger{
+
+    background:var(--danger);
+
+    color:white;
+
+}
+
+.btn-danger:hover{
+
+    filter:brightness(.95);
+
+}
+
+.btn-outline{
+
+    background:white;
+
+    border:1px solid var(--border);
+
+}
+
+.btn-outline:hover{
+
+    border-color:var(--primary);
+
+    color:var(--primary);
+
+}
+
+.btn-success{
+
+    background:var(--success);
+
+    color:white;
+
+}
+
+
+/* ==========================================================
+   INPUTS
+========================================================== */
+
+.input,
+.select,
+.textarea{
+
+    width:100%;
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    padding:13px 18px;
+
+    background:white;
+
+    outline:none;
+
+    font-size:15px;
+
+    transition:.25s;
+
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus{
+
+    border-color:var(--primary);
+
+}
+
+.textarea{
+
+    resize:vertical;
+
+    min-height:120px;
+
+}
+
+
+/* ==========================================================
+   LABEL
+========================================================== */
+
+.label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-size:15px;
+
+    font-weight:500;
+
+}
+
+
+/* ==========================================================
+   CHIPS
+========================================================== */
+
+.chips{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+}
+
+.chip{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    background:#EEF2FF;
+
+    color:var(--primary);
+
+    border-radius:999px;
+
+    padding:8px 14px;
+
+    font-size:14px;
+
+    font-weight:500;
+
+}
+
+.chip i{
+
+    cursor:pointer;
+
+}
+
+
+/* ==========================================================
+   BADGES
+========================================================== */
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:6px 14px;
+
+    border-radius:999px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.badge-success{
+
+    background:#DDF7E9;
+
+    color:#169B55;
+
+}
+
+.badge-danger{
+
+    background:#FFE3E3;
+
+    color:#E53935;
+
+}
+
+.badge-warning{
+
+    background:#FFF6D8;
+
+    color:#C79200;
+
+}
+
+
+/* ==========================================================
+   FLEX
+========================================================== */
+
+.flex{
+
+    display:flex;
+
+}
+
+.flex-center{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.flex-between{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.flex-column{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+
+/* ==========================================================
+   GRID
+========================================================== */
+
+.grid{
+
+    display:grid;
+
+}
+
+.grid-2{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+.grid-3{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:20px;
+
+}
+
+.grid-4{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
+}
+
+
+/* ==========================================================
+   SPACING UTILITIES
+========================================================== */
+
+.mt-1{margin-top:8px;}
+.mt-2{margin-top:16px;}
+.mt-3{margin-top:24px;}
+.mt-4{margin-top:32px;}
+
+.mb-1{margin-bottom:8px;}
+.mb-2{margin-bottom:16px;}
+.mb-3{margin-bottom:24px;}
+.mb-4{margin-bottom:32px;}
+
+.gap-1{gap:8px;}
+.gap-2{gap:16px;}
+.gap-3{gap:24px;}
+.gap-4{gap:32px;}
+
+
+/* ==========================================================
+   HELPERS
+========================================================== */
+
+.hidden{
+
+    display:none !important;
+
+}
+
+.text-center{
+
+    text-align:center;
+
+}
+
+.w-100{
+
+    width:100%;
+
+}
+
+.round{
+
+    border-radius:50%;
+
+}
+
+.shadow{
+
+    box-shadow:var(--shadow);
+
+}
+
+/* ==========================================================
+   RESPONSIVE DESIGN
+========================================================== */
+
+/* ==========================================================
+   LARGE LAPTOP / SMALL DESKTOP
+========================================================== */
+
+@media (max-width:1200px){
+
+    .container{
+        padding:20px;
+    }
+
+    h1{
+        font-size:46px;
+    }
+
+    h2{
+        font-size:30px;
+    }
+
+    h3{
+        font-size:22px;
+    }
+
+    h4{
+        font-size:18px;
+    }
+
+    .grid-4{
+        grid-template-columns:repeat(2,1fr);
+        gap:18px;
+    }
+
+    .grid-3{
+        gap:18px;
+    }
+
+    .grid-2{
+        gap:18px;
+    }
+
+}
+
+
+/* ==========================================================
+   LAPTOP / TABLET
+========================================================== */
+
+@media (max-width:991px){
+
+    :root{
+        --sidebar-width:260px;
+    }
+
+    .container{
+        padding:18px;
+    }
+
+    h1{
+        font-size:40px;
+    }
+
+    h2{
+        font-size:28px;
+    }
+
+    h3{
+        font-size:21px;
+    }
+
+    h4{
+        font-size:18px;
+    }
+
+    .grid-4{
+        grid-template-columns:repeat(2,1fr);
+        gap:16px;
+    }
+
+    .grid-3{
+        grid-template-columns:repeat(2,1fr);
+        gap:16px;
+    }
+
+    .grid-2{
+        gap:16px;
+    }
+
+    .btn{
+        padding:12px 22px;
+        font-size:15px;
+        border-radius:14px;
+    }
+
+    .input,
+    .select,
+    .textarea{
+        padding:12px 15px;
+        font-size:14px;
+        border-radius:14px;
+    }
+
+    .label{
+        font-size:14px;
+    }
+
+    .chip{
+        padding:7px 12px;
+        font-size:13px;
+    }
+
+    .badge{
+        padding:5px 12px;
+        font-size:12px;
+    }
+
+    .gap-3{
+        gap:18px;
+    }
+
+    .gap-4{
+        gap:24px;
+    }
+
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width:767px){
+
+    .container{
+        padding:16px;
+    }
+
+    h1{
+        font-size:34px;
+    }
+
+    h2{
+        font-size:25px;
+    }
+
+    h3{
+        font-size:20px;
+    }
+
+    h4{
+        font-size:17px;
+    }
+
+    p{
+        font-size:14px;
+    }
+
+    .grid-2,
+    .grid-3,
+    .grid-4{
+        grid-template-columns:1fr;
+        gap:14px;
+    }
+
+    .flex-between{
+        flex-wrap:wrap;
+        gap:12px;
+    }
+
+    .flex{
+        flex-wrap:wrap;
+    }
+
+    .btn{
+        padding:11px 18px;
+        font-size:14px;
+        border-radius:13px;
+    }
+
+    .input,
+    .select,
+    .textarea{
+        padding:11px 14px;
+        font-size:14px;
+        border-radius:13px;
+    }
+
+    .textarea{
+        min-height:100px;
+    }
+
+    .label{
+        font-size:13px;
+        margin-bottom:7px;
+    }
+
+    .chips{
+        gap:8px;
+    }
+
+    .chip{
+        padding:6px 10px;
+        font-size:12px;
+    }
+
+    .badge{
+        padding:5px 10px;
+        font-size:11px;
+    }
+
+    .mt-4{
+        margin-top:24px;
+    }
+
+    .mb-4{
+        margin-bottom:24px;
+    }
+
+    .gap-3{
+        gap:16px;
+    }
+
+    .gap-4{
+        gap:20px;
+    }
+
+}
+
+
+/* ==========================================================
+   PHONE
+========================================================== */
+
+@media (max-width:575px){
+
+    .container{
+        padding:14px;
+    }
+
+    h1{
+        font-size:30px;
+    }
+
+    h2{
+        font-size:23px;
+    }
+
+    h3{
+        font-size:19px;
+    }
+
+    h4{
+        font-size:16px;
+    }
+
+    p{
+        font-size:13px;
+    }
+
+    .card{
+        border-radius:16px;
+    }
+
+    .btn{
+        width:100%;
+        min-height:42px;
+        padding:10px 16px;
+        font-size:13px;
+        border-radius:12px;
+    }
+
+    .input,
+    .select{
+        min-height:44px;
+        padding:10px 12px;
+        font-size:13px;
+        border-radius:12px;
+    }
+
+    .textarea{
+        min-height:90px;
+        padding:10px 12px;
+        font-size:13px;
+        border-radius:12px;
+    }
+
+    .label{
+        font-size:12px;
+    }
+
+    .chips{
+        gap:6px;
+    }
+
+    .chip{
+        padding:6px 9px;
+        font-size:11px;
+    }
+
+    .badge{
+        padding:4px 9px;
+        font-size:10px;
+    }
+
+    .mt-1{
+        margin-top:6px;
+    }
+
+    .mt-2{
+        margin-top:12px;
+    }
+
+    .mt-3{
+        margin-top:18px;
+    }
+
+    .mt-4{
+        margin-top:22px;
+    }
+
+    .mb-1{
+        margin-bottom:6px;
+    }
+
+    .mb-2{
+        margin-bottom:12px;
+    }
+
+    .mb-3{
+        margin-bottom:18px;
+    }
+
+    .mb-4{
+        margin-bottom:22px;
+    }
+
+    .gap-1{
+        gap:6px;
+    }
+
+    .gap-2{
+        gap:12px;
+    }
+
+    .gap-3{
+        gap:16px;
+    }
+
+    .gap-4{
+        gap:20px;
+    }
+
+}
+
+
+/* ==========================================================
+   VERY SMALL PHONE
+========================================================== */
+
+@media (max-width:400px){
+
+    .container{
+        padding:12px;
+    }
+
+    h1{
+        font-size:27px;
+    }
+
+    h2{
+        font-size:21px;
+    }
+
+    h3{
+        font-size:18px;
+    }
+
+    h4{
+        font-size:15px;
+    }
+
+    .btn{
+        min-height:40px;
+        padding:9px 14px;
+        font-size:12px;
+    }
+
+    .input,
+    .select{
+        min-height:42px;
+        font-size:12px;
+    }
+
+    .textarea{
+        min-height:85px;
+        font-size:12px;
+    }
+
+    .label{
+        font-size:11px;
+    }
+
+    .chip{
+        font-size:10px;
+        padding:5px 8px;
+    }
+
+    .badge{
+        font-size:9px;
+        padding:4px 8px;
+    }
+
+}

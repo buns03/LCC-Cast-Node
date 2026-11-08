@@ -1,0 +1,2446 @@
+/* =========================================================
+   LCCAST - DEPARTMENTSS PAGE
+========================================================= */
+
+/* =========================================================
+   DEPARTMENTS CONTENT CONTAINERS
+========================================================= */
+
+.departments-content-container {
+
+    width: 100%;
+
+    background: #FFFFFF;
+
+    border: 1px solid var(--border);
+
+    border-radius: 16px;
+
+    box-shadow: 0 4px 14px rgba(15, 23, 42, .04);
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================================
+   DEPARTMENTS TABS
+========================================================= */
+
+
+.departments-tabs {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 26px;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+
+.departments-tab {
+
+    height: 48px;
+
+    padding: 0 22px;
+
+    border: none;
+
+    border-radius: 14px 14px 0 0;
+
+    background: transparent;
+
+    color: var(--subtext);
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+}
+
+
+.departments-tab:hover {
+
+    color: var(--primary);
+
+    background: #F3F4FF;
+
+}
+
+
+.departments-tab.active {
+
+    background: var(--primary);
+
+    color: #FFFFFF;
+
+}
+
+
+/* =========================================================
+   DEPARTMENTS SECTIONS
+========================================================= */
+
+.departments-section {
+
+    display: none;
+
+}
+
+
+.departments-section.active {
+
+    display: block;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:650px) {
+
+    .departments-tabs {
+
+        overflow-x: auto;
+
+    }
+
+
+    .departments-tab {
+
+        white-space: nowrap;
+
+    }
+
+}
+
+
+.accordion-title {
+    display: flex;
+    align-items: center;
+    gap: 12px
+}
+
+.accordion-title i {
+    font-size: 20px
+}
+
+/* .accordion-title span {
+    font-size: 20px;
+    font-weight: 600
+} */
+
+.departments-form {
+    padding: 24px 34px 28px
+}
+
+.departments-form .form-section {
+    gap: 16px
+}
+
+.members-section {
+    gap: 12px
+}
+
+.departments-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin-bottom: 2px
+}
+
+.members-section h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 2px
+}
+
+.members-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px
+}
+
+.positions-section {
+    gap: 12px
+}
+
+.positions-section h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 2px
+}
+
+.positions-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px
+}
+
+.position-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 38px;
+    padding: 0 12px;
+    border: 1px solid #333;
+    border-radius: 12px;
+    background: #F3F4F8;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.position-chip .remove-position {
+    width: 20px;
+    height: 20px;
+    border: none;
+    background: transparent;
+    color: var(--danger);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-position-row {
+    display: flex;
+    gap: 10px;
+}
+
+.add-position-row input {
+    flex: 1;
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid #333;
+    border-radius: 14px;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+}
+
+.add-position-row button {
+    height: 40px;
+    padding: 0 16px;
+    border: 1px solid #1F1F1F;
+    border-radius: 14px;
+    background: #E9E9FF;
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.add-position-row button:hover {
+    background: #DCDDFB
+}
+
+/* =========================================================
+   DEPARTMENTS CAMPUS SELECT
+========================================================= */
+
+.departments-form .form-group select {
+    width: 100%;
+    height: 42px;
+    padding: 0 12px;
+
+    border: 1px solid #333;
+    border-radius: 14px;
+
+    background: #FFFFFF;
+    color: var(--text);
+
+    font-family: inherit;
+    font-size: 14px;
+
+    outline: none;
+    cursor: pointer;
+}
+
+.departments-form .form-group select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(91, 92, 235, .1);
+}
+
+/* =========================================================
+   EXISTING DEPARTMENTS FILTER
+========================================================= */
+
+.existing-departments-toolbar {
+    padding: 24px 30px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.existing-departments-filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.existing-departments-filter-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--subtext);
+}
+
+.existing-departments-filter-group select {
+    height: 38px;
+    min-width: 170px;
+
+    padding: 0 12px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background: #FFFFFF;
+    color: var(--text);
+
+    font-family: inherit;
+    font-size: 13px;
+
+    cursor: pointer;
+    outline: none;
+}
+
+.existing-departments-filter-group select:focus {
+    border-color: var(--primary);
+}
+
+/* =========================================================
+   MEMBER ROW
+========================================================= */
+
+/* =========================================================
+   MEMBER ROW - BALANCED LAYOUT
+========================================================= */
+
+.member-row,
+.member-row.can-remove {
+    display: grid;
+
+    grid-template-columns:
+        130px
+        minmax(120px, 1fr)
+        minmax(120px, 1fr)
+        minmax(120px, 1fr)
+        110px
+        92px
+        92px
+        92px
+        42px;
+
+    gap: 8px;
+
+    width: 100%;
+
+    align-items: start;
+
+    margin-bottom: 14px;
+}
+
+.member-row .member-position-group {
+    display: contents;
+}
+
+.member-row .member-position-group[hidden] {
+    display: none !important;
+}
+
+/* =========================================================
+   MEMBER INPUTS
+========================================================= */
+
+.member-row input,
+.member-row select {
+
+    width: 100%;
+
+    min-width: 0;
+
+    height: 40px;
+
+    padding: 0 12px;
+
+    border: 1px solid #333;
+
+    border-radius: 14px;
+
+    background: #FFFFFF;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+.member-row input:focus,
+.member-row select:focus {
+
+    border-color: var(--primary);
+
+}
+
+/* =========================================================
+   STUDENT ID
+========================================================= */
+
+.member-student-id {
+
+    font-weight: 600;
+
+    background: #F8F9FF !important;
+
+}
+
+
+.member-student-id:focus {
+
+    background: #FFFFFF !important;
+
+}
+
+/* =========================================================
+   POSITION
+========================================================= */
+
+.member-row .member-position {
+
+    width: 100%;
+
+    cursor: pointer;
+
+    padding-left: 12px;
+}
+
+
+/* .member-position {
+    width: 100%;
+    height: 42px;
+    padding: 0 12px;
+    border: 1px solid #1F1F1F;
+    border-radius: 15px;
+    background: #fff;
+    color: var(--text);
+    font-size: 14px;
+    cursor: pointer
+} */
+
+.member-position:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(91, 92, 235, .1)
+}
+
+.photo-input,
+.campaign-input {
+    display: none
+}
+
+
+/* PHOTO */
+
+.member-row .photo-btn {
+    background: #E8E8FF;
+    color: var(--text);
+}
+
+.member-row .photo-btn:hover {
+    background: #DCDCFB;
+}
+
+.member-row .photo-btn.has-photo {
+    background: #DDF7E9;
+    color: #169B55;
+}
+
+/* CAMPAIGN */
+
+.member-row .campaign-btn {
+    background: #F3F4F8;
+    color: var(--text);
+}
+
+.member-row .campaign-btn:hover {
+    background: #E7EAF2;
+}
+
+.member-row .campaign-btn.has-campaign {
+    background: #DDF7E9;
+    color: #169B55;
+}
+
+
+/* BACKGROUND */
+
+.member-row .background-btn {
+    background: #F3F4F8;
+    color: var(--text);
+}
+
+.member-row .background-btn:hover {
+    background: #E7EAF2;
+}
+
+.member-row .background-btn.has-background {
+    background: #DDF7E9;
+    color: #169B55;
+}
+
+.member-row .photo-btn i,
+.member-row .campaign-btn i,
+.member-row .background-btn i {
+    font-size: 14px;
+}
+
+
+.remove-member {
+    width: 42px;
+    height: 42px;
+
+    justify-self: center;
+    align-self: center;
+
+    box-sizing: border-box;
+    border: 1px solid #1F1F1F;
+    border-radius: 15px;
+    background: #fff;
+    color: var(--danger);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .2s
+}
+
+.remove-member:hover {
+    background: #FFF0F0
+}
+
+.add-member-btn {
+    width: 100%;
+    min-height: 40px;
+    padding: 0 18px;
+    border: 1px solid #1F1F1F;
+    border-radius: 15px;
+    background: #E9E9FF;
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    transition: .2s
+}
+
+.add-member-btn:hover {
+    background: #DCDDFB
+}
+
+.departments-form .form-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-top: 6px
+}
+
+.departments-form .discard-btn,
+.departments-form .save-btn {
+    height: 42px;
+    border: none;
+    border-radius: 15px;
+    font-family: inherit;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: .2s
+}
+
+.departments-form .discard-btn {
+    background: #FF454A;
+    color: #fff
+}
+
+.departments-form .discard-btn:hover {
+    background: #E9363B
+}
+
+.departments-form .save-btn {
+    background: var(--primary);
+    color: #fff
+}
+
+.departments-form .save-btn:hover {
+    background: var(--primary-hover)
+}
+
+.departments-list {
+    padding: 18px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px
+}
+
+.departments-item {
+    border: 1px solid #1F1F1F;
+    border-radius: 15px;
+    background: #fff;
+    overflow: hidden
+}
+
+.departments-item-header {
+    min-height: 58px;
+    padding: 10px 20px 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px
+}
+
+/* =========================================================
+   DEPARTMENTS HEADER
+========================================================= */
+
+.departments-header-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+}
+
+.departments-campus {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--subtext);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.departments-campus i {
+    font-size: 16px;
+    color: var(--primary);
+}
+
+.departments-item-title {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 14px
+}
+
+.departments-item-title h3 {
+    font-size: 16px;
+    font-weight: 500;
+    white-space: nowrap
+}
+
+.departments-description {
+    color: var(--subtext);
+    font-size: 13px
+}
+
+.departments-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0
+}
+
+.departments-controls .icon-btn {
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--border);
+    /* background: #F4F5FA */
+}
+
+.edit-departments:hover,
+.expand-departments:hover {
+    color: var(--primary);
+
+    border-color: var(--primary);
+
+    background: #EEF2FF;
+}
+
+.delete-departments:hover {
+
+    color: #EF4444;
+
+    border-color: #EF4444;
+
+    background: #FEF2F2;
+
+}
+
+.archive-departments:hover {
+    color: #F59E0B;
+
+    border-color: #F59E0B;
+
+    background: #FFFBEB;
+}
+
+/* =========================================================
+   DEPARTMENTS HEADER RIGHT SIDE
+========================================================= */
+
+.departments-campus {
+    color: var(--subtext);
+
+    font-size: 12px;
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    padding: 5px 9px;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    background: #F8F9FC;
+}
+
+.existing-departments-campus {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary) !important;
+}
+
+.departments-details {
+    display: none;
+    padding: 0 24px 20px
+}
+
+/* =========================================================
+   EXPANDED DEPARTMENTS CONTENT
+========================================================= */
+
+.departments-expanded-content {
+    display: grid;
+    grid-template-columns: minmax(220px, 320px) 1fr;
+    gap: 24px;
+    padding-top: 20px;
+}
+
+
+/* =========================================================
+   POSTER
+========================================================= */
+
+.departments-poster-preview {
+    min-width: 0;
+}
+
+.departments-preview-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.departments-poster-preview .departments-file-preview {
+    min-height: 280px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #f8f9fc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   DETAILS
+========================================================= */
+
+.departments-expanded-details {
+    min-width: 0;
+}
+
+.departments-expanded-details .departments-info-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px 0;
+}
+
+.departments-expanded-details .departments-info-row label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--subtext);
+}
+
+.departments-expanded-details .departments-info-row>span {
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   MEMBER FILE BUTTONS
+========================================================= */
+
+.member-row .photo-btn,
+.member-row .campaign-btn,
+.member-row .background-btn {
+
+    width: 100%;
+    height: 40px;
+
+    border: 1px solid #333;
+    border-radius: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 4px;
+
+    cursor: pointer;
+
+    font-family: inherit;
+    font-size: 12px;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+    transition: .2s ease;
+}
+
+
+
+.existing-member-files {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.existing-file-btn {
+    width: 110px;
+    height: 32px;
+
+    padding: 0 12px;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    background: #F4F5FA;
+    color: var(--text);
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    transition: background .2s ease,
+                color .2s ease,
+                border-color .2s ease;
+}
+
+.existing-file-btn:hover {
+    background: #E8EBF8;
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.departments-item.show .departments-details {
+    display: block
+}
+
+/* =========================================================
+   EDIT MODE
+========================================================= */
+
+/* The details container remains open only so the edit panel
+   can be displayed. */
+
+.departments-item.editing .departments-details {
+    display: block;
+}
+
+
+/* Hide the normal expanded information while editing */
+
+.departments-item.editing .departments-info {
+    display: none;
+}
+
+
+/* Show only the edit form */
+
+.departments-item.editing .edit-departments-panel {
+    display: block;
+    margin-top: 0;
+    border-top: 0;
+}
+
+.departments-info {
+    border-top: 1px solid var(--border);
+    padding-top: 18px
+}
+
+.departments-info-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-size: 14px
+}
+
+.departments-info-row label {
+    min-width: 90px;
+    font-weight: 600;
+    color: var(--text)
+}
+
+.departments-info-row>span {
+    color: var(--subtext)
+}
+
+.members-info-row {
+    align-items: flex-start
+}
+
+.existing-member-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px
+}
+
+.existing-member {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    gap: 18px
+}
+
+.existing-member span:first-child {
+    color: var(--text)
+}
+
+.existing-member span:last-child {
+    color: var(--subtext)
+}
+
+.edit-departments-panel {
+    display: none;
+    margin-top: 22px;
+    border-top: 1px solid var(--border)
+}
+
+.departments-item.editing .edit-departments-panel {
+    display: block
+}
+
+.edit-departments-panel .departments-form {
+    padding: 22px 0 0
+}
+
+
+/* =========================================================
+   OPTIONAL LABEL
+========================================================= */
+
+.optional-label {
+
+    color: var(--subtext);
+
+    font-size: 12px;
+
+    font-weight: 400;
+
+}
+
+/* =========================================================
+   DEPARTMENTS POSTER UPLOAD
+========================================================= */
+
+/* .departments-poster-upload {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.departments-poster-btn {
+    min-width: 145px;
+    height: 42px;
+
+    padding: 0 16px;
+
+    border: 1px solid #1F1F1F;
+    border-radius: 14px;
+
+    background: #E9E9FF;
+    color: var(--text);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    cursor: pointer;
+    transition: .2s ease;
+} */
+
+.departments-poster-btn:hover {
+    background: #DCDDFB;
+}
+
+.departments-poster-btn.has-poster {
+    background: #DDF7E9;
+    color: #169B55;
+}
+
+/* .departments-poster-name {
+    color: var(--subtext);
+    font-size: 13px;
+
+    max-width: 350px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+} */
+
+
+/* =========================================================
+   DEPARTMENTS LOGO UPLOAD
+========================================================= */
+/* 
+.logo-upload {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    flex-wrap: wrap;
+
+} */
+
+
+/* .logo-upload-btn {
+
+    min-width: 145px;
+
+    height: 42px;
+
+    padding: 0 16px;
+
+    border: 1px solid #1F1F1F;
+
+    border-radius: 14px;
+
+    background: #E9E9FF;
+
+    color: var(--text);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+
+} */
+
+
+.logo-upload-btn:hover {
+
+    background: #DCDDFB;
+
+}
+
+
+/* .logo-preview {
+
+    width: 52px;
+
+    height: 52px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+    background: #F8F9FC;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+} */
+
+
+.logo-preview img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+}
+
+
+.logo-preview img[src=""] {
+
+    display: none;
+
+}
+
+
+/* =========================================================
+   DEPARTMENTS SMALL LOGO
+========================================================= */
+
+/* .departments-logo-small {
+
+    width: 42px;
+
+    height: 42px;
+
+    min-width: 42px;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+
+    background: #F4F5FA;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+} */
+
+
+/* .departments-logo-small img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+} */
+
+.departments-logo-small {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    overflow: hidden;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--primary);
+}
+
+
+.departments-logo-small img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+.departments-logo-initials {
+    display: none;
+
+    width: 100%;
+    height: 100%;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    color: #fff;
+    background: var(--primary);
+    letter-spacing: 0.5px;
+}
+
+
+.departments-title-text {
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+
+}
+
+
+/* =========================================================
+   POSITION WRAPPER
+========================================================= */
+
+.position-wrapper {
+
+    width: 100%;
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+}
+
+
+.other-position-input {
+
+    width: 100% !important;
+
+}
+
+
+.other-position-input[hidden] {
+
+    display: none !important;
+
+}
+
+/* =========================================================
+   BACKGROUND BUTTON
+========================================================= */
+
+.member-row .background-btn {
+
+    width: 90px;
+
+    height: 40px;
+
+    border: 1px solid #333;
+
+    border-radius: 14px;
+
+    background: #F3F4F8;
+
+    color: var(--text);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 4px;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    padding: 0;
+
+    transition: .2s ease;
+
+}
+
+.member-row .background-btn:hover {
+
+    background: #E7EAF2;
+
+}
+
+.member-row .background-btn.scanning {
+
+    opacity: .65;
+
+    cursor: wait;
+
+}
+
+.member-row .background-btn.has-background {
+
+    background: #DDF7E9;
+
+    color: #169B55;
+
+}
+
+.member-row .background-btn i {
+
+    font-size: 14px;
+
+}
+
+/* =========================================================
+   EXISTING MEMBER
+========================================================= */
+
+.existing-member {
+
+    display: grid;
+
+    grid-template-columns:
+        145px 190px 150px minmax(200px, 1fr) 75px 85px;
+
+    gap: 18px;
+
+    padding: 8px 0;
+
+    align-items: center;
+
+}
+
+.existing-member-student-id {
+
+    color: var(--primary) !important;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    font-family: monospace;
+
+}
+
+
+.existing-member-name {
+
+    color: var(--text) !important;
+
+}
+
+
+.existing-member-platform {
+
+    color: var(--subtext) !important;
+
+    font-style: italic;
+
+}
+
+
+/* =========================================================
+   DISCARD MODAL
+========================================================= */
+
+.discard-icon {
+
+    background: #FFF4E5;
+
+    color: #D97706;
+
+}
+
+
+.discard-confirm-btn {
+
+    background: #E53935;
+
+}
+
+
+.discard-confirm-btn:hover {
+
+    background: #CF3030;
+
+}
+
+/* =========================================================
+   MEMBER FILE PREVIEW
+========================================================= */
+/* .member-row {
+    position: relative;
+    overflow: visible !important;
+} */
+
+
+/* =========================================================
+   FILE PREVIEW PANEL
+========================================================= */
+
+.member-file-preview {
+
+    position: fixed;
+
+    z-index: 100000;
+
+    width: 340px;
+
+    max-width: calc(100vw - 30px);
+
+    background: #FFFFFF;
+
+    border: 1px solid var(--border);
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 18px 45px rgba(15, 23, 42, .22);
+
+    padding: 14px;
+
+    display: none;
+
+    box-sizing: border-box;
+
+}
+
+.member-file-preview.show {
+
+    display: block;
+
+    animation: filePreviewIn .18s ease;
+
+}
+
+.member-pdf-preview,
+.member-image-preview {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.member-image-preview {
+    object-fit: contain;
+}
+
+.background-preview-body,
+.photo-preview-body {
+    overflow: hidden;
+}
+/* =========================================================
+   DEPARTMENTS FILE UPLOAD
+========================================================= */
+
+.departments-file-upload {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.departments-file-btn {
+    width: fit-content;
+
+    height: 36px;
+    padding: 0 14px;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    background: #F4F5FA;
+    color: var(--text);
+
+    font-family: inherit;
+    font-size: 13px;
+
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.departments-file-btn:hover {
+    background: #E8EBF8;
+}
+
+.departments-file-btn.has-file {
+    background: #DDF7E9;
+    color: #169B55;
+}
+
+
+/* =========================================================
+   DEPARTMENTS FILE PREVIEW
+========================================================= */
+
+.departments-file-preview {
+    display: none;
+
+    width: 100%;
+    max-width: 520px;
+
+    margin-top: 4px;
+
+    padding: 12px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background: #FFFFFF;
+
+}
+
+.departments-file-preview-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 10px;
+}
+
+.departments-file-preview-header strong {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.departments-file-preview-close {
+
+    width: 30px !important;
+
+    height: 30px !important;
+
+    min-width: 30px;
+
+    min-height: 30px;
+
+    padding: 0 !important;
+
+    border: 1px solid var(--border) !important;
+
+    border-radius: 8px !important;
+
+    background: #F4F5FA !important;
+
+    color: var(--subtext) !important;
+
+    display: flex !important;
+
+    align-items: center;
+
+    justify-content: center;
+
+    cursor: pointer;
+
+    box-sizing: border-box;
+
+    transition: .2s ease;
+
+}
+
+.departments-file-preview-close:hover {
+
+    background: #FFF0F0 !important;
+
+    border-color: #D9363E !important;
+
+    color: #D9363E !important;
+
+}
+
+.departments-file-preview-close i {
+
+    font-size: 14px;
+
+    pointer-events: none;
+
+}
+
+.departments-file-preview.show {
+    display: block;
+}
+
+
+/* FILE NAME */
+
+.departments-file-preview-filename {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 10px;
+    padding: 8px 10px;
+
+    background: #F4F5FA;
+    border-radius: 9px;
+
+    font-size: 12px;
+    color: var(--subtext);
+
+    overflow: hidden;
+}
+
+.departments-file-preview-filename i {
+    flex-shrink: 0;
+
+    font-size: 18px;
+    color: var(--primary);
+}
+
+.departments-file-preview-filename span {
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* IMAGE / PDF PREVIEW */
+
+.departments-file-preview-body {
+    width: 100%;
+    height: 280px;
+
+    border-radius: 9px;
+
+    overflow: hidden;
+
+    background: #F4F5FA;
+}
+
+.departments-file-preview-body img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+.departments-file-preview-body iframe {
+    width: 100%;
+    height: 100%;
+
+    border: none;
+}
+
+
+/* CHANGE / DELETE */
+
+.departments-file-preview-actions {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px;
+
+    margin-top: 10px;
+}
+
+.departments-file-change-btn,
+.departments-file-delete-btn {
+    height: 36px;
+
+    border-radius: 10px;
+
+    border: 1px solid var(--border);
+
+    font-family: inherit;
+    font-size: 13px;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+}
+
+.departments-file-change-btn {
+    background: #E9E9FF;
+    color: var(--text);
+}
+
+.departments-file-change-btn:hover {
+    background: #DCDDFB;
+}
+
+.departments-file-delete-btn {
+    background: #FFF0F0;
+    color: #D9363E;
+}
+
+.departments-file-delete-btn:hover {
+    background: #FFE1E1;
+}
+
+/* =========================================================
+   PREVIEW ANIMATION
+========================================================= */
+
+@keyframes filePreviewIn {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(5px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   PREVIEW HEADER
+========================================================= */
+
+.file-preview-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-bottom: 10px;
+
+}
+
+.file-preview-header strong {
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+}
+
+
+/* =========================================================
+   FILE PREVIEW CLOSE BUTTON
+========================================================= */
+
+.file-preview-close {
+
+    width: 30px !important;
+
+    height: 30px !important;
+
+    min-width: 30px;
+
+    min-height: 30px;
+
+    flex-shrink: 0;
+
+    padding: 0 !important;
+
+    margin: 0;
+
+    border: 1px solid var(--border) !important;
+
+    border-radius: 9px !important;
+
+    background: #F4F5FA !important;
+
+    color: var(--subtext) !important;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    display: flex !important;
+
+    align-items: center;
+
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    transition: .2s ease;
+
+}
+
+.file-preview-close:hover {
+
+    background: #FFF0F0 !important;
+
+    border-color: #D9363E !important;
+
+    color: #D9363E !important;
+
+}
+
+.file-preview-close i {
+
+    font-size: 14px;
+
+    line-height: 1;
+
+    pointer-events: none;
+
+}
+
+/* =========================================================
+   PREVIEW BODY
+========================================================= */
+
+.file-preview-body {
+
+    width: 100%;
+
+    min-height: 120px;
+
+    max-height: 330px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    background: #F8F9FC;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    box-sizing: border-box;
+
+}
+
+
+.photo-preview-body {
+
+    height: 240px;
+
+}
+
+
+.photo-preview-body img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+}
+
+.background-preview-body {
+
+    height: 300px;
+
+}
+
+.background-preview-body iframe {
+
+    width: 100%;
+
+    height: 100%;
+
+    border: none;
+
+}
+
+.background-preview-body img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+}
+
+/* =========================================================
+   FILE NAME
+========================================================= */
+
+.file-preview-filename {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 10px;
+
+    padding: 8px 10px;
+
+    background: #F4F5FA;
+
+    border-radius: 9px;
+
+    font-size: 12px;
+
+    color: var(--subtext);
+
+    overflow: hidden;
+
+}
+
+
+.file-preview-filename i {
+
+    font-size: 18px;
+
+    color: var(--primary);
+
+}
+
+
+.file-preview-filename span {
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+}
+
+
+/* =========================================================
+   FILE ACTIONS
+========================================================= */
+
+.file-preview-actions {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px;
+
+    margin-top: 10px;
+
+}
+
+
+.file-change-btn,
+.file-delete-btn {
+
+    height: 36px;
+
+    border-radius: 10px;
+
+    border: 1px solid var(--border);
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+}
+
+
+.file-change-btn {
+
+    background: #E9E9FF;
+
+    color: var(--text);
+
+}
+
+
+.file-change-btn:hover {
+
+    background: #DCDDFB;
+
+}
+
+
+.file-delete-btn {
+
+    background: #FFF0F0;
+
+    color: #D9363E;
+
+}
+
+
+.file-delete-btn:hover {
+
+    background: #FFE1E1;
+
+}
+
+
+
+/* =========================================================
+   EMPTY FILE
+========================================================= */
+
+.file-preview-empty {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    min-height: 100px;
+
+    color: var(--subtext);
+
+    font-size: 13px;
+
+}
+
+
+.file-preview-empty i {
+
+    font-size: 30px;
+
+}
+
+
+/* =========================================================
+   UPLOAD BUTTON STATES
+========================================================= */
+
+/* .logo-upload-btn.has-logo {
+
+    background: #DDF7E9;
+
+    color: #169B55;
+
+}
+
+
+.logo-upload-btn.has-logo:hover {
+
+    background: #CDEFD9;
+
+} */
+
+
+/* =========================================================
+   EXISTING MEMBER BACKGROUND BUTTON
+========================================================= */
+
+.existing-member .background-btn {
+
+    height: 32px;
+
+    padding: 0 12px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 9px;
+
+    background: #F4F5FA;
+
+    color: var(--text);
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    transition: .2s ease;
+
+}
+
+.existing-member .background-btn:hover {
+
+    background: #E8EBF8;
+
+    color: var(--primary);
+
+}
+
+.existing-member .background-btn.has-background {
+
+    background: #DDF7E9;
+
+    color: #169B55;
+
+}
+
+
+
+/* =========================================================
+   EXISTING MEMBER PREVIEW
+========================================================= */
+
+.existing-member {
+
+    position: relative;
+
+}
+
+
+.existing-member-preview {
+
+    grid-column: 1 / -1;
+
+    display: none;
+
+    margin-top: 8px;
+
+    padding: 12px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+    background: #fff;
+
+    box-shadow: 0 8px 25px rgba(15, 23, 42, .12);
+
+}
+
+
+.existing-member-preview.show {
+
+    display: block;
+
+}
+
+
+.existing-member-preview .file-preview-body {
+
+    max-height: 320px;
+
+    height: 280px;
+
+}
+
+
+.existing-member-preview .file-preview-body img {
+
+    max-width: 100%;
+
+    max-height: 100%;
+
+    object-fit: contain;
+
+}
+
+
+.existing-member-preview .file-preview-body iframe {
+
+    width: 100%;
+
+    height: 100%;
+
+    border: none;
+
+}
+
+/* =========================================================
+   DEPARTMENTS INLINE ERRORS
+========================================================= */
+
+.inline-error {
+    display: none;
+
+    margin-top: 5px;
+
+    font-size: 12px;
+    font-weight: 500;
+
+    color: var(--danger, #D9363E);
+}
+
+.inline-error.show {
+    display: block;
+}
+
+.form-group.has-error input,
+.form-group.has-error select {
+    border-color: var(--danger, #D9363E);
+}
+
+.form-group.has-error input:focus,
+.form-group.has-error select:focus {
+    border-color: var(--danger, #D9363E);
+
+    box-shadow:
+        0 0 0 3px rgba(217, 54, 62, .1);
+}
+
+
+/* =========================================================
+   ARCHIVE / SAVE MODAL ICONS
+========================================================= */
+
+.archive-icon {
+    background: #FFF4E5;
+    color: #D97706;
+}
+
+.archive-confirm-btn {
+    background: #D97706;
+}
+
+.archive-confirm-btn:hover {
+    background: #B45309;
+}
+
+.save-icon {
+    background: #E8F7EE;
+    color: #169B55;
+}
+
+.save-confirm-btn {
+    background: var(--primary);
+}
+
+.save-confirm-btn:hover {
+    background: var(--primary-hover);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+
+@media (max-width: 1000px) {
+
+    .member-row input,
+    .member-row select {
+
+        padding: 0 10px;
+        font-size: 13px;
+    }
+
+}
+@media(max-width:850px) {
+
+    .member-row,
+.member-row.can-remove {
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+}
+
+    .member-row .photo-btn,
+    .member-row .campaign-btn,
+    .member-row .background-btn,
+    .member-row .remove-member {
+        width: 100%;
+    }
+
+
+    .departments-form {
+
+        padding: 20px;
+
+    }
+
+
+    .departments-list {
+
+        padding: 20px;
+
+    }
+
+
+    .departments-form .form-buttons {
+
+        gap: 14px;
+
+    }
+
+     .member-file-preview {
+
+            position: fixed;
+
+            left: 50%;
+
+            right: auto;
+
+            top: 50%;
+
+            transform: translate(-50%, -50%);
+
+            width: min(400px, calc(100vw - 30px));
+
+        }
+
+        .members-section h3,
+        .positions-section h3 {
+            font-size: 16px;
+        }
+
+        .departments-item-title h3 {
+            font-size: 14.5px;
+        }
+
+}
+
+
+@media(max-width:600px) {
+
+    .departments-form .form-buttons {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .departments-item-header {
+
+        align-items: flex-start;
+
+    }
+
+
+    .departments-controls {
+
+        flex-wrap: wrap;
+
+        justify-content: flex-end;
+
+    }
+
+
+    .departments-info-row {
+
+        flex-direction: column;
+
+        gap: 4px;
+
+    }
+
+
+    .existing-member {
+
+        grid-template-columns: 1fr;
+
+        gap: 6px;
+
+    }
+
+    .existing-member-files {
+
+        display: flex;
+
+        gap: 8px;
+
+        margin-top: 4px;
+
+    }
+
+    .members-section h3,
+    .positions-section h3 {
+        font-size: 15px;
+    }
+
+    .departments-item-title h3 {
+        font-size: 14px;
+    }
+
+
+}
+
+@media (max-width: 700px) {
+
+    .existing-departments-toolbar {
+        justify-content: stretch;
+    }
+
+    .existing-departments-filter-group {
+        width: 100%;
+    }
+
+    .existing-departments-filter-group select {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .departments-header-right {
+        gap: 6px;
+    }
+
+    .departments-campus {
+        font-size: 11px;
+        padding: 4px 7px;
+    }
+
+}

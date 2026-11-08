@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta
+          http-equiv="Cache-Control"
+          content="no-store, no-cache, must-revalidate, max-age=0"
+  />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
+  <title>LCC Cast | Vote Summaries</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/images/lcccast_logo.png" />
+  <link rel="apple-touch-icon" href="/images/lcccast_logo.png" />
+
+  <!-- SHARED CSS -->
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/voter/layout.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/forms.css" />
+  <link rel="stylesheet" href="/css/modal.css" />
+  <link rel="stylesheet" href="/css/navigation.css" />
+  <link rel="stylesheet" href="/css/skeleton-loading.css" />
+
+  <!-- PAGE CSS -->
+  <link rel="stylesheet" href="/css/voter/vote-summaries.css" />
+
+  <!-- BOOTSTRAP ICONS -->
+  <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+  />
+</head>
+
+<body>
+<!-- =========================================================
+     MOBILE NAVIGATION
+========================================================== -->
+
+<button
+        type="button"
+        class="mobile-nav-toggle"
+        id="mobileNavToggle"
+        aria-label="Open navigation"
+        aria-expanded="false"
+>
+  <i class="bi bi-list"></i>
+</button>
+
+<div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+<!-- =========================================================
+     SIDEBAR
+========================================================== -->
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-top">
+    <!-- LOGO -->
+
+    <div class="logo">
+      <img src="/images/lcccast_logo.png" alt="LCC Cast" />
+
+      <h2 >LCC Cast</h2>
+    </div>
+
+    <hr />
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+      {{html_candidateNav}}
+
+      <a href="/voter/ssc-election">
+        <i class="bi bi-calendar-event"></i>
+        <span>SSC Election</span>
+      </a>
+
+      <a href="/voter/department-election">
+        <i class="bi bi-building"></i>
+        <span>Department Election</span>
+      </a>
+
+      <a href="/voter/vote-summaries" class="active">
+        <i class="bi bi-bar-chart"></i>
+        <span>Vote Summaries</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- =======================================================
+       SIDEBAR BOTTOM
+  ======================================================== -->
+
+  <div class="sidebar-bottom">
+    <hr />
+
+    <a href="/voter/settings">
+      <i class="bi bi-gear"></i>
+      <span>Settings</span>
+    </a>
+
+    <a href="#" class="logout-trigger">
+      <i class="bi bi-box-arrow-right"></i>
+      <span>Logout</span>
+    </a>
+  </div>
+</aside>
+
+<!-- =========================================================
+     MAIN CONTENT
+========================================================== -->
+
+<main class="main-content">
+  <!-- =======================================================
+       TOPBAR
+  ======================================================== -->
+
+  <!-- =======================================================
+ TOPBAR
+======================================================== -->
+
+  <header class="topbar">
+    <div>
+      <h1>Vote Summaries</h1>
+
+      <p>View your voting records for SSC and Department elections.</p>
+    </div>
+
+    <!-- PROFILE -->
+
+    <div class="profile">
+      <div class="avatar">
+        {{html_avatar}}
+      </div>
+
+      <div class="profile-info">
+        <span>{{displayName}}</span>
+
+        <small>{{profileLine}}</small>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       PAGE CONTENT
+  ========================================================== -->
+
+  <section class="voter-page-content">
+
+
+    <!-- =========================================================
+         SUMMARY TABS
+    ========================================================== -->
+
+    <div class="vote-summary-tabs">
+      <button
+              type="button"
+              class="vote-summary-tab active"
+              data-summary="ssc"
+      >
+        <i class="bi bi-person-badge"></i>
+
+        SSC
+      </button>
+
+      <button
+              type="button"
+              class="vote-summary-tab"
+              data-summary="department"
+      >
+        <i class="bi bi-building"></i>
+
+        Department
+      </button>
+    </div>
+
+    <!-- =========================================================
+         SSC SUMMARY
+    ========================================================== -->
+
+    <section
+            class="vote-summary-section active"
+            id="sscSummary"
+            data-summary-section="ssc"
+    ></section>
+
+    <!-- =========================================================
+         DEPARTMENT SUMMARY
+    ========================================================== -->
+
+    <section
+            class="vote-summary-section"
+            id="departmentSummary"
+            data-summary-section="department"
+    ></section>
+  </section>
+</main>
+
+<!-- =========================================================
+     LOGOUT MODAL
+========================================================== -->
+
+<div class="modal-overlay" id="logoutModal">
+  <div class="delete-modal logout-modal">
+    <div class="delete-modal-content">
+      <div class="delete-modal-icon">
+        <i class="bi bi-box-arrow-right"></i>
+      </div>
+
+      <h2>Logout?</h2>
+
+      <p>Are you sure you want to logout from LCC Cast?</p>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="logout-cancel-btn" id="cancelLogout">
+        Cancel
+      </button>
+
+      <button type="button" class="logout-confirm-btn" id="confirmLogout">
+        <i class="bi bi-box-arrow-right"></i>
+        Logout
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================
+     GLOBAL ACTION LOADING MODAL
+========================================================== -->
+
+<div class="modal-overlay loading-modal-overlay" id="actionLoadingModal">
+  <div class="action-loading-modal">
+    <div class="action-loading-spinner">
+      <span></span>
+    </div>
+
+    <div class="action-loading-content">
+      <h2 id="actionLoadingTitle">Processing...</h2>
+
+      <p id="actionLoadingMessage">
+        Please wait while we process your request.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================== -->
+<script src="/js/superadmin/soft-cache.js"></script>
+<script src="/js/navigation.js"></script>
+<script src="/js/logout.js"></script>
+<script src="/js/voter/position-order.js"></script>
+<script src="/js/voter/vote-summaries.js"></script>
+</body>
+</html>

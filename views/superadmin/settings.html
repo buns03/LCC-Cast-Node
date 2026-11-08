@@ -1,0 +1,1151 @@
+<!doctype html>
+<html lang="en">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+<title>LCC Cast | Settings</title>
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="/images/lcccast_logo.png" />
+<link rel="apple-touch-icon" href="/images/lcccast_logo.png" />
+
+<!-- BASE CSS -->
+<link rel="stylesheet" href="/css/base.css" />
+<link rel="stylesheet" href="/css/layout.css" />
+<link rel="stylesheet" href="/css/components.css" />
+<link rel="stylesheet" href="/css/forms.css" />
+<link rel="stylesheet" href="/css/modal.css" />
+<link rel="stylesheet" href="/css/navigation.css" />
+<link rel="stylesheet" href="/css/password-rules.css" />
+
+<!-- BOOTSTRAP ICONS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+<!-- PAGE CSS -->
+<link rel="stylesheet" href="/css/pages/settings.css" />
+</head>
+
+<body>
+  <!-- ===========================
+SIDEBAR
+============================ -->
+
+  <button type="button" class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open navigation"
+    aria-expanded="false">
+    <i class="bi bi-list"></i>
+  </button>
+
+  <!-- ===========================
+    MOBILE NAVIGATION OVERLAY
+    ============================ -->
+
+  <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+      <div class="logo">
+        <img src="/images/lcccast_logo.png" alt="LCC Cast" />
+
+        <h2>LCC Cast</h2>
+      </div>
+
+      <hr />
+
+      <nav>
+        <a href="/superadmin/dashboard">
+          <i class="bi bi-house-door"></i>
+
+          <span>Dashboard</span>
+        </a>
+
+        <a href="/superadmin/elections">
+          <i class="bi bi-calendar-event"></i>
+
+          <span>Elections</span>
+        </a>
+
+        <a href="/superadmin/live-results">
+          <i class="bi bi-broadcast-pin"></i>
+
+          Live Results
+        </a>
+
+        <a href="/superadmin/partylists">
+          <i class="bi bi-people"></i>
+
+          <span>Partylists</span>
+        </a>
+
+        <a href="/superadmin/departments">
+          <i class="bi bi-building"></i>
+
+          <span>Departments</span>
+        </a>
+
+        <a href="/superadmin/voters">
+          <i class="bi bi-person-vcard"></i>
+
+          <span>Voters</span>
+        </a>
+
+        <a href="/superadmin/analytics">
+          <i class="bi bi-bar-chart"></i>
+
+          <span>Analytics</span>
+        </a>
+
+        <a href="/superadmin/history">
+          <i class="bi bi-clock-history"></i>
+
+          History
+        </a>
+      </nav>
+    </div>
+
+    <!-- =====================================================
+         SIDEBAR BOTTOM
+    ====================================================== -->
+
+    <div class="sidebar-bottom">
+      <hr />
+
+      <!-- IMPORTANT:
+             Base CSS does not style .sidebar-bottom a.active,
+             so settings.css does it.
+        -->
+
+      <a href="/superadmin/settings" class="active">
+        <i class="bi bi-gear"></i>
+
+        <span>Settings</span>
+      </a>
+
+      <a href="#" class="logout-trigger">
+        <i class="bi bi-box-arrow-right"></i>
+        Logout
+      </a>
+    </div>
+  </aside>
+
+  <!-- =========================================================
+     MAIN CONTENT
+========================================================= -->
+
+  <main class="main-content">
+    <!-- =====================================================
+         TOPBAR
+    ====================================================== -->
+
+    <header class="topbar">
+      <div>
+        <h1>Settings</h1>
+
+        <p>Manage admin accounts, system settings, and security controls.</p>
+      </div>
+
+      <div class="profile">
+        <div class="avatar">{{html_avatar}}</div>
+
+        <span>{{displayName}}</span>
+      </div>
+    </header>
+
+    <!-- =====================================================
+         SETTINGS TABS
+    ====================================================== -->
+
+    <div class="settings-tabs">
+      <button type="button" class="settings-tab active" data-tab="adminSettings">
+        <i class="bi bi-person-gear"></i>
+
+        <span>Admin Accounts</span>
+      </button>
+
+      <button type="button" class="settings-tab" data-tab="systemSettings">
+        <i class="bi bi-sliders"></i>
+
+        <span>System Settings</span>
+      </button>
+
+      <button type="button" class="settings-tab" data-tab="securitySettings">
+        <i class="bi bi-shield-lock"></i>
+
+        <span>Security</span>
+      </button>
+    </div>
+
+    <!-- =====================================================
+         ADMIN ACCOUNTS
+    ====================================================== -->
+
+    <section id="adminSettings" class="settings-panel active">
+      <!-- =================================================
+             ADD ADMIN
+        ================================================== -->
+
+      <div class="settings-accordion" id="addAdminAccordion">
+        <button type="button" class="settings-accordion-header">
+          <span class="settings-accordion-title">
+            <i class="bi bi-person-plus"></i>
+
+            <span>Add Admin</span>
+          </span>
+
+          <i class="bi bi-chevron-down accordion-arrow"></i>
+        </button>
+
+        <!--
+                IMPORTANT:
+                This content is completely clipped while closed.
+                No labels can peek through.
+            -->
+
+        <div class="settings-accordion-content">
+          <form id="addAdminForm" class="admin-form" novalidate>
+            <!-- NAME -->
+
+            <div class="form-grid admin-name-grid">
+              <div class="form-group">
+                <label for="lastName"> Last Name </label>
+
+                <input type="text" id="lastName" name="lastName" placeholder="Last Name" required />
+                <small class="field-error"> This field is required. </small>
+              </div>
+
+              <div class="form-group">
+                <label for="firstName"> First Name </label>
+
+                <input type="text" id="firstName" name="firstName" placeholder="First Name" required />
+                <small class="field-error"> This field is required. </small>
+              </div>
+
+              <div class="form-group">
+                <label for="middleName"> Middle Name </label>
+
+                <input type="text" id="middleName" name="middleName" placeholder="Middle Name" />
+              </div>
+            </div>
+
+            <!-- CONTACT / EMAIL -->
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="adminContact"> Contact Number </label>
+
+                <input type="text" id="adminContact" name="contact" placeholder="Contact Number" required />
+                <small class="field-error"> This field is required. </small>
+              </div>
+
+              <div class="form-group">
+                <label for="adminEmail"> Email Address </label>
+
+                <input type="email" id="adminEmail" name="email" placeholder="Email Address" required />
+                <small class="field-error"> This field is required. </small>
+              </div>
+            </div>
+
+            <!-- CAMPUS / DEPARTMENT -->
+
+            <!-- CAMPUS / ELECTION MANAGEMENT / DEPARTMENT -->
+
+            <div class="form-grid">
+              <!-- CAMPUS -->
+
+              <div class="form-group">
+                <label for="adminCampus"> Campus </label>
+
+                <select id="adminCampus" name="campus" required>
+                  <option value="" disabled selected>Select Campus</option>
+
+                  <option value="Kaypian">Kaypian</option>
+
+                  <option value="Muzon">Muzon</option>
+
+                </select>
+
+                <small class="field-error"> This field is required. </small>
+              </div>
+
+              <!-- ELECTION MANAGEMENT -->
+
+              <div class="form-group">
+                <label for="adminElectionType"> Election Management </label>
+
+                <select id="adminElectionType" name="electionType" required>
+                  <option value="" disabled selected>
+                    Select Election Type
+                  </option>
+
+                  <option value="SSC">SSC Election</option>
+
+                  <option value="DEPARTMENT">Department Election</option>
+                </select>
+
+                <small class="field-error"> This field is required. </small>
+              </div>
+            </div>
+
+            <!-- DEPARTMENT -->
+
+            <div class="form-group">
+              <label for="adminDepartment"> Department </label>
+
+              <select id="adminDepartment" name="department" disabled>
+                <option value="" selected>Select Department</option>
+
+                <option value="BSA">BSA — Accountancy</option>
+
+                <option value="BSBA">BSBA — Business Administration</option>
+
+                <option value="BAEL">BAEL — Communication Arts</option>
+
+                <option value="BSCRIM">BSCRIM — Criminology</option>
+
+                <option value="BSCE">BSCE — Engineering</option>
+
+                <option value="BSHM">BSHM — Hospitality Management</option>
+
+                <option value="BSIS">BSIS — Information Systems</option>
+
+                <option value="BSPSY">BSPSY — Psychology</option>
+
+                <option value="EDUC">EDUC — Teacher Education</option>
+
+                <option value="BSAIS">
+                  BSAIS — Accountancy Information Systems
+                </option>
+              </select>
+
+              <small class="field-error"> This field is required. </small>
+            </div>
+
+            <!-- PASSWORD -->
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="adminPassword"> Password </label>
+
+                <div class="password-field">
+                  <input type="password" id="adminPassword" name="password" placeholder="Password" required />
+
+                  <button type="button" class="password-toggle" data-target="adminPassword" aria-label="Show password">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </div>
+
+                <small id="adminPasswordStrength" class="password-strength-message"></small>
+
+                <small class="field-error"> This field is required. </small>
+              </div>
+
+              <div class="form-group">
+                <label for="adminConfirmPassword"> Confirm Password </label>
+
+                <div class="password-field">
+                  <input type="password" id="adminConfirmPassword" name="confirmPassword" placeholder="Confirm Password"
+                    required />
+
+                  <button type="button" class="password-toggle" data-target="adminConfirmPassword"
+                    aria-label="Show password">
+                    <i class="bi bi-eye"></i>
+                  </button>
+                </div>
+
+                <small class="field-error password-match-error">
+                  <span class="required-message">
+                    This field is required.
+                  </span>
+
+                  <span class="password-mismatch-message">
+                    Passwords do not match.
+                  </span>
+                </small>
+              </div>
+            </div>
+
+            <!-- BUTTONS -->
+
+            <div class="form-buttons admin-buttons">
+              <button type="button" class="discard-btn discard-form-btn">
+                <i class="bi bi-x-lg"></i>
+
+                <span>Discard</span>
+              </button>
+
+              <button type="submit" class="save-btn" id="addAdminSubmitBtn">
+                <i class="bi bi-person-plus"></i>
+
+                <span>Add Admin</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- =================================================
+             EXISTING ADMINS
+        ================================================== -->
+
+      <div class="settings-accordion" id="existingAdminsAccordion">
+        <button type="button" class="settings-accordion-header">
+          <span class="settings-accordion-title">
+            <i class="bi bi-people"></i>
+
+            <span>Existing Admins</span>
+          </span>
+
+          <i class="bi bi-chevron-down accordion-arrow"></i>
+        </button>
+
+        <div class="settings-accordion-content">
+          <div class="existing-admins">
+            <!-- =================================================
+     SEARCH + FILTERS
+================================================== -->
+
+            <div class="admin-search-filter-bar">
+              <!-- SEARCH -->
+
+              <div class="admin-search">
+                <i class="bi bi-search"></i>
+
+                <input type="search" id="adminSearch" placeholder="Search admin..." autocomplete="off" />
+              </div>
+
+              <!-- FILTER -->
+
+              <div class="admin-filter-wrapper">
+                <button type="button" class="admin-filter-button" id="adminFilterBtn">
+                  <i class="bi bi-funnel"></i>
+
+                  <span>Filters</span>
+
+                  <span class="admin-filter-count" id="adminFilterCount">
+                    0
+                  </span>
+                </button>
+
+                <!-- FILTER DROPDOWN -->
+
+                <div class="admin-filter-dropdown" id="adminFilterDropdown">
+                  <!-- HEADER -->
+
+                  <div class="admin-filter-dropdown-header">
+                    <div>
+                      <strong> Filters </strong>
+
+                      <span> Refine admin records </span>
+                    </div>
+
+                    <button type="button" class="admin-filter-close" id="closeAdminFilters">
+                      <i class="bi bi-x"></i>
+                    </button>
+                  </div>
+
+                  <!-- BODY -->
+
+                  <div class="admin-filter-dropdown-body">
+                    <!-- CAMPUS -->
+
+                    <div class="admin-filter-field">
+                      <label for="adminCampusFilter"> Campus </label>
+
+                      <select id="adminCampusFilter" class="admin-filter-select">
+                        <option value="">All Campuses</option>
+
+                        <option value="Kaypian">Kaypian</option>
+
+                        <option value="Muzon">Muzon</option>
+                      </select>
+                    </div>
+
+                    <!-- ELECTION MANAGEMENT -->
+
+                    <div class="admin-filter-field">
+                      <label for="adminElectionTypeFilter">
+                        Election Management
+                      </label>
+
+                      <select id="adminElectionTypeFilter" class="admin-filter-select">
+                        <option value="">All Election Types</option>
+
+                        <option value="SSC">SSC Election</option>
+
+                        <option value="DEPARTMENT">
+                          Department Election
+                        </option>
+                      </select>
+                    </div>
+
+                    <!-- DEPARTMENT -->
+
+                    <div class="admin-filter-field">
+                      <label for="adminDepartmentFilter"> Department </label>
+
+                      <select id="adminDepartmentFilter" class="admin-filter-select">
+                        <option value="">All Departments</option>
+
+                        <option value="BSA">BSA — Accountancy</option>
+
+                        <option value="BSBA">
+                          BSBA — Business Administration
+                        </option>
+
+                        <option value="BAEL">
+                          BAEL — Communication Arts
+                        </option>
+
+                        <option value="BSCRIM">BSCRIM — Criminology</option>
+
+                        <option value="BSCE">BSCE — Engineering</option>
+
+                        <option value="BSHM">
+                          BSHM — Hospitality Management
+                        </option>
+
+                        <option value="BSIS">
+                          BSIS — Information Systems
+                        </option>
+
+                        <option value="BSPSY">BSPSY — Psychology</option>
+
+                        <option value="EDUC">EDUC — Teacher Education</option>
+
+                        <option value="BSAIS">
+                          BSAIS — Accountancy Information Systems
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- FOOTER -->
+
+                  <div class="admin-filter-dropdown-footer">
+                    <button type="button" class="admin-filter-clear" id="clearAdminFilters">
+                      Clear
+                    </button>
+
+                    <button type="button" class="admin-filter-apply" id="applyAdminFilters">
+                      Apply Filters
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ADMIN LIST -->
+
+            <div class="admin-list" id="adminList"></div>
+
+            <!-- PAGINATION -->
+            <div class="admin-pagination" id="adminPagination">
+              <button type="button" class="pagination-btn" id="adminPrevPage" aria-label="Previous page">
+                <i class="bi bi-arrow-left"></i>
+              </button>
+
+              <span id="adminPageInfo"> Page 1 / 1 </span>
+
+              <button type="button" class="pagination-btn" id="adminNextPage" aria-label="Next page">
+                <i class="bi bi-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="systemSettings" class="settings-panel">
+      <!-- CAMPUSES -->
+      <div class="settings-accordion" id="campusesAccordion">
+        <button type="button" class="settings-accordion-header">
+          <span class="settings-accordion-title">
+            <i class="bi bi-geo-alt"></i>
+            <span>Campuses</span>
+          </span>
+          <i class="bi bi-chevron-down accordion-arrow"></i>
+        </button>
+
+        <div class="settings-accordion-content">
+          <div class="config-body">
+            <div class="config-toolbar">
+              <p class="config-hint">
+                Every campus offers all programs by default. Use the list button to give a campus its own program list.
+              </p>
+              <button type="button" class="save-btn config-add-btn" id="addCampusBtn">
+                <i class="bi bi-plus-lg"></i>
+                <span>Add Campus</span>
+              </button>
+            </div>
+            <div class="config-list" id="campusConfigList"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROGRAMS -->
+      <div class="settings-accordion" id="programsAccordion">
+        <button type="button" class="settings-accordion-header">
+          <span class="settings-accordion-title">
+            <i class="bi bi-mortarboard"></i>
+            <span>Programs / Courses</span>
+          </span>
+          <i class="bi bi-chevron-down accordion-arrow"></i>
+        </button>
+
+        <div class="settings-accordion-content">
+          <div class="config-body">
+            <div class="config-toolbar">
+              <p class="config-hint">
+                Acronym and full name. The acronym is what is saved on voters and admins.
+              </p>
+              <button type="button" class="save-btn config-add-btn" id="addProgramBtn">
+                <i class="bi bi-plus-lg"></i>
+                <span>Add Program</span>
+              </button>
+            </div>
+            <div class="config-list" id="programConfigList"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- =====================================================
+         SECURITY
+    ====================================================== -->
+
+
+
+    <section id="securitySettings" class="settings-panel">
+      <div class="settings-card">
+        <div class="settings-card-header">
+          <h2>
+            <i class="bi bi-shield-lock"></i>
+
+            Security
+          </h2>
+
+          <p>Manage system security and administrator access.</p>
+        </div>
+
+        <form class="security-form" novalidate>
+
+          <!-- PROFILE PICTURE -->
+          <div class="profile-picture-section">
+            <div class="profile-picture-preview">
+              <img id="profilePicturePreview" src="{{profilePictureUrl}}" alt="Profile Picture" />
+            </div>
+
+            <div class="profile-picture-info">
+              <h3>Profile Picture</h3>
+              <p>Upload a new profile picture. It is only applied after you click Save.</p>
+
+              <input type="file" id="profilePictureInput" accept="image/png,image/jpeg,image/webp" hidden />
+
+              <button type="button" class="secondary-btn" id="changeProfilePicture">
+                <i class="bi bi-camera"></i>
+                Change Picture
+              </button>
+            </div>
+          </div>
+
+          <!-- EMAIL -->
+          <div class="form-group">
+            <label for="currentEmailDisplay"> Email Address </label>
+
+            <div class="field-with-action">
+              <input type="email" id="currentEmailDisplay" value="{{email}}" readonly disabled />
+
+              <button type="button" class="secondary-btn change-toggle-btn" id="changeEmailBtn">
+                Change
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group change-fields" id="emailChangeFields" hidden>
+            <label for="newEmail"> New Email Address </label>
+
+            <input type="email" id="newEmail" name="newEmail" placeholder="Enter new email" autocomplete="email" />
+
+            <small class="field-error" id="newEmailError">
+              Please enter a valid email address.
+            </small>
+          </div>
+
+          <!-- CURRENT PASSWORD (existing, unchanged) -->
+          <div class="form-group">
+            <label for="currentPassword"> Current Password </label>
+
+            <div class="password-field">
+              <input type="password" id="currentPassword" name="currentPassword" placeholder="Current Password"
+                required />
+
+              <button type="button" class="password-toggle">
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+
+            <small class="field-error"> This field is required. </small>
+          </div>
+
+          <!-- NEW / CONFIRM PASSWORD (existing, unchanged) -->
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="newPassword"> New Password </label>
+
+              <div class="password-field">
+                <input type="password" id="newPassword" name="newPassword" placeholder="New Password" required />
+
+                <button type="button" class="password-toggle">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </div>
+
+              <small id="securityNewPasswordStrength" class="password-strength-message"></small>
+
+              <small class="field-error password-same-error">
+                <span class="required-message">
+                  This field is required.
+                </span>
+
+                <span class="password-same-message">
+                  New password cannot be the same as your current password.
+                </span>
+              </small>
+            </div>
+
+            <div class="form-group">
+              <label for="confirmNewPassword"> Confirm New Password </label>
+
+              <div class="password-field">
+                <input type="password" id="confirmNewPassword" name="confirmNewPassword"
+                  placeholder="Confirm New Password" required />
+
+                <button type="button" class="password-toggle">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </div>
+
+              <small class="field-error password-match-error">
+                <span class="required-message">
+                  This field is required.
+                </span>
+
+                <span class="password-mismatch-message">
+                  Passwords do not match.
+                </span>
+              </small>
+            </div>
+          </div>
+
+          <div class="settings-form-actions">
+            <button type="button" class="discard-btn discard-form-btn">
+              Discard
+            </button>
+
+            <button type="submit" class="save-btn" id="updateSecurityBtn">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- =========================================================
+     ADD ADMIN CONFIRMATION MODAL
+========================================================= -->
+
+  <div id="addAdminModal" class="modal-overlay" aria-hidden="true">
+    <div class="save-modal" role="dialog" aria-modal="true" aria-labelledby="addAdminModalTitle">
+      <div class="save-modal-content">
+        <div class="save-modal-icon">
+          <i class="bi bi-person-plus"></i>
+        </div>
+
+        <h2 id="addAdminModalTitle">Add Administrator?</h2>
+
+        <p>Are you sure you want to add this administrator?</p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="save-cancel-btn" data-close-modal="addAdminModal">
+          Cancel
+        </button>
+
+        <button type="button" class="save-confirm-btn" id="confirmAddAdmin">
+          <i class="bi bi-person-plus"></i>
+          Add Admin
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+     UPDATE ADMIN CONFIRMATION MODAL
+========================================================= -->
+
+  <div id="updateAdminModal" class="modal-overlay" aria-hidden="true">
+    <div class="save-modal" role="dialog" aria-modal="true" aria-labelledby="updateAdminModalTitle">
+      <div class="save-modal-content">
+        <div class="save-modal-icon">
+          <i class="bi bi-pencil-square"></i>
+        </div>
+
+        <h2 id="updateAdminModalTitle">Save Changes?</h2>
+
+        <p>
+          Are you sure you want to update this administrator's information?
+        </p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="save-cancel-btn" data-close-modal="updateAdminModal">
+          Cancel
+        </button>
+
+        <button type="button" class="save-confirm-btn" id="confirmUpdateAdmin">
+          <i class="bi bi-check-lg"></i>
+          Save Changes
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+     DELETE ADMIN CONFIRMATION MODAL
+========================================================= -->
+
+  <div id="deleteAdminModal" class="modal-overlay" aria-hidden="true">
+    <div class="delete-modal" role="dialog" aria-modal="true" aria-labelledby="deleteAdminModalTitle">
+      <div class="delete-modal-content">
+        <div class="delete-modal-icon">
+          <i class="bi bi-trash"></i>
+        </div>
+
+        <h2 id="deleteAdminModalTitle">Delete Administrator?</h2>
+
+        <p id="deleteAdminMessage">
+          Are you sure you want to delete this administrator?
+        </p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="delete-cancel-btn" data-close-modal="deleteAdminModal">
+          Cancel
+        </button>
+
+        <button type="button" class="delete-confirm-btn" id="confirmDeleteAdmin">
+          <i class="bi bi-trash"></i>
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+     ARCHIVE ADMIN CONFIRMATION MODAL
+========================================================= -->
+
+  <div id="archiveAdminModal" class="modal-overlay" aria-hidden="true">
+    <div class="archive-modal" role="dialog" aria-modal="true" aria-labelledby="archiveAdminModalTitle">
+      <div class="archive-modal-content">
+        <div class="archive-modal-icon">
+          <i class="bi bi-archive"></i>
+        </div>
+
+        <h2 id="archiveAdminModalTitle">Archive Administrator?</h2>
+
+        <p id="archiveAdminMessage">
+          Are you sure you want to archive this administrator?
+        </p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="archive-cancel-btn" data-close-modal="archiveAdminModal">
+          Cancel
+        </button>
+
+        <button type="button" class="archive-confirm-btn" id="confirmArchiveAdmin">
+          <i class="bi bi-archive"></i>
+
+          Archive
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+     DISCARD CONFIRMATION MODAL
+========================================================= -->
+
+  <div id="discardModal" class="modal-overlay" aria-hidden="true">
+    <div class="delete-modal" role="dialog" aria-modal="true" aria-labelledby="discardModalTitle">
+      <div class="delete-modal-content">
+        <div class="delete-modal-icon">
+          <i class="bi bi-arrow-counterclockwise"></i>
+        </div>
+
+        <h2 id="discardModalTitle">Discard Changes?</h2>
+
+        <p>
+          Any unsaved changes will be lost. Are you sure you want to continue?
+        </p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="delete-cancel-btn" data-close-modal="discardModal">
+          Cancel
+        </button>
+
+        <button type="button" class="delete-confirm-btn" id="confirmDiscard">
+          <i class="bi bi-x-lg"></i>
+          Discard
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+     SAVE SETTINGS CONFIRMATION MODAL
+========================================================= -->
+
+  <div id="saveSettingsModal" class="modal-overlay" aria-hidden="true">
+    <div class="save-modal" role="dialog" aria-modal="true" aria-labelledby="saveSettingsModalTitle">
+      <div class="save-modal-content">
+        <div class="save-modal-icon">
+          <i class="bi bi-check-circle"></i>
+        </div>
+
+        <h2 id="saveSettingsModalTitle">Save Changes?</h2>
+
+        <p>Are you sure you want to save these settings?</p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="save-cancel-btn" data-close-modal="saveSettingsModal">
+          Cancel
+        </button>
+
+        <button type="button" class="save-confirm-btn" id="confirmSaveSettings">
+          <i class="bi bi-check-lg"></i>
+          Save Changes
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAMPUS ADD / EDIT MODAL -->
+  <div id="campusModal" class="modal-overlay" aria-hidden="true">
+    <div class="save-modal config-modal" role="dialog" aria-modal="true" aria-labelledby="campusModalTitle">
+      <div class="save-modal-content">
+        <div class="save-modal-icon"><i class="bi bi-geo-alt"></i></div>
+        <h2 id="campusModalTitle">Add Campus</h2>
+
+        <form id="campusForm" class="config-modal-fields" novalidate>
+          <div class="form-group">
+            <label for="campusNameInput">Campus Name</label>
+            <input type="text" id="campusNameInput" maxlength="100" placeholder="Campus name" />
+            <small class="field-error">This field is required.</small>
+          </div>
+          <div class="form-group">
+            <label for="campusDescriptionInput">Description (optional)</label>
+            <input type="text" id="campusDescriptionInput" maxlength="500" placeholder="Short description" />
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="save-cancel-btn" data-close-modal="campusModal">Cancel</button>
+        <button type="button" class="save-confirm-btn" id="campusModalSave"><i class="bi bi-check-lg"></i> Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROGRAM ADD / EDIT MODAL -->
+  <div id="programModal" class="modal-overlay" aria-hidden="true">
+    <div class="save-modal config-modal" role="dialog" aria-modal="true" aria-labelledby="programModalTitle">
+      <div class="save-modal-content">
+        <div class="save-modal-icon"><i class="bi bi-mortarboard"></i></div>
+        <h2 id="programModalTitle">Add Program</h2>
+
+        <form id="programForm" class="config-modal-fields" novalidate>
+          <div class="form-group">
+            <label for="programAcronymInput">Acronym</label>
+            <input type="text" id="programAcronymInput" maxlength="20" placeholder="e.g. BSIT" />
+            <small class="field-error">This field is required.</small>
+          </div>
+          <div class="form-group">
+            <label for="programFullNameInput">Full Name</label>
+            <input type="text" id="programFullNameInput" maxlength="150" placeholder="e.g. Information Technology" />
+            <small class="field-error">This field is required.</small>
+          </div>
+          <div class="form-group">
+            <label for="programAliasesInput">Other spellings (optional)</label>
+            <input type="text" id="programAliasesInput" maxlength="200" placeholder="e.g. AB English, ABENGLISH" />
+            <small class="config-field-hint">
+              Other names your voter data uses for this program, separated by commas. Majors written like
+              "BSBA - MKT" are already counted under BSBA.
+            </small>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="save-cancel-btn" data-close-modal="programModal">Cancel</button>
+        <button type="button" class="save-confirm-btn" id="programModalSave"><i class="bi bi-check-lg"></i>
+          Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAMPUS PROGRAMS MODAL -->
+  <div id="campusProgramsModal" class="modal-overlay" aria-hidden="true">
+    <div class="save-modal config-modal" role="dialog" aria-modal="true" aria-labelledby="campusProgramsTitle">
+      <div class="save-modal-content">
+        <div class="save-modal-icon"><i class="bi bi-list-check"></i></div>
+        <h2 id="campusProgramsTitle">Campus Programs</h2>
+
+        <div class="config-modal-fields">
+          <label class="setting-toggle">
+            <span>
+              <strong>Use a custom program list</strong>
+              <small>Off: this campus offers every program. On: only the ticked programs.</small>
+            </span>
+            <input type="checkbox" id="campusCustomToggle" />
+            <span class="toggle-slider"></span>
+          </label>
+
+          <div class="config-checklist" id="campusProgramChecklist"></div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="save-cancel-btn" data-close-modal="campusProgramsModal">Cancel</button>
+        <button type="button" class="save-confirm-btn" id="campusProgramsSave"><i class="bi bi-check-lg"></i>
+          Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONFIG DELETE MODAL -->
+  <div id="configDeleteModal" class="modal-overlay" aria-hidden="true">
+    <div class="delete-modal" role="dialog" aria-modal="true" aria-labelledby="configDeleteTitle">
+      <div class="delete-modal-content">
+        <div class="delete-modal-icon"><i class="bi bi-trash"></i></div>
+        <h2 id="configDeleteTitle">Delete?</h2>
+        <p id="configDeleteMessage">Are you sure?</p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="delete-cancel-btn" data-close-modal="configDeleteModal">Cancel</button>
+        <button type="button" class="delete-confirm-btn" id="configDeleteConfirm"><i class="bi bi-trash"></i>
+          Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+     LOGOUT MODAL
+========================================================= -->
+
+  <div class="modal-overlay" id="logoutModal">
+    <div class="delete-modal logout-modal">
+      <div class="delete-modal-content">
+        <div class="delete-modal-icon">
+          <i class="bi bi-box-arrow-right"></i>
+        </div>
+
+        <h2>Logout?</h2>
+
+        <p>Are you sure you want to logout from LCC Cast?</p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="logout-cancel-btn" id="cancelLogout">
+          Cancel
+        </button>
+
+        <button type="button" class="logout-confirm-btn" id="confirmLogout">
+          <i class="bi bi-box-arrow-right"></i>
+
+          Logout
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+     GLOBAL ACTION LOADING MODAL
+========================================================= -->
+
+  <div class="modal-overlay loading-modal-overlay" id="actionLoadingModal">
+    <div class="action-loading-modal">
+      <div class="action-loading-spinner">
+        <span></span>
+      </div>
+
+      <div class="action-loading-content">
+        <h2 id="actionLoadingTitle">Processing...</h2>
+
+        <p id="actionLoadingMessage">
+          Please wait while we process your request.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+     SUCCESS TOAST
+========================================================= -->
+
+  <div id="successToast" class="success-toast" aria-live="polite">
+    <div class="success-toast-icon">
+      <i class="bi bi-check-lg"></i>
+    </div>
+
+    <div class="success-toast-content">
+      <strong id="successToastTitle"> Success </strong>
+
+      <span id="successToastMessage">
+        Administrator added successfully.
+      </span>
+    </div>
+
+    <button type="button" class="success-toast-close" id="successToastClose">
+      <i class="bi bi-x"></i>
+    </button>
+  </div>
+
+  <!-- =========================================================
+     DISCARD TOAST
+========================================================= -->
+
+  <div id="discardToast" class="success-toast" aria-live="polite">
+    <div class="success-toast-icon">
+      <i class="bi bi-arrow-counterclockwise"></i>
+    </div>
+
+    <div class="success-toast-content">
+      <strong id="discardToastTitle">Changes Discarded</strong>
+
+      <span id="discardToastMessage">
+        Your changes have been discarded.
+      </span>
+    </div>
+
+    <button type="button" class="success-toast-close" id="discardToastClose">
+      <i class="bi bi-x"></i>
+    </button>
+  </div>
+  <script src="/js/superadmin/soft-cache.js"></script>
+
+  <script src="/js/navigation.js"></script>
+  <script src="/js/system-config.js"></script>
+    <script src="/js/system-config.js"></script>
+  <script src="/js/superadmin/settings.js"></script>
+  <script src="/js/superadmin/system-settings.js"></script>
+  <script src="/js/password-rules.js"></script>
+  <script src="/js/logout.js"></script>
+</body>
+
+</html>

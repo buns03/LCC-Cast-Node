@@ -1,0 +1,204 @@
+document.addEventListener("DOMContentLoaded", function () {
+
+  document.querySelectorAll(".change-toggle-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      const targetEl = document.getElementById(btn.getAttribute("data-target"));
+      if (!targetEl) return;
+
+      const isHidden = targetEl.hasAttribute("hidden");
+      if (isHidden) {
+        targetEl.removeAttribute("hidden");
+        btn.textContent = "Cancel";
+      } else {
+        targetEl.setAttribute("hidden", "");
+        btn.textContent = "Change";
+        targetEl.querySelectorAll("input").forEach((input) => (input.value = ""));
+      }
+    });
+  });
+
+  wirePasswordStrengthFeedback({
+      passwordInputId: "newPassword",
+      feedbackId: "newPasswordStrength",
+      getButtons: () => [document.getElementById("saveVoterSettings")]
+    });
+
+  document.querySelectorAll(".password-toggle").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      const input = document.getElementById(btn.getAttribute("data-target"));
+      const icon = btn.querySelector("i");
+      if (!input) return;
+      const isPassword = input.type === "password";
+      input.type = isPassword ? "text" : "password";
+      if (icon) {
+        icon.classList.toggle("bi-eye", !isPassword);
+        icon.classList.toggle("bi-eye-slash", isPassword);
+      }
+    });
+  });
+
+  function isSectionOpen(id) {
+    const el = document.getElementById(id);
+    return el && !el.hasAttribute("hidden");
+  }
+
+  function isEmailValid(value) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+  }
+
+  function setFieldError(input, hasError) {
+    input.closest(".form-group")?.classList.toggle("has-error", hasError);
+  }
+
+  function validateForm() {
+    let valid = true;
+
+    if (isSectionOpen("emailChangeFields")) {
+      const emailInput = document.getElementById("voterEmail");
+      const value = emailInput.value.trim();
+      if (value !== "" && !isEmailValid(value)) {
+        setFieldError(emailInput, true);
+        valid = false;
+      } else {
+        setFieldError(emailInput, false);
+      }
+    }
+
+    if (isSectionOpen("passwordChangeFields")) {
+      const current = document.getElementById("currentPassword");
+      const newPass = document.getElementById("newPassword");
+      const confirm = document.getElementById("confirmPassword");
+
+            if (current.value === "") { setFieldError(current, true); valid = false; } else setFieldError(current, false);
+            if (newPass.value === "") {
+              setFieldError(newPass, true);
+              valid = false;
+            } else {
+              const feedback = getPasswordFeedback(newPass.value);
+              setFieldError(newPass, !feedback.valid);
+              if (!feedback.valid) valid = false;
+            }
+            if (confirm.value === "" || confirm.value !== newPass.value) { setFieldError(confirm, true); valid = false; } else setFieldError(confirm, false);
+    }
+
+    return valid;
+  }
+
+  function openModal(id) { document.getElementById(id)?.classList.add("show"); }
+  function closeModal(id) { document.getElementById(id)?.classList.remove("show"); }
+
+  document.getElementById("discardVoterSettings")?.addEventListener("click", function () {
+    resetChangeSections();
+  });
+
+  const form = document.getElementById("voterProfileForm");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!validateForm()) return;
+
+      const saveBtn = document.getElementById("saveVoterSettings");
+      if (saveBtn && saveBtn.disabled) return;
+
+      const emailTouched = isSectionOpen("emailChangeFields") &&
+        document.getElementById("voterEmail").value.trim() !== "";
+    const passwordTouched = isSectionOpen("passwordChangeFields") &&
+        document.getElementById("currentPassword").value !== "";
+
+    if (!emailTouched && !passwordTouched) {
+      return;
+    }
+
+    openModal("saveVoterSettingsModal");
+  });
+
+  document.getElementById("cancelSaveVoterSettings")?.addEventListener("click", () => closeModal("saveVoterSettingsModal"));
+
+  document.getElementById("confirmSaveVoterSettings")?.addEventListener("click", function () {
+    closeModal("saveVoterSettingsModal");
+    submitSettings();
+  });
+
+  function submitSettings() {
+    const emailTouched = isSectionOpen("emailChangeFields") &&
+        document.getElementById("voterEmail").value.trim() !== "";
+    const passwordTouched = isSectionOpen("passwordChangeFields") &&
+        document.getElementById("currentPassword").value !== "";
+
+    if (!emailTouched && !passwordTouched) return;
+
+    showLoading("Saving Changes...", "Please wait while we update your settings.");
+
+    const payload = { newEmail: null, currentPassword: null, newPassword: null, confirmPassword: null };
+
+    if (emailTouched) {
+      payload.newEmail = document.getElementById("voterEmail").value.trim();
+    }
+    if (passwordTouched) {
+      payload.currentPassword = document.getElementById("currentPassword").value;
+      payload.newPassword = document.getElementById("newPassword").value;
+      payload.confirmPassword = document.getElementById("confirmPassword").value;
+    }
+
+    fetch("/candidate/settings", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    })
+      .then((res) => res.json().then((data) => ({ ok: res.ok, data })))
+      .catch(() => ({ ok: false, data: { message: "Network error." } }))
+      .then((result) => {
+        hideLoading();
+
+        if (result.ok) {
+          showToast("Success", result.data.message || "Your settings were updated successfully.");
+          resetChangeSections();
+        } else {
+          showToast("Update Failed", result.data.message || "Something went wrong. Please try again.", true);
+        }
+      });
+  }
+
+  function resetChangeSections() {
+    ["emailChangeFields", "passwordChangeFields"].forEach((id) => {
+      const section = document.getElementById(id);
+      if (!section) return;
+      section.setAttribute("hidden", "");
+      section.querySelectorAll("input").forEach((input) => (input.value = ""));
+    });
+    document.getElementById("changeEmailBtn").textContent = "Change";
+    document.getElementById("changePasswordBtn").textContent = "Change";
+  }
+
+  function showLoading(title, message) {
+    document.getElementById("actionLoadingTitle").textContent = title;
+    document.getElementById("actionLoadingMessage").textContent = message;
+    document.body.classList.add("modal-loading");
+    openModal("actionLoadingModal");
+  }
+
+  function hideLoading() {
+    document.body.classList.remove("modal-loading");
+    closeModal("actionLoadingModal");
+  }
+
+  let toastTimeout = null;
+  function showToast(title, message, isError) {
+    const toast = document.getElementById("successToast");
+    const icon = toast.querySelector(".success-toast-icon i");
+    document.getElementById("successToastTitle").textContent = title;
+    document.getElementById("successToastMessage").textContent = message;
+    if (icon) {
+      icon.classList.toggle("bi-check-lg", !isError);
+      icon.classList.toggle("bi-x-lg", !!isError);
+    }
+    toast.classList.toggle("toast-error", !!isError);
+    toast.classList.add("show");
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => toast.classList.remove("show"), 4000);
+  }
+
+  document.getElementById("successToastClose")?.addEventListener("click", () => {
+    document.getElementById("successToast").classList.remove("show");
+  });
+});

@@ -1,0 +1,600 @@
+/* =========================================================
+   LCCAST — CANDIDATE PORTAL (shared: personal & group info)
+========================================================= */
+
+.candidate-portal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* =========================================================
+   CANDIDATE TYPE TABS (SSC / DEPARTMENT)
+   — same design language as .vote-summary-tabs
+========================================================= */
+
+.candidate-type-tabs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    width: 100%;
+    margin-bottom: 24px;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.candidate-type-tab {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    min-height: 46px;
+    padding: 0 20px;
+
+    border: none;
+    background: transparent;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--subtext, #6b7280);
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease;
+}
+
+.candidate-type-tab::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+    background: transparent;
+    transition: background 0.2s ease;
+}
+
+.candidate-type-tab:hover {
+    background: #f7f8ff;
+}
+
+.candidate-type-tab.active {
+    color: #435cff;
+}
+
+.candidate-type-tab.active::after {
+    background: #435cff;
+}
+
+.candidate-type-tab i {
+    font-size: 16px;
+}
+
+.candidate-type-section {
+    display: none;
+    width: 100%;
+}
+
+.candidate-type-section.active {
+    display: block;
+}
+
+@media (max-width: 576px) {
+    .candidate-type-tabs {
+        gap: 4px;
+    }
+
+    .candidate-type-tab {
+        min-height: 42px;
+        padding: 0 12px;
+        gap: 5px;
+        font-size: 12px;
+    }
+}
+
+/* =========================================================
+   PERSONAL INFO — IMAGE CARDS
+========================================================= */
+
+.candidate-image-card {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 24px 26px;
+    box-sizing: border-box;
+}
+
+.candidate-image-card-header h3 {
+    margin: 0 0 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.candidate-image-card-header h3 i {
+    color: var(--primary);
+}
+
+.candidate-image-card-header p {
+    margin: 0 0 18px;
+    font-size: 13px;
+    color: var(--subtext);
+}
+
+.candidate-image-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.candidate-image-preview {
+    flex-shrink: 0;
+    overflow: hidden;
+    background: #f0f3ff;
+    border: 1px solid var(--border);
+}
+
+.candidate-image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.candidate-image-preview-round {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+}
+
+.candidate-image-preview-wide {
+    width: 220px;
+    height: 120px;
+    border-radius: 14px;
+}
+
+.candidate-image-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* =========================================================
+   GROUP INFO — SKELETON
+========================================================= */
+
+.candidate-group-skeleton {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.skeleton-group-poster {
+    width: 100%;
+    height: 200px;
+    border-radius: 20px;
+}
+
+.skeleton-group-title {
+    width: 40%;
+    height: 24px;
+    border-radius: 8px;
+}
+
+.skeleton-group-line {
+    width: 100%;
+    height: 14px;
+    border-radius: 6px;
+}
+
+.skeleton-group-line.short {
+    width: 60%;
+}
+
+/* =========================================================
+   GROUP INFO CARD
+========================================================= */
+
+.candidate-group-card {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.candidate-group-poster {
+    width: 100%;
+    padding: 0 26px 22px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.candidate-group-poster .doc-ratio-frame {
+    --fp-maxh: min(42vh, 360px);
+    margin: 0;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+}
+
+.candidate-group-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 22px 26px;
+}
+
+.candidate-group-logo {
+    width: 68px;
+    height: 68px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #f0f3ff;
+}
+
+.candidate-group-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.candidate-group-type {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.candidate-group-header h2 {
+    margin: 2px 0 2px;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.candidate-group-header p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.candidate-group-description {
+    padding: 0 26px 26px;
+}
+
+.candidate-group-description h3 {
+    margin: 0 0 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.candidate-group-description p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--subtext);
+}
+
+/* =========================================================
+   GROUP EDIT (PRESIDENT ONLY)
+========================================================= */
+
+.candidate-group-edit-card {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 24px 26px;
+    box-sizing: border-box;
+}
+
+.candidate-group-edit-header h3 {
+    margin: 0 0 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.candidate-group-edit-header p {
+    margin: 0 0 18px;
+    font-size: 13px;
+    color: var(--subtext);
+}
+
+.candidate-group-edit-card textarea {
+    width: 100%;
+    min-height: 110px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+.candidate-group-edit-images {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    width: 100%;
+    min-width: 0;
+    margin: 18px 0;
+}
+
+/* =========================================================
+   GROUP MEMBERS
+========================================================= */
+
+.candidate-group-members h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 16px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.candidate-group-member-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+}
+
+.candidate-group-member-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+}
+
+.candidate-group-member-card img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.candidate-group-member-card strong {
+    display: block;
+    font-size: 14px;
+    color: var(--text);
+}
+
+.candidate-group-member-card span {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.candidate-group-edit-images .form-group {
+    display: none; /* replaced by .candidate-image-row below */
+}
+
+.candidate-group-edit-card .settings-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+}
+
+.candidate-group-edit-card .save-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.candidate-group-edit-card .save-btn:hover {
+    opacity: 0.9;
+}
+
+/* =========================================================
+   RESPONSIVE SAFETY — prevent edit card overflow
+========================================================= */
+
+.candidate-type-section,
+.candidate-group-card,
+.candidate-group-edit-card,
+.candidate-group-members {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.candidate-group-edit-card .candidate-image-row {
+    width: 100%;
+    min-width: 0;
+    gap: 14px 20px;
+}
+
+.candidate-group-edit-card .candidate-image-preview {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Beat any inline px sizes set by doc-image-ratio.js */
+.candidate-group-edit-card .candidate-image-preview.doc-ratio-frame {
+    max-width: 100% !important;
+}
+
+.candidate-group-edit-card .candidate-image-preview img,
+.candidate-group-poster .doc-ratio-frame img {
+    max-width: 100%;
+    height: 100%;
+}
+
+.candidate-group-poster .doc-ratio-frame {
+    max-width: 100%;
+}
+
+.candidate-image-actions .secondary-btn {
+    white-space: nowrap;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 700px) {
+   .candidate-image-row {
+       flex-direction: column;
+       align-items: stretch;
+   }
+
+   .candidate-image-preview-wide {
+       width: 100%;
+       max-width: 100%;
+   }
+
+   .candidate-image-preview-round {
+       align-self: flex-start;
+   }
+
+   .candidate-image-actions {
+       width: 100%;
+   }
+
+   .candidate-image-actions .secondary-btn {
+       width: 100%;
+       justify-content: center;
+   }
+
+    .candidate-group-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .candidate-group-edit-images {
+        flex-direction: column;
+    }
+
+    .candidate-image-card-header h3 {
+        font-size: 13.5px;
+    }
+
+    .candidate-image-card-header p {
+        font-size: 12px;
+    }
+
+    .candidate-group-header h2 {
+        font-size: 16px;
+    }
+
+    .candidate-group-header p {
+        font-size: 11.5px;
+    }
+
+    .candidate-group-type {
+        font-size: 10.5px;
+    }
+
+    .candidate-group-description h3 {
+        font-size: 13px;
+    }
+
+    .candidate-group-description p {
+        font-size: 12.5px;
+    }
+
+    .candidate-group-edit-header h3 {
+        font-size: 13.5px;
+    }
+
+    .candidate-group-edit-header p {
+        font-size: 12px;
+    }
+
+    .candidate-group-members h3 {
+        font-size: 13.5px;
+    }
+
+    .candidate-group-poster .doc-ratio-frame {
+            --fp-maxh: 300px;
+        }
+
+}
+
+@media (max-width: 480px) {
+    .candidate-group-header h2 {
+        font-size: 15px;
+    }
+
+    .candidate-image-card-header h3,
+    .candidate-group-edit-header h3,
+    .candidate-group-members h3 {
+        font-size: 13px;
+    }
+
+    .candidate-group-description h3 {
+        font-size: 12.5px;
+    }
+
+     .candidate-group-poster {
+        padding: 0 16px 16px;
+    }
+
+    .candidate-group-poster .doc-ratio-frame {
+        --fp-maxh: 260px;
+    }
+
+    .candidate-group-logo {
+        width: 56px;
+        height: 56px;
+    }
+
+    .candidate-image-preview-wide {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        aspect-ratio: 220 / 120;
+    }
+
+    .candidate-group-member-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .candidate-image-card,
+    .candidate-group-edit-card {
+        padding: 16px;
+    }
+
+    .candidate-group-header,
+    .candidate-group-description {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}

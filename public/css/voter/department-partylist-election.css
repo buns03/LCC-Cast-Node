@@ -1,0 +1,1574 @@
+/* ==========================================================
+   LCCAST — DEPARTMENT PARTYLIST ELECTION VOTER VIEW
+========================================================== */
+
+
+/* ==========================================================
+   PAGE CONTENT
+========================================================== */
+
+.voter-page-content {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+
+    box-sizing: border-box;
+}
+
+
+/* ==========================================================
+   PAGE HEADER
+========================================================== */
+
+.voter-page-content .page-header {
+    margin-bottom: 28px;
+}
+
+.voter-page-content .page-header h2 {
+    margin: 0 0 6px;
+
+    font-size: 28px;
+    font-weight: 700;
+
+    color: var(--text);
+}
+
+.voter-page-content .page-header p {
+    margin: 0;
+
+    font-size: 14px;
+    color: var(--subtext);
+}
+
+
+/* ==========================================================
+   ELECTION CONTENT
+========================================================== */
+
+.election-content {
+    display: flex;
+    flex-direction: column;
+
+    gap: 24px;
+}
+
+
+/* ==========================================================
+   ELECTION INFORMATION
+========================================================== */
+
+.election-info-card {
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    width: 100%;
+
+    padding: 24px 26px;
+
+    background: #ffffff;
+
+    border: 1px solid var(--border);
+    border-radius: 20px;
+
+    box-sizing: border-box;
+}
+
+.election-info-icon {
+    width: 58px;
+    height: 58px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background: var(--primary);
+    color: #ffffff;
+
+    font-size: 25px;
+}
+
+.election-info-content {
+    min-width: 0;
+}
+
+.election-info-content h3 {
+    margin: 0 0 6px;
+
+    font-size: 19px;
+    font-weight: 700;
+
+    color: var(--text);
+}
+
+.election-info-content p {
+    margin: 0 0 4px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: var(--subtext);
+}
+
+.election-info-content span {
+    font-size: 13px;
+
+    color: var(--muted);
+}
+
+
+/* ==========================================================
+   SCHEDULE
+========================================================== */
+
+.election-schedule {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 16px;
+}
+
+.election-schedule-item {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 9px 13px;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    background: #f8f9ff;
+
+    font-size: 12px;
+    color: var(--subtext);
+}
+
+.election-schedule-item i {
+    color: var(--primary);
+}
+
+
+/* ==========================================================
+   INSTRUCTIONS
+========================================================== */
+
+.election-instructions {
+    padding: 22px 24px;
+
+    background: #ffffff;
+
+    border: 1px solid var(--border);
+    border-radius: 18px;
+}
+
+.election-instructions h3 {
+    margin: 0 0 7px;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    color: var(--text);
+}
+
+.election-instructions p {
+    margin: 0;
+
+    max-width: 900px;
+
+    font-size: 13px;
+    line-height: 1.6;
+
+    color: var(--subtext);
+}
+
+
+/* ==========================================================
+   POSITIONS
+========================================================== */
+
+.election-positions {
+    display: flex;
+    flex-direction: column;
+
+    gap: 24px;
+}
+
+.election-position {
+    width: 100%;
+
+    padding: 24px;
+
+    background: #ffffff;
+
+    border: 1px solid var(--border);
+    border-radius: 20px;
+
+    box-sizing: border-box;
+}
+
+
+/* ==========================================================
+   POSITION HEADER
+========================================================== */
+
+.position-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+.position-title {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.position-title i {
+    color: var(--primary);
+
+    font-size: 18px;
+}
+
+.position-title h3 {
+    margin: 0;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    color: var(--text);
+}
+
+.position-rule {
+    font-size: 12px;
+
+    color: var(--muted);
+}
+
+
+/* ==========================================================
+   CANDIDATE GRID
+   DESKTOP / TABLET = 3 PER ROW
+========================================================== */
+
+.candidate-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+
+/* ==========================================================
+   CANDIDATE CARD
+========================================================== */
+
+.candidate-card {
+    position: relative;
+
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border: 1px solid var(--border);
+    border-radius: 16px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+.candidate-card:hover {
+    border-color: var(--primary);
+
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================================
+   SELECTED CANDIDATE
+========================================================== */
+
+.candidate-card.selected {
+    border: 2px solid var(--primary);
+
+    box-shadow: 0 8px 25px rgba(67, 92, 255, 0.12);
+}
+
+
+/* ==========================================================
+   OTHER CANDIDATES AFTER SELECTION
+========================================================== */
+
+.candidate-card.dimmed {
+    opacity: 0.45;
+}
+
+.candidate-card.dimmed:hover {
+    opacity: 0.8;
+}
+
+
+/* ==========================================================
+   CANDIDATE IMAGE
+   1:1 RATIO
+========================================================== */
+
+.candidate-image-wrapper {
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    overflow: hidden;
+
+    background: #f0f3ff;
+}
+
+.candidate-image {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+/* ==========================================================
+   SELECTED BADGE
+========================================================== */
+
+.candidate-selected-badge {
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    display: none;
+    align-items: center;
+
+    gap: 5px;
+
+    padding: 7px 10px;
+
+    border-radius: 8px;
+
+    background: var(--primary);
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.candidate-card.selected .candidate-selected-badge {
+    display: flex;
+}
+
+
+/* ==========================================================
+   CANDIDATE INFO
+========================================================== */
+
+.candidate-info {
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+
+    padding: 16px 17px 8px;
+}
+
+.candidate-name {
+    margin: 0;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    line-height: 1.3;
+
+    color: var(--text);
+}
+
+.candidate-partylist {
+    margin: 0;
+
+    font-size: 12px;
+
+    color: var(--muted);
+}
+
+
+/* ==========================================================
+   CANDIDATE ACTIONS
+========================================================== */
+
+.candidate-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+    padding: 9px 17px 17px;
+}
+
+
+/* ==========================================================
+   VIEW CAMPAIGN BUTTON
+========================================================== */
+
+.candidate-campaign-btn {
+    width: 100%;
+    height: 40px;
+
+    padding: 0 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    background: #f8f9fc;
+    color: var(--text);
+
+    font-family: inherit;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.candidate-campaign-btn i {
+    font-size: 14px;
+}
+
+.candidate-campaign-btn:hover {
+    background: #eef2ff;
+
+    border-color: var(--primary);
+
+    color: var(--primary);
+}
+
+
+/* ==========================================================
+   SELECT BUTTON
+========================================================== */
+
+.candidate-select-btn {
+    width: 100%;
+    height: 40px;
+
+    padding: 0 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    border: 1px solid var(--primary);
+    border-radius: 10px;
+
+    background: var(--primary);
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.candidate-select-btn:hover {
+    background: var(--primary-hover);
+
+    border-color: var(--primary-hover);
+}
+
+.candidate-card.selected .candidate-select-btn {
+    background: #ffffff;
+
+    color: var(--primary);
+}
+
+/* ==========================================================
+   CLEAR SELECTION BUTTON
+========================================================== */
+
+.candidate-clear-btn {
+    display: none;
+
+    grid-column: 1 / -1;
+
+    width: 100%;
+    height: 36px;
+
+    padding: 0 12px;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    background: #fafafa;
+    color: var(--muted);
+
+    font-family: inherit;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.candidate-card.selected .candidate-clear-btn {
+    display: flex;
+}
+
+.candidate-clear-btn:hover {
+    background: #fef2f2;
+
+    border-color: #f87171;
+
+    color: #dc2626;
+}
+
+
+/* ==========================================================
+   REVIEW VOTE BUTTON
+========================================================== */
+
+.election-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    padding-top: 2px;
+}
+
+.election-action .primary-btn {
+    min-width: 190px;
+    height: 48px;
+
+    padding: 0 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: var(--primary);
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.election-action .primary-btn:hover {
+    background: var(--primary-hover);
+
+    transform: translateY(-1px);
+}
+
+/* ==========================================================
+   CLEAR ALL BUTTON
+========================================================== */
+
+.election-action .secondary-btn {
+    height: 48px;
+
+    padding: 0 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background: #ffffff;
+    color: var(--text);
+
+    font-family: inherit;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.election-action .secondary-btn:hover {
+    background: #fef2f2;
+
+    border-color: #f87171;
+
+    color: #dc2626;
+}
+
+
+/* ==========================================================
+   CAMPAIGN MODAL
+========================================================== */
+
+.campaign-modal {
+    width: 680px;
+
+    max-width: 92vw;
+    max-height: 88vh;
+
+    overflow-y: auto;
+
+    background: #ffffff;
+
+    border-radius: 22px;
+
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+
+    transform: translateY(25px);
+
+    transition: 0.25s ease;
+}
+
+.modal-overlay.show .campaign-modal {
+    transform: translateY(0);
+}
+
+.campaign-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 22px 26px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.campaign-modal-header h2 {
+    margin: 0;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    color: var(--text);
+}
+
+.campaign-modal-close {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #f3f4f7;
+    color: var(--subtext);
+
+    cursor: pointer;
+}
+
+.campaign-modal-close:hover {
+    background: #e8eaf0;
+
+    color: var(--text);
+}
+
+.campaign-modal-body {
+    padding: 24px 26px 28px;
+}
+
+.campaign-candidate-name {
+    margin: 0 0 5px;
+
+    font-size: 21px;
+    font-weight: 700;
+
+    color: var(--text);
+}
+
+.campaign-candidate-partylist {
+    margin: 0 0 18px;
+
+    font-size: 13px;
+
+    color: var(--muted);
+}
+
+.campaign-image {
+    width: 100%;
+
+    max-height: 440px;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 15px;
+
+    background: #f0f3ff;
+}
+
+
+/* ==========================================================
+   REVIEW VOTE MODAL
+========================================================== */
+
+.review-vote-modal {
+    width: 700px;
+
+    max-width: 92vw;
+    max-height: 88vh;
+
+    background: #ffffff;
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+
+    transform: translateY(25px);
+
+    transition: 0.25s ease;
+}
+
+.modal-overlay.show .review-vote-modal {
+    transform: translateY(0);
+}
+
+.review-vote-body {
+    max-height: 58vh;
+
+    overflow-y: auto;
+
+    padding: 22px 26px;
+}
+
+
+/* ==========================================================
+   REVIEW POSITION
+========================================================== */
+
+.review-position {
+    padding: 0 0 20px;
+
+    margin-bottom: 20px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.review-position:last-child {
+    margin-bottom: 0;
+
+    padding-bottom: 0;
+
+    border-bottom: none;
+}
+
+.review-position h3 {
+    margin: 0 0 13px;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    color: var(--text);
+}
+
+
+/* ==========================================================
+   REVIEW CANDIDATE
+========================================================== */
+
+.review-candidate {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    min-height: 100px;
+
+    padding: 12px;
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    background: #fafbfd;
+}
+
+.review-candidate-image {
+    width: 82px;
+    height: 82px;
+
+    flex-shrink: 0;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+
+    background: #f0f3ff;
+}
+
+.review-candidate-info {
+    min-width: 0;
+}
+
+.review-candidate-info strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 15px;
+
+    color: var(--text);
+}
+
+.review-candidate-info span {
+    font-size: 12px;
+
+    color: var(--muted);
+}
+
+
+/* ==========================================================
+   REVIEW FOOTER
+========================================================== */
+
+.review-vote-modal .modal-footer {
+    padding: 20px 26px 24px;
+
+    border-top: 1px solid var(--border);
+}
+
+.review-cancel-btn,
+.review-submit-btn {
+    min-width: 140px;
+
+    height: 46px;
+
+    padding: 0 18px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    font-family: inherit;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.review-cancel-btn {
+    background: #f3f4f8;
+
+    color: var(--text);
+}
+
+.review-cancel-btn:hover {
+    background: #e7eaf2;
+}
+
+.review-submit-btn {
+    background: var(--primary);
+
+    color: #ffffff;
+}
+
+.review-submit-btn:hover {
+    background: var(--primary-hover);
+}
+
+
+/* =========================================================
+   VOTE THANK YOU
+========================================================= */
+
+.vote-thank-you {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    gap: 14px;
+
+    padding: 48px 24px;
+}
+
+.vote-thank-you-icon {
+    width: 76px;
+    height: 76px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #eef1ff;
+    color: var(--primary);
+
+    font-size: 38px;
+}
+
+.vote-thank-you h2 {
+    margin: 0;
+
+    font-size: 28px;
+}
+
+.vote-thank-you > p {
+    margin: 0;
+
+    color: var(--text-muted);
+}
+
+.vote-reference-card,
+.vote-summary-card {
+    width: 100%;
+    max-width: 760px;
+
+    background: #ffffff;
+
+    border: 1px solid var(--border);
+    border-radius: 20px;
+
+    padding: 24px;
+
+    text-align: left;
+}
+
+.vote-reference-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 8px;
+
+    text-align: center;
+}
+
+.vote-reference-card span {
+    font-size: 13px;
+
+    color: var(--text-muted);
+}
+
+.vote-reference-card strong {
+    font-size: 22px;
+
+    letter-spacing: 1px;
+}
+
+.vote-summary-header h3 {
+    margin: 0 0 20px;
+}
+
+.vote-time {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.vote-time > i {
+    font-size: 22px;
+
+    color: var(--primary);
+}
+
+.vote-time div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+.vote-time span {
+    font-size: 13px;
+
+    color: var(--text-muted);
+}
+
+.vote-time strong {
+    font-size: 14px;
+}
+
+.vote-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.vote-detail-item {
+    padding: 18px 0;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.vote-detail-item:last-child {
+    border-bottom: none;
+
+    padding-bottom: 0;
+}
+
+.vote-detail-position {
+    margin-bottom: 10px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    color: var(--text-muted);
+}
+
+.vote-detail-candidate {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.vote-detail-candidate img {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+}
+
+.vote-detail-candidate div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+.vote-detail-candidate strong {
+    font-size: 14px;
+}
+
+.vote-detail-candidate span {
+    font-size: 13px;
+
+    color: var(--text-muted);
+}
+
+
+/* ==========================================================
+   RESPONSIVE — LARGE TABLET
+========================================================== */
+
+@media (max-width: 1100px) {
+
+    .voter-page-content {
+        padding: 28px 28px 44px;
+    }
+
+    .candidate-grid {
+        gap: 16px;
+    }
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE — TABLET
+========================================================== */
+
+@media (max-width: 900px) {
+
+    .voter-page-content {
+        padding: 26px 22px 40px;
+    }
+
+    voter-page-content .page-header h2 { font-size: 22px; }
+        .voter-page-content .page-header p  { font-size: 13px; }
+
+    .election-position {
+        padding: 20px;
+    }
+
+    .candidate-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+
+        gap: 14px;
+    }
+
+    .candidate-info {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .candidate-actions {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .candidate-name {
+        font-size: 14px;
+    }
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE — MOBILE
+========================================================== */
+
+@media (max-width: 768px) {
+
+    .voter-page-content {
+        padding: 22px 18px 34px;
+    }
+
+    .voter-page-content .page-header {
+        margin-bottom: 22px;
+    }
+
+    .voter-page-content .page-header h2 { font-size: 20px; }
+        .voter-page-content .page-header p  { font-size: 12.5px; }
+
+    .election-content {
+        gap: 18px;
+    }
+
+    .election-info-card {
+        align-items: flex-start;
+
+        padding: 19px;
+    }
+
+    .election-info-icon {
+        width: 50px;
+        height: 50px;
+
+        border-radius: 13px;
+
+        font-size: 21px;
+    }
+
+    .election-info-content h3 {
+        font-size: 17px;
+    }
+
+    .election-instructions {
+        padding: 19px;
+    }
+
+    .election-position {
+        padding: 18px;
+    }
+
+    .position-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 5px;
+
+        margin-bottom: 16px;
+    }
+
+    .candidate-grid {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+
+    /* ------------------------------------------------------
+       MOBILE CANDIDATE ROW
+    ------------------------------------------------------ */
+
+    .candidate-card {
+        display: grid;
+
+        grid-template-columns: 42% minmax(0, 58%);
+
+        min-height: 0;
+
+        border-radius: 15px;
+    }
+
+    .candidate-image-wrapper {
+        width: 100%;
+
+        aspect-ratio: 1 / 1;
+
+        grid-row: 1 / 3;
+    }
+
+    .candidate-info {
+        justify-content: center;
+
+        padding: 15px 15px 7px;
+    }
+
+    .candidate-name {
+        font-size: 15px;
+    }
+
+    .candidate-partylist {
+        font-size: 11px;
+    }
+
+    .candidate-actions {
+        grid-column: 2;
+
+        grid-template-columns: 1fr;
+
+        gap: 7px;
+
+        padding: 6px 15px 15px;
+    }
+
+    .candidate-select-btn,
+    .candidate-campaign-btn,
+    .candidate-clear-btn {
+        height: 38px;
+    }
+
+    .election-action {
+        flex-direction: column-reverse;
+    }
+
+    .election-action .primary-btn,
+    .election-action .secondary-btn {
+        width: 100%;
+    }
+
+
+    /* ------------------------------------------------------
+       MOBILE MODAL
+    ------------------------------------------------------ */
+
+    .campaign-modal {
+        width: calc(100% - 24px);
+
+        max-height: 90vh;
+
+        border-radius: 17px;
+    }
+
+    .campaign-modal-header {
+        padding: 17px 18px;
+    }
+
+    .campaign-modal-body {
+        padding: 18px;
+    }
+
+    .campaign-image {
+        max-height: 340px;
+    }
+
+
+    /* ------------------------------------------------------
+       REVIEW MODAL
+    ------------------------------------------------------ */
+
+    .review-vote-modal {
+        width: calc(100% - 24px);
+
+        max-height: 90vh;
+
+        border-radius: 17px;
+    }
+
+    .review-vote-body {
+        max-height: 58vh;
+
+        padding: 18px;
+    }
+
+    .review-vote-modal .modal-footer {
+        flex-direction: column;
+
+        padding: 17px 18px 20px;
+    }
+
+    .review-cancel-btn,
+    .review-submit-btn {
+        width: 100%;
+    }
+
+    .election-info-content h3 {
+        font-size: 15px;
+    }
+
+    .election-instructions h3 {
+        font-size: 14px;
+    }
+
+    .position-title h3 {
+        font-size: 15px;
+    }
+
+    .campaign-modal-header h2 {
+        font-size: 17px;
+    }
+
+    .review-vote-modal .modal-header h2 {
+        font-size: 17px;
+    }
+
+    .review-vote-modal .modal-header p {
+        font-size: 12px;
+    }
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE — SMALL MOBILE
+========================================================== */
+
+@media (max-width: 600px) {
+
+    .voter-page-content {
+        padding: 18px 14px 30px;
+    }
+
+    .voter-page-content .page-header h2 { font-size: 18px; }
+    .voter-page-content .page-header p  { font-size: 12px; }
+
+    .vote-thank-you h2 {
+        font-size: 20px;
+    }
+
+    .election-info-card {
+        padding: 16px;
+
+        gap: 12px;
+    }
+
+    .election-info-icon {
+        width: 44px;
+        height: 44px;
+
+        font-size: 18px;
+    }
+
+    .election-info-content h3 {
+        font-size: 15px;
+    }
+
+    .election-info-content p {
+        font-size: 12px;
+    }
+
+    .election-info-content span {
+        font-size: 11px;
+    }
+
+    .election-instructions {
+        padding: 16px;
+    }
+
+    .election-position {
+        padding: 15px;
+    }
+
+    .position-title h3 {
+        font-size: 16px;
+    }
+
+    .candidate-card {
+        grid-template-columns: 40% minmax(0, 60%);
+    }
+
+    .candidate-info {
+        padding: 13px 12px 6px;
+    }
+
+    .candidate-name {
+        font-size: 14px;
+    }
+
+    .candidate-partylist {
+        font-size: 10px;
+    }
+
+    .candidate-actions {
+        padding: 5px 12px 12px;
+    }
+
+    .candidate-select-btn,
+    .candidate-campaign-btn {
+        height: 36px;
+
+        font-size: 11px;
+    }
+
+    .candidate-campaign-btn i,
+    .candidate-select-btn i {
+        font-size: 13px;
+    }
+
+    .election-action .primary-btn,
+    .election-action .secondary-btn {
+        width: 100%;
+        min-width: 0;
+        height: 46px;
+    }
+
+    .review-candidate {
+        gap: 12px;
+
+        padding: 10px;
+    }
+
+    .review-candidate-image {
+        width: 68px;
+        height: 68px;
+    }
+
+    .election-info-content h3 {
+        font-size: 14px;
+    }
+
+    .election-instructions h3 {
+        font-size: 13.5px;
+    }
+
+    .position-title h3 {
+        font-size: 14px;
+    }
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE — EXTRA SMALL MOBILE
+========================================================== */
+
+@media (max-width: 400px) {
+
+    .voter-page-content {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .candidate-card {
+        grid-template-columns: 38% minmax(0, 62%);
+    }
+
+    .voter-page-content .page-header h2 { font-size: 17px; }
+
+    .candidate-info {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .candidate-actions {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .candidate-name {
+        font-size: 13px;
+    }
+
+    .candidate-partylist {
+        font-size: 9px;
+    }
+
+    .candidate-select-btn,
+    .candidate-campaign-btn {
+        height: 34px;
+
+        padding: 0 8px;
+
+        font-size: 10px;
+    }
+
+    .review-candidate-image {
+        width: 60px;
+        height: 60px;
+    }
+
+}

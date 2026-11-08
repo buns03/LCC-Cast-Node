@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LCC Cast Election Notice</title>
+</head>
+<body style="margin:0; padding:0; background:#f4f5fb; font-family:Arial, Helvetica, sans-serif;">
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f5fb; padding:32px 0;">
+    <tr>
+        <td align="center">
+
+            <table role="presentation" width="600" cellpadding="0" cellspacing="0"
+                   style="width:600px; max-width:92vw; background:#ffffff; border-radius:20px; overflow:hidden; border:1px solid #e5e7eb;">
+
+                <!-- HEADER -->
+                <tr>
+                    <td style="background:#435CFF; padding:24px 30px;" align="left">
+                        <span style="font-size:20px; font-weight:700; color:#ffffff;">LCC Cast</span>
+                    </td>
+                </tr>
+
+                <!-- LOGIN CTA -->
+                <tr>
+                    <td style="padding:24px 30px 0;">
+                        <table role="presentation" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td style="border-radius:10px; background:#435CFF;">
+                                    <a th:href="${loginUrl}"
+                                       style="display:inline-block; padding:12px 20px; font-size:13px; font-weight:600;
+                              color:#ffffff; text-decoration:none; border-radius:10px;">
+                                        Login to LCC Cast to View Details
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- ELECTION INFO CARD -->
+                <tr>
+                    <td style="padding:24px 30px 0;">
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+                               style="border:1px solid #e5e7eb; border-radius:16px;">
+                            <tr>
+                                <td style="padding:22px 24px;">
+
+                                    <div style="font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase;
+                                color:#435CFF; margin-bottom:8px;"
+                                         th:text="${categoryLabel}">Student Supreme Council Election</div>
+
+                                    <div style="font-size:20px; font-weight:700; color:#0f172a; margin-bottom:6px;"
+                                         th:text="${electionTitle}">SSC Election 2026-2027</div>
+
+                                    <div style="font-size:13px; color:#6b7280; margin-bottom:16px;">
+                                        <span th:text="${campus}">Kaypian Campus</span> &middot;
+                                        School Year <span th:text="${schoolYear}">2026-2027</span>
+                                    </div>
+
+                                    <table role="presentation" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td style="background:#f8f9ff; border:1px solid #e5e7eb; border-radius:10px;
+                                   padding:9px 13px; font-size:12px; color:#374151;">
+                                                Starts: <span th:text="${startAt}">January 1, 2027 at 8:00 AM</span>
+                                            </td>
+                                        </tr>
+                                        <tr><td style="height:8px;"></td></tr>
+                                        <tr>
+                                            <td style="background:#f8f9ff; border:1px solid #e5e7eb; border-radius:10px;
+                                   padding:9px 13px; font-size:12px; color:#374151;">
+                                                Ends: <span th:text="${endAt}">January 5, 2027 at 5:00 PM</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- DESCRIPTION -->
+                <tr th:if="${description != null and !#strings.isEmpty(description)}">
+                    <td style="padding:20px 30px 0;">
+                        <div style="font-size:14px; font-weight:700; color:#0f172a; margin-bottom:6px;">About this election</div>
+                        <p style="font-size:13px; line-height:1.6; color:#4b5563; margin:0;" th:text="${description}">
+                            Election description goes here.
+                        </p>
+                    </td>
+                </tr>
+
+                <!-- PARTICIPATING GROUPS (SSC partylists, or Department-PARTYLIST groups) -->
+                <tr th:if="${showGroups}">
+                    <td style="padding:20px 30px 0;">
+                        <div style="font-size:14px; font-weight:700; color:#0f172a; margin-bottom:10px;">Participating Partylists</div>
+                        <table role="presentation" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td th:each="name : ${groupNames}"
+                                    style="padding:6px 12px; margin:0 6px 6px 0; display:inline-block;
+                             background:#eef1ff; color:#435CFF; font-size:12px; font-weight:600;
+                             border-radius:20px;" th:text="${name}">
+                                    Partylist Name
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- DEPARTMENT: PROGRAM / TYPE -->
+                <tr th:unless="${isSSC}">
+                    <td style="padding:20px 30px 0;">
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td style="border:1px solid #e5e7eb; border-radius:12px; padding:14px 16px;">
+                                    <div style="font-size:11px; color:#9ca3af; margin-bottom:4px;">Program / Department</div>
+                                    <div style="font-size:13px; font-weight:600; color:#0f172a;"
+                                         th:text="${#strings.listJoin(departmentNames, ', ')}">
+                                        Bachelor of Science in Information Systems
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr><td style="height:8px;"></td></tr>
+                            <tr>
+                                <td style="border:1px solid #e5e7eb; border-radius:12px; padding:14px 16px;">
+                                    <div style="font-size:11px; color:#9ca3af; margin-bottom:4px;">Election Type</div>
+                                    <div style="font-size:13px; font-weight:600; color:#0f172a;" th:text="${votingTypeLabel}">
+                                        Partylist Voting
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- CANDIDATES GROUPED BY POSITION (SSC, and Department-PARTYLIST) -->
+                <tr th:if="${positionsWithCandidates != null and !#lists.isEmpty(positionsWithCandidates)}">
+                    <td style="padding:20px 30px 0;">
+                        <div style="font-size:14px; font-weight:700; color:#0f172a; margin-bottom:10px;">Candidates</div>
+
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+                               th:each="position : ${positionsWithCandidates}"
+                               style="border:1px solid #e5e7eb; border-radius:12px; margin-bottom:10px;">
+                            <tr>
+                                <td style="padding:12px 16px 4px;">
+                                    <div style="font-size:11px; font-weight:700; letter-spacing:.02em; text-transform:uppercase; color:#435CFF;"
+                                         th:text="${position.name}">
+                                        Position Name
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr th:each="candidate : ${position.candidates}">
+                                <td style="padding:6px 16px 12px;">
+                                    <table role="presentation" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td th:if="${candidate.photo != null}" style="width:40px; padding-right:10px; vertical-align:top;">
+                                                <img th:src="${candidate.photo}" width="36" height="36"
+                                                     style="width:36px; height:36px; border-radius:50%; object-fit:cover; display:block;" />
+                                            </td>
+                                            <td style="vertical-align:top;">
+                                                <div style="font-size:13px; font-weight:600; color:#0f172a;" th:text="${candidate.name}">
+                                                    Candidate Name
+                                                </div>
+                                                <div style="font-size:12px; color:#6b7280;" th:text="${candidate.group}">
+                                                    Partylist Name
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- CANDIDATES — FLAT ROSTER (Department-REPRESENTATIVE) -->
+                <tr th:if="${isRepresentative != null and isRepresentative and representativeCandidates != null and !#lists.isEmpty(representativeCandidates)}">
+                    <td style="padding:20px 30px 0;">
+                        <div style="font-size:14px; font-weight:700; color:#0f172a; margin-bottom:10px;">Candidates</div>
+
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+                               style="border:1px solid #e5e7eb; border-radius:12px;">
+                            <tr th:each="candidate, iter : ${representativeCandidates}">
+                                <td style="padding:12px 16px; border-bottom:1px solid #e5e7eb;"
+                                    th:style="${iter.last} ? 'padding:12px 16px;' : 'padding:12px 16px; border-bottom:1px solid #e5e7eb;'">
+                                    <table role="presentation" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td th:if="${candidate.photo != null}" style="width:40px; padding-right:10px; vertical-align:top;">
+                                                <img th:src="${candidate.photo}" width="36" height="36"
+                                                     style="width:36px; height:36px; border-radius:50%; object-fit:cover; display:block;" />
+                                            </td>
+                                            <td style="vertical-align:top;">
+                                                <div style="font-size:13px; font-weight:600; color:#0f172a;" th:text="${candidate.name}">
+                                                    Candidate Name
+                                                </div>
+                                                <div style="font-size:11px; color:#9ca3af;">Department Member</div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- FOOTER -->
+                <tr>
+                    <td style="padding:28px 30px 30px;">
+                        <table role="presentation" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td style="border-radius:10px; background:#435CFF;">
+                                    <a th:href="${loginUrl}"
+                                       style="display:inline-block; padding:12px 22px; font-size:13px; font-weight:600;
+                              color:#ffffff; text-decoration:none; border-radius:10px;">
+                                        Login to Vote
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                        <p style="font-size:11px; color:#9ca3af; margin:20px 0 0;">
+                            This is an automated notification from LCC Cast. You are receiving this because
+                            you are an eligible voter for this election.
+                        </p>
+                    </td>
+                </tr>
+
+            </table>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

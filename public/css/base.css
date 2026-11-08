@@ -1,0 +1,640 @@
+/* =========================================================
+   LCCAST
+   BASE STYLES
+=========================================================*/
+
+/* =========================================================
+GOOGLE FONT
+=========================================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* =========================================================
+ROOT VARIABLES
+=========================================================*/
+
+:root{
+
+    /* COLORS */
+
+    --primary:#5B5CEB;
+    --primary-hover:#494ADB;
+
+    --success:#22C55E;
+    --warning:#F59E0B;
+    --danger:#EF4444;
+
+    --background:#F5F7FB;
+
+    --card:#FFFFFF;
+
+    --border:#E8EAF2;
+
+    --text:#1E293B;
+
+    --subtext:#64748B;
+
+    --muted:#94A3B8;
+
+    /* SHADOWS */
+
+    --shadow-sm:0 2px 6px rgba(15,23,42,.04);
+
+    --shadow-md:0 8px 24px rgba(15,23,42,.08);
+
+    --shadow-lg:0 20px 45px rgba(15,23,42,.12);
+
+    /* BORDER RADIUS */
+
+    --radius-sm:12px;
+
+    --radius-md:18px;
+
+    --radius-lg:24px;
+
+    --radius-xl:30px;
+
+    /* SPACING */
+
+    --space-xs:8px;
+
+    --space-sm:12px;
+
+    --space-md:16px;
+
+    --space-lg:24px;
+
+    --space-xl:32px;
+
+    --space-xxl:40px;
+
+    /* TRANSITIONS */
+
+    --transition:.25s ease;
+
+}
+
+/* =========================================================
+RESET
+=========================================================*/
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+/* =========================================================
+HTML
+=========================================================*/
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+/* =========================================================
+BODY
+=========================================================*/
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:var(--background);
+
+    color:var(--text);
+
+    line-height:1.5;
+
+}
+
+/* =========================================================
+HEADINGS
+=========================================================*/
+
+h1{
+
+    font-size:32px;
+
+    font-weight:700;
+
+}
+
+h2{
+
+    font-size:26px;
+
+    font-weight:700;
+
+}
+
+h3{
+
+    font-size:20px;
+
+    font-weight:600;
+
+}
+
+h4{
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
+
+h5{
+
+    font-size:16px;
+
+    font-weight:600;
+
+}
+
+h6{
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+/* =========================================================
+TEXT
+=========================================================*/
+
+p{
+
+    color:var(--subtext);
+
+    font-size:15px;
+
+}
+
+small{
+
+    color:var(--muted);
+
+}
+
+/* =========================================================
+LINKS
+=========================================================*/
+
+a{
+
+    color:inherit;
+
+    text-decoration:none;
+
+}
+
+/* =========================================================
+LISTS
+=========================================================*/
+
+ul,
+ol{
+
+    list-style:none;
+
+}
+
+/* =========================================================
+MEDIA
+=========================================================*/
+
+img{
+
+    max-width:100%;
+
+    display:block;
+
+}
+
+/* =========================================================
+BUTTONS
+=========================================================*/
+
+button{
+
+    font-family:inherit;
+
+    font-size:15px;
+
+}
+
+/* =========================================================
+INPUTS
+=========================================================*/
+
+input,
+textarea,
+select{
+
+    font-family:inherit;
+
+    font-size:15px;
+
+}
+
+/* =========================================================
+TABLE
+=========================================================*/
+
+table{
+
+    border-collapse:collapse;
+
+    width:100%;
+
+}
+
+
+
+/* =========================================================
+UTILITY CLASSES
+=========================================================*/
+
+.hidden{
+
+    display:none !important;
+
+}
+
+.text-center{
+
+    text-align:center;
+
+}
+
+.text-right{
+
+    text-align:right;
+
+}
+
+.w-100{
+
+    width:100%;
+
+}
+
+.mt-1{
+
+    margin-top:8px;
+
+}
+
+.mt-2{
+
+    margin-top:16px;
+
+}
+
+.mt-3{
+
+    margin-top:24px;
+
+}
+
+.mb-1{
+
+    margin-bottom:8px;
+
+}
+
+.mb-2{
+
+    margin-bottom:16px;
+
+}
+
+.mb-3{
+
+    margin-bottom:24px;
+
+}
+
+.d-flex{
+
+    display:flex;
+
+}
+
+.align-center{
+
+    align-items:center;
+
+}
+
+.justify-between{
+
+    justify-content:space-between;
+
+}
+
+.gap-1{
+
+    gap:8px;
+
+}
+
+.gap-2{
+
+    gap:16px;
+
+}
+
+.gap-3{
+
+    gap:24px;
+
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+=========================================================*/
+
+/* =========================================================
+   LARGE LAPTOP / DESKTOP
+   1200px and below
+=========================================================*/
+
+@media (max-width:1200px){
+
+    h1{
+        font-size:30px;
+    }
+
+    h2{
+        font-size:24px;
+    }
+
+    h3{
+        font-size:19px;
+    }
+
+    p{
+        font-size:14px;
+    }
+
+}
+
+
+/* =========================================================
+   LAPTOP / SMALL DESKTOP
+   992px and below
+=========================================================*/
+
+@media (max-width:991px){
+
+    h1{
+        font-size:28px;
+    }
+
+    h2{
+        font-size:23px;
+    }
+
+    h3{
+        font-size:18px;
+    }
+
+    h4{
+        font-size:17px;
+    }
+
+    h5{
+        font-size:15px;
+    }
+
+    p{
+        font-size:14px;
+    }
+
+    button,
+    input,
+    textarea,
+    select{
+        font-size:14px;
+    }
+
+    .gap-3{
+        gap:20px;
+    }
+
+    .mt-3{
+        margin-top:20px;
+    }
+
+    .mb-3{
+        margin-bottom:20px;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+   768px and below
+=========================================================*/
+
+@media (max-width:767px){
+
+    h1{
+        font-size:25px;
+    }
+
+    h2{
+        font-size:21px;
+    }
+
+    h3{
+        font-size:18px;
+    }
+
+    h4{
+        font-size:16px;
+    }
+
+    h5{
+        font-size:15px;
+    }
+
+    h6{
+        font-size:14px;
+    }
+
+    p{
+        font-size:14px;
+    }
+
+    small{
+        font-size:12px;
+    }
+
+    button,
+    input,
+    textarea,
+    select{
+        font-size:14px;
+    }
+
+    .gap-3{
+        gap:16px;
+    }
+
+    .gap-2{
+        gap:12px;
+    }
+
+    .mt-3{
+        margin-top:16px;
+    }
+
+    .mb-3{
+        margin-bottom:16px;
+    }
+
+    .mt-2{
+        margin-top:12px;
+    }
+
+    .mb-2{
+        margin-bottom:12px;
+    }
+
+}
+
+
+/* =========================================================
+   PHONE
+   576px and below
+=========================================================*/
+
+@media (max-width:575px){
+
+    h1{
+        font-size:23px;
+    }
+
+    h2{
+        font-size:20px;
+    }
+
+    h3{
+        font-size:17px;
+    }
+
+    h4{
+        font-size:16px;
+    }
+
+    h5{
+        font-size:14px;
+    }
+
+    h6{
+        font-size:13px;
+    }
+
+    p{
+        font-size:13px;
+    }
+
+    small{
+        font-size:11px;
+    }
+
+    button,
+    input,
+    textarea,
+    select{
+        font-size:13px;
+    }
+
+    .gap-3{
+        gap:12px;
+    }
+
+    .gap-2{
+        gap:10px;
+    }
+
+    .gap-1{
+        gap:6px;
+    }
+
+    .mt-3{
+        margin-top:14px;
+    }
+
+    .mb-3{
+        margin-bottom:14px;
+    }
+
+    .mt-2{
+        margin-top:10px;
+    }
+
+    .mb-2{
+        margin-bottom:10px;
+    }
+
+    .mt-1{
+        margin-top:6px;
+    }
+
+    .mb-1{
+        margin-bottom:6px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONE
+   400px and below
+=========================================================*/
+
+@media (max-width:400px){
+
+    h1{
+        font-size:21px;
+    }
+
+    h2{
+        font-size:19px;
+    }
+
+    h3{
+        font-size:16px;
+    }
+
+    h4{
+        font-size:14px;
+    }
+
+    h5{
+        font-size:13px;
+    }
+
+    p{
+        font-size:12px;
+    }
+
+    button,
+    input,
+    textarea,
+    select{
+        font-size:12px;
+    }
+}

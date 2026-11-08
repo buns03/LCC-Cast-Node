@@ -1,0 +1,997 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <title>LCC Cast | History</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/lcccast_logo.png" />
+    <link rel="apple-touch-icon" href="/images/lcccast_logo.png" />
+
+    <!-- ======================================================
+         GLOBAL STYLES
+    ======================================================= -->
+
+    <link rel="stylesheet" href="/css/base.css" />
+    <link rel="stylesheet" href="/css/admin/layout.css" />
+    <link rel="stylesheet" href="/css/components.css" />
+    <link rel="stylesheet" href="/css/forms.css" />
+    <link rel="stylesheet" href="/css/modal.css" />
+    <link rel="stylesheet" href="/css/navigation.css" />
+
+    <!-- ======================================================
+         PAGE STYLES
+    ======================================================= -->
+
+    <link rel="stylesheet" href="/css/pages/history.css" />
+
+    <!-- ======================================================
+         BOOTSTRAP ICONS
+    ======================================================= -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+</head>
+
+<body>
+    <!-- ===========================
+SIDEBAR
+============================ -->
+
+    <button type="button" class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open navigation"
+        aria-expanded="false">
+        <i class="bi bi-list"></i>
+    </button>
+
+    <!-- ===========================
+MOBILE NAVIGATION OVERLAY
+============================ -->
+
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-top">
+            <div class="logo">
+                <img src="/images/lcccast_logo.png" alt="LCC Cast" />
+
+                <h2>LCC Cast</h2>
+            </div>
+
+            <hr />
+
+            <nav>
+                <a href="/admin-dept/dashboard">
+                    <i class="bi bi-house-door"></i>
+
+                    Dashboard
+                </a>
+
+                <a href="/admin-dept/elections">
+                    <i class="bi bi-calendar-event"></i>
+
+                    Elections
+                </a>
+
+                <a href="/admin-dept/live-results">
+                    <i class="bi bi-broadcast-pin"></i>
+
+                    Live Results
+                </a>
+
+                <a href="/admin-dept/departments">
+                    <i class="bi bi-building"></i>
+
+                    Departments
+                </a>
+
+                <a href="/admin-dept/voters">
+                    <i class="bi bi-person-vcard"></i>
+
+                    Voters
+                </a>
+
+                <a href="/admin-dept/analytics">
+                    <i class="bi bi-bar-chart"></i>
+
+                    Analytics
+                </a>
+
+                <a href="/admin-dept/history" class="active">
+                    <i class="bi bi-clock-history"></i>
+
+                    History
+                </a>
+            </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+            <hr />
+
+            <a href="/admin-dept/settings">
+                <i class="bi bi-gear"></i>
+
+                Settings
+            </a>
+
+            <a href="#" class="logout-trigger">
+                <i class="bi bi-box-arrow-right"></i>
+
+                Logout
+            </a>
+        </div>
+    </aside>
+
+    <!-- ==========================================================
+ MAIN CONTENT
+========================================================== -->
+
+    <main class="main-content">
+        <!-- ======================================================
+       TOPBAR
+  ======================================================= -->
+
+        <header class="topbar">
+            <div>
+                <h1>History</h1>
+
+                <p>
+                    Review voting activity, system actions, archives, and deleted
+                    records.
+                </p>
+            </div>
+
+            <div class="profile">
+
+                <div class="avatar">
+                    {{html_avatar}}
+                </div>
+
+                <div class="profile-info">
+
+                    <span>{{displayName}}</span>
+
+                    <small>{{programCampus}}</small>
+
+                </div>
+
+            </div>
+        </header>
+
+        <!-- ======================================================
+       HISTORY TABS
+  ======================================================= -->
+
+        <div class="history-tabs">
+            <!-- ==================================================
+             VOTE LOGS
+        ================================================== -->
+
+            <button type="button" class="history-tab active" data-section="voteLogs">
+                <i class="bi bi-check2-square"></i>
+
+                Vote Logs
+            </button>
+
+            <!-- ==================================================
+             ACTIONS
+        ================================================== -->
+
+            <button type="button" class="history-tab" data-section="actions">
+                <i class="bi bi-activity"></i>
+
+                Actions
+            </button>
+
+            <!-- ==================================================
+             ARCHIVES
+        ================================================== -->
+
+            <button type="button" class="history-tab" data-section="archives">
+                <i class="bi bi-archive"></i>
+
+                Archives
+            </button>
+
+            <!-- ==================================================
+             TRASH
+        ================================================== -->
+
+            <button type="button" class="history-tab" data-section="trash">
+                <i class="bi bi-trash3"></i>
+
+                Trash
+            </button>
+        </div>
+
+        <!-- ==========================================================
+       VOTE LOGS
+  ========================================================== -->
+
+        <section id="voteLogs" class="history-section active">
+            <div class="history-content-container">
+                <!-- ==================================================
+                   SECTION HEADER
+              ================================================== -->
+
+                <div class="history-section-header">
+                    <div>
+                        <h2>Vote Logs</h2>
+
+                        <p>Records of students who participated in an election.</p>
+                    </div>
+
+                    <div class="history-header-actions">
+                        <div class="export-menu-wrapper">
+                            <button type="button" class="secondary-btn" id="exportVoteLogs" aria-haspopup="true"
+                                aria-expanded="false">
+                                <i class="bi bi-download"></i>
+                                Export
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+
+                            <div class="export-menu" id="exportVoteLogsMenu">
+                                <button type="button" data-format="csv"><i class="bi bi-filetype-csv"></i> CSV
+                                    (.csv)</button>
+                                <button type="button" data-format="xlsx"><i class="bi bi-file-earmark-excel"></i> Excel
+                                    (.xlsx)</button>
+                                <button type="button" data-format="pdf"><i class="bi bi-file-earmark-pdf"></i> PDF
+                                    (.pdf)</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================================================
+       VOTE LOG FILTERS
+  ================================================== -->
+
+                <div class="history-filters vote-log-filters">
+                    <!-- SEARCH -->
+
+                    <div class="history-search">
+                        <i class="bi bi-search"></i>
+
+                        <input type="text" id="voteLogSearch" placeholder="Search voter..." />
+                    </div>
+
+
+                    <!-- ==================================================
+             ADVANCED FILTER BUTTON
+        ================================================== -->
+
+                    <div class="history-filter-wrapper">
+                        <button type="button" class="history-filter-button" id="voteAdvancedFilterBtn">
+                            <i class="bi bi-funnel"></i>
+
+                            <span>Filters</span>
+
+                            <span class="filter-count" id="voteFilterCount"> 0 </span>
+                        </button>
+
+                        <!-- ==================================================
+                   ADVANCED FILTER DROPDOWN
+              ================================================== -->
+
+                        <div class="history-filter-dropdown" id="voteAdvancedFilterDropdown">
+                            <div class="history-filter-dropdown-header">
+                                <div>
+                                    <strong> Filters </strong>
+
+                                    <span> Refine voter records </span>
+                                </div>
+
+                                <button type="button" class="filter-close-btn" id="closeVoteFilters">
+                                    <i class="bi bi-x"></i>
+                                </button>
+                            </div>
+
+                            <div class="history-filter-dropdown-body">
+
+                                <!-- SECTION -->
+
+                                <div class="advanced-filter-field">
+                                    <label for="voteSectionFilter"> Section </label>
+
+                                    <select id="voteSectionFilter" class="history-filter" data-filter="section">
+                                        <option value="">All Sections</option>
+
+                                        <option value="A">Section A</option>
+
+                                        <option value="B">Section B</option>
+
+                                        <option value="C">Section C</option>
+                                    </select>
+                                </div>
+
+                                <!-- YEAR LEVEL -->
+
+                                <div class="advanced-filter-field">
+                                    <label for="voteYearLevelFilter"> Year Level </label>
+
+                                    <select id="voteYearLevelFilter" class="history-filter" data-filter="year">
+                                        <option value="">All Year Levels</option>
+
+                                        <option value="1st Year">1st Year</option>
+
+                                        <option value="2nd Year">2nd Year</option>
+
+                                        <option value="3rd Year">3rd Year</option>
+
+                                        <option value="4th Year">4th Year</option>
+                                    </select>
+                                </div>
+
+
+                                <!-- SORT -->
+
+                                <div class="advanced-filter-field">
+                                    <label for="voteSortFilter"> Sort By </label>
+
+                                    <select id="voteSortFilter" class="history-filter" data-filter="sort">
+                                        <option value="">Default Order</option>
+
+                                        <option value="az">A–Z</option>
+
+                                        <option value="za">Z–A</option>
+
+                                        <option value="time-up">Oldest First</option>
+
+                                        <option value="time-down">Newest First</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="history-filter-dropdown-footer">
+                                <button type="button" class="filter-clear-btn" id="clearVoteFilters">
+                                    Clear
+                                </button>
+
+                                <button type="button" class="filter-apply-btn" id="applyVoteFilters">
+                                    Apply Filters
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================================================
+                   VOTE LOG TABLE
+              ================================================== -->
+
+                <div class="history-table-container">
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>Voter</th>
+
+                                <th>Student ID</th>
+
+                                <th>Reference ID</th>
+
+                                <th>Program</th>
+
+                                <th>Section</th>
+
+                                <th>Year Level</th>
+
+                                <th>Campus</th>
+
+                                <th>Election</th>
+
+                                <th>Date & Time</th>
+
+
+                            </tr>
+                        </thead>
+
+                        <tbody id="voteLogsTable"></tbody>
+                    </table>
+                </div>
+
+                <!-- ==================================================
+                       VOTE LOG PAGINATION
+                  ================================================== -->
+
+                <div class="voters-pagination">
+                    <button type="button" class="pagination-arrow" id="previousVoteLogsPage" title="Previous page">
+                        <i class="bi bi-arrow-left"></i>
+                    </button>
+
+                    <span id="voteLogsPaginationText"> Page 1 / 1 </span>
+
+                    <button type="button" class="pagination-arrow" id="nextVoteLogsPage" title="Next page">
+                        <i class="bi bi-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================
+       ACTIONS
+  ========================================================== -->
+
+        <section id="actions" class="history-section">
+            <div class="history-content-container">
+                <div class="history-section-header">
+                    <div>
+                        <h2>Actions</h2>
+
+                        <p>
+                            Track account activity and administrative actions performed
+                            within LCC Cast.
+                        </p>
+                    </div>
+
+                    <div class="history-header-actions">
+                        <div class="export-menu-wrapper">
+                            <button type="button" class="secondary-btn" id="exportActions" aria-haspopup="true"
+                                aria-expanded="false">
+                                <i class="bi bi-download"></i>
+                                Export
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+
+                            <div class="export-menu" id="exportActionsMenu">
+                                <button type="button" data-format="csv"><i class="bi bi-filetype-csv"></i> CSV
+                                    (.csv)</button>
+                                <button type="button" data-format="xlsx"><i class="bi bi-file-earmark-excel"></i> Excel
+                                    (.xlsx)</button>
+                                <button type="button" data-format="pdf"><i class="bi bi-file-earmark-pdf"></i> PDF
+                                    (.pdf)</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================================================
+                   ACTION FILTERS
+              ================================================== -->
+
+                <div class="history-filters">
+                    <div class="history-search">
+                        <i class="bi bi-search"></i>
+
+                        <input type="text" id="actionSearch" placeholder="Search user or action..." />
+                    </div>
+
+                    <select id="actionTypeFilter" class="history-filter" data-filter="action">
+                        <option value="">All Actions</option>
+                    </select>
+                </div>
+
+                <!-- ==================================================
+                   ACTION TABLE
+              ================================================== -->
+
+                <div class="history-table-container">
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+
+                                <th>Role</th>
+
+                                <th>Action</th>
+
+                                <th>Description</th>
+
+                                <th>Date & Time</th>
+
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="actionsTable"></tbody>
+                    </table>
+                </div>
+
+                <!-- ==================================================
+                       ACTIONS PAGINATION
+                  ================================================== -->
+
+                <div class="voters-pagination">
+                    <button type="button" class="pagination-arrow" id="previousActionsPage" title="Previous page">
+                        <i class="bi bi-arrow-left"></i>
+                    </button>
+
+                    <span id="actionsPaginationText"> Page 1 / 1 </span>
+
+                    <button type="button" class="pagination-arrow" id="nextActionsPage" title="Next page">
+                        <i class="bi bi-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================
+       ARCHIVES
+  ========================================================== -->
+
+        <section id="archives" class="history-section">
+            <div class="history-content-container">
+                <div class="history-section-header">
+                    <div>
+                        <h2>Archives</h2>
+
+                        <p>
+                            View records that are no longer active but have been preserved
+                            for reference.
+                        </p>
+                    </div>
+
+                    <div class="history-header-actions">
+                        <button type="button" class="secondary-btn" id="archiveFilterBtn">
+                            <i class="bi bi-arrow-counterclockwise"></i>
+
+                            Clear Filters
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ==================================================
+                   ARCHIVE FILTERS
+              ================================================== -->
+
+                <div class="history-filters">
+                    <div class="history-search">
+                        <i class="bi bi-search"></i>
+
+                        <input type="text" id="archiveSearch" placeholder="Search archives..." />
+                    </div>
+
+                    <select id="archiveTypeFilter" class="history-filter" data-filter="type">
+                        <option value="">All Archive Types</option>
+
+                        <option>Elections</option>
+
+                        <option>Students</option>
+
+                        <option>Partylists</option>
+
+                        <option>Departments</option>
+
+                        <option>Candidates</option>
+                    </select>
+
+                </div>
+
+                <!-- ==================================================
+                   ARCHIVE CARDS
+              ================================================== -->
+
+                <div class="history-card-list" id="archivesList"></div>
+
+                <!-- ==================================================
+       ARCHIVES PAGINATION
+  ================================================== -->
+
+                <div class="voters-pagination">
+                    <button type="button" class="pagination-arrow" id="previousArchivesPage" title="Previous page">
+                        <i class="bi bi-arrow-left"></i>
+                    </button>
+
+                    <span id="archivesPaginationText"> Page 1 / 1 </span>
+
+                    <button type="button" class="pagination-arrow" id="nextArchivesPage" title="Next page">
+                        <i class="bi bi-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================
+       TRASH
+  ========================================================== -->
+
+        <section id="trash" class="history-section">
+            <div class="history-content-container">
+                <div class="history-section-header">
+                    <div>
+                        <h2>Trash</h2>
+
+                        <p>
+                            Deleted records are retained for 30 days before permanent
+                            removal.
+                        </p>
+                    </div>
+
+                    <div class="history-header-actions">
+                        <button type="button" class="secondary-trash-btn" id="emptyTrash">
+                            <i class="bi bi-trash3"></i>
+
+                            Empty Trash
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ==================================================
+                   TRASH WARNING
+              ================================================== -->
+
+                <div class="trash-warning">
+                    <i class="bi bi-info-circle"></i>
+
+                    <div>
+                        <strong> Automatic deletion </strong>
+
+                        <p>Items in Trash are permanently deleted after 30 days.</p>
+                    </div>
+                </div>
+
+                <!-- ==================================================
+                   TRASH FILTERS
+              ================================================== -->
+
+                <div class="history-filters">
+                    <div class="history-search">
+                        <i class="bi bi-search"></i>
+
+                        <input type="text" id="trashSearch" placeholder="Search deleted records..." />
+                    </div>
+
+                    <select id="trashTypeFilter" class="history-filter" data-filter="type">
+                        <option value="">All Types</option>
+
+                        <option>Elections</option>
+
+                        <option>Students</option>
+
+                        <option>Partylists</option>
+
+                        <option>Departments</option>
+
+                        <option>Candidates</option>
+                    </select>
+                </div>
+
+                <!-- ==================================================
+                   TRASH LIST
+              ================================================== -->
+
+                <div class="history-card-list" id="trashList"></div>
+
+                <!-- ==================================================
+       TRASH PAGINATION
+  ================================================== -->
+
+                <div class="voters-pagination">
+                    <button type="button" class="pagination-arrow" id="previousTrashPage" title="Previous page">
+                        <i class="bi bi-arrow-left"></i>
+                    </button>
+
+                    <span id="trashPaginationText"> Page 1 / 1 </span>
+
+                    <button type="button" class="pagination-arrow" id="nextTrashPage" title="Next page">
+                        <i class="bi bi-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================================
+ DELETE / TRASH CONFIRMATION MODAL
+========================================================== -->
+
+    <div class="modal-overlay" id="historyDeleteModal">
+        <div class="delete-modal">
+            <div class="delete-modal-content">
+                <div class="delete-modal-icon">
+                    <i class="bi bi-trash3"></i>
+                </div>
+
+                <h2 id="historyDeleteModalTitle">Delete Record?</h2>
+
+                <p id="historyDeleteModalMessage">
+                    Are you sure you want to delete this record? This action cannot be
+                    undone.
+                </p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="delete-cancel-btn" id="historyDeleteCancel">
+                    Cancel
+                </button>
+
+                <button type="button" class="delete-confirm-btn" id="historyDeleteConfirm">
+                    <i class="bi bi-trash3"></i>
+
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================
+ RESTORE CONFIRMATION MODAL
+========================================================== -->
+
+    <div class="modal-overlay" id="historyRestoreModal">
+        <div class="save-modal">
+            <div class="save-modal-content">
+                <div class="save-modal-icon">
+                    <i class="bi bi-arrow-counterclockwise"></i>
+                </div>
+
+                <h2 id="historyRestoreModalTitle">Restore Record?</h2>
+
+                <p id="historyRestoreModalMessage">
+                    Are you sure you want to restore this record?
+                </p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="save-cancel-btn" id="historyRestoreCancel">
+                    Cancel
+                </button>
+
+                <button type="button" class="save-confirm-btn" id="historyRestoreConfirm">
+                    <i class="bi bi-arrow-counterclockwise"></i>
+
+                    Restore
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================
+ARCHIVE VIEW MODAL
+========================================================== -->
+
+    <div class="modal-overlay" id="historyArchiveViewModal">
+        <div class="archive-view-modal">
+            <!-- ==================================================
+         HEADER
+        ================================================== -->
+
+            <div class="archive-view-header">
+                <div>
+                    <span class="archive-view-label"> Archived Record </span>
+
+                    <h2 id="archiveViewTitle">Archived Record</h2>
+                </div>
+
+                <button type="button" class="archive-view-close" id="archiveViewClose" aria-label="Close">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+
+            <!-- ==================================================
+         CONTENT
+        ================================================== -->
+
+            <div class="archive-view-content">
+                <!-- TYPE -->
+
+                <div class="archive-view-field">
+                    <span class="archive-view-field-label"> Record Type </span>
+
+                    <div class="archive-view-value">
+                        <i class="bi bi-folder2-open"></i>
+
+                        <span id="archiveViewType"> Archive </span>
+                    </div>
+                </div>
+
+                <!-- DESCRIPTION -->
+
+                <div class="archive-view-field">
+                    <span class="archive-view-field-label"> Details </span>
+
+                    <div class="archive-view-description" id="archiveViewDescription">
+                        No description available.
+                    </div>
+                </div>
+
+                <!-- METADATA -->
+
+                <div class="archive-view-meta-grid">
+                    <!-- ARCHIVED DATE -->
+
+                    <div class="archive-view-meta">
+                        <div class="archive-view-meta-icon">
+                            <i class="bi bi-calendar-event"></i>
+                        </div>
+
+                        <div>
+                            <span> Archived Date </span>
+
+                            <strong id="archiveViewDate"> — </strong>
+                        </div>
+                    </div>
+
+                    <!-- ARCHIVED BY -->
+
+                    <div class="archive-view-meta">
+                        <div class="archive-view-meta-icon">
+                            <i class="bi bi-person"></i>
+                        </div>
+
+                        <div>
+                            <span> Archived By </span>
+
+                            <strong id="archiveViewBy"> — </strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================================================
+         FOOTER
+        ================================================== -->
+
+            <div class="archive-view-footer">
+                <button type="button" class="archive-view-close-btn" id="archiveViewCloseBtn">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================
+ACTION DETAILS MODAL
+========================================================== -->
+
+    <div class="modal-overlay" id="historyActionDetailsModal">
+        <div class="action-details-modal">
+            <!-- HEADER -->
+            <div class="action-details-header">
+                <div class="action-details-header-info">
+                    <span class="action-details-label"> Action Details </span>
+
+                    <h2 id="actionDetailsTitle">Action Details</h2>
+
+                    <p class="action-details-subtitle" id="actionDetailsSubtitle">
+                        Review the records affected by this action.
+                    </p>
+                </div>
+
+                <button type="button" class="action-details-close" id="actionDetailsClose" aria-label="Close"
+                    title="Close">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+
+            <!-- CONTENT -->
+            <div class="action-details-content">
+                <!-- SUMMARY -->
+                <div class="action-details-summary" id="actionDetailsSummary"></div>
+
+                <!-- AFFECTED RECORDS -->
+                <div class="action-details-section">
+                    <div class="action-details-section-header">
+                        <div>
+                            <span class="action-details-section-label">
+                                Affected Records
+                            </span>
+
+                            <p>View the specific records changed by this action.</p>
+                        </div>
+
+                        <span class="action-details-search-count" id="actionDetailsSearchCount">
+                            0 records
+                        </span>
+                    </div>
+
+                    <!-- SEARCH -->
+                    <div class="action-details-search">
+                        <i class="bi bi-search"></i>
+
+                        <input type="text" id="actionDetailsRecordSearch"
+                            placeholder="Search by name, ID, or changed value..." autocomplete="off" />
+
+                        <button type="button" class="action-details-search-clear" id="actionDetailsSearchClear"
+                            aria-label="Clear search" title="Clear search">
+                            <i class="bi bi-x"></i>
+                        </button>
+                    </div>
+
+                    <!-- RECORD LIST -->
+                    <div class="action-details-record-list" id="actionDetailsRecordList"></div>
+
+                    <!-- PAGINATION -->
+                    <div class="action-details-pagination" id="actionDetailsRecordPagination"></div>
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <div class="action-details-footer">
+                <button type="button" class="action-details-close-btn" id="actionDetailsCloseBtn">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+ LOGOUT MODAL
+========================================================= -->
+
+    <div class="modal-overlay" id="logoutModal">
+        <div class="delete-modal logout-modal">
+            <div class="delete-modal-content">
+                <div class="delete-modal-icon">
+                    <i class="bi bi-box-arrow-right"></i>
+                </div>
+
+                <h2>Logout?</h2>
+
+                <p>Are you sure you want to logout from LCC Cast?</p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="logout-cancel-btn" id="cancelLogout">
+                    Cancel
+                </button>
+
+                <button type="button" class="logout-confirm-btn" id="confirmLogout">
+                    <i class="bi bi-box-arrow-right"></i>
+
+                    Logout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================
+ GLOBAL ACTION LOADING MODAL
+========================================================= -->
+
+    <div class="modal-overlay loading-modal-overlay" id="actionLoadingModal">
+        <div class="action-loading-modal">
+            <div class="action-loading-spinner">
+                <span></span>
+            </div>
+
+            <div class="action-loading-content">
+                <h2 id="actionLoadingTitle">Processing...</h2>
+
+                <p id="actionLoadingMessage">
+                    Please wait while we process your request.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================
+ SUCCESS TOAST
+========================================================== -->
+
+    <div class="success-toast" id="historySuccessToast">
+        <div class="success-toast-icon">
+            <i class="bi bi-check-lg"></i>
+        </div>
+
+        <div class="success-toast-content">
+            <strong id="historyToastTitle"> Success </strong>
+
+            <span id="historyToastMessage"> Action completed successfully. </span>
+        </div>
+
+        <button type="button" class="success-toast-close" id="historyToastClose" aria-label="Close notification">
+            <i class="bi bi-x"></i>
+        </button>
+    </div>
+
+    <!-- ==========================================================
+ SCRIPTS
+========================================================== -->
+    <script src="/js/superadmin/soft-cache.js"></script>
+    <script src="/js/navigation.js"></script>
+
+    <script src="/js/logout.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7/bundles/stomp.umd.min.js"></script>
+    <script src="/js/history-export.js"></script>
+    <script src="/js/admin-dept/history.js"></script>
+    <script>window.HISTORY_ACTIONS_API = "/api/admin-dept/history";</script>
+    <script src="/js/history-action-details.js"></script>
+</body>
+
+</html>

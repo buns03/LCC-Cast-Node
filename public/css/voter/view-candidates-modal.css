@@ -1,0 +1,329 @@
+/* =========================================================
+   LCCAST - VIEW CANDIDATES MODAL (SSC + DEPARTMENT)
+========================================================= */
+
+.candidates-modal {
+  width: 760px;
+  max-width: 94vw;
+  max-height: 90vh;
+  background: #ffffff;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateY(25px);
+  transition: 0.25s ease;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+}
+
+.modal-overlay.show .candidates-modal {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   TABS (numbered, compact for mobile)
+========================================================= */
+
+.candidates-modal-tabs {
+  display: flex;
+  gap: 8px;
+  padding: 12px 28px 0;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.candidates-tab-btn {
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 12px 12px 0 0;
+  background: #f3f4f8;
+  color: var(--subtext);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.candidates-tab-btn:hover {
+  background: #e7eaf2;
+}
+
+.candidates-tab-btn.active {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+/* =========================================================
+   BODY
+========================================================= */
+
+.candidates-modal-body {
+  padding: 20px 28px 28px;
+  overflow-y: auto;
+}
+
+/* =========================================================
+   PARTY HEADER (poster + logo + name)
+========================================================= */
+
+.candidates-party-header {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+/* Poster: sized to work for both 4:3 and 8.5x11 source images
+   (object-fit: contain avoids cropping either ratio). */
+.candidates-party-poster-wrapper {
+  width: 160px;
+  aspect-ratio: 3 / 4;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #f4f6fa;
+  flex-shrink: 0;
+}
+
+.candidates-party-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #f4f6fa;
+}
+
+.candidates-party-poster-wrapper.doc-ratio-frame {
+  --fp-maxh: 200px;
+  width: min(100%, calc(var(--fp-maxh) * var(--fp-ratio)));
+  height: auto;
+  aspect-ratio: var(--fp-ratio);
+  margin: 0;
+  border-radius: 14px;
+}
+
+.candidates-party-identity {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.candidates-party-logo-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+}
+
+.candidates-party-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.candidates-party-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* =========================================================
+   POSITION GROUPS
+========================================================= */
+
+.candidates-position-group {
+  margin-bottom: 22px;
+}
+
+.candidates-position-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.candidates-member-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 14px;
+}
+
+.candidates-member-card {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 12px;
+  text-align: center;
+}
+
+.candidates-member-photo-wrapper {
+  width: 100%;
+  max-width: 90px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 10px;
+  background: #f4f6fa;
+}
+
+.candidates-member-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.candidates-member-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.candidates-member-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.candidates-view-campaign-btn,
+.candidates-view-background-btn {
+  border: 1px solid var(--border);
+  background: #fafbfd;
+  border-radius: 10px;
+  padding: 6px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: 0.2s ease;
+}
+
+.candidates-view-campaign-btn:hover,
+.candidates-view-background-btn:hover {
+  background: #eef2ff;
+  color: var(--primary);
+}
+
+.candidates-view-campaign-btn:disabled,
+.candidates-view-background-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   IMAGE PREVIEW MODAL (campaign / background, 4:3 or letter)
+========================================================= */
+
+.candidates-image-preview-modal {
+  width: 560px;
+  max-width: 94vw;
+  max-height: 90vh;
+  background: #ffffff;
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(25px);
+  transition: 0.25s ease;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+}
+
+.modal-overlay.show .candidates-image-preview-modal {
+  transform: translateY(0);
+}
+
+.candidates-image-preview-body {
+  padding: 0 28px 28px;
+  overflow-y: auto;
+}
+
+.candidates-image-preview-wrapper {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #f4f6fa;
+}
+
+.candidates-image-preview-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.candidates-image-preview-wrapper.doc-ratio-frame {
+  --fp-maxh: min(60vh, 560px);
+  width: min(100%, calc(var(--fp-maxh) * var(--fp-ratio)));
+  height: auto;
+  aspect-ratio: var(--fp-ratio);
+  margin: 0 auto;
+  border-radius: 14px;
+}
+
+/* =========================================================
+   BUTTON PLACEMENT (below election details)
+========================================================= */
+
+.election-view-candidates-action {
+  display: flex;
+  justify-content: flex-start;
+  margin: 4px 0 20px;
+}
+
+.view-candidates-btn {
+  height: 46px;
+  padding: 0 22px;
+  border: none;
+  border-radius: 12px;
+  background: var(--primary);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.view-candidates-btn:hover {
+  background: var(--primary-hover);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 767px) {
+  .candidates-modal {
+    width: 100%;
+    max-width: 100%;
+    max-height: 94vh;
+    border-radius: 18px;
+  }
+
+  .candidates-modal-tabs {
+    padding: 10px 16px 0;
+  }
+
+  .candidates-modal-body {
+    padding: 16px 16px 20px;
+  }
+
+  .candidates-party-poster-wrapper.doc-ratio-frame {
+      --fp-maxh: 150px;
+    }
+
+  .view-candidates-btn {
+    width: 100%;
+  }
+}
