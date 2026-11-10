@@ -26,6 +26,8 @@
 
 <!-- PAGE CSS -->
 <link rel="stylesheet" href="/css/pages/settings.css" />
+<link rel="stylesheet" href="/css/theme.css" />
+<script src="/js/theme.js"></script>
 </head>
 
 <body>
@@ -174,6 +176,10 @@ SIDEBAR
         <i class="bi bi-shield-lock"></i>
 
         <span>Security</span>
+      </button>
+      <button type="button" class="settings-tab" data-tab="appearanceSettings">
+        <i class="bi bi-palette"></i>
+        <span>Appearance</span>
       </button>
     </div>
 
@@ -748,6 +754,10 @@ SIDEBAR
         </form>
       </div>
     </section>
+
+    <section id="appearanceSettings" class="settings-panel">
+      <div id="appearanceMount"></div>
+    </section>
   </main>
 
 
@@ -1141,11 +1151,12 @@ SIDEBAR
 
   <script src="/js/navigation.js"></script>
   <script src="/js/system-config.js"></script>
-    <script src="/js/system-config.js"></script>
+  <script src="/js/system-config.js"></script>
   <script src="/js/superadmin/settings.js"></script>
   <script src="/js/superadmin/system-settings.js"></script>
   <script src="/js/password-rules.js"></script>
   <script src="/js/logout.js"></script>
+  <script src="/js/appearance.js"></script>
 </body>
 
 </html>

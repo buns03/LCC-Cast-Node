@@ -81,7 +81,7 @@ export function toArchiveDto(r: RecordRow, archivedByName: string) {
   };
 }
 
-const RETENTION_DAYS = 30;
+export const RETENTION_DAYS = 30;
 
 export function toTrashDto(r: RecordRow, deletedByName: string) {
   const msLeft = r.at.getTime() + RETENTION_DAYS * 86_400_000 - Date.now();

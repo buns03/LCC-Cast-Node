@@ -5,6 +5,7 @@ import { listByStatus } from './electionRepository';
 import { listDueScheduledCampaigns } from './electionEmailRepository';
 import { progressTracker, sendScheduledCampaign, sendWinnerAnnouncement } from './electionEmailService';
 import { processConcludedElections } from './drawElectionService';
+import { purgeExpiredTrash } from './historyService';
 
 /** Runs `job`, waits `everyMs` AFTER it finishes, repeats (like @Scheduled(fixedDelay)). A crash never stops the loop. */
 function every(name: string, everyMs: number, job: () => Promise<void>) {
@@ -62,4 +63,5 @@ export function startSchedulers() {
   every('draw-elections', 60_000, processConcludedElections);
   every('scheduled-emails', 60_000, dispatchDueCampaigns);
   every('winner-announcements', 5 * 60_000, sendDueWinnerAnnouncements);
+  every('trash-purge', 60 * 60_000, purgeExpiredTrash); // <-- NEW (hourly)
 }

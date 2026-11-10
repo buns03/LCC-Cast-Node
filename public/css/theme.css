@@ -1,0 +1,404 @@
+/* =========================================================
+   LCCAST — THEME (accent + dark mode). Load LAST in <head>.
+========================================================= */
+
+html.theme-anim,
+html.theme-anim * {
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease !important;
+}
+
+/* ---------- accent tints (both modes, replaces the hard-coded #F3F4FF / #EEF2FF) ---------- */
+html .sidebar nav a:not(.active):hover,
+html .sidebar-bottom a:not(.active):hover,
+html .history-tab:not(.active):hover,
+html .settings-tab:not(.active):hover,
+html .analytics-tab:not(.active):hover,
+html .live-results-tab:not(.active):hover,
+html .election-tab:not(.active):hover,
+html .departments-tab:not(.active):hover,
+html .partylists-tab:not(.active):hover,
+html .voters-tab:not(.active):hover,
+html .ap-tab:not(.active):hover,
+html .tabbar-item:not(.active):hover {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+html .secondary-btn,
+html .chip,
+html .election-phase-badge,
+html .archive-status,
+html .history-card-icon.archive,
+html .summary-icon,
+html .action-details-summary-icon,
+html .action-details-record-icon,
+html .archive-view-meta-icon,
+html .config-badge,
+html .filter-icon,
+html .campus-election-title > i,
+html .admin-avatar,
+html .history-avatar,
+html .vote-thank-you-icon,
+html .campus-no-election-icon,
+html .live-empty-icon,
+html .job-progress-icon,
+html .email-progress-icon,
+html .doc-ratio-tag,
+html .email-recipient-option > i {
+  background: var(--primary-soft);
+}
+html .secondary-btn:hover { background: var(--primary-soft-2); }
+
+html .avatar,
+html .welcome-card {
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+}
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+html[data-theme="dark"] {
+  --background: #0F1220;
+  --card: #171B2C;
+  --surface-2: #1E2336;
+  --surface-3: #262C44;
+  --border: #2A3047;
+  --text: #E4E7F2;       /* off-white: easy on the eyes */
+  --subtext: #A2AAC2;
+  --muted: #8089A6;
+  --shadow-sm: 0 2px 6px rgba(0,0,0,.35);
+  --shadow-md: 0 8px 24px rgba(0,0,0,.40);
+  --shadow-lg: 0 20px 45px rgba(0,0,0,.50);
+}
+html[data-theme="dark"] body { background: var(--background); color: var(--text); }
+html[data-theme="dark"] h1, html[data-theme="dark"] h2, html[data-theme="dark"] h3,
+html[data-theme="dark"] h4, html[data-theme="dark"] h5, html[data-theme="dark"] h6 { color: var(--text); }
+
+/* login page background image: dimmer */
+html[data-theme="dark"] body::before {
+  background: linear-gradient(rgba(8,10,20,.68), rgba(8,10,20,.68)),
+              url("/images/lcc_bg.png") center center / cover no-repeat;
+}
+
+/* ---------- main surfaces ---------- */
+html[data-theme="dark"] :is(
+  .sidebar, .profile, .card, .table-card, .accordion, .empty-state,
+  .selection-modal, .delete-modal, .archive-modal, .save-modal, .logout-modal, .action-loading-modal,
+  .campaign-modal, .review-vote-modal, .candidates-modal, .candidates-image-preview-modal,
+  .email-election-modal, .archive-view-modal, .action-details-modal, .forgot-modal, .login-container,
+  .success-toast, .job-progress-card, .mobile-tabbar,
+  .settings-card, .settings-accordion, .admin-item, .admin-filter-dropdown, .config-row,
+  .history-content-container, .history-card, .history-filter-dropdown, .export-menu,
+  .voters-card, .voter-item, .filters-panel,
+  .election-content-container, #existingElections .election-item, #existingElections .info-card,
+  .departments-content-container, .departments-item, .partylists-content-container, .partylists-item,
+  .analytics-card, .analytics-summary-card, .campus-election-section, .election-item,
+  .department-selector-card, .campus-filter-card, .department-filter-card,
+  .result-entity-container, .live-campus-card, .department-results-card, .live-empty-state,
+  .live-updated, .campus-no-election, .stat-card, .graph-card,
+  .candidate-card, .election-position, .election-info-card, .election-instructions,
+  .vote-record-card, .candidate-image-card, .candidate-group-card, .candidate-group-edit-card,
+  .candidate-group-member-card, .email-recipient-option, .email-option, .email-includes
+) {
+  background: var(--card) !important;
+  border-color: var(--border) !important;
+  color: var(--text);
+}
+html[data-theme="dark"] .settings-accordion.active .settings-accordion-header,
+html[data-theme="dark"] .accordion.active .accordion-header {
+  background: var(--primary) !important; color: #fff !important;
+}
+html[data-theme="dark"] :is(.settings-accordion-header, .accordion-header) { background: var(--card); color: var(--text); }
+
+/* ---------- secondary / recessed surfaces ---------- */
+html[data-theme="dark"] :is(
+  thead, .history-table thead, .history-filters, .action-details-footer, .history-filter-dropdown-footer,
+  .archive-details-list, .action-details-summary, .action-details-search-count, .archive-view-value,
+  .archive-view-description, .history-empty-icon, .archive-view-meta,
+  #existingElections .election-details, #existingElections .edit-panel, .election-content,
+  .position-column, .winner-item, .position-winner-card, .live-skeleton-column,
+  .review-candidate, .review-skipped, .voted-candidate-card, .candidate-campaign-btn, .candidate-clear-btn,
+  .candidate-position, .election-schedule-item, .selected-container, .selected-chip-container,
+  .modal-list, .config-checklist, .setting-toggle, .file-preview-body, .member-file-preview,
+  .departments-file-preview, .partylists-file-preview, .departments-campus, .partylists-campus,
+  .cancel-btn, .delete-cancel-btn, .save-cancel-btn, .logout-cancel-btn, .archive-cancel-btn,
+  .review-cancel-btn, .close-modal, .campaign-modal-close, .archive-view-close, .action-details-close,
+  .history-filter-button, .filters-main-btn, .import-btn, .export-btn, .election-export-btn,
+  .download-winner-btn, .fullscreen-btn, .admin-filter-button, .admin-filter-clear, .filter-clear-btn,
+  .history-header-actions .secondary-btn, .history-header-actions .secondary-trash-btn,
+  .position-skip-btn, .existing-file-btn, .add-member-btn, .add-position-row button, .position-chip,
+  .export-summary-btn, .outline-btn, .secondary-email-btn, .scheduled-email-details
+) {
+  background: var(--surface-2) !important;
+  border-color: var(--border) !important;
+  color: var(--text);
+}
+
+/* small icon buttons */
+html[data-theme="dark"] :is(.icon-btn, .admin-icon, .voter-action-btn, .election-action-btn,
+  .departments-controls .icon-btn, .partylists-controls .icon-btn, .pagination-btn,
+  .action-details-pagination-btn, .graph-export-btn, .remove-member, .password-toggle:hover) {
+  background: var(--surface-2) !important; border-color: var(--border) !important; color: var(--text);
+}
+html[data-theme="dark"] :is(.icon-btn, .admin-icon, .voter-action-btn, .election-action-btn,
+  .history-filter-button, .filters-main-btn, .fullscreen-btn, .existing-file-btn):hover {
+  background: var(--primary-soft) !important; color: var(--primary) !important; border-color: var(--primary) !important;
+}
+
+/* ---------- form fields ---------- */
+html[data-theme="dark"] :is(input, select, textarea):not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="file"]) {
+  background: var(--surface-2) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+html[data-theme="dark"] ::placeholder { color: #6C7592; }
+html[data-theme="dark"] option { background: var(--surface-2); color: var(--text); }
+
+/* ---------- tables ---------- */
+html[data-theme="dark"] th { color: var(--subtext); }
+html[data-theme="dark"] tbody tr:hover { background: var(--surface-2) !important; }
+
+/* ---------- pastel badges / pills: invert so they stay readable ---------- */
+html[data-theme="dark"] :is(.action-badge, .role-badge, .badge, #existingElections .status, .election-status,
+  .history-status, .summary-status, .trash-expiration, .trash-warning, .draw-chip, .draw-election-badge,
+  .voter-status) {
+  filter: invert(.88) hue-rotate(180deg);
+}
+
+/* ---------- misc ---------- */
+html[data-theme="dark"] .modal-overlay { background: rgba(4,6,14,.65); }
+html[data-theme="dark"] .skeleton { background: var(--surface-3); }
+html[data-theme="dark"] .main-content::-webkit-scrollbar-thumb { background: #3A4262; }
+html[data-theme="dark"] .main-content::-webkit-scrollbar-thumb:hover { background: #4B5580; }
+html[data-theme="dark"] .history-user small, html[data-theme="dark"] small { color: var(--muted); }
+
+/* =========================================================
+   APPEARANCE TAB (works in light + dark)
+========================================================= */
+.ap-tabs { display: flex; gap: 10px; margin-bottom: 26px; border-bottom: 1px solid var(--border); }
+.ap-tab {
+  height: 48px; padding: 0 22px; border: none; border-radius: 14px 14px 0 0;
+  background: transparent; color: var(--subtext); font-family: inherit; font-size: 14px; font-weight: 600;
+  display: flex; align-items: center; gap: 9px; cursor: pointer; transition: .2s;
+}
+.ap-tab.active { background: var(--primary); color: #fff; }
+.voter-settings-content .ap-tabs ~ .settings-panel { display: none; }
+.voter-settings-content .ap-tabs ~ .settings-panel.active { display: block; }
+
+.ap-body { padding: 26px 30px 30px; }
+.ap-title { margin: 0 0 4px; font-size: 15px; font-weight: 600; color: var(--text); }
+.ap-sub { margin: 0 0 14px; font-size: 12.5px; color: var(--subtext); }
+.ap-section + .ap-section { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border); }
+
+.ap-modes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.ap-mode {
+  display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 16px 10px;
+  border: 2px solid var(--border); border-radius: 14px; background: var(--card); color: var(--text);
+  font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer; transition: .2s;
+}
+.ap-mode i { font-size: 22px; color: var(--subtext); }
+.ap-mode:hover { border-color: var(--primary); }
+.ap-mode.active { border-color: var(--primary); background: var(--primary-soft); }
+.ap-mode.active i { color: var(--primary); }
+.ap-mode small { font-weight: 400; font-size: 11px; color: var(--muted); }
+
+.ap-swatches { display: flex; flex-wrap: wrap; gap: 12px; }
+.ap-swatch {
+  width: 40px; height: 40px; border-radius: 50%; border: 3px solid transparent;
+  background: var(--sw); color: #fff; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; box-shadow: 0 0 0 1px var(--border); transition: .2s;
+}
+.ap-swatch i { opacity: 0; font-size: 18px; }
+.ap-swatch:hover { transform: scale(1.08); }
+.ap-swatch.active { border-color: var(--card); box-shadow: 0 0 0 2px var(--sw); }
+.ap-swatch.active i { opacity: 1; }
+
+.ap-custom { display: flex; align-items: center; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+.ap-custom label { font-size: 13px; font-weight: 600; color: var(--text); }
+.ap-custom input[type="color"] {
+  width: 46px; height: 40px; padding: 3px; border: 1px solid var(--border); border-radius: 10px;
+  background: var(--card); cursor: pointer;
+}
+.ap-custom input[type="text"] {
+  width: 120px; height: 40px; padding: 0 12px; border: 1px solid var(--border); border-radius: 10px;
+  font-family: inherit; font-size: 14px; text-transform: uppercase;
+}
+.ap-note { display: block; margin-top: 10px; min-height: 16px; font-size: 12px; color: var(--muted); }
+
+.ap-preview { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 18px;
+  padding: 16px; border: 1px dashed var(--border); border-radius: 14px; }
+.ap-preview-btn { height: 40px; padding: 0 18px; border: none; border-radius: 12px;
+  background: var(--primary); color: #fff; font-family: inherit; font-weight: 600; font-size: 13px; }
+.ap-preview-chip { padding: 6px 12px; border-radius: 999px; background: var(--primary-soft);
+  color: var(--primary); font-size: 12px; font-weight: 600; }
+.ap-preview-link { color: var(--primary); font-weight: 600; font-size: 13px; }
+
+.ap-status { margin-top: 14px; font-size: 13px; min-height: 18px; }
+.ap-status.ok { color: #16a34a; }
+.ap-status.err { color: #dc2626; }
+
+@media (max-width: 600px) {
+  .ap-body { padding: 20px; }
+  .ap-modes { grid-template-columns: 1fr; }
+  .ap-tab { padding: 0 14px; font-size: 13px; }
+}
+
+/* =========================================================
+   DARK MODE FIXES
+========================================================= */
+
+/* ---------- SKELETONS ---------- */
+html[data-theme="dark"] :is(
+  .history-skeleton-card, .skeleton-info-card, .skeleton-instructions, .skeleton-candidate-card,
+  .vote-summary-skeleton-card, .skeleton-voter-card, .skeleton-candidate-item,
+  .analytics-skeleton-summary-card, .analytics-skeleton-card, .live-skeleton-card
+) {
+  background: var(--card) !important;
+  border-color: var(--border) !important;
+}
+html[data-theme="dark"] .skeleton-summary-details {
+  border-color: var(--border) !important;
+  background: transparent !important;
+}
+html[data-theme="dark"] :is(.skeleton, .live-skeleton-card .skeleton) { background: var(--surface-3) !important; }
+html[data-theme="dark"] :is(.skeleton, .live-skeleton-card .skeleton)::after,
+html[data-theme="dark"] :is(.candidate-image-wrapper, .campaign-image-wrapper, .voted-candidate-image).image-loading::after {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.07), transparent) !important;
+}
+html[data-theme="dark"] :is(.candidate-image-wrapper, .campaign-image-wrapper, .voted-candidate-image).image-loading,
+html[data-theme="dark"] :is(.candidate-image-wrapper, .campaign-image-wrapper, .voted-candidate-image) {
+  background: var(--surface-3) !important;
+}
+html[data-theme="dark"] .live-skeleton-candidate + .live-skeleton-candidate { border-color: var(--border) !important; }
+
+/* ---------- SHARED: recessed buttons / panels missed earlier ---------- */
+html[data-theme="dark"] :is(
+  .action-details-btn, .action-details-header, .action-details-content, .action-details-record-item,
+  .action-details-record-empty, .action-details-search-clear,
+  .no-election-message, .autocomplete-list, .autocomplete-item, .department-badge,
+  .fixed-filter-value, .download-position-btn, .download-position-btn,
+  .position-winner-card-header, .result-entity-header, .result-entity-section,
+  .live-card-header, .winner-card-header, .department-live-heading,
+  .member-row .photo-btn, .member-row .campaign-btn, .member-row .background-btn,
+  .existing-member .background-btn, .existing-member-preview,
+  .file-preview-close, .file-change-btn, .file-delete-btn, .file-preview-filename,
+  .departments-file-btn, .partylists-file-btn,
+  .departments-file-preview-close, .partylists-file-preview-close,
+  .departments-file-change-btn, .partylists-file-change-btn,
+  .departments-file-delete-btn, .partylists-file-delete-btn,
+  .departments-file-preview-filename, .partylists-file-preview-filename,
+  .departments-file-preview-body, .partylists-file-preview-body,
+  .member-student-id,
+  .candidates-tab-btn, .candidates-view-campaign-btn, .candidates-view-background-btn,
+  .candidates-member-card, .candidates-member-photo-wrapper, .candidates-party-poster-wrapper,
+  .candidates-party-poster, .candidates-image-preview-wrapper, .candidates-party-logo-wrapper,
+  .election-action .secondary-btn, .candidate-image-wrapper,
+  .election-section .discard-btn, .election-form .discard-btn, .card-actions .discard-btn,
+  #existingElections .discard-btn
+) {
+  background: var(--surface-2) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+}
+html[data-theme="dark"] :is(.result-entity-header, .result-entity-section, .live-card-header,
+  .winner-card-header, .department-live-heading, .action-details-header) {
+  background: transparent !important;
+}
+html[data-theme="dark"] .result-entity-header { background: var(--card) !important; }
+
+/* active tab in candidates modal */
+html[data-theme="dark"] .candidates-tab-btn.active {
+  background: var(--primary) !important; color: #fff !important; border-color: var(--primary) !important;
+}
+
+/* selected candidate button */
+html[data-theme="dark"] .candidate-card.selected .candidate-select-btn {
+  background: var(--primary-soft) !important; color: var(--primary) !important;
+}
+
+/* green "uploaded" states */
+html[data-theme="dark"] :is(.member-row .photo-btn.has-photo, .member-row .campaign-btn.has-campaign,
+  .member-row .background-btn.has-background, .existing-member .background-btn.has-background,
+  .departments-file-btn.has-file, .partylists-file-btn.has-file) {
+  background: rgba(34,197,94,.16) !important; color: #4ADE80 !important; border-color: rgba(34,197,94,.4) !important;
+}
+
+/* red-ish buttons */
+html[data-theme="dark"] :is(.file-delete-btn, .departments-file-delete-btn, .partylists-file-delete-btn,
+  #existingElections .archive-btn, .archive-btn) {
+  background: rgba(239,68,68,.14) !important; color: #F87171 !important; border-color: rgba(239,68,68,.35) !important;
+}
+html[data-theme="dark"] :is(#existingElections .edit-btn, .edit-btn) {
+  background: var(--primary-soft) !important; color: var(--primary) !important;
+}
+
+/* ---------- HOVER STATES (were blocked by the !important rules above) ---------- */
+html[data-theme="dark"] :is(
+  .action-details-btn, .download-position-btn, .candidates-view-campaign-btn, .candidates-view-background-btn,
+  .candidates-tab-btn:not(.active), .candidate-campaign-btn, .existing-file-btn, .file-change-btn,
+  .departments-file-btn, .partylists-file-btn, .departments-file-change-btn, .partylists-file-change-btn,
+  .member-row .photo-btn, .member-row .campaign-btn, .member-row .background-btn,
+  .existing-member .background-btn, .autocomplete-item, .position-skip-btn, .add-member-btn,
+  .export-summary-btn, .secondary-email-btn, .history-header-actions .secondary-btn,
+  .election-section .discard-btn, .election-form .discard-btn, .card-actions .discard-btn,
+  #existingElections .discard-btn
+):hover {
+  background: var(--primary-soft) !important;
+  color: var(--primary) !important;
+  border-color: var(--primary) !important;
+}
+html[data-theme="dark"] :is(.election-action .secondary-btn, .candidate-clear-btn,
+  .file-delete-btn, .departments-file-delete-btn, .partylists-file-delete-btn,
+  .history-header-actions .secondary-trash-btn, .secondary-trash-btn, .remove-member):hover {
+  background: rgba(239,68,68,.16) !important; color: #F87171 !important; border-color: #F87171 !important;
+}
+
+/* ---------- ANALYTICS ---------- */
+html[data-theme="dark"] :is(.department-select-wrapper select, .campus-select-wrapper select,
+  .election-year-select, .campus-filter-controls select, .department-filter-controls select,
+  .history-filters select, .election-filter select, .existing-departments-filter-group select,
+  .existing-partylists-filter-group select) {
+  background-color: var(--surface-2) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+  color-scheme: dark;
+}
+html[data-theme="dark"] .election-item-header,
+html[data-theme="dark"] .campus-election-header,
+html[data-theme="dark"] .election-content { background: transparent !important; }
+html[data-theme="dark"] .election-content { background: var(--surface-2) !important; border-color: var(--border) !important; }
+
+/* ---------- LIVE RESULTS ---------- */
+html[data-theme="dark"] :is(.live-candidate-progress-track, .position-winner-progress-track,
+  .job-progress-track, .email-progress-track) { background: var(--surface-3) !important; }
+html[data-theme="dark"] :is(.live-candidate-image, .position-winner-candidate img, .winner-item img) {
+  background: var(--surface-3) !important; border-color: var(--border) !important;
+}
+html[data-theme="dark"] :is(.position-heading, .position-winner-card-header, .live-candidate + .live-candidate,
+  .position-winner-candidate + .position-winner-candidate, .live-card-header, .department-live-heading) {
+  border-color: var(--border) !important;
+}
+html[data-theme="dark"] .result-entity-container:fullscreen {
+  --muted: #8089A6;
+  --subtext: #A2AAC2;
+  background: var(--background) !important;
+}
+html[data-theme="dark"] .result-entity-container:fullscreen .result-entity-header,
+html[data-theme="dark"] .result-entity-container:fullscreen .position-column,
+html[data-theme="dark"] .result-entity-container:fullscreen .position-president {
+  background: var(--card) !important; border-color: var(--border) !important;
+}
+html[data-theme="dark"] .result-entity-container:fullscreen .position-heading,
+html[data-theme="dark"] .result-entity-container:fullscreen .live-candidate + .live-candidate {
+  border-color: var(--border) !important;
+}
+html[data-theme="dark"] .result-entity-container:fullscreen .live-candidate-name,
+html[data-theme="dark"] .result-entity-container:fullscreen .position-heading { color: var(--text) !important; }
+
+/* ---------- NAVIGATION ---------- */
+html[data-theme="dark"] :is(.mobile-nav-toggle, .tabbar-item) { color: var(--text); }
+html[data-theme="dark"] .mobile-nav-toggle { background: var(--card) !important; border-color: var(--border) !important; }
+html[data-theme="dark"] .tabbar-item.active { background: var(--primary) !important; color: #fff !important; }
+html[data-theme="dark"] .tabbar-divider, html[data-theme="dark"] .sidebar hr { background: var(--border); border-color: var(--border); }
+html[data-theme="dark"] .pagination-arrow, html[data-theme="dark"] .voters-pagination { color: var(--text); }
+html[data-theme="dark"] .pagination-arrow:disabled { color: #4A5270; }

@@ -9,6 +9,7 @@ import * as repo from "./electionRepository";
 import { Db } from "./electionRepository";
 import * as hr from "./historyRepository";
 import {
+  RETENTION_DAYS,
   toArchiveDto,
   toAuditLogDto,
   toTrashDto,
@@ -674,6 +675,38 @@ export async function emptyTrash(req: Request): Promise<void> {
 
   if (votesChanged) emitVoteCast();
   realtime.historyChanged("trash");
+}
+
+/** Scheduler job: permanently deletes trash records older than RETENTION_DAYS (30). */
+export async function purgeExpiredTrash(): Promise<void> {
+  const cutoff = new Date(Date.now() - RETENTION_DAYS * 86_400_000);
+  const expired = await hr.expiredTrash(pool, cutoff);
+  if (!expired.length) return;
+
+  let purged = 0;
+  let votesChanged = false;
+
+  // one transaction per record, so one bad record can't block the others
+  for (const rec of expired) {
+    try {
+      const changed = await withTransaction(async (db) => {
+        const c = await hardDeleteEntity(db, rec.entityType, rec.entityId);
+        await hr.deleteTrashRecords(db, [rec.id]);
+        return c;
+      });
+      purged++;
+      votesChanged = votesChanged || changed;
+    } catch (e) {
+      console.error(
+        `[trash-purge] failed to delete ${rec.entityType} ${rec.entityId}`,
+        e,
+      );
+    }
+  }
+
+  if (purged) console.log(`[trash-purge] permanently deleted ${purged} expired record(s)`);
+  if (votesChanged) emitVoteCast();
+  if (purged) realtime.historyChanged("trash");
 }
 
 export { IllegalArgumentError };

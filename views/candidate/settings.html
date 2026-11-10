@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="/css/password-rules.css" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="/css/theme.css" />
+    <script src="/js/theme.js"></script>
 </head>
 
 <body>
@@ -105,6 +107,15 @@
         </header>
 
         <section class="voter-settings-content">
+
+            <div class="ap-tabs">
+                <button type="button" class="ap-tab active" data-ap-target="securitySettings">
+                    <i class="bi bi-person-gear"></i> Profile &amp; Security
+                </button>
+                <button type="button" class="ap-tab" data-ap-target="appearanceSettings">
+                    <i class="bi bi-palette"></i> Appearance
+                </button>
+            </div>
             <section id="securitySettings" class="settings-panel active">
                 <div class="settings-card">
                     <div class="settings-card-header">
@@ -205,6 +216,9 @@
                     </form>
                 </div>
             </section>
+            <section id="appearanceSettings" class="settings-panel">
+                <div id="appearanceMount"></div>
+            </section>
         </section>
     </main>
 
@@ -265,6 +279,7 @@
     <script src="/js/logout.js"></script>
     <script src="/js/password-rules.js"></script>
     <script src="/js/candidate/candidate-settings.js"></script>
+    <script src="/js/appearance.js"></script>
 </body>
 
 </html>

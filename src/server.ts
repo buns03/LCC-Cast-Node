@@ -48,6 +48,7 @@ import { voterRouter } from "./routes/voter";
 import { systemConfigRouter } from "./routes/systemConfig";
 import { refreshProgramResolver } from "./programResolver";
 import { corsMiddleware, blockForeignOrigins } from './cors';
+import { preferencesRouter } from "./preferencesRoutes";
 
 const app = express();
 
@@ -98,6 +99,7 @@ app.use(superadminLiveResultsRouter); // /superadmin/live-results + /superadmin/
 app.use(superadminAnalyticsRouter); // NEW: /superadmin/analytics + /api/superadmin/analytics/**
 app.use(superadminSettingsRouter);
 app.use(systemConfigRouter); // /api/config/options + /superadmin/api/system-config/**
+app.use(preferencesRouter); // GET/PUT /api/preferences (theme + accent, all roles)
 app.use(superadminProfilePictureRouter); // POST /superadmin/settings/profile-picture
 app.use(superadminHistoryRouter);
 app.use(adminAnalyticsRouter); // NEW: /admin-ssc/api/analytics/** + /api/admin-dept/analytics
