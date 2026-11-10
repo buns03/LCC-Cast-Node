@@ -55,13 +55,10 @@ const app = express();
 app.set("trust proxy", 1); // needed when hosted behind Render's proxy
 app.disable("x-powered-by");
 
-app.set("trust proxy", 1); // needed when hosted behind Render's proxy
-app.disable("x-powered-by");
-
 app.use(corsMiddleware);
 app.use(blockForeignOrigins);
 
-app.use(express.json({ limit: "25mb" }));;
+app.use(express.json({ limit: "25mb" }));
 app.use(express.urlencoded({ extended: true }));
 
 app.use(
